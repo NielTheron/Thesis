@@ -33,6 +33,85 @@ time step $t$. Given the measurements, the aim is to estimate the sensors locati
     \label{fig:3.1}
 \end{figure}
 
+%=============================================================================================================================================================================
+
+\mysection{Refrence Frame Transformations}{Refrence Frame Transsformations}
+
+In this masters we are going to encounter a few different refrence frames. To accurateley to create the measurement model we should have an understanding of all the different 
+reference models and how to transform from one to another
+
+\subsection{Lattitude, longitude and altitude}
+
+The lattitude, longitude of a feature or the position of the satellite is donated with the $\mathcal{L}$. The lattitude of a feature is the position of how high or low it above the
+equator, having a range of $-90^{\circ} to 90^{\circ}$. The longitude is based of the greenwich maridian, a longitude line that pases through the north- and south pole, it has a
+range of $-180^{\circ} to 180^{\circ}$. The altitude is measured form the the "WGS84" elliptical globe.
+
+\textcolor{blue}{Insert Figure}
+
+\subsection{Earth Ceneterd Earth Fixed}
+
+The Earth Ceneterd Earth Fixed refrence frame is represented by the $\mathcal{F}$ and is very simular to the $\mathcal{L}$ reference frame with the z-axis alligned with the northpole
+and the x-axis points at the crossing of the Prime Maridian an the Equator, where the y-axis completes the right hand rule. The x,y and z-axis is defined in kilometers.
+To covert from $\mathcal{L}$ to $\mathcal{F}$ is to use a "WGS84" transfomr. Where WGS84 stands for World Geodetic System 1984, which is the standard coordinate system used for
+Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2
+
+\begin{equation}
+        \mathbf{A}_{\mathcal{L}}^{\mathcal{F}} = f(WGS84)
+\end{equation}
+
+\textcolor{blue}{Insert Figure Here}
+
+\subsection{Earth Ceneterd Inertial}
+
+The Earth Centered Inertial refrence fream (ECI) refrenced by $\mathcal{I}$ shares a refrence frame axis with the ECEF, but is rotated about the z-axis. This rotation is governed
+by the rotation speed of the earth $\omega_e$ which is $7.2921\times10^{-5}$ rad/s and time $t$.
+
+\begin{equation}
+    \mathbf{A}_{\mathcal{F}}^{\mathcal{I}} = R(\omega_e t) = 
+    \begin{bmatrix}
+        \cos(\omega_e t) & -\sin(\omega_e t) & 0\\
+        \sin(\omega_e t) & \cos(\omega_e t) & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{equation}
+
+\textcolor{blue}{Insert Figure Here}
+
+\subsection{Orbital reference frame}
+
+The orbital reference frame used is the Local Vertical Local Horizon (LVLH) denoted by $\mathcal{O}$. \textcolor{red}{The LVLH frame is a rotating, orbit-attached corrdinate
+system commonly used in spacecraft dynamics. It moves with the satellite and is defined relative to its orbit around Earth}. The x-axis is the "Local Horizon" also called
+"along track" pointing forward it is tangent to the orbit and points in the direction of motion. The z-axis is the local vertical and is also called the Nadir direction, it points
+to the barycenter of the system, in this case the center of the Earth. The y-axis is called the cross track it completes the right handed system. It points out of the orbital plane,
+typically the angular momentum vector direction (normal to the orbit plane).
+
+if $\mathbf{r}$ is the position vector of the satellite and $\mathbf{v}$ is the velocity vector of the satellite.
+The equation for the reference frame is:
+
+\begin{align}
+    \bar{z}_{\mathcal{O}} &= -\frac{\mathbf{r}}{||\mathbf{r}||} \\
+    \bar{y}_{\mathcal{O}} &= \frac{\mathbf{r}\times\mathbf{v}}{||\mathbf{r}\times\mathbf{v}||}\\
+    \bar{x}_{\mathcal{O}} &= \bar{y}_{\mathcal{O}}\times\bar{z}_{\mathcal{O}}
+\end{align}
+
+For this reference frame there should also be a refrence frame translation introduced. Which is done by substracing $\mathbf{r}$ from the vector
+
+\begin{equation}
+    \mathbf{f}_{\mathcal{O}} = \mathbf{A}_{\mathcal{I}}^{\mathcal{O}}\times(\mathbf{f}_{\mathcal{I}} - \mathbf{r}_{\mathcal{I}})
+\end{equation}
+
+\textcolor{blue}{Insert Figure Here. This is unfinished explain a bit more. Actually want to change it to the 4x4 transformation matrix}
+
+\subsection{Camera Reference Frame}
+
+The camera refrence frame denoted by $\mathcal{C}$ and the body reference frame $\mathcal{B}$ in this thesis is the same reference frame. This reference frame is transformed
+by using your standard quaternion rotaion matrix.
+
+\begin{equation}
+    \mathbf{f}_{\mathcal{C}} = \mathbf{A}_{\mathcal{O}}^{\mathcal{C}}\times\mathbf{f}_{\mathcal{O}}
+\end{equation}
+
+%==================================================================================================================================================================================
 
 \mysection{Rigid Body Mechanics}{Rigid Body Mechanics}
 \label{sec:modrigid}
@@ -191,92 +270,85 @@ $\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
 and the rotation is around a well-defined axis. The sin and cosine elements of the rotation matrix are already encodedin the quaternion form of the DCM. Therfore,
 only one matrix operation is required for attitude transforms, where Eular angles reguire three.}
 
+%=====================================================================================================================================================================================
+
 \mysubsection{Dynamics}{Dynamics}
 \label{sec:dynamics}
 
-
-
-
-\mysection{Refrence Frame Transformations}{Refrence Frame Transsformations}
-
-In this masters we are going to encounter a few different refrence frames. To accurateley to create the measurement model we should have an understanding of all the different 
-reference models and how to transform from one to another
-
-\subsubsection{Lattitude, longitude and altitude}
-
-The lattitude, longitude of a feature or the position of the satellite is donated with the $\mathcal{L}$. The lattitude of a feature is the position of how high or low it above the
-equator, having a range of $-90^{\circ} to 90^{\circ}$. The longitude is based of the greenwich maridian, a longitude line that pases through the north- and south pole, it has a
-range of $-180^{\circ} to 180^{\circ}$. The altitude is measured form the the "WGS84" elliptical globe.
-
-\textcolor{blue}{Insert Figure}
-
-\subsection{Earth Ceneterd Earth Fixed}
-
-The Earth Ceneterd Earth Fixed refrence frame is represented by the $\mathcal{F}$ and is very simular to the $\mathcal{L}$ reference frame with the z-axis alligned with the northpole
-and the x-axis points at the crossing of the Prime Maridian an the Equator, where the y-axis completes the right hand rule. The x,y and z-axis is defined in kilometers.
-To covert from $\mathcal{L}$ to $\mathcal{F}$ is to use a "WGS84" transfomr. Where WGS84 stands for World Geodetic System 1984, which is the standard coordinate system used for
-Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2
+The rotational dynamics of a rigid body satellite can be described using the Newton-Euler equations, 
+which are applicable to all rigid inertial bodies~\cite{ref36}. The angular momentum of the satellite is expressed as:
 
 \begin{equation}
-        \mathbf{A}_{\mathcal{L}}^{\mathcal{F}} = f(WGS84)
+\dot{\mathbf{H}} = \frac{d\mathbf{H}}{dt} = \mathbf{I}\dot{\boldsymbol{\omega}}
 \end{equation}
 
-\textcolor{blue}{Insert Figure Here}
-
-\subsection{Earth Ceneterd Inertial}
-
-The Earth Centered Inertial refrence fream (ECI) refrenced by $\mathcal{I}$ shares a refrence frame axis with the ECEF, but is rotated about the z-axis. This rotation is governed
-by the rotation speed of the earth $\omega_e$ which is $7.2921\times10^{-5}$ rad/s and time $t$.
-
-\begin{equation}
-    \mathbf{A}_{\mathcal{F}}^{\mathcal{I}} = R(\omega_e t) = 
-    \begin{bmatrix}
-        \cos(\omega_e t) & -\sin(\omega_e t) & 0\\
-        \sin(\omega_e t) & \cos(\omega_e t) & 0\\
-        0 & 0 & 1
-    \end{bmatrix}
-\end{equation}
-
-\textcolor{blue}{Insert Figure Here}
-
-\subsection{Orbital reference frame}
-
-The orbital reference frame used is the Local Vertical Local Horizon (LVLH) denoted by $\mathcal{O}$. \textcolor{red}{The LVLH frame is a rotating, orbit-attached corrdinate
-system commonly used in spacecraft dynamics. It moves with the satellite and is defined relative to its orbit around Earth}. The x-axis is the "Local Horizon" also called
-"along track" pointing forward it is tangent to the orbit and points in the direction of motion. The z-axis is the local vertical and is also called the Nadir direction, it points
-to the barycenter of the system, in this case the center of the Earth. The y-axis is called the cross track it completes the right handed system. It points out of the orbital plane,
-typically the angular momentum vector direction (normal to the orbit plane).
-
-if $\mathbf{r}$ is the position vector of the satellite and $\mathbf{v}$ is the velocity vector of the satellite.
-The equation for the reference frame is:
+\noindent where $\mathbf{H}$ represents the angular momentum vector and $\mathbf{I}$ is the diagonalized moment of 
+inertia tensor about the satellite's principal axes. In the absence of external torques, the rotational kinematics 
+of a rigid satellite about its center of mass can be described by Euler's rotational equations:
 
 \begin{align}
-    \bar{z}_{\mathcal{O}} &= -\frac{\mathbf{r}}{||\mathbf{r}||} \\
-    \bar{y}_{\mathcal{O}} &= \frac{\mathbf{r}\times\mathbf{v}}{||\mathbf{r}\times\mathbf{v}||}\\
-    \bar{x}_{\mathcal{O}} &= \bar{y}_{\mathcal{O}}\times\bar{z}_{\mathcal{O}}
+I_{xx}\dot{\omega}_x &= \omega_y\omega_z(I_{yy} - I_{zz}) \\
+I_{yy}\dot{\omega}_y &= \omega_x\omega_z(I_{zz} - I_{xx}) \\
+I_{zz}\dot{\omega}_z &= \omega_x\omega_y(I_{xx} - I_{yy})
 \end{align}
 
-For this reference frame there should also be a refrence frame translation introduced. Which is done by substracing $\mathbf{r}$ from the vector
+\noindent where $I_{xx}$, $I_{yy}$, and $I_{zz}$ are the principal moments of inertia, which remain constant and 
+depend on the satellite's mass distribution and geometric configuration. 
+
+The stability characteristics of the satellite's rotational 
+motion are governed by its mass distribution. According to Marsden and Ratiu~\cite{ref37}, rotation about the major and minor principal 
+axes is inherently stable, while rotation about the intermediate axis exhibits unstable behavior. Under constant energy conditions, any 
+initial rotation about the intermediate axis will gradually redistribute energy to the major and minor axes through nutation effects.
+
+For the translational dynamics, Newton's second law governs the linear motion of the satellite with mass $m$. The discrete-time position and velocity propagation equations are:
+
+\begin{align}
+\mathbf{r}_t &= \mathbf{r}_{t-1} + \mathbf{v}_t\Delta t + \frac{1}{2m}\mathbf{F}(t)\Delta t^2 \\
+\mathbf{v}_t &= \mathbf{v}_{t-1} + \frac{1}{m}\mathbf{F}(t)\Delta t
+\end{align}
+
+\noindent where $\mathbf{F}(t)$ represents the net external force acting on the satellite. For the orbital environment 
+considered in this work, where external perturbations are negligible compared to gravitational forces, and given that 
+precise mass properties may not be available, the translational motion can be approximated using kinematic models where 
+the current velocity depends primarily on the previous velocity state.
+
+To propagate the quaternion representing the satellite's attitude over time, the quaternion derivative must first be computed.
+ The time derivative of the quaternion $\mathbf{q}_{B/I}$, which describes the rotation from the inertial frame to the body frame,
+is calculated using quaternion multiplication with the angular velocity vector:
 
 \begin{equation}
-    \mathbf{f}_{\mathcal{O}} = \mathbf{A}_{\mathcal{I}}^{\mathcal{O}}\times(\mathbf{f}_{\mathcal{I}} - \mathbf{r}_{\mathcal{I}})
+\dot{\mathbf{q}}_{B/I} = \frac{1}{2}(\mathbf{q}_{B/I} \otimes \boldsymbol{\omega})
 \end{equation}
 
-\textcolor{blue}{Insert Figure Here. This is unfinished explain a bit more. Actually want to change it to the 4x4 transformation matrix}
-
-\subsection{Camera Reference Frame}
-
-The camera refrence frame denoted by $\mathcal{C}$ and the body reference frame $\mathcal{B}$ in this thesis is the same reference frame. This reference frame is transformed
-by using your standard quaternion rotaion matrix.
+\noindent where $\boldsymbol{\omega} = [\omega_x, \omega_y, \omega_z]^T$ is the angular velocity vector expressed in the body frame. 
+Expanding this quaternion multiplication yields:
 
 \begin{equation}
-    \mathbf{f}_{\mathcal{C}} = \mathbf{A}_{\mathcal{O}}^{\mathcal{C}}\times\mathbf{f}_{\mathcal{O}}
+\dot{\mathbf{q}}_{B/I} = \frac{1}{2}
+\begin{bmatrix}
+q_{B/I,0} \omega_x - q_{B/I,3} \omega_y + q_{B/I,2} \omega_z \\
+q_{B/I,3} \omega_x + q_{B/I,0} \omega_y - q_{B/I,1} \omega_z \\
+-q_{B/I,2} \omega_x + q_{B/I,1} \omega_y + q_{B/I,0} \omega_z \\
+-q_{B/I,1} \omega_x - q_{B/I,2} \omega_y - q_{B/I,3} \omega_z
+\end{bmatrix}
 \end{equation}
 
+\noindent where $q_{B/I,0}$, $q_{B/I,1}$, $q_{B/I,2}$, and $q_{B/I,3}$ are the scalar and vector components of the quaternion, respectively.
 
+The quaternion integration is performed using a simple Euler integration scheme. First, the quaternion is propagated forward in time using:
 
-\mysection{State Estimation}{State Estimation}
-\label{sec:modrec}
+\begin{equation}
+\bar{\mathbf{q}}_{B/I}(t + \Delta t) = \mathbf{q}_{B/I}(t) + \dot{\mathbf{q}}_{B/I}\Delta t
+\end{equation}
+
+\noindent where $\bar{\mathbf{q}}_{B/I}(t + \Delta t)$ represents the unnormalized quaternion after integration. Since quaternion integration
+ may introduce numerical errors that violate the unit quaternion constraint, the result must be renormalized:
+
+\begin{equation}
+\mathbf{q}_{B/I}(t + \Delta t) = \frac{\bar{\mathbf{q}}_{B/I}(t + \Delta t)}{||\bar{\mathbf{q}}_{B/I}(t + \Delta t)||}
+\end{equation}
+
+\noindent This normalization step ensures that the quaternion maintains its unit magnitude, preserving the validity of the attitude representation.
 
 \mysection{Conclusion}{Conclusion}
 \label{sec:modconclusion}

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  5 JUN 2025 09:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  13 JUN 2025 17:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**"c:/Users/Niel/OneDrive - Stellenbosch University/Desktop/8. Thesis/D.P. Theron MEng Thesis/thesis.tex"
-(c:/Users/Niel/OneDrive - Stellenbosch University/Desktop/8. Thesis/D.P. Theron MEng Thesis/thesis.tex
+**"c:/Users/Niel/OneDrive - Stellenbosch University/Desktop/Thesis/thesis.tex"
+(c:/Users/Niel/OneDrive - Stellenbosch University/Desktop/Thesis/thesis.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
 (stb-thesis.cls
@@ -1539,7 +1539,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 3.
 
 
-<stb-thesis-frntp.pdf, id=243, 597.50786pt x 845.04686pt>
+<stb-thesis-frntp.pdf, id=303, 597.50786pt x 845.04686pt>
 File: stb-thesis-frntp.pdf Graphic file (type pdf)
 <use stb-thesis-frntp.pdf>
 Package pdftex.def Info: stb-thesis-frntp.pdf  used on input line 3.
@@ -1603,11 +1603,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--15
 [5
 
 
-])
-\tf@toc=\write6
-\openout6 = `thesis.toc'.
-
-
+]
 
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/12'.
@@ -1619,13 +1615,26 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
 
-[6] (thesis.lof)
+[6])
+\tf@toc=\write6
+\openout6 = `thesis.toc'.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[7] (thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
 
 
-[7
+[8
 
 ] (thesis.lot)
 \tf@lot=\write8
@@ -1633,7 +1642,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 
 
-[8
+[9
 
 ] (frontmatter/nomenclature.tex (thesis.nls
 Package microtype Info: Character `029' is missing
@@ -1646,7 +1655,7 @@ Package hyperref Warning: The anchor of a bookmark and its parent's must not
 
 ) (frontmatter/variables_and_functions.tex)
 
-[9
+[10
 
 
 {C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
@@ -1658,7 +1667,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
 
-[10]
+[11]
 Using TeX to sort glossary entries---this may take a while
 LaTeX Font Info:    Font shape `T1/lmr/bx/sc' in size <12> not available
 (Font)              Font shape `T1/cmr/bx/sc' tried instead on input line 20.
@@ -1671,7 +1680,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-12.61652pt}.
 
-[11]) (thesis.nls) (chapters/introduction.tex
+[12]) (thesis.nls) (chapters/introduction.tex
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
@@ -1710,6 +1719,27 @@ Package microtype Info: Character `029' is missing
 [4
 
 ]
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[5]
+Overfull \vbox (219.34671pt too high) has occurred while \output is active []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[6]
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 16--21
@@ -1721,14 +1751,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--25
 
  []
 
-<figures/States.pdf, id=463, 843.15pt x 632.3625pt>
+<figures/States.pdf, id=566, 843.15pt x 632.3625pt>
 File: figures/States.pdf Graphic file (type pdf)
 <use figures/States.pdf>
 Package pdftex.def Info: figures/States.pdf  used on input line 31.
 (pdftex.def)             Requested size: 364.19667pt x 273.14566pt.
 
 
-[5
+[7
 
 ]
 
@@ -1739,11 +1769,29 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
 
-[6{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc} <./figures/States.pdf>]
-<figures/Quaternion.pdf, id=495, 142.05974pt x 142.66399pt>
+[8{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./figures/States.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[9{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[10]
+<figures/Quaternion.pdf, id=615, 142.05974pt x 142.66399pt>
 File: figures/Quaternion.pdf Graphic file (type pdf)
 <use figures/Quaternion.pdf>
-Package pdftex.def Info: figures/Quaternion.pdf  used on input line 126.
+Package pdftex.def Info: figures/Quaternion.pdf  used on input line 205.
 (pdftex.def)             Requested size: 136.57462pt x 137.16702pt.
 
 
@@ -1754,70 +1802,64 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
 
-[7]
-
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.11653pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11653pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
-
-[8 <./figures/Quaternion.pdf>]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 205.
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.11653pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11653pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
-
-[9]) (chapters/imageprocessing.tex
-
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.11653pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11653pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
-
-[10]
-
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.11653pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11653pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
-
 [11]
+
+Package natbib Warning: Citation `ref36' on page 12 undefined on input line 279.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[12 <./figures/Quaternion.pdf>]
+
+Package natbib Warning: Citation `ref37' on page 13 undefined on input line 299.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[13]) (chapters/imageprocessing.tex
+
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.11653pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.11653pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-12.61653pt}.
+
+[14]
 Chapter 4.
 ) (chapters/stateestimation.tex
 
-[12
+[15
 
 ]
 Chapter 5.
 ) (chapters/experiments.tex
 
-[13
+[16
 
 ]
 Chapter 6.
 ) (chapters/conclusion.tex
 
-[14
+[17
 
 ]
 Chapter 7.
 )
 
-[15
+[18
 
 ] (thesis.bbl
 
@@ -1825,7 +1867,7 @@ Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
 ) (appendices/appendices.tex (appendices/an_appendix.tex
 
-[16
+[19
 
 ]
 Appendix A.
@@ -1835,29 +1877,42 @@ Package caption Warning: Unused \captionsetup[algorithm] on input line 378.
 See the caption package documentation for explanation.
 
 
+Package natbib Warning: There were undefined citations.
 
-[17
+
+
+[20
 
 ] (thesis.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
  ***********
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 235B857473553EBA5CFA12DA5CE35C94;8353.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 966378523FD82C47BECC920514FA66C0;13174
+(rerunfilecheck)             After:  84F85572EE8F202F8A419E2B9347C73E;13136.
  ) 
 Here is how much of TeX's memory you used:
- 51353 strings out of 473899
- 1032999 string characters out of 5726971
- 1586253 words of memory out of 5000000
- 72977 multiletter control sequences out of 15000+600000
- 666545 words of font info for 206 fonts, out of 8000000 for 9000
+ 51434 strings out of 473899
+ 1033108 string characters out of 5726971
+ 1587198 words of memory out of 5000000
+ 73019 multiletter control sequences out of 15000+600000
+ 667021 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,12n,112p,2499b,739s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,12n,112p,2472b,739s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Niel\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1200.pk><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (30 pages, 533381 bytes).
+Output written on thesis.pdf (34 pages, 563396 bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 56316 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 821 PDF objects out of 1000 (max. 8388607)
+ 141 named destinations out of 1000 (max. 500000)
+ 56436 words of extra memory for PDF output out of 61914 (max. 10000000)
 
