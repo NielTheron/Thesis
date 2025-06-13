@@ -1,0 +1,61 @@
+\mychapter{Introduction}{Introduction}{}
+\label{chap:introduction}
+
+\mysection{Problem Background}{Problem Background}
+\label{sec:overview}
+
+- Satellites are getting smaller
+- Because this leads to stallites having reduced costs and timelines
+- This is enables by the miniraturisation of electronics
+
+- One of the big industires in satellites is remote sensing
+- Remote Sening is the application where satellites are used to monitor the Earth
+- One of the applications is to take images of the Earth
+
+- This leads to the problem that high accuracy is needed to take images of the targets on the Earth's surface
+- COTS components which is mainly used on small satellites lack the accuracy needed
+- Magnetometers is to low of an accuracy
+- Star Trackers have the right accuracy, but is expensive
+
+\mysection{Proposed Solution}{Proposed Solution}
+\label{sec:description}
+
+- Proposed solution is to develop an estimation algorithm that can estimate the full state of the satellite
+- The Full State of a Satellite is its postition in Space and its attitude or its orientation in space.
+- The satellite uses the imager itself to determine position and attitude.
+- This can lead to reduce costs as the satellite is using an instrument which is already onboard the satellite.
+- Utilising the components when it is idle
+- Observing the target directly
+
+
+\mysection{Document Outline}{Document Outline}
+\label{sec:outline}
+
+- Chapter 2: Wil investigate previous sensors that is being used to determine Propose
+- Previous techniques estimating the pose
+- Some light touching on feature detection as this is crucial to the pose estimation system
+
+- Chapter 3: Wil introduce the modelling of the system
+- Rigid Body Kinematics
+- Position Kinematics
+- Attitude Kinematics
+- Kalman Filters
+- Extended Kalman Filters
+
+- Chapter 4: Measurement Generation
+- Feature detection
+- PinHole Camera Model.
+- The Plant
+- The Plant Model
+- The Measurment Model
+
+- Chapter 5: State estimation
+- The Extended Kalman Filter
+- Update Step
+- Prediction Step
+- Simulator
+
+- Chapter 6 is results
+
+- Chapter 7 is Conclusion
+- Future Work

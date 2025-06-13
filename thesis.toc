@@ -1,0 +1,65 @@
+\acswitchoff 
+\babel@toc {afrikaans}{}\relax 
+\contentsline {chapter}{Abstract}{iii}{chapter*.3}%
+\babel@toc {afrikaans}{}\relax 
+\contentsline {chapter}{Uittreksel}{iv}{chapter*.4}%
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Table of Contents}{v}{chapter*.4}%
+\contentsline {chapter}{List of Figures}{vii}{chapter*.5}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.6}%
+\contentsline {chapter}{Nomenclature}{ix}{chapter*.8}%
+\contentsline {section}{Variables and functions}{ix}{section*.9}%
+\contentsline {section}{Acronyms and abbreviations}{x}{section*.9}%
+\contentsline {section}{Definitions}{xi}{section*.10}%
+\contentsline {section}{Variables and functions}{1}{section*.10}%
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Problem Background}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Proposed Solution}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Document Outline}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Literature}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Position and Attitude Determination}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Geolocation}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Feature Detection}{4}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Attitude Solutions}{4}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Attitude Determination}{4}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Position Determination}{4}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Conclusion}{4}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Modelling}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Problem Definition}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Rigid Body Mechanics}{6}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Kinematics}{6}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Dynamics}{9}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Refrence Frame Transformations}{9}{section.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.0.1}Lattitude, longitude and altitude}{9}{subsubsection.3.4.0.1}%
+\contentsline {subsection}{\numberline {3.4.1}Earth Ceneterd Earth Fixed}{9}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Earth Ceneterd Inertial}{9}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Orbital reference frame}{10}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Camera Reference Frame}{10}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}State Estimation}{11}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Conclusion}{11}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Image Processing}{12}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{12}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Pinhole Camera Model}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Measurement Extraction}{12}{section.4.3}%
+\contentsline {chapter}{\numberline {5}State Estimation}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Extended Kalman Filter}{13}{section.5.2}%
+\contentsline {section}{\numberline {5.3}System Modelling}{13}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Motion Model}{13}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Measurement Model}{13}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Simulation}{13}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Practical Consideration}{13}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Number of Features}{13}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Outliers}{13}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Conclusion}{13}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Experiments}{14}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{14}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Conclusion}{14}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{15}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusion}{15}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future Work}{15}{section.7.2}%
+\contentsline {chapter}{References}{16}{chapter*.13}%
+\contentsline {chapter}{\numberline {A}Appendix title goes here}{17}{appendix.A}%
+\contentsfinish 

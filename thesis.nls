@@ -1,0 +1,11 @@
+
+\begin{thenomenclature} 
+\nomgroup{C}
+  \item [{$\omega_e$}]\begingroup Rotation speed of the Earth\nomeqref {0}\nompageref{ix}
+  \item [{$c$}]\begingroup A constant.\nomeqref {0}\nompageref{ix}
+\nomgroup{F}
+  \item [{$f$}]\begingroup A function.\nomeqref {0}\nompageref{ix}
+\nomgroup{V}
+  \item [{$\mathbf{x}$}]\begingroup A variable.\nomeqref {0}\nompageref{ix}
+
+\end{thenomenclature}

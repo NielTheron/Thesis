@@ -1,0 +1,28 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\makeatletter\@mkboth{}{\scshape Abstract}\makeatother
+
+\noindent Pose estimation on nanosatellites is still an on going topic of interest.
+It is important for satellite to know there position and attitude to do accurate target tracking.
+Traditional solutions to the pose estimation problem is mainly star trackers, which looks at the constalations of stars to determine the attitude
+and GPS to determine the position of the satellite along with other sensors like magnetometers and coarse sun sensors.\\
+
+\noindent In this thesis, a sensor is developed that utilises the onboard satellite imager, to estimate the position and the attitude of the satellite.
+The sensor uses a camera model to take pictures of the Earth surface, a feature detector is ran on the image using scale invariant feature transform (SIFT)
+to identify and establish corrospondance of features. A full state kinematic estimator using the extended Kalman Filter (EKF) based on the simultanous
+localisation and mapping (SLAM) approach. The filter makes used of feature vectors and feature discripters detected on the image. This is used to estimate
+attitude and position of the satellite.\\
+
+\noindent An simulation environment in MATLAB is developed to propagate a satellite and determine the ground truth pose. Several traditional sensors
+like the star tracker and magnetometer and GPS to be able to compare the Earth Tracker and create the possiblity to fuse the sensors and determine the accuracy.
+Results show that the filter estimates the system states successfully. It is concluded that \dots
+
+
+\newpage
+\selectlanguage{afrikaans}
+
+\chapter*{Uittreksel}
+\addcontentsline{toc}{chapter}{Uittreksel}
+\makeatletter\@mkboth{}{\scshape Uittreksel}\makeatother
+
+\selectlanguage{english}

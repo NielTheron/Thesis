@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Thesis (pdflatex + makeindex)",
+      "type": "shell",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "thesis.tex"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": [
+        "Run MakeIndex",
+        "Final PDF Build"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run MakeIndex",
+      "type": "shell",
+      "command": "makeindex",
+      "args": [
+        "thesis.nlo",
+        "-s",
+        "nomencl.ist",
+        "-o",
+        "thesis.nls"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Final PDF Build",
+      "type": "shell",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "thesis.tex"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
