@@ -5,8 +5,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Your figure caption.}}{8}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Quaternion Rotation}}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The Lattitude, Longitude, Altitutde refercne frame in yellow with the ECEF refernce frame in bluem and the NED reference frame in green.}}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Quaternion Rotation}}{13}{figure.caption.13}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
