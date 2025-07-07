@@ -1,13 +1,19 @@
 \acswitchoff 
-\babel@toc {afrikaans}{}\relax 
+\babel@toc {english}{}\relax 
 \babel@toc {afrikaans}{}\relax 
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{8}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The Lattitude, Longitude, Altitutde refercne frame in yellow with the ECEF refernce frame in bluem and the NED reference frame in green.}}{9}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Quaternion Rotation}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{8}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces This figure represents the Earth Ceterned Earth Fixed reference frame with the X-axis defined in the direction of the equator and primemaridean with z-axis defined as the north pole and the y-axis completing the right had rule.}}{10}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces This figure represents the Earth Centered Inertial Reference frame with the x-axis defined in the direction of the vernel equanox, which is the defined as the crossing of the ecliptic plane and the eqautor, the z-axis is defined as the north pole and the y-axis completes the rght hand rule.}}{11}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces This figure represent the Local Vertical Local Horizon Referenece frame, more commonly refered to as the orbitial refrence frame. In the orbitial refrence frame the z-axis is defined as Nadir, meaning that it always points to the center of mass perfectly parallel to the oribital plane, the x-axis is defined as the vector tangentail to the plane, also known as the along track vector, and y is the completion of the right hand rule.}}{12}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces \relax }}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces \relax }}{13}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces \relax }}{13}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Quaternion Rotation}}{15}{figure.caption.20}%
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

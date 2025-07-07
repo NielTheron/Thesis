@@ -13,7 +13,6 @@ with their propagation using angular rates.
 \mysection{Problem Definition}{Problem Defintion}
 \label{sec:moddef}
 
-
 A satellite orbiting Earth in the Earth-Centered Inertial (ECI) reference frame performs Earth observation missions, 
 continuously capturing high-resolution imagery of the planet's surface for scientific, commercial, or operational purposes. 
 To fulfill mission objectives effectively, the satellite must provide not only high-quality imagery but also precise geographic 
@@ -70,14 +69,6 @@ The lattitude, longitude of a feature or the position of the satellite is donate
 equator, having a range of $-90^{\circ}$ to $90^{\circ}$. The longitude is based of the greenwich maridian, a longitude line that pases through the north- and south pole, it has a
 range of $-180^{\circ}$ to $180^{\circ}$. The altitude is measured form the the "WGS84" elliptical globe.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/LLAReferenceframe.pdf}
-    \caption{The Lattitude, Longitude, Altitutde refercne frame in yellow with the ECEF refernce frame in bluem and the NED reference
-    frame in green.}
-    \label{fig:lla_referenceframe}
-\end{figure}
-
 \begin{equation}
     \mathbf{r}_\mathcal{L} = \begin{bmatrix}
     \lambda \\
@@ -86,37 +77,47 @@ range of $-180^{\circ}$ to $180^{\circ}$. The altitude is measured form the the 
     \end{bmatrix} 
 \end{equation}
 
-% GNSS-based navigation systems of autonomous drone for delivering items - Scientific Figure on ResearchGate. 
-% Available from: https://www.researchgate.net/figure/Geodetic-coordinate-system-expressed-in-latitude-ph-longitude-l-and-altitude-h_fig1_333785819 [accessed 23 Jun 2025]
-
 \mysubsection{Earth Ceneterd Earth Fixed}{Earth Ceneterd Earth Fixed}
 
 The Earth Ceneterd Earth Fixed refrence frame is represented by the $\mathcal{F}$ and is very simular to the $\mathcal{L}$ reference frame with the z-axis alligned with the northpole
 and the x-axis points at the crossing of the Prime Maridian an the Equator, where the y-axis completes the right hand rule. The x,y and z-axis is defined in kilometers.
 To covert from $\mathcal{L}$ to $\mathcal{F}$ is to use a "WGS84" transfomr. Where WGS84 stands for World Geodetic System 1984, which is the standard coordinate system used for
-Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2
+Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2 .
 
 \begin{equation}
-        \mathbf{A}_{\mathcal{L}}^{\mathcal{F}} = f(WGS84)
+        \mathbf{A}_{\mathcal{L}}^{\mathcal{F}} = f(\text{WGS84})
 \end{equation}
 
-\textcolor{blue}{Insert Figure Here}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/ECEF.pdf}
+    \caption{This figure represents the Earth Ceterned Earth Fixed reference frame with the X-axis defined in the direction of the equator and primemaridean
+    with z-axis defined as the north pole and the y-axis completing the right had rule.}
+    \label{fig:ECEFRF}
+\end{figure}
 
 \mysubsection{Earth Ceneterd Inertial}{Earth Ceneterd Inertial}
 
 The Earth Centered Inertial refrence fream (ECI) refrenced by $\mathcal{I}$ shares a refrence frame axis with the ECEF, but is rotated about the z-axis. This rotation is governed
-by the rotation speed of the earth $\omega_e$ which is $7.2921\times10^{-5}$ rad/s and time $t$.
+by the rotation speed of the earth $\omega_e$ which is $7.2921\times10^{-5}$ rad/s and time $t$. To transform from the ECEF reference frame to the ECI reference frame one should
+rotate the Earth clockwise e.i. 
 
 \begin{equation}
     \mathbf{A}_{\mathcal{F}}^{\mathcal{I}} = R(\omega_e t) = 
     \begin{bmatrix}
-        \cos(\omega_e t) & -\sin(\omega_e t) & 0\\
-        \sin(\omega_e t) & \cos(\omega_e t) & 0\\
+        \cos(-\omega_e t) & -\sin(-\omega_e t) & 0\\
+        \sin(-\omega_e t) & \cos(-\omega_e t) & 0\\
         0 & 0 & 1
     \end{bmatrix}
 \end{equation}
 
-\textcolor{blue}{Insert Figure Here}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/ECI.pdf}
+    \caption{This figure represents the Earth Centered Inertial Reference frame with the x-axis defined in the direction of the vernel equanox, which is the defined as the crossing
+    of the ecliptic plane and the eqautor, the z-axis is defined as the north pole and the y-axis completes the rght hand rule.}
+    \label{fig:ECIRF}
+\end{figure}
 
 \mysubsection{Orbital reference frame}{Orbital reference frame}
 
@@ -141,18 +142,56 @@ For this reference frame there should also be a refrence frame translation intro
     \mathbf{f}_{\mathcal{O}} = \mathbf{A}_{\mathcal{I}}^{\mathcal{O}}\times(\mathbf{f}_{\mathcal{I}} - \mathbf{r}_{\mathcal{I}})
 \end{equation}
 
-\textcolor{blue}{Insert Figure Here. This is unfinished explain a bit more. Actually want to change it to the 4x4 transformation matrix}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/LVLH.pdf}
+    \caption{This figure represent the Local Vertical Local Horizon Referenece frame, more commonly refered to as the orbitial refrence frame. In the orbitial refrence frame
+    the z-axis is defined as Nadir, meaning that it always points to the center of mass perfectly parallel to the oribital plane, the x-axis is defined as the vector tangentail
+    to the plane, also known as the along track vector, and y is the completion of the right hand rule.}
+    \label{fig:LVHLRF}
+\end{figure}
+
+\subsection{Body Referenece frame}
+
+The body reference frame denoted by $\mathcal{B}$ is the reference frame of the satellite body itself, with the center point referenced as the center of mass of the satellite body.
+with the z-axis defined as the yaw, x-axis defined as the roll and the y-axis defined as the pitch of the satellite. With the body frame z-axis and the orbital reference frame 
+as alligned at initialisiation
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/BRF.pdf}
+    \caption{}
+    \label{fig:BRF}
+\end{figure}
 
 \mysubsection{Camera Reference Frame}{Camera Reference Frame}
 
-The camera refrence frame denoted by $\mathcal{C}$ and the body reference frame $\mathcal{B}$ in this thesis is the same reference frame. This reference frame is transformed
-by using your standard quaternion rotaion matrix.
+The camera refrence frame denoted by $\mathcal{C}$. In many Earth Observation missions the camera has its own reference frame defined relative to the Earth. Where the x-axis is
+pointing directly to the Earth's surface indicatting the cameras roll axis, with the y-axis representing the pitch axis represents an angle ahead or behind of the orbit and the
+z-axis representing the yaw axis.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/CRF.pdf}
+    \caption{}
+    \label{fig:CRF}
+\end{figure}
 
 \begin{equation}
     \mathbf{f}_{\mathcal{C}} = \mathbf{A}_{\mathcal{O}}^{\mathcal{C}}\times\mathbf{f}_{\mathcal{O}}
 \end{equation}
 
 \mysubsection{Image Reference Frame}{Image Reference Frame}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/MRF.pdf}
+    \caption{}
+    \label{fig:MRF}
+\end{figure}
+
 
 \mysubsection{East - North - Up}{East - North - Up}
 
@@ -322,7 +361,7 @@ only one matrix operation is required for attitude transforms, where Eular angle
 \label{sec:dynamics}
 
 The rotational dynamics of a rigid body satellite can be described using the Newton-Euler equations, 
-which are applicable to all rigid inertial bodies~\cite{ref36}. The angular momentum of the satellite is expressed as:
+which are applicable to all rigid inertial bodies . The angular momentum of the satellite is expressed as:
 
 \begin{equation}
 \dot{\mathbf{H}} = \frac{d\mathbf{H}}{dt} = \mathbf{I}\dot{\boldsymbol{\omega}}
@@ -342,7 +381,7 @@ I_{zz}\dot{\omega}_z &= \omega_x\omega_y(I_{xx} - I_{yy})
 depend on the satellite's mass distribution and geometric configuration. 
 
 The stability characteristics of the satellite's rotational 
-motion are governed by its mass distribution. According to Marsden and Ratiu~\cite{ref37}, rotation about the major and minor principal 
+motion are governed by its mass distribution. According to Marsden and Ratiu , rotation about the major and minor principal 
 axes is inherently stable, while rotation about the intermediate axis exhibits unstable behavior. Under constant energy conditions, any 
 initial rotation about the intermediate axis will gradually redistribute energy to the major and minor axes through nutation effects.
 
