@@ -56,29 +56,47 @@
 \contentsline {section}{\numberline {3.4}Rigid Body Mechanics}{14}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Kinematics}{14}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Dynamics}{16}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Conclusion}{18}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Image Processing}{19}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introduction}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Pinhole Camera Model}{19}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Measurement Extraction}{19}{section.4.3}%
-\contentsline {chapter}{\numberline {5}State Estimation}{20}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introduction}{20}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Extended Kalman Filter}{20}{section.5.2}%
-\contentsline {section}{\numberline {5.3}System Modelling}{20}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Motion Model}{20}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Measurement Model}{20}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Simulation}{20}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Practical Consideration}{20}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Number of Features}{20}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Outliers}{20}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Conclusion}{20}{section.5.6}%
-\contentsline {chapter}{\numberline {6}System Integration}{21}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Experiments}{22}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introduction}{22}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Conclusion}{22}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Conclusions and Future Work}{23}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusion}{23}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Future Work}{23}{section.8.2}%
-\contentsline {chapter}{References}{24}{chapter*.21}%
-\contentsline {chapter}{\numberline {A}Appendix title goes here}{25}{appendix.A}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}Translational Dynamics}{16}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}Rotational Dynamics}{17}{subsubsection.3.4.2.2}%
+\contentsline {section}{\numberline {3.5}Sensor Modelling}{19}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}GPS Measurement Model}{19}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Gyroscope Measuement Model}{20}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Star Tracker}{21}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Coarse Sun Senser}{21}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Magnetometer}{21}{subsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.5.6}TRIAD}{21}{subsection.3.5.6}%
+\contentsline {section}{\numberline {3.6}Conclusion}{21}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Image Processing}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{22}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Pinhole Camera Model}{22}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Satellite Image Characteristics}{24}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Ground Sample Distance}{24}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Imaging Geometry}{24}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Feature Detection and Description}{24}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Classical Feature Detectors}{24}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Feature Description}{24}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Measurement Extraction}{24}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Feature-to-Measurement Transformations}{24}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Earth Tracker Algorithm}{24}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Geolocation Process}{24}{subsection.4.5.3}%
+\contentsline {chapter}{\numberline {5}State Estimation}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Extended Kalman Filter}{25}{section.5.2}%
+\contentsline {section}{\numberline {5.3}System Modelling}{25}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Motion Model}{25}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Measurement Model}{25}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Simulation}{25}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Practical Consideration}{25}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Number of Features}{25}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Outliers}{25}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Conclusion}{25}{section.5.6}%
+\contentsline {chapter}{\numberline {6}System Integration}{26}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Experiments}{27}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{27}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Conclusion}{27}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Conclusions and Future Work}{28}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conclusion}{28}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Future Work}{28}{section.8.2}%
+\contentsline {chapter}{References}{29}{chapter*.24}%
+\contentsline {chapter}{\numberline {A}Appendix title goes here}{30}{appendix.A}%
 \contentsfinish 

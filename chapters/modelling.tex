@@ -360,6 +360,62 @@ only one matrix operation is required for attitude transforms, where Eular angle
 \mysubsection{Dynamics}{Dynamics}
 \label{sec:dynamics}
 
+\mysubsubsection{Translational Dynamics}{Translational Dynamics}
+
+For the translational dynamics, Newton's second law governs the linear motion of the satellite with mass $m$. The discrete-time position and velocity propagation equations are:
+
+\begin{align}
+\mathbf{r}_t &= \mathbf{r}_{t-1} + \mathbf{v}_t\Delta t + \frac{1}{2m}\mathbf{F}(t)\Delta t^2 \\
+\mathbf{v}_t &= \mathbf{v}_{t-1} + \frac{1}{m}\mathbf{F}(t)\Delta t
+\end{align}
+
+\noindent where $\mathbf{F}(t)$ represents the net external force acting on the satellite. For the orbital environment 
+considered in this work, where external perturbations are negligible compared to gravitational forces, and given that 
+precise mass properties may not be available, the translational motion can be approximated using kinematic models where 
+the current velocity depends primarily on the previous velocity state.
+
+
+In orbital mechanics the $\mathbf{F}$ is proportional to the distance $\mathbf{r}$ of the center of mass where the gravitional force is governed by the following equation.
+
+
+\begin{align}
+    \ddot{\mathbf{r}} = \mathbf{F}\mathbf{u}_r \\
+    \ddot{\mathbf{r}} = \frac{-\mu}{||\mathbf{r}||^3}\mathbf{u}_r
+\end{align}
+
+
+The acceleration of the space craft can be influnced by different factors like $\mathbf{F}_{G}$ gravity, $\mathbf{F}_{J2}$ J2 perturbations, $\mathbf{F}_{drag}$ atmospheric drag,
+$\mathbf{F}_{sol}$ solar radiation presure and other perturbations $\mathbf{F}_{misc}$.
+
+This wil mean the total force on the satellite would becomes
+
+\begin{align}
+    \mathbf{F}_{total} = \mathbf{F}_{G} + \mathbf{F}_{J2} + \mathbf{F}_{drag} + \mathbf{F}_{sol} + \mathbf{F}_{misc}
+\end{align}
+
+But as we are only going to model LEO (Low Earth Orbits) for a short period of time onlt the $\mathbf{F}_{G}$ and $\mathbf{F}_{J2}$ is considered.
+
+Modelling the J2 pertubation is moddled in ECI using the following equation
+
+\begin{equation}
+\mathbf{a}_{J2} = \frac{3}{2}*J_2*\frac{\mu R_E}{||\mathbf{r}||^5}
+\begin{bmatrix}r_x(1-5\frac{z^2}{r^2}) \\
+ r_y(1-5\frac{z^2}{r^2})\\
+ r_z(3-5\frac{z^2}{r^2}) \end{bmatrix}
+\end{equation}
+
+
+Where 
+
+\begin{itemize}
+    \item $\mu$ is Earth's gravitational parameter.
+    \item $R_E$ is the radius of the Earth.
+    \item $J_2$ is the J2 factor
+    \item $\mathbf{r}$ is the satellite position in ECI
+\end{itemize}
+
+\mysubsubsection{Rotational Dynamics}{Rotational Dynamics}
+
 The rotational dynamics of a rigid body satellite can be described using the Newton-Euler equations, 
 which are applicable to all rigid inertial bodies . The angular momentum of the satellite is expressed as:
 
@@ -384,18 +440,6 @@ The stability characteristics of the satellite's rotational
 motion are governed by its mass distribution. According to Marsden and Ratiu , rotation about the major and minor principal 
 axes is inherently stable, while rotation about the intermediate axis exhibits unstable behavior. Under constant energy conditions, any 
 initial rotation about the intermediate axis will gradually redistribute energy to the major and minor axes through nutation effects.
-
-For the translational dynamics, Newton's second law governs the linear motion of the satellite with mass $m$. The discrete-time position and velocity propagation equations are:
-
-\begin{align}
-\mathbf{r}_t &= \mathbf{r}_{t-1} + \mathbf{v}_t\Delta t + \frac{1}{2m}\mathbf{F}(t)\Delta t^2 \\
-\mathbf{v}_t &= \mathbf{v}_{t-1} + \frac{1}{m}\mathbf{F}(t)\Delta t
-\end{align}
-
-\noindent where $\mathbf{F}(t)$ represents the net external force acting on the satellite. For the orbital environment 
-considered in this work, where external perturbations are negligible compared to gravitational forces, and given that 
-precise mass properties may not be available, the translational motion can be approximated using kinematic models where 
-the current velocity depends primarily on the previous velocity state.
 
 To propagate the quaternion representing the satellite's attitude over time, the quaternion derivative must first be computed.
  The time derivative of the quaternion $\mathbf{q}_{B/I}$, which describes the rotation from the inertial frame to the body frame,
@@ -434,6 +478,99 @@ The quaternion integration is performed using a simple Euler integration scheme.
 \end{equation}
 
 \noindent This normalization step ensures that the quaternion maintains its unit magnitude, preserving the validity of the attitude representation.
+
+
+\mysection{Sensor Modelling}{Sensor Modelling}
+
+\mysubsection{GPS Measurement Model}{GPS Measurement Model}
+
+In the simulation, GPS measurements are generated using the same underlying dynamics as the truth model, which is based on the two-body problem. This ensures consistency between the true satellite motion and the measurement framework. However, to emulate realistic sensor behavior, the GPS measurements are corrupted by both noise and drift.
+
+The GPS measurement model is expressed as:
+\begin{equation}
+    \mathbf{z}_{GPS}(t) = \mathbf{x}_{\text{true}}(t) + \boldsymbol{\eta}_{GPS}(t) + \mathbf{d}_{GPS}(t),
+\end{equation}
+where:
+\begin{itemize}
+    \item $\mathbf{z}_{GPS}(t)$ is the observed GPS measurement at time $t$,
+    \item $\mathbf{x}_{\text{true}}(t)$ is the true state of the system as propagated by the two-body equations of motion,
+    \item $\boldsymbol{\eta}_{GPS}(t)$ represents zero-mean Gaussian measurement noise, and
+    \item $\mathbf{d}_{GPS}(t)$ is the GPS drift.
+\end{itemize}
+
+The drift component models the slow, unbounded accumulation of error that is characteristic of certain classes of low-cost GPS receivers. It is implemented as a random walk process:
+\begin{equation}
+    \mathbf{d}_{GPS}(t) = \mathbf{d}_{GPS}(t - \Delta t) + \mathbf{q}_{GPS}(t),
+\end{equation}
+where:
+\begin{itemize}
+    \item $\mathbf{d}_{GPS}(t - \Delta t)$ is the drift at the previous timestep,
+    \item $\mathbf{q}_{GPS}(t)$ is a zero-mean stochastic increment modeling the drift rate, typically drawn from a Gaussian distribution:
+    \begin{equation}
+        \mathbf{q}_{GPS}(t) \sim \mathcal{N}(0, \sigma_d^2 \mathbf{I}).
+    \end{equation}
+\end{itemize}
+
+This formulation captures both short-term measurement variability through $\boldsymbol{\eta}_{GPS}(t)$ and long-term bias trends via $\mathbf{d}_{GPS}(t)$, allowing for more realistic testing and evaluation of estimation algorithms under degraded or imperfect sensing conditions.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/GPSMeasurement.png}
+    \caption{}
+    \label{fig:MRF}
+\end{figure}
+
+
+
+\textcolor{blue}{Insert Image of Modelled GPS Results}
+
+\mysubsection{Gyroscope Measuement Model}{Gyroscope Measurement Model}
+
+The gyroscope provides a measurement of the angular velocity of the body frame relative to the inertial frame, expressed in the body frame. This quantity is denoted as $\boldsymbol{\omega}^B_{B/I}$, and forms a critical part of attitude determination and estimation systems.
+
+To simulate a realistic sensor, the gyroscope measurement is corrupted by both random noise and a time-varying bias, or drift. The measurement model is given by:
+
+\begin{equation}
+    \mathbf{z}_{\text{Gyro}}(t) = \boldsymbol{\omega}^B_{B/I}(t) + \boldsymbol{\eta}_{\text{Gyro}}(t) + \mathbf{d}_{\text{Gyro}}(t),
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\mathbf{z}_{\text{Gyro}}(t)$ is the observed gyroscope measurement at time $t$,
+    \item $\boldsymbol{\omega}^B_{B/I}(t)$ is the true angular velocity of the body frame relative to the inertial frame,
+    \item $\boldsymbol{\eta}_{\text{Gyro}}(t)$ is zero-mean Gaussian noise representing short-term measurement error, and
+    \item $\mathbf{d}_{\text{Gyro}}(t)$ is the gyroscope drift, modeled as a time-varying bias.
+\end{itemize}
+
+The drift is modeled as a random walk process, capturing slow variations in the sensor bias over time:
+
+\begin{equation}
+    \mathbf{d}_{\text{Gyro}}(t) = \mathbf{d}_{\text{Gyro}}(t - \Delta t) + \mathbf{q}_{\text{Gyro}}(t),
+\end{equation}
+
+with the stochastic increment defined as:
+
+\begin{equation}
+    \mathbf{q}_{\text{Gyro}}(t) \sim \mathcal{N}(0, \sigma_g^2 \mathbf{I}),
+\end{equation}
+
+where $\sigma_g^2$ represents the drift rate variance of the gyroscope.
+
+This model allows for the representation of both high-frequency noise and long-term integration drift, which are commonly observed in practical inertial measurement units (IMUs). Incorporating this model into the estimation framework enables more robust and accurate state reconstruction in the presence of sensor imperfections.
+
+
+
+
+\mysubsection{Star Tracker}{Star Tracker}
+
+\mysubsection{Coarse Sun Senser}{Coarse Sun Sensor}
+
+\mysubsection{Magnetometer}{Magnetometer}
+
+\mysubsection{TRIAD}{TRIAD}
+
+
 
 \mysection{Conclusion}{Conclusion}
 \label{sec:modconclusion}
