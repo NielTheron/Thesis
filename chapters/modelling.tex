@@ -518,7 +518,7 @@ This formulation captures both short-term measurement variability through $\bold
     \centering
     \includegraphics[width=0.4\textwidth]{figures/modelling/GPSMeasurement.png}
     \caption{}
-    \label{fig:MRF}
+    \label{fig:GPS}
 \end{figure}
 
 
@@ -565,12 +565,268 @@ This model allows for the representation of both high-frequency noise and long-t
 \mysubsection{Star Tracker}{Star Tracker}
 
 \mysubsection{Coarse Sun Senser}{Coarse Sun Sensor}
+\label{sec:css}
+
+The Coarse Sun Sensor (CSS) is a fundamental attitude sensing instrument in nanosatellite systems, providing an estimate of the Sun direction relative to the satellites body frame. This subsection outlines the modeling approach for simulating CSS measurements, including the transformation of reference frames, sensor configuration, noise characteristics, and estimation logic.
+
+\paragraph{Sun Vector in Inertial Frame}
+
+The Sun vector is modeled in the Earth-Centered Inertial (ECI) frame as a fixed unit vector pointing in the $+X$ direction:
+
+\begin{equation}
+    \mathbf{S}_\mathcal{I} = \begin{bmatrix} 1 & 0 & 0 \end{bmatrix}^\top
+\end{equation}
+
+This simplified model assumes that the Sun direction does not vary during the simulation.
+
+\paragraph{Transformation to Body Frame}
+
+To simulate the Sun vector in the satellite’s body frame, the inertial vector is rotated using the satellite's true attitude quaternion. The corresponding direction cosine matrix (DCM) is derived as:
+
+\begin{equation}
+     \mathbf{S}_\mathcal{B} = R_I^B \cdot \mathbf{S}_\mathcal{I}
+\end{equation}
+
+where $R_I^B$ is the DCM from the inertial to body frame.
+
+\paragraph{Sensor Layout and Response}
+
+The CubeSat is equipped with six coarse sun sensors, one on each face, aligned along the $\pm X$, $\pm Y$, and $\pm Z$ body axes (see Figure~\ref{fig:CSS}). Each sensor has a cosine response:
+
+\begin{equation}
+     z_i = \max\left(0, \hat{\mathbf{n}}_i^\top \mathbf{S}_\mathcal{B} \right), \quad i = 1, \dots, 6
+\end{equation}
+
+where $\hat{\mathbf{n}}_i$ is the normal vector of the $i$-th sensor surface.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/CSS.pdf}
+    \caption{Orientation of the six coarse sun sensors on the CubeSat}
+    \label{fig:CSS}
+\end{figure}
+
+\paragraph{Measurement Noise}
+
+Each CSS reading is perturbed with zero-mean Gaussian noise. The noise standard deviation $\sigma$ is specified in degrees and converted to radians:
+
+\begin{equation}
+    \mathbf{z}_{\text{CSS}} = \max\left( 0, \mathbf{z}_{\text{CSS}} + \mathcal{N}(0, \sigma^2) \right), \quad \sigma = \deg2rad(\text{CSS}_{\text{noise}})
+\end{equation}
+
+Negative readings are clamped to zero since physical sensors cannot detect negative intensity.
+
+\paragraph{Sun Vector Estimation}
+
+The estimated Sun vector in the body frame is reconstructed using a weighted sum of the face normals:
+
+\begin{equation}
+    \hat{\mathbf{S}}_\mathcal{B} = \sum_{i=1}^{6} z_i \cdot \hat{\mathbf{n}}_i
+\end{equation}
+
+The result is normalized to produce a unit vector:
+
+\begin{equation}
+    \hat{\mathbf{S}}_\mathcal{B} = \frac{\hat{\mathbf{S}}_\mathcal{B}}{|\hat{\mathbf{S}}_\mathcal{B}|}
+\end{equation}
+
+
+\textcolor{blue}{Add some results}
 
 \mysubsection{Magnetometer}{Magnetometer}
 
-\mysubsection{TRIAD}{TRIAD}
+The magnetometer measurement is modeled as a unit vector pointing along the direction of the Earth's magnetic field as observed from the satellite body frame. To approximate this field, a simplified model is used in which the magnetic field points toward the geographic North Pole and is tangential to the Earth's surface at the satellit's location, with an optional dip angle to simulate inclination.
+
+\textbf{Step 1: Earth-Fixed Transformation}
+
+To determine the orientation of the magnetic field relative to the Earth-fixed frame, the satellite position vector $\mathbf{r}_{\mathcal{I}}$ in the inertial (ECI) frame is first transformed to the Earth-fixed (ECEF) frame using a rotation matrix that accounts for Earth's rotation angle at time $t$:
+
+\begin{equation}
+    \mathbf{r}_{\mathcal{R}} = R_{\mathcal{I}}^{\mathcal{R}}(t) \cdot \mathbf{r}_{\mathcal{I}}
+\end{equation}
+
+where $R_{\mathcal{I}}^{\mathcal{R}}(t)$ is a time-dependent rotation matrix based on the Earth rotation rate $\omega_e$.
+
+\textbf{Step 2: Direction to Magnetic North}
+
+The geographic North Pole is approximated by a fixed point on the Z-axis of the Earth-fixed frame:
+
+\begin{equation}
+    \mathbf{p}_{NP,\mathcal{R}} = \begin{bmatrix} 0 \\ 0 \\ R_E \end{bmatrix}
+\end{equation}
+
+The direction vector from the satellite to the North Pole is then computed as:
+
+\begin{equation}
+    \mathbf{d}_{NP} = \mathbf{p}_{NP,\mathcal{R}} - \mathbf{r}_{\mathcal{R}}
+\end{equation}
+
+\textbf{Step 3: Tangential Magnetic Field Model}
+
+The local radial unit vector from the Earth's center is:
+
+\begin{equation}
+    \mathbf{u}_{r,\mathcal{R}} = \frac{\mathbf{r}_{\mathcal{R}}}{|\mathbf{r}_{\mathcal{R}}|}
+\end{equation}
+
+To simulate a magnetic field that is tangential to Earth's surface, the component of $\mathbf{d}_{NP}$ in the radial direction is removed:
+
+\begin{equation}
+    \mathbf{z}_{\text{Mag},\mathcal{R}} = \mathbf{d}_{NP} - (\mathbf{d}_{NP} \cdot \mathbf{u}_{r,\mathcal{R}})\mathbf{u}_{r,\mathcal{R}}
+\end{equation}
+
+This tangential field vector is then normalized:
+
+\begin{equation}
+    \mathbf{z}_{\text{Mag},\mathcal{R}} = \frac{\mathbf{z}_{\text{Mag},\mathcal{R}}}{|\mathbf{z}_{\text{Mag},\mathcal{R}}|}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/Magnetometer.pdf}
+    \caption{}
+    \label{fig:CSS}
+\end{figure}
+
+\textbf{Step 4: Dip Angle Adjustment}
+
+To simulate magnetic inclination, a rotation about the local East direction is applied to tilt the magnetic field by a dip angle $\delta$, which is measured downward from the local horizontal plane:
+
+\begin{equation}
+    \mathbf{z}_{\text{Mag},\mathcal{R}}^{\text{incl}} = \cos(\delta)\,\mathbf{z}_{\text{Mag},\mathcal{R}} + \sin(\delta)\,(\mathbf{e}_{\text{East}} \times \mathbf{z}_{\text{Mag},\mathcal{R}})
+\end{equation}
+
+Here, $\mathbf{e}_{\text{East}}$ is the local east direction, obtained via:
+
+\begin{equation}
+    \mathbf{e}_{\text{East}} = \frac{\mathbf{u}_{r,\mathcal{R}} \times \mathbf{z}_{\text{Mag},\mathcal{R}}}{|\mathbf{u}_{r,\mathcal{R}} \times \mathbf{z}_{\text{Mag},\mathcal{R}}|}
+\end{equation}
 
 
+\textbf{Step 5: Reference Frame Transformations}
+
+The inclined magnetic field vector is transformed back to the inertial frame using:
+
+\begin{equation}
+    \mathbf{z}_{\text{Mag},\mathcal{I}} = R_{\mathcal{R}}^{\mathcal{I}}(t) \cdot \mathbf{z}_{\text{Mag},\mathcal{R}}^{\text{incl}}
+\end{equation}
+
+The final transformation to the spacecraft body frame is performed using the spacecraft attitude quaternion $\mathbf{q}_{\mathcal{B}}^{\mathcal{I}}$, resulting in:
+
+\begin{equation}
+    \mathbf{z}_{\text{Mag},\mathcal{B}} = R(\mathbf{q}_{\mathcal{B}}^{\mathcal{I}}) \cdot \mathbf{z}_{\text{Mag},\mathcal{I}}
+\end{equation}
+
+where $R(\mathbf{q})$ is the direction cosine matrix corresponding to the quaternion $\mathbf{q}$.
+
+\textbf{Step 6: Measurement Noise}
+
+To simulate realistic sensor output, a small-angle random rotation is applied to the vector $\mathbf{z}_{\text{Mag},\mathcal{B}}$ to represent magnetometer noise. This is modeled by sampling a noise rotation axis and applying a perturbation angle drawn from a Gaussian distribution with a standard deviation $\sigma_{\text{noise}}$ (in radians). The rotation is implemented via a noise quaternion and applied to the magnetic field vector.
+
+\textbf{Step 7: Output}
+
+The final estimated magnetometer vector $\hat{\mathbf{z}}_{\text{Mag},\mathcal{B}}$ is normalized and output for use in state estimation:
+
+\begin{equation}
+    \hat{\mathbf{z}}_{\text{Mag},\mathcal{B}} = \frac{\mathbf{z}_{\text{Mag},\mathcal{B}}}{|\mathbf{z}_{\text{Mag},\mathcal{B}}|}
+\end{equation}
+
+This provides a realistic simulation of a three-axis magnetometer, with both geographic dependence and sensor-level noise, for use in spacecraft attitude determination or estimation filters.
+
+
+\mysubsection{TRIAD Attitude Estimation}{TRIAD Attitude Estimation}
+
+The TRIAD (Tri-Axial Attitude Determination) algorithm is a deterministic method used to estimate a spacecraft's attitude from two independent, non-collinear direction measurements expressed in both the body and inertial frames. In this work, the TRIAD method is applied using sun vector measurements from a coarse sun sensor and magnetic field measurements from a three-axis magnetometer.
+
+\textbf{Step 1: Sensor Measurements in Body Frame}
+
+Let $\mathbf{s}_{\mathcal{B}}$ denote the unit vector pointing toward the Sun in the body frame, and $\mathbf{m}_{\mathcal{B}}$ the unit magnetic field vector in the body frame. These vectors are obtained from sensor measurements and normalized:
+
+\begin{equation}
+    \mathbf{s}_{\mathcal{B}} = \frac{\mathbf{s}_{\mathcal{B}}}{|\mathbf{s}_{\mathcal{B}}|}, \quad
+    \mathbf{m}_{\mathcal{B}} = \frac{\mathbf{m}_{\mathcal{B}}}{|\mathbf{m}_{\mathcal{B}}|}
+\end{equation}
+
+\textbf{Step 2: Reference Vectors in Inertial Frame}
+
+The inertial-frame counterparts to the measured vectors are defined as follows:
+
+- The Sun vector in the inertial (ECI) frame is approximated by the unit vector:
+
+\begin{equation}
+   \mathbf{s}_{\mathcal{I}} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+\end{equation}
+
+- The magnetic field vector in the inertial frame, $\mathbf{m}_{\mathcal{I}}$, is computed based on the spacecraft position $\mathbf{r}_{\mathcal{I}}$, a user-defined magnetic dip angle, and Earth’s rotation:
+
+\begin{equation}
+   \mathbf{m}_{\mathcal{I}} = \text{MagnetometerModel}(\mathbf{r}_{\mathcal{I}}, t, \omega_e, \delta)
+\end{equation}
+
+Both reference vectors are normalized:
+
+\begin{equation}
+   \mathbf{s}_{\mathcal{I}} = \frac{\mathbf{s}_{\mathcal{I}}}{|\mathbf{s}_{\mathcal{I}}|}, \quad
+   \mathbf{m}_{\mathcal{I}} = \frac{\mathbf{m}_{\mathcal{I}}}{|\mathbf{m}_{\mathcal{I}}|}
+\end{equation}
+
+\textbf{Step 3: Constructing Orthogonal Triads}
+
+Two orthonormal vector triads are constructed from the body and reference measurements.
+
+- In the inertial frame:
+
+\begin{align}
+    \mathbf{v}_1^{\mathcal{I}} &= \mathbf{s}_{\mathcal{I}} \\
+    \mathbf{v}_2^{\mathcal{I}} &= \frac{\mathbf{s}_{\mathcal{I}} \times \mathbf{m}_{\mathcal{I}}}{|\mathbf{s}_{\mathcal{I}} \times \mathbf{m}_{\mathcal{I}}|} \\
+    \mathbf{v}_3^{\mathcal{I}} &= \mathbf{v}_1^{\mathcal{I}} \times \mathbf{v}_2^{\mathcal{I}}
+\end{align}
+
+- In the body frame:
+
+\begin{align}
+    \mathbf{v}_1^{\mathcal{B}} = \mathbf{s}_{\mathcal{B}} \\
+    \mathbf{v}_2^{\mathcal{B}} = \frac{\mathbf{s}_{\mathcal{B}} \times \mathbf{m}_{\mathcal{B}}}{|\mathbf{s}_{\mathcal{B}} \times \mathbf{m}_{\mathcal{B}}|} \\
+    \mathbf{v}_3^{\mathcal{B}} = \mathbf{v}_1^{\mathcal{B}} \times \mathbf{v}_2^{\mathcal{B}}
+\end{align}
+
+These vectors form right-handed orthonormal bases (triads) in their respective frames.
+
+\textbf{Step 4: Attitude Rotation Matrix}
+
+The attitude rotation matrix $R_{\mathcal{I}}^{\mathcal{B}}$, which rotates vectors from the inertial frame to the body frame, is computed by aligning the inertial and body triads:
+
+\begin{equation}
+    T_{\mathcal{I}} = \begin{bmatrix} \mathbf{v}_1^{\mathcal{I}} & \mathbf{v}_2^{\mathcal{I}} & \mathbf{v}_3^{\mathcal{I}} \end{bmatrix}, \quad
+    T_{\mathcal{B}} = \begin{bmatrix} \mathbf{v}_1^{\mathcal{B}} & \mathbf{v}_2^{\mathcal{B}} & \mathbf{v}_3^{\mathcal{B}} \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    R_{\mathcal{I}}^{\mathcal{B}} = T_{\mathcal{B}} \cdot T_{\mathcal{I}}^\top
+\end{equation}
+
+\textbf{Step 5: Quaternion Conversion}
+
+The attitude quaternion $\mathbf{q}_{\mathcal{B}}^{\mathcal{I}}$ corresponding to the rotation matrix $R_{\mathcal{I}}^{\mathcal{B}}$ is computed using a standard matrix-to-quaternion conversion:
+
+\begin{equation}
+    \mathbf{q}_{\mathcal{B}}^{\mathcal{I}} = \text{rotm2quat}(R_{\mathcal{I}}^{\mathcal{B}})
+\end{equation}
+
+This quaternion is expressed in scalar-first format:
+
+\begin{equation}
+    \mathbf{q}_{\mathcal{B}}^{\mathcal{I}} = \begin{bmatrix} q_s & q_x & q_y & q_z \end{bmatrix}^\top
+\end{equation}
+
+The TRIAD method thus yields a closed-form attitude estimate without optimization or iteration. While it is highly efficient, its accuracy depends on the orthogonality and noise properties of the sensor measurements.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/modelling/TRIAD.png}
+    \caption{}
+    \label{fig:CSS}
+\end{figure}
 
 \mysection{Conclusion}{Conclusion}
 \label{sec:modconclusion}
