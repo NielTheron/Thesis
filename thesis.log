@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  8 JUL 2025 17:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  9 JUL 2025 17:51
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1369,8 +1369,44 @@ Package cleveref Info: `subfig' support loaded on input line 3164.
 \c@g@acro@LLA@int=\count490
 \c@g@acro@GPS@int=\count491
 \c@g@acro@LVLH@int=\count492
-) (frontmatter/definitions.tex)
-No file thesis.aux.
+) (frontmatter/definitions.tex) (thesis.aux
+
+LaTeX Warning: Label `fig:CSS' multiply defined.
+
+
+LaTeX Warning: Label `fig:CSS@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:CSS' multiply defined.
+
+
+LaTeX Warning: Label `fig:CSS@cref' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `@cref' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `@cref' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig4.2' multiply defined.
+
+
+LaTeX Warning: Label `fig4.2@cref' multiply defined.
+
+)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -1393,7 +1429,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 36.
 LaTeX Font Info:    Trying to load font information for T3+cmr on input line 36.
-(C:\Users\Niel\AppData\Local\Programs\MiKTeX\tex/latex/tipa\t3cmr.fd
+ (C:\Users\Niel\AppData\Local\Programs\MiKTeX\tex/latex/tipa\t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 36.
@@ -1466,7 +1502,7 @@ Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-)) ()
+))
 LaTeX Info: Redefining \microtypecontext on input line 36.
 Package microtype Info: Applying patch `item' on input line 36.
 Package microtype Info: Applying patch `toc' on input line 36.
@@ -1494,6 +1530,7 @@ File: translations-basic-dictionary-english.trsl (english translation file `tran
 Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 36.
 Package translations Info: no dictionary file `translations-basic-dictionary-afrikaans.trsl' found. on input line 36.
 Package hyperref Info: Link coloring ON on input line 36.
+ (thesis.out) (thesis.out)
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
@@ -1537,18 +1574,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 3.
 
-! Extra alignment tab has been changed to \cr.
-<template> ...egin \relax \d@llarend \endtemplate 
-                                                  
-l.3 \TitlePage
-              
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
 
-
-
-<stb-thesis-frntp.pdf, id=6, 597.50786pt x 845.04686pt>
+<stb-thesis-frntp.pdf, id=348, 597.50786pt x 845.04686pt>
 File: stb-thesis-frntp.pdf Graphic file (type pdf)
 <use stb-thesis-frntp.pdf>
 Package pdftex.def Info: stb-thesis-frntp.pdf  used on input line 3.
@@ -1597,55 +1624,56 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 [4
 
-]
-No file thesis.toc.
-\tf@toc=\write6
-\openout6 = `thesis.toc'.
-
-
+] (thesis.toc
 
 [5
 
 
 ]
-No file thesis.lof.
+
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/12'.
+(microtype)             Ignoring protrusion settings for this character.
+[6])
+\tf@toc=\write6
+\openout6 = `thesis.toc'.
+
+
+
+[7] (thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
 
 
-[6
+[8
 
-]
-No file thesis.lot.
+] (thesis.lot)
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
 
 
-[7
+[9
 
 ] (frontmatter/nomenclature.tex (thesis.nls
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/lmr/m/sc/12'.
-(microtype)             Ignoring protrusion settings for this character.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 ) (frontmatter/variables_and_functions.tex)
 
-[8
+[10
 
 
 {C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 
-[9]
+[11]
+Using TeX to sort glossary entries---this may take a while
+LaTeX Font Info:    Font shape `T1/lmr/bx/sc' in size <12> not available
+(Font)              Font shape `T1/cmr/bx/sc' tried instead on input line 23.
 
-Package glossaries Warning: Empty glossary for \printnoidxglossary[type={main}]. Rerun may be required (or you may have forgotten to use commands like \gls) on input line 23.
 
-
-
-[10]) (thesis.nls) (chapters/introduction.tex
+[12]) (thesis.nls) (chapters/introduction.tex
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
@@ -1662,132 +1690,124 @@ Chapter 1.
 
 [3]
 Chapter 2.
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/lmr/m/sc/14.4'.
-(microtype)             Ignoring protrusion settings for this character.
 ) (chapters/modelling.tex
 
 [4
 
 ]
-
-[5]
-Overfull \vbox (219.34671pt too high) has occurred while \output is active []
-
-
-
-[6]
 Chapter 3.
 
 
-[7
+[5
 
 ]
-<figures/Figure1.pdf, id=147, 267.52345pt x 137.11827pt>
+<figures/Figure1.pdf, id=690, 267.52345pt x 137.11827pt>
 File: figures/Figure1.pdf Graphic file (type pdf)
 <use figures/Figure1.pdf>
 Package pdftex.def Info: figures/Figure1.pdf  used on input line 42.
 (pdftex.def)             Requested size: 364.19667pt x 186.68341pt.
 
 
-[8 <./figures/Figure1.pdf>]
-<figures/modelling/ECEF.pdf, id=181, 284.52756pt x 284.52756pt>
+[6 <./figures/Figure1.pdf>]
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/14.4'.
+(microtype)             Ignoring protrusion settings for this character.
+
+
+[7{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+<figures/modelling/ECEF.pdf, id=738, 284.52756pt x 284.52756pt>
 File: figures/modelling/ECEF.pdf Graphic file (type pdf)
 <use figures/modelling/ECEF.pdf>
-Package pdftex.def Info: figures/modelling/ECEF.pdf  used on input line 93.
+Package pdftex.def Info: figures/modelling/ECEF.pdf  used on input line 159.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
-[9{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
-<figures/modelling/ECI.pdf, id=195, 284.52756pt x 284.52756pt>
+[8]
+<figures/modelling/ECI.pdf, id=746, 284.52756pt x 284.52756pt>
 File: figures/modelling/ECI.pdf Graphic file (type pdf)
 <use figures/modelling/ECI.pdf>
-Package pdftex.def Info: figures/modelling/ECI.pdf  used on input line 116.
+Package pdftex.def Info: figures/modelling/ECI.pdf  used on input line 182.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
-[10 <./figures/modelling/ECEF.pdf>]
-<figures/modelling/LVLH.pdf, id=212, 284.52756pt x 284.52756pt>
+[9 <./figures/modelling/ECEF.pdf>]
+<figures/modelling/LVLH.pdf, id=760, 284.52756pt x 284.52756pt>
 File: figures/modelling/LVLH.pdf Graphic file (type pdf)
 <use figures/modelling/LVLH.pdf>
-Package pdftex.def Info: figures/modelling/LVLH.pdf  used on input line 147.
+Package pdftex.def Info: figures/modelling/LVLH.pdf  used on input line 213.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
-[11 <./figures/modelling/ECI.pdf>]
-<figures/modelling/BRF.pdf, id=231, 284.52756pt x 284.52756pt>
+[10 <./figures/modelling/ECI.pdf>]
+<figures/modelling/BRF.pdf, id=777, 284.52756pt x 284.52756pt>
 File: figures/modelling/BRF.pdf Graphic file (type pdf)
 <use figures/modelling/BRF.pdf>
-Package pdftex.def Info: figures/modelling/BRF.pdf  used on input line 163.
+Package pdftex.def Info: figures/modelling/BRF.pdf  used on input line 229.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
-[12 <./figures/modelling/LVLH.pdf> <./figures/modelling/BRF.pdf
+[11 <./figures/modelling/LVLH.pdf> <./figures/modelling/BRF.pdf
 
 pdfTeX warning: pdflatex (file ./figures/modelling/BRF.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<figures/modelling/CRF.pdf, id=257, 284.52756pt x 284.52756pt>
+<figures/modelling/CRF.pdf, id=801, 284.52756pt x 284.52756pt>
 File: figures/modelling/CRF.pdf Graphic file (type pdf)
 <use figures/modelling/CRF.pdf>
-Package pdftex.def Info: figures/modelling/CRF.pdf  used on input line 177.
+Package pdftex.def Info: figures/modelling/CRF.pdf  used on input line 243.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
-<figures/modelling/MRF.pdf, id=258, 284.52756pt x 284.52756pt>
+<figures/modelling/MRF.pdf, id=802, 284.52756pt x 284.52756pt>
 File: figures/modelling/MRF.pdf Graphic file (type pdf)
 <use figures/modelling/MRF.pdf>
-Package pdftex.def Info: figures/modelling/MRF.pdf  used on input line 190.
+Package pdftex.def Info: figures/modelling/MRF.pdf  used on input line 256.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
-[13 <./figures/modelling/CRF.pdf> <./figures/modelling/MRF.pdf
+[12 <./figures/modelling/CRF.pdf> <./figures/modelling/MRF.pdf
 
 pdfTeX warning: pdflatex (file ./figures/modelling/MRF.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
 
-[14]
-
-LaTeX Warning: Reference `Eq:3.4' on page 15 undefined on input line 281.
-
-<figures/Quaternion.pdf, id=304, 142.05974pt x 142.66399pt>
+[13]
+<figures/Quaternion.pdf, id=841, 142.05974pt x 142.66399pt>
 File: figures/Quaternion.pdf Graphic file (type pdf)
 <use figures/Quaternion.pdf>
-Package pdftex.def Info: figures/Quaternion.pdf  used on input line 290.
+Package pdftex.def Info: figures/Quaternion.pdf  used on input line 359.
 (pdftex.def)             Requested size: 136.57462pt x 137.16702pt.
 
 
-[15 <./figures/Quaternion.pdf>]
+[14 <./figures/Quaternion.pdf>]
+
+[15]
 
 [16]
 
 [17]
-
-[18]
-<figures/modelling/GPSMeasurement.png, id=358, 404.2302pt x 310.2792pt>
+<figures/modelling/GPSMeasurement.png, id=892, 404.2302pt x 310.2792pt>
 File: figures/modelling/GPSMeasurement.png Graphic file (type png)
 <use figures/modelling/GPSMeasurement.png>
-Package pdftex.def Info: figures/modelling/GPSMeasurement.png  used on input line 519.
+Package pdftex.def Info: figures/modelling/GPSMeasurement.png  used on input line 588.
 (pdftex.def)             Requested size: 182.09486pt x 139.77585pt.
 
 
-[19]
+[18]
 
-[20 <./figures/modelling/GPSMeasurement.png>]
+[19 <./figures/modelling/GPSMeasurement.png>]
 
-LaTeX Warning: Reference `fig:CSS' on page 21 undefined on input line 594.
-
-<figures/modelling/CSS.pdf, id=381, 284.52756pt x 284.52756pt>
+[20]
+<figures/modelling/CSS.pdf, id=920, 284.52756pt x 284.52756pt>
 File: figures/modelling/CSS.pdf Graphic file (type pdf)
 <use figures/modelling/CSS.pdf>
-Package pdftex.def Info: figures/modelling/CSS.pdf  used on input line 604.
+Package pdftex.def Info: figures/modelling/CSS.pdf  used on input line 709.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
 [21]
 
 [22 <./figures/modelling/CSS.pdf>]
-<figures/modelling/Magnetometer.pdf, id=408, 284.52756pt x 284.52756pt>
+<figures/modelling/Magnetometer.pdf, id=942, 284.52756pt x 284.52756pt>
 File: figures/modelling/Magnetometer.pdf Graphic file (type pdf)
 <use figures/modelling/Magnetometer.pdf>
-Package pdftex.def Info: figures/modelling/Magnetometer.pdf  used on input line 686.
+Package pdftex.def Info: figures/modelling/Magnetometer.pdf  used on input line 791.
 (pdftex.def)             Requested size: 182.09486pt x 182.10135pt.
 
 
@@ -1796,10 +1816,10 @@ Package pdftex.def Info: figures/modelling/Magnetometer.pdf  used on input line 
 [24 <./figures/modelling/Magnetometer.pdf>]
 
 [25]
-<figures/modelling/TRIAD.png, id=441, 794.4882pt x 292.9344pt>
+<figures/modelling/TRIAD.png, id=973, 794.4882pt x 292.9344pt>
 File: figures/modelling/TRIAD.png Graphic file (type png)
 <use figures/modelling/TRIAD.png>
-Package pdftex.def Info: figures/modelling/TRIAD.png  used on input line 826.
+Package pdftex.def Info: figures/modelling/TRIAD.png  used on input line 931.
 (pdftex.def)             Requested size: 455.24411pt x 167.85489pt.
 
 
@@ -1807,7 +1827,7 @@ Package pdftex.def Info: figures/modelling/TRIAD.png  used on input line 826.
 
 [27 <./figures/modelling/TRIAD.png>]
 Chapter 4.
-<figures/imageprocessing/Pinhole.pdf, id=463, 711.31892pt x 341.43306pt>
+<figures/imageprocessing/Pinhole.pdf, id=993, 711.31892pt x 341.43306pt>
 File: figures/imageprocessing/Pinhole.pdf Graphic file (type pdf)
 <use figures/imageprocessing/Pinhole.pdf>
 Package pdftex.def Info: figures/imageprocessing/Pinhole.pdf  used on input line 16.
@@ -1817,49 +1837,94 @@ Package pdftex.def Info: figures/imageprocessing/Pinhole.pdf  used on input line
 [28
 
  <./figures/imageprocessing/Pinhole.pdf>]
-<figures/imageprocessing/ImagePlane.pdf, id=474, 284.52756pt x 284.52756pt>
+<figures/imageprocessing/ImagePlane.pdf, id=1000, 284.52756pt x 284.52756pt>
 File: figures/imageprocessing/ImagePlane.pdf Graphic file (type pdf)
 <use figures/imageprocessing/ImagePlane.pdf>
 Package pdftex.def Info: figures/imageprocessing/ImagePlane.pdf  used on input line 44.
 (pdftex.def)             Requested size: 227.62206pt x 227.63103pt.
-) (chapters/stateestimation.tex
+
 
 [29 <./figures/imageprocessing/ImagePlane.pdf>]
 
 [30]
+
+[31]
+
+[32]
+
+[33]
+
+[34]
+<figures/imageprocessing/HighResImage.png, id=1055, 344.0052pt x 344.0052pt>
+File: figures/imageprocessing/HighResImage.png Graphic file (type png)
+<use figures/imageprocessing/HighResImage.png>
+Package pdftex.def Info: figures/imageprocessing/HighResImage.png  used on input line 456.
+(pdftex.def)             Requested size: 227.62206pt x 227.62152pt.
+
+
+[35]
+<figures/imageprocessing/IMG1.png, id=1065, 382.5492pt x 335.8146pt>
+File: figures/imageprocessing/IMG1.png Graphic file (type png)
+<use figures/imageprocessing/IMG1.png>
+Package pdftex.def Info: figures/imageprocessing/IMG1.png  used on input line 484.
+(pdftex.def)             Requested size: 227.62206pt x 199.81473pt.
+
+
+[36 <./figures/imageprocessing/HighResImage.png>]
+<figures/imageprocessing/IMG2.png, id=1073, 351.2322pt x 314.1336pt>
+File: figures/imageprocessing/IMG2.png Graphic file (type png)
+<use figures/imageprocessing/IMG2.png>
+Package pdftex.def Info: figures/imageprocessing/IMG2.png  used on input line 491.
+(pdftex.def)             Requested size: 227.62206pt x 203.58525pt.
+
+
+[37 <./figures/imageprocessing/IMG1.png> <./figures/imageprocessing/IMG2.png>]) (chapters/stateestimation.tex
+
+[38]
 Chapter 5.
-) (chapters/systemintegration.tex
+<figures/StateEstimation/Recursive Estimation.png, id=1087, 202.50656pt x 158.09062pt>
+File: figures/StateEstimation/Recursive Estimation.png Graphic file (type png)
+<use figures/StateEstimation/Recursive Estimation.png>
+Package pdftex.def Info: figures/StateEstimation/Recursive Estimation.png  used on input line 15.
+(pdftex.def)             Requested size: 227.62206pt x 177.70193pt.
 
-[31
 
-]
+[39
+
+ <./figures/StateEstimation/Recursive Estimation.png>]
+
+[40]
+
+[41]) (chapters/systemintegration.tex
+
+[42]
 Chapter 6.
-<figures/SystemIntegration/FullSystemDiagram.png, id=516, 1154.81438pt x 520.94624pt>
+<figures/SystemIntegration/FullSystemDiagram.png, id=1116, 1154.81438pt x 520.94624pt>
 File: figures/SystemIntegration/FullSystemDiagram.png Graphic file (type png)
 <use figures/SystemIntegration/FullSystemDiagram.png>
 Package pdftex.def Info: figures/SystemIntegration/FullSystemDiagram.png  used on input line 9.
 (pdftex.def)             Requested size: 455.24411pt x 205.36214pt.
 
 
-[32
+[43
 
  <./figures/SystemIntegration/FullSystemDiagram.png>]
 
-[33]) (chapters/experiments.tex
+[44]) (chapters/experiments.tex
 
-[34]
+[45]
 
-[35]
+[46]
 Chapter 7.
 ) (chapters/conclusion.tex
 
-[36
+[47
 
 ]
 Chapter 8.
 )
 
-[37
+[48
 
 ] (thesis.bbl
 
@@ -1867,19 +1932,13 @@ Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
 ) (appendices/appendices.tex (appendices/an_appendix.tex
 
-[38
+[49
 
 ]
 Appendix A.
 ))
 
-Package acro Warning: Empty acronym list. If you have used acronyms then
-(acro)                re-compile to get the list filled. Otherwise remove
-(acro)                \printacronyms
-
-
-
-[39
+[50
 
 ] (thesis.aux)
  ***********
@@ -1888,32 +1947,23 @@ L3 programming layer <2024-09-10>
  ***********
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  F142BB8F0A13FDF86487FC4359945EBA;17659.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 72DB313239CC04E15E8449A93DBE4963;12535.
  ) 
 Here is how much of TeX's memory you used:
- 51612 strings out of 473899
- 1037315 string characters out of 5726971
- 1581327 words of memory out of 5000000
- 73021 multiletter control sequences out of 15000+600000
- 680895 words of font info for 245 fonts, out of 8000000 for 9000
+ 51829 strings out of 473899
+ 1041658 string characters out of 5726971
+ 1586936 words of memory out of 5000000
+ 73143 multiletter control sequences out of 15000+600000
+ 682995 words of font info for 261 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,12n,112p,2472b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (51 pages, 1012322 bytes).
+ 117i,12n,112p,2472b,757s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Niel\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1200.pk><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (64 pages, 2122613 bytes).
 PDF statistics:
- 719 PDF objects out of 1000 (max. 8388607)
- 258 named destinations out of 1000 (max. 500000)
- 63581 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 1348 PDF objects out of 1440 (max. 8388607)
+ 313 named destinations out of 1000 (max. 500000)
+ 64801 words of extra memory for PDF output out of 74296 (max. 10000000)
 

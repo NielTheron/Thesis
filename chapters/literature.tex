@@ -8,183 +8,183 @@
 % Traditional vs. vision-based approaches
 % Chapter organization and scope
 
-\mysection{Satellite Position and Attitude Determination Systems}{Satellite Position and Attitude Determination Systems}
-\label{sec:litposatt}
+% \mysection{Satellite Position and Attitude Determination Systems}{Satellite Position and Attitude Determination Systems}
+% \label{sec:litposatt}
 
-\mysubsection{Position Determination Methods}{Position Determination Methods}
-\label{sec:posdet}
-% Global Navigation Satellite Systems (GNSS/GPS)
-% - Accuracy limitations and availability
-% - Power consumption considerations for CubeSats
+% \mysubsection{Position Determination Methods}{Position Determination Methods}
+% \label{sec:posdet}
+% % Global Navigation Satellite Systems (GNSS/GPS)
+% % - Accuracy limitations and availability
+% % - Power consumption considerations for CubeSats
 
 
-% Ground-Based Tracking Systems
-% - Two-Line Element (TLE) sets and orbital propagation
-% - Ground station ranging and limitations
-% Relative positioning techniques
+% % Ground-Based Tracking Systems
+% % - Two-Line Element (TLE) sets and orbital propagation
+% % - Ground station ranging and limitations
+% % Relative positioning techniques
 
-\mysubsection{Attitude Determination Systems}{Attitude Determination Systems}
-\label{sec:attdet}
-% Star Trackers
-% - High accuracy (arc-second level) but high cost and power
-% - Current CubeSat star tracker solutions (ST200, ST400)
-% Coarse Sun Sensors
-% - Low accuracy but reliable and low power
-% - Typical accuracy ranges and applications
-% Magnetometers
-% - Three-axis magnetometers for attitude estimation
-% - TRIAD and QUEST algorithms
-% Gyroscopes and IMUs
-% - MEMS gyroscopes in CubeSat applications
-% - Drift characteristics and calibration requirements
-% Multi-sensor fusion approaches
-% - Sensor complementarity and redundancy
-% - Cost-accuracy trade-offs for small satellites
+% \mysubsection{Attitude Determination Systems}{Attitude Determination Systems}
+% \label{sec:attdet}
+% % Star Trackers
+% % - High accuracy (arc-second level) but high cost and power
+% % - Current CubeSat star tracker solutions (ST200, ST400)
+% % Coarse Sun Sensors
+% % - Low accuracy but reliable and low power
+% % - Typical accuracy ranges and applications
+% % Magnetometers
+% % - Three-axis magnetometers for attitude estimation
+% % - TRIAD and QUEST algorithms
+% % Gyroscopes and IMUs
+% % - MEMS gyroscopes in CubeSat applications
+% % - Drift characteristics and calibration requirements
+% % Multi-sensor fusion approaches
+% % - Sensor complementarity and redundancy
+% % - Cost-accuracy trade-offs for small satellites
 
-\mysection{Earth Observation Satellite Systems and Imaging Technologies}{Earth Observation Satellite Systems and Imaging Technologies}
+% \mysection{Earth Observation Satellite Systems and Imaging Technologies}{Earth Observation Satellite Systems and Imaging Technologies}
 
-\mysubsection{Heritage Earth Observation Missions}{Heritage Earth Observation Missions}
-% Landsat Series
-% - Imaging capabilities and geometric accuracy requirements
-% - Camera types: pushbroom vs. whiskbroom scanners
-% Sentinel Series
-% - Multi-Spectral Instrument (MSI) characteristics
-% - Pointing accuracy and stability requirements
+% \mysubsection{Heritage Earth Observation Missions}{Heritage Earth Observation Missions}
+% % Landsat Series
+% % - Imaging capabilities and geometric accuracy requirements
+% % - Camera types: pushbroom vs. whiskbroom scanners
+% % Sentinel Series
+% % - Multi-Spectral Instrument (MSI) characteristics
+% % - Pointing accuracy and stability requirements
 
-\mysubsection{Commercial Earth Observation Satellites}{Commercial Earth Observation Satellites}
-% Planet Labs Constellation
-% - PlanetScope Dove satellites: frame cameras, 3.7m resolution
-% - SkySat: Cassegrain telescopes with CMOS detectors, 50cm resolution
-% - RapidEye: pushbroom scanners (retired 2020)
-% Maxar Technologies
-% - WorldView Series: high-resolution pushbroom imaging
-% - WorldView Legion: next-generation constellation, 30cm resolution
-% - Camera technologies and pointing requirements
-% Airbus Defence and Space
-% - Pléiades Constellation: 0.5m resolution, agile imaging
-% - SPOT Series: systematic Earth coverage
-% NASA Earth Science Missions
-% - MODIS (Terra/Aqua): 36-band imaging, 250m-1km resolution
-% - VIIRS: day/night imaging capabilities
-% - Specialized atmospheric and climate sensors
+% \mysubsection{Commercial Earth Observation Satellites}{Commercial Earth Observation Satellites}
+% % Planet Labs Constellation
+% % - PlanetScope Dove satellites: frame cameras, 3.7m resolution
+% % - SkySat: Cassegrain telescopes with CMOS detectors, 50cm resolution
+% % - RapidEye: pushbroom scanners (retired 2020)
+% % Maxar Technologies
+% % - WorldView Series: high-resolution pushbroom imaging
+% % - WorldView Legion: next-generation constellation, 30cm resolution
+% % - Camera technologies and pointing requirements
+% % Airbus Defence and Space
+% % - Pléiades Constellation: 0.5m resolution, agile imaging
+% % - SPOT Series: systematic Earth coverage
+% % NASA Earth Science Missions
+% % - MODIS (Terra/Aqua): 36-band imaging, 250m-1km resolution
+% % - VIIRS: day/night imaging capabilities
+% % - Specialized atmospheric and climate sensors
 
-\mysubsection{Camera Technologies in Earth Observation}{Camera Technologies in Earth Observation}
-% Imaging sensor types
-% - CCD vs. CMOS technologies in space applications
-% - Frame cameras vs. pushbroom/whiskbroom scanners
-% Pointing accuracy requirements by resolution
-% - Sub-meter imagery: arc-second level pointing
-% - Moderate resolution: arc-minute level acceptable
-% Calibration and stability requirements
+% \mysubsection{Camera Technologies in Earth Observation}{Camera Technologies in Earth Observation}
+% % Imaging sensor types
+% % - CCD vs. CMOS technologies in space applications
+% % - Frame cameras vs. pushbroom/whiskbroom scanners
+% % Pointing accuracy requirements by resolution
+% % - Sub-meter imagery: arc-second level pointing
+% % - Moderate resolution: arc-minute level acceptable
+% % Calibration and stability requirements
 
-\mysubsection{Emerging Satellite Constellations}{Emerging Satellite Constellations}
-% Next-generation commercial systems
-% - Planet Pelican: 30cm resolution successor to SkySat
-% - Umbra: SAR constellation for all-weather imaging
-% - Satellogic: multispectral and hyperspectral capabilities
-% - Tanager-1: hyperspectral Earth observation
+% \mysubsection{Emerging Satellite Constellations}{Emerging Satellite Constellations}
+% % Next-generation commercial systems
+% % - Planet Pelican: 30cm resolution successor to SkySat
+% % - Umbra: SAR constellation for all-weather imaging
+% % - Satellogic: multispectral and hyperspectral capabilities
+% % - Tanager-1: hyperspectral Earth observation
 
-\mysection{Computer Vision for Satellite Applications}{Computer Vision for Satellite Applications}
+% \mysection{Computer Vision for Satellite Applications}{Computer Vision for Satellite Applications}
 
-\mysubsection{Classical Feature Detection Methods}{Classical Feature Detection Methods}
-% Scale-Invariant Feature Transform (SIFT)
-% - 128-dimensional descriptors and invariance properties
-% - Performance with satellite imagery and multi-temporal matching
-% - Computational requirements for space applications
-% Speeded-Up Robust Features (SURF)
-% - Computational advantages over SIFT
-% - 64-dimensional descriptors and performance trade-offs
-% Oriented FAST and Rotated BRIEF (ORB)
-% - Real-time performance capabilities
-% - Suitability for resource-constrained platforms
-% Comparative analysis for satellite pose estimation
-% - Robustness to lighting changes and atmospheric effects
-% - Feature matching accuracy under geometric distortions
+% \mysubsection{Classical Feature Detection Methods}{Classical Feature Detection Methods}
+% % Scale-Invariant Feature Transform (SIFT)
+% % - 128-dimensional descriptors and invariance properties
+% % - Performance with satellite imagery and multi-temporal matching
+% % - Computational requirements for space applications
+% % Speeded-Up Robust Features (SURF)
+% % - Computational advantages over SIFT
+% % - 64-dimensional descriptors and performance trade-offs
+% % Oriented FAST and Rotated BRIEF (ORB)
+% % - Real-time performance capabilities
+% % - Suitability for resource-constrained platforms
+% % Comparative analysis for satellite pose estimation
+% % - Robustness to lighting changes and atmospheric effects
+% % - Feature matching accuracy under geometric distortions
 
-\mysubsection{Earth Feature Tracking and Landmark Recognition}{Earth Feature Tracking and Landmark Recognition}
-% Ground feature selection criteria
-% - Persistent landmarks vs. dynamic features
-% - Urban vs. natural feature reliability
-% Multi-temporal feature tracking
-% - Seasonal and lighting variations
-% - Long-term feature stability
+% \mysubsection{Earth Feature Tracking and Landmark Recognition}{Earth Feature Tracking and Landmark Recognition}
+% % Ground feature selection criteria
+% % - Persistent landmarks vs. dynamic features
+% % - Urban vs. natural feature reliability
+% % Multi-temporal feature tracking
+% % - Seasonal and lighting variations
+% % - Long-term feature stability
 
-\mysection{Vision-Based Pose Estimation Techniques}{Vision-Based Pose Estimation Techniques}
+% \mysection{Vision-Based Pose Estimation Techniques}{Vision-Based Pose Estimation Techniques}
 
-\mysubsection{Camera-Based Navigation Systems}{Camera-Based Navigation Systems}
-% Simultaneous Localization and Mapping (SLAM)
-% - Visual SLAM approaches for satellite applications
-% - Landmark initialization and management
-% Visual odometry techniques
-% - Monocular vs. stereo approaches
-% - Integration with orbital dynamics
+% \mysubsection{Camera-Based Navigation Systems}{Camera-Based Navigation Systems}
+% % Simultaneous Localization and Mapping (SLAM)
+% % - Visual SLAM approaches for satellite applications
+% % - Landmark initialization and management
+% % Visual odometry techniques
+% % - Monocular vs. stereo approaches
+% % - Integration with orbital dynamics
 
-\mysubsection{Geometric Pose Estimation Methods}{Geometric Pose Estimation Methods}
-% Perspective-n-Point (PnP) solutions
-% - 2D-3D correspondence establishment
-% - Robust estimation techniques (RANSAC)
-% Feature-based pose recovery
-% - Essential matrix and fundamental matrix estimation
-% - Multi-view geometry applications
+% \mysubsection{Geometric Pose Estimation Methods}{Geometric Pose Estimation Methods}
+% % Perspective-n-Point (PnP) solutions
+% % - 2D-3D correspondence establishment
+% % - Robust estimation techniques (RANSAC)
+% % Feature-based pose recovery
+% % - Essential matrix and fundamental matrix estimation
+% % - Multi-view geometry applications
 
-\mysection{State Estimation and Sensor Fusion}{State Estimation and Sensor Fusion}
+% \mysection{State Estimation and Sensor Fusion}{State Estimation and Sensor Fusion}
 
-\mysubsection{Filtering Techniques for Satellite Applications}{Filtering Techniques for Satellite Applications}
-% Extended Kalman Filter (EKF)
-% - Nonlinear state estimation for attitude and position
-% - Quaternion-based attitude representations
-% Unscented Kalman Filter (UKF)
-% - Handling nonlinear measurement models
-% - Computational considerations for CubeSats
-% Particle Filters
-% - Multi-modal estimation and robustness
-% - Computational complexity trade-offs
+% \mysubsection{Filtering Techniques for Satellite Applications}{Filtering Techniques for Satellite Applications}
+% % Extended Kalman Filter (EKF)
+% % - Nonlinear state estimation for attitude and position
+% % - Quaternion-based attitude representations
+% % Unscented Kalman Filter (UKF)
+% % - Handling nonlinear measurement models
+% % - Computational considerations for CubeSats
+% % Particle Filters
+% % - Multi-modal estimation and robustness
+% % - Computational complexity trade-offs
 
-\mysubsection{Multi-Sensor Fusion Architectures}{Multi-Sensor Fusion Architectures}
-% Vision-IMU integration
-% - Tightly coupled vs. loosely coupled approaches
-% - Error state estimation techniques
-% Vision-GNSS fusion
-% - Complementary sensor characteristics
-% - Relative vs. absolute positioning
+% \mysubsection{Multi-Sensor Fusion Architectures}{Multi-Sensor Fusion Architectures}
+% % Vision-IMU integration
+% % - Tightly coupled vs. loosely coupled approaches
+% % - Error state estimation techniques
+% % Vision-GNSS fusion
+% % - Complementary sensor characteristics
+% % - Relative vs. absolute positioning
 
-\mysubsection{Robustness and Reliability Techniques}{Robustness and Reliability Techniques}
-% Outlier detection and rejection
-% - Statistical methods for measurement validation
-% - Robust estimation techniques
-% Failure detection and accommodation
-% - Sensor redundancy and graceful degradation
-% - Performance monitoring and health assessment
+% \mysubsection{Robustness and Reliability Techniques}{Robustness and Reliability Techniques}
+% % Outlier detection and rejection
+% % - Statistical methods for measurement validation
+% % - Robust estimation techniques
+% % Failure detection and accommodation
+% % - Sensor redundancy and graceful degradation
+% % - Performance monitoring and health assessment
 
-\mysection{Earth-Tracking Systems for Satellite Pose Estimation}{Earth-Tracking Systems for Satellite Pose Estimation}
+% \mysection{Earth-Tracking Systems for Satellite Pose Estimation}{Earth-Tracking Systems for Satellite Pose Estimation}
 
-\mysubsection{Ground Feature Databases and Maps}{Ground Feature Databases and Maps}
-% Global elevation models and terrain databases
-% - SRTM, ASTER GDEM availability and accuracy
-% Landmark databases for navigation
-% - Persistent feature catalogs
-% - Real-time vs. pre-computed approaches
+% \mysubsection{Ground Feature Databases and Maps}{Ground Feature Databases and Maps}
+% % Global elevation models and terrain databases
+% % - SRTM, ASTER GDEM availability and accuracy
+% % Landmark databases for navigation
+% % - Persistent feature catalogs
+% % - Real-time vs. pre-computed approaches
 
-\mysubsection{Applications and Performance Requirements}{Applications and Performance Requirements}
-% Earth observation pointing requirements
-% - Target acquisition and tracking accuracy
-% - Image quality and geometric fidelity
-% Autonomous navigation capabilities
-% - Reduced ground contact and operational autonomy
+% \mysubsection{Applications and Performance Requirements}{Applications and Performance Requirements}
+% % Earth observation pointing requirements
+% % - Target acquisition and tracking accuracy
+% % - Image quality and geometric fidelity
+% % Autonomous navigation capabilities
+% % - Reduced ground contact and operational autonomy
 
-\mysection{Literature Gap Analysis and Research Opportunities}{Literature Gap Analysis and Research Opportunities}
-% Current limitations in CubeSat pose estimation
-% - Cost vs. accuracy trade-offs
-% - Limited availability of space-qualified high-accuracy sensors
-% Vision-based solutions for small satellites
-% - Leveraging existing imaging payloads
-% - Real-time processing constraints and solutions
-% Integration challenges and opportunities
-% - Multi-sensor fusion complexity
-% - Ground truth validation difficulties
+% \mysection{Literature Gap Analysis and Research Opportunities}{Literature Gap Analysis and Research Opportunities}
+% % Current limitations in CubeSat pose estimation
+% % - Cost vs. accuracy trade-offs
+% % - Limited availability of space-qualified high-accuracy sensors
+% % Vision-based solutions for small satellites
+% % - Leveraging existing imaging payloads
+% % - Real-time processing constraints and solutions
+% % Integration challenges and opportunities
+% % - Multi-sensor fusion complexity
+% % - Ground truth validation difficulties
 
-\mysection{Conclusion}{Conclusion}
-% Summary of key findings from literature review
-% Identification of research gaps and opportunities
-% Justification for proposed vision-based approach
-% Preview of methodology and contributions
+% \mysection{Conclusion}{Conclusion}
+% % Summary of key findings from literature review
+% % Identification of research gaps and opportunities
+% % Justification for proposed vision-based approach
+% % Preview of methodology and contributions
