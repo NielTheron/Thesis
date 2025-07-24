@@ -4,268 +4,18 @@
 \mysection{Introduction}{Introduction}
 \label{sec:modintro}
 
-This project focuses on the pose estimation of a satellite using satellite images. This is essentially a localistion problem
-and requires a realistic description of the system. The aim of this chapter is to sufficiently define the problemand the proposed solution. Estimation
-algorithms is discussed and an estimator is chosen to solve the localisation problem. Further, attitude representations of a rigid body is introduced
-along with the dynamic and kinematic models used to describe a satellite in inertial space. Attention is given to quaternion attitude representations along
-with their propagation using angular rates.
+To accurately describe the full pose of a satellite using an onboard imaging system, a comprehensive mathematical model 
+of the spacecraft must be established. This chapter presents the fundamental modeling framework required for vision-based 
+satellite pose estimation. The chapter begins by defining the core problem and establishing the system requirements for satellite 
+pose determination. Subsequently, the kinematic and dynamic equations governing satellite motion are derived, providing the mathematical 
+foundation for state propagation. The various reference frames utilized throughout this work are systematically 
+defined, including the transformations necessary to relate measurements and states across different coordinate systems.
+Additionally, this chapter presents the mathematical models for the accompanying sensors integrated within the pose estimation system. 
+These sensor models are essential for the multi-sensor fusion approach employed in the Extended Kalman Filter implementation presented in later chapters.
 
-\mysection{Problem Definition}{Problem Defintion}
-\label{sec:moddef}
-
-A satellite orbiting Earth in the Earth-Centered Inertial (ECI) reference frame performs Earth observation missions, 
-continuously capturing high-resolution imagery of the planet's surface for scientific, commercial, or operational purposes. 
-To fulfill mission objectives effectively, the satellite must provide not only high-quality imagery but also precise geographic 
-information about observed areas. This requires accurate knowledge of the satellite's six-degree-of-freedom pose 
-(three-dimensional position and three-dimensional attitude) relative to the ECI frame at the moment each image is captured.
-\vspace{0.5cm}
-
-Traditional satellite pose determination relies on external systems such as Global Navigation Satellite Systems (GNSS) 
-and ground-based tracking networks. However, this thesis investigates an autonomous approach where the satellite performs 
-"visual navigation" by identifying known ground features in its imagery and using these observations to determine its orbital 
-state. The satellite essentially performs "reverse GPS" - instead of receiving position signals from space, it observes 
-recognizable landmarks on Earth's surface and computes its pose from these visual references.
-\vspace{0.5cm}
-
-The core technical challenge lies in the transformation from raw imagery to precise pose estimates. This involves several 
-interdependent problems: \textbf{(1) Feature Detection} - identifying which pixels in the imagery correspond to cataloged 
-landmarks among millions of pixel observations; \textbf{(2) Geometric Inversion} - solving the complex inverse problem of 
-determining six-dimensional pose from two-dimensional image projections of three-dimensional landmarks with known geographic 
-coordinates; and \textbf{(3) Uncertainty Management} - handling measurement noise, feature detection errors, and dynamic orbital 
-motion in real-time. This thesis assumes the availability of a pre-established catalog of ground features with precisely 
-known geographic coordinates in the ECI frame. The feature matching problem - associating detected image features with specific 
-catalog entries - is considered solved through prior knowledge of the observed terrain and existing geographic databases.
-\vspace{0.5cm}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/Figure1.pdf}
-    \caption{Satellite pose estimation concept showing orbital geometry, reference frames}
-    \label{fig:satellite_concept}
-\end{figure}
-
-This problem structure aligns with a simplified version of the Simultaneous Localization and Mapping (SLAM) framework. 
-In this context, \textbf{localization} corresponds to determining the satellite's pose relative to the ECI frame using 
-observations of cataloged features, while the \textbf{mapping} component is reduced to feature catalog utilization rather 
-than creation. Since the geographic locations of observable features are assumed known a priori, the primary focus becomes the 
-pose estimation problem given established feature correspondences.
-\vspace{0.5cm}
-
-The satellite's pose estimation system must account for the dynamic nature of orbital motion, 
-the geometric relationship between the camera frame and satellite body frame, and the projection 
-characteristics of the imaging system, while maintaining computational efficiency suitable for 
-real-time onboard processing. 
 
 %=============================================================================================================================================================================
 
-\mysection{Refrence Frame Transformations}{Refrence Frame Transsformations}
-
-In this masters we are going to encounter a few different refrence frames. To accurateley to create the measurement model we should have an understanding of all the different 
-reference models and how to transform from one to another
-
-
-\mysubsection{Reference Frame Convertsions}{Reference frame Conversions}
-
-Transformations between different reference frames are a fundamental part of spacecraft modeling and sensor simulation. These 
-transformations are typically expressed using homogeneous transformation matrices, which combine both rotation and translation components 
-into a single $4 \times 4$ matrix.
-
-\paragraph{Homogeneous Transformation Matrix}
-
-A homogeneous transformation matrix from frame $\mathcal{I}$ to frame $\mathcal{O}$ is defined as:
-
-\begin{equation}
-    \mathbf{A}_\mathcal{I}^\mathcal{O} =
-    \begin{bmatrix}
-        \mathbf{R}_\mathcal{I}^\mathcal{O} & -\mathbf{R}_\mathcal{I}^\mathcal{O} \cdot \mathbf{t} \\
-        \mathbf{0}_{1 \times 3} & 1
-    \end{bmatrix}
-\end{equation}
-
-Here, $\mathbf{R}_\mathcal{I}^\mathcal{O}$ is a $3 \times 3$ direction cosine matrix (DCM) that describes the orientation of frame $\mathcal{O}$ 
-relative to frame $\mathcal{I}$, and $\mathbf{t}$ is a translation vector from the origin of $\mathcal{I}$ to the origin of $\mathcal{O}$, expressed 
-in frame $\mathcal{I}$.
-
-This formulation ensures that both the direction and magnitude of vectors are preserved during the transformation. However, it is important to note 
-that the inverse transformation is **not** obtained by simply switching the frame labels:
-
-\begin{equation}
-    \mathbf{A}_\mathcal{I}^\mathcal{O} \ne \mathbf{A}_\mathcal{O}^\mathcal{I}
-\end{equation}
-
-\paragraph{Rotation-Only Transformations}
-
-In many practical scenarios, such as pure attitude transformations or body-to-inertial frame conversions, only rotational 
-alignment is needed. In such cases, only the DCM $\mathbf{R}$ is used, and the transformation is defined as:
-
-\begin{equation}
-    \mathbf{v}_\mathcal{O} = \mathbf{R}_\mathcal{I}^\mathcal{O} \cdot \mathbf{v}_\mathcal{I}
-\end{equation}
-
-Note that:
-
-\begin{equation}
-    \mathbf{R}_\mathcal{I}^\mathcal{O} = \left( \mathbf{R}_\mathcal{O}^\mathcal{I} \right)^\top
-\end{equation}
-
-This relationship arises because direction cosine matrices are orthogonal.
-
-\paragraph{Special Case: Intrinsic Camera Matrix}
-
-In computer vision and photogrammetry applications, a special case of reference frame transformation is encountered during 
-camera projection. The intrinsic camera matrix $\mathbf{K}$ maps 3D points in the camera frame to 2D points on the image plane. While $\mathbf{K}$ is not 
-a full homogeneous transformation matrix, it serves a similar purpose in transforming between reference representations, and can be interpreted as a scaled, 
-non-rigid projection matrix with a fixed internal structure:
-
-\begin{equation}
-    \mathbf{K} =
-    \begin{bmatrix}
-        f_x & 0 & c_x \\
-        0 & f_y & c_y \\
-        0 & 0 & 1
-    \end{bmatrix}
-\end{equation}
-
-Here, $f_x$ and $f_y$ are the focal lengths in pixels, and $(c_x, c_y)$ represents the principal point on the image sensor. Which will be explained in further sections.
-
-
-\mysubsection{Lattitude, longitude and altitude}{Lattitude, longitude and altitude}
-
-The lattitude, longitude of a feature or the position of the satellite is donated with the $\mathcal{L}$. The lattitude of a feature is the position of how high or low it above the
-equator, having a range of $-90^{\circ}$ to $90^{\circ}$. The longitude is based of the greenwich maridian, a longitude line that pases through the north- and south pole, it has a
-range of $-180^{\circ}$ to $180^{\circ}$. The altitude is measured form the the "WGS84" elliptical globe.
-
-\begin{equation}
-    \mathbf{r}_\mathcal{L} = \begin{bmatrix}
-    \lambda \\
-    \phi \\
-    h    
-    \end{bmatrix} 
-\end{equation}
-
-\mysubsection{Earth Ceneterd Earth Fixed}{Earth Ceneterd Earth Fixed}
-
-The Earth Ceneterd Earth Fixed refrence frame is represented by the $\mathcal{F}$ and is very simular to the $\mathcal{L}$ reference frame with the z-axis alligned with the northpole
-and the x-axis points at the crossing of the Prime Maridian an the Equator, where the y-axis completes the right hand rule. The x,y and z-axis is defined in kilometers.
-To covert from $\mathcal{L}$ to $\mathcal{F}$ is to use a "WGS84" transfomr. Where WGS84 stands for World Geodetic System 1984, which is the standard coordinate system used for
-Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2 .
-
-\begin{equation}
-        \mathbf{A}_{\mathcal{L}}^{\mathcal{F}} = f(\text{WGS84})
-\end{equation}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/ECEF.pdf}
-    \caption{This figure represents the Earth Ceterned Earth Fixed reference frame with the X-axis defined in the direction of the equator and primemaridean
-    with z-axis defined as the north pole and the y-axis completing the right had rule.}
-    \label{fig:ECEFRF}
-\end{figure}
-
-\mysubsection{Earth Ceneterd Inertial}{Earth Ceneterd Inertial}
-
-The Earth Centered Inertial refrence fream (ECI) refrenced by $\mathcal{I}$ shares a refrence frame axis with the ECEF, but is rotated about the z-axis. This rotation is governed
-by the rotation speed of the earth $\omega_e$ which is $7.2921\times10^{-5}$ rad/s and time $t$. To transform from the ECEF reference frame to the ECI reference frame one should
-rotate the Earth clockwise e.i. 
-
-\begin{equation}
-    \mathbf{A}_{\mathcal{F}}^{\mathcal{I}} = R(\omega_e t) = 
-    \begin{bmatrix}
-        \cos(-\omega_e t) & -\sin(-\omega_e t) & 0\\
-        \sin(-\omega_e t) & \cos(-\omega_e t) & 0\\
-        0 & 0 & 1
-    \end{bmatrix}
-\end{equation}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/ECI.pdf}
-    \caption{This figure represents the Earth Centered Inertial Reference frame with the x-axis defined in the direction of the vernel equanox, which is the defined as the crossing
-    of the ecliptic plane and the eqautor, the z-axis is defined as the north pole and the y-axis completes the rght hand rule.}
-    \label{fig:ECIRF}
-\end{figure}
-
-\mysubsection{Orbital reference frame}{Orbital reference frame}
-
-The orbital reference frame used is the Local Vertical Local Horizon (LVLH) denoted by $\mathcal{O}$. \textcolor{red}{The LVLH frame is a rotating, orbit-attached corrdinate
-system commonly used in spacecraft dynamics. It moves with the satellite and is defined relative to its orbit around Earth}. The x-axis is the "Local Horizon" also called
-"along track" pointing forward it is tangent to the orbit and points in the direction of motion. The z-axis is the local vertical and is also called the Nadir direction, it points
-to the barycenter of the system, in this case the center of the Earth. The y-axis is called the cross track it completes the right handed system. It points out of the orbital plane,
-typically the angular momentum vector direction (normal to the orbit plane).
-
-if $\mathbf{r}$ is the position vector of the satellite and $\mathbf{v}$ is the velocity vector of the satellite.
-The equation for the reference frame is:
-
-\begin{align}
-    \bar{z}_{\mathcal{O}} &= -\frac{\mathbf{r}}{||\mathbf{r}||} \\
-    \bar{y}_{\mathcal{O}} &= \frac{\mathbf{r}\times\mathbf{v}}{||\mathbf{r}\times\mathbf{v}||}\\
-    \bar{x}_{\mathcal{O}} &= \bar{y}_{\mathcal{O}}\times\bar{z}_{\mathcal{O}}
-\end{align}
-
-For this reference frame there should also be a refrence frame translation introduced. Which is done by substracing $\mathbf{r}$ from the vector
-
-\begin{equation}
-    \mathbf{f}_{\mathcal{O}} = \mathbf{A}_{\mathcal{I}}^{\mathcal{O}}\times(\mathbf{f}_{\mathcal{I}} - \mathbf{r}_{\mathcal{I}})
-\end{equation}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/LVLH.pdf}
-    \caption{This figure represent the Local Vertical Local Horizon Referenece frame, more commonly refered to as the orbitial refrence frame. In the orbitial refrence frame
-    the z-axis is defined as Nadir, meaning that it always points to the center of mass perfectly parallel to the oribital plane, the x-axis is defined as the vector tangentail
-    to the plane, also known as the along track vector, and y is the completion of the right hand rule.}
-    \label{fig:LVHLRF}
-\end{figure}
-
-\subsection{Body Referenece frame}
-
-The body reference frame denoted by $\mathcal{B}$ is the reference frame of the satellite body itself, with the center point referenced as the center of mass of the satellite body.
-with the z-axis defined as the yaw, x-axis defined as the roll and the y-axis defined as the pitch of the satellite. With the body frame z-axis and the orbital reference frame 
-as alligned at initialisiation
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/BRF.pdf}
-    \caption{}
-    \label{fig:BRF}
-\end{figure}
-
-\mysubsection{Camera Reference Frame}{Camera Reference Frame}
-
-The camera refrence frame denoted by $\mathcal{C}$. In many Earth Observation missions the camera has its own reference frame defined relative to the Earth. Where the x-axis is
-pointing directly to the Earth's surface indicatting the cameras roll axis, with the y-axis representing the pitch axis represents an angle ahead or behind of the orbit and the
-z-axis representing the yaw axis.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/CRF.pdf}
-    \caption{}
-    \label{fig:CRF}
-\end{figure}
-
-\begin{equation}
-    \mathbf{f}_{\mathcal{C}} = \mathbf{A}_{\mathcal{O}}^{\mathcal{C}}\times\mathbf{f}_{\mathcal{O}}
-\end{equation}
-
-\mysubsection{Image Reference Frame}{Image Reference Frame}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/modelling/MRF.pdf}
-    \caption{}
-    \label{fig:MRF}
-\end{figure}
-
-
-\mysubsection{East - North - Up}{East - North - Up}
-
-
-
-
-
-%==================================================================================================================================================================================
 
 \mysection{Rigid Body Mechanics}{Rigid Body Mechanics}
 \label{sec:modrigid}
@@ -273,10 +23,11 @@ z-axis representing the yaw axis.
 \mysubsection{Kinematics}{Kinematics}
 \label{sec:kinematics}
 
-\textcolor{red}{The pose of a rigid body in a refrence frame consists of the position and attitude of the body. The attitude, or orientation of a body-fixed reference frame to a
-known reference frame. This is usualy represented by a rotation matrix, often referred to as a direction cosine Matrix (DCM). A rotation about a single coordinate axis
-is referred to as a coordinate rotation. A coordinate rotation about the x-,y- and z-axes with angles $\phi$, $\theta$ and $\psi$, of the body can be respectivley
-describes as, [Willem de Jong p.23]}
+The pose of a rigid body within a reference frame encompasses both its spatial position and angular orientation. The 
+attitude describes the rotational relationship between the body-fixed coordinate system and a known reference coordinate system. 
+This rotational relationship is typically expressed through a rotation matrix, commonly known as a direction cosine matrix (DCM).\cite{Jongh}\cite{Korf}\cite{Jordaan}\cite{Diebel},
+Elementary rotations around individual coordinate axes are termed coordinate rotations. The fundamental coordinate rotations about 
+the x-, y-, and z-axes, characterized by rotation angles $\phi$, $\theta$, and $\psi$ respectively, can be mathematically expressed as
 
 \begin{equation}
     R_x(\phi) = \begin{bmatrix} 
@@ -289,28 +40,29 @@ describes as, [Willem de Jong p.23]}
 
 \begin{equation}
     R_y(\theta) = \begin{bmatrix} 
-        \cos(\phi) & 0 & -\sin(\phi) \\
+        \cos(\theta) & 0 & -\sin(\theta) \\
         0 & 1 & 0 \\
-        \sin(\phi) & 0  & \cos(\phi)
+        \sin(\theta) & 0  & \cos(\theta)
     \end{bmatrix}
     \label{Eq:3.2}
 \end{equation}
 
 \begin{equation}
     R_z(\psi) = \begin{bmatrix} 
-        \cos(\phi) & \sin(\phi) & 0 \\
-        -\sin(\phi) & \cos(\phi) & 0 \\
+        \cos(\psi) & \sin(\psi) & 0 \\
+        -\sin(\psi) & \cos(\psi) & 0 \\
         0 & 0 & 1
     \end{bmatrix}
     \label{Eq:3.3}
 \end{equation}
 
-\textcolor{red}{Any rotation in 3D space can be described by three coordinate rotations. The DCM describing the attitude of the target in the camera reference frame
-(CRF), $\mathbf{A}_{\mathcal{C}}^{\mathcal{B}}$, can be represented by three Eular angles. Each of the angles corresponds to one coordinate rotation. The order
-of the Eular 1-2-3 rotation, shown in Figure 3.5, is expressed as}
+\noindent Any rotation in 3D space can be described by three coordinate rotations. The DCM describing the rotation from 
+the orbital reference frame $\mathcal{O}$ to the body reference frame $\mathcal{B}$, $\mathbf{A}_{\mathcal{O}}^{\mathcal{B}}$, 
+can be represented by three Eular angles. Each of the angles corresponds to one coordinate rotation. The order
+of the Eular 1-2-3 or a Roll, Ptich, Yaw rotation, shown in Figure 3.5, is expressed as
 
 \begin{equation}
-    \boldsymbol{A}_{\mathcal{C}}^{\mathcal{B}} = R_x(\phi)R_y(\theta)R_z(\psi)
+    \boldsymbol{A}_{\mathcal{O}}^{\mathcal{B}} = R_x(\phi)R_y(\theta)R_z(\psi)
     \label{Eq:3.4}
 \end{equation}
 
@@ -330,7 +82,7 @@ of the Eular 1-2-3 rotation, shown in Figure 3.5, is expressed as}
     \end{bmatrix}
 \end{equation}
 
-\textcolor{red}{Where S is the sine function and C is the cosine function. The Eular angles are calculated as follows}
+\noindent Where S is the sine function and C is the cosine function. The Eular angles are calculated as follows
 
 \begin{equation}
     \phi = \arctan2\left(\frac{a_{2,3}}{a_{3,3}}\right)
@@ -344,10 +96,18 @@ of the Eular 1-2-3 rotation, shown in Figure 3.5, is expressed as}
     \psi = \arctan2\left(\frac{a_{1,2}}{a_{1,1}}\right)
 \end{equation}
 
-\textcolor{red}{mathematicl singularities occur when using Eular angles to represent large rotations. When both $a_{1,1}$ and $a_{1,2}$ in Equation \ref{Eq:3.4} are zero, the expressions
-for $\psi$ and $\theta$ ar undefined. This is known as \textit{gimbal lock}, where the changes in the first and third Eular angles are indistinguishable when the second angle nears
-a criticual value. Alternatively, the DCM can be described using quaternions, which do not have these singularities. The quaternion rotation is Figure ?? is expressed by the Eular axis
-$\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/modelling/213 Eular Rotation.pdf}
+    \caption{Eular 1-2-3 Rotation\cite{Jongh}}
+    \label{fig:3.1}
+\end{figure}
+
+\noindent Mathematicl singularities occur when using Eular angles to represent large rotations. When both $a_{1,1}$ and $a_{1,2}$ in Equation\ref{Eq:3.4} are zero, 
+the expressions for $\psi$ and $\theta$ are undefined. This is known as \textit{gimbal lock}, where the changes in the first and third Eular angles are 
+indistinguishable when the second angle nears a criticual value. Alternatively, the DCM can be described using quaternions, which do not have 
+these singularities. The quaternion rotation is Figure\ref{fig:3.1} is expressed by the Eular axis
+$\mathbf{\bar{e}}={[e_x,e_y,e_z]}^T$ and the angle $\theta$
 
 \begin{equation}
     \mathbf{q} = \begin{bmatrix} q_s \\ q_x \\ q_y \\ q_z \end{bmatrix}
@@ -361,10 +121,10 @@ $\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
     \label{fig:3.2}
 \end{figure}
 
-\textcolor{red}{The DCM as a function of Quaternion set is expressed as,}
+\noindent The DCM as a function of Quaternion set is expressed as,
 
 \begin{equation}
-    \mathbf{A}_{\mathcal{C}}^{\mathcal{B}} = 
+    \mathbf{A}_{\mathcal{O}}^{\mathcal{B}} = 
     \begin{bmatrix}
     q_s^2 + q_x^2 - q_y^2 - q_z^2 & 2(q_x q_y - q_s q_z) & 2(q_x q_z + q_s q_y) \\
     2(q_x q_y + q_s q_z) & q_s^2 - q_x^2 + q_y^2 - q_z^2 & 2(q_y q_z - q_s q_x) \\
@@ -372,10 +132,10 @@ $\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
     \end{bmatrix}
 \end{equation}
 
-\textcolor{red}{Using the normalisation constraint, $q_s^2 + q_x^2 + q_y^2 + q_z^2 = 1$, the DCM Simplifies to,}
+\noindent Using the normalisation constraint, $q_s^2 + q_x^2 + q_y^2 + q_z^2 = 1$, the DCM Simplifies to,
 
 \begin{equation}
-    \mathbf{A}_{\mathcal{C}}^{\mathcal{B}} = 
+    \mathbf{A}_{\mathcal{O}}^{\mathcal{B}} = 
     \begin{bmatrix}
     1 - 2(q_y^2 + q_z^2) & 2(q_x q_y - q_s q_z) & 2(q_x q_z + q_s q_y) \\
     2(q_x q_y + q_s q_z) & 1 - 2(q_x^2 + q_z^2) & 2(q_y q_z - q_s q_x) \\
@@ -383,25 +143,25 @@ $\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
     \end{bmatrix}
 \end{equation}
 
-\textcolor{red}{The body-fixed angular rates of the satellite in CRF, $\mathbf{\omega}_{\mathcal{C}}^{\mathcal{B}}$, is expressed as a function of qauternions by,}
+\noindent The body-fixed angular rates of the satellite in ORB, $\mathbf{\omega}_{\mathcal{B/O}}$, is expressed as a function of qauternions by,
 
 \begin{equation}
-    \mathbf{\omega}_{\mathcal{C}}^{\mathcal{B}} = 
+    \mathbf{\omega}_\mathcal{B/O} = 
     \begin{bmatrix}
         \omega_{bx} \\ \omega_{by} \\ \omega_{bz}
     \end{bmatrix}
     = 2
     \begin{bmatrix}
        -q_x & q_s & -q_z & q_y \\
-       -q_3 & q_4 & q_1 & -q_2 \\
-       -q_4 & -q_3 & q_2 & q_s 
+       -q_y & q_z & q_s & -q_x \\
+       -q_z & -q_y & q_x & q_s 
     \end{bmatrix}
     \begin{bmatrix}
         \dot{q_s} \\ \dot{q_x} \\ \dot{q_y} \\ \dot{q_z}
     \end{bmatrix}
 \end{equation}
 
-\textcolor{red}{Inversly the quaternion rates as a function of the body rates are,}
+\noindent Inversly the quaternion rates as a function of the body rates are,
 
 \begin{equation}
     \begin{bmatrix}
@@ -420,9 +180,10 @@ $\mathbf{\bar{e}}=[e_x,e_y,e_z]^T$ and the angle $\theta$}
     \end{bmatrix}
 \end{equation}
 
-\textcolor{red}{Quaternions will be used throughout this thesis for attitude representations. Quaternions do not have ambiguity regarding the order of rotations
-and the rotation is around a well-defined axis. The sin and cosine elements of the rotation matrix are already encodedin the quaternion form of the DCM. Therfore,
-only one matrix operation is required for attitude transforms, where Eular angles reguire three.}
+\noindent Throughout this thesis, quaternions serve as the primary attitude representation method. Quaternions eliminate rotational sequence 
+ambiguities and define rotations about a clearly specified axis. The trigonometric components of the rotation matrix are inherently embedded 
+within the quaternion-based DCM formulation. Consequently, attitude transformations require only a single matrix operation using quaternions, whereas 
+Euler angle representations necessitate three separate operations.
 
 %=====================================================================================================================================================================================
 
@@ -438,13 +199,15 @@ For the translational dynamics, Newton's second law governs the linear motion of
 \mathbf{v}_t &= \mathbf{v}_{t-1} + \frac{1}{m}\mathbf{F}(t)\Delta t
 \end{align}
 
-\noindent where $\mathbf{F}(t)$ represents the net external force acting on the satellite. For the orbital environment 
-considered in this work, where external perturbations are negligible compared to gravitational forces, and given that 
-precise mass properties may not be available, the translational motion can be approximated using kinematic models where 
-the current velocity depends primarily on the previous velocity state.
+\noindent where $\mathbf{F}$ denotes the resultant external force applied to the satellite. 
+Within the orbital regime examined in this study, external disturbances are considered insignificant relative to 
+gravitational effects. Additionally, given the potential unavailability of precise mass characteristics, the translational dynamics 
+may be adequately represented through kinematic approximations wherein the instantaneous velocity is predominantly governed by the preceding velocity state.
+\vspace{0.5cm}
 
-
-In orbital mechanics the $\mathbf{F}$ is proportional to the distance $\mathbf{r}$ of the center of mass where the gravitional force is governed by the following equation.
+\noindent In orbital mechanics, the gravitational force $\mathbf{F}$ acting on a spacecraft is 
+proportional to its position vector $\mathbf{r}$ relative to the center of mass. This force is described by the following equation, 
+where $\boldsymbol{\mu}$ denotes Earth’s gravitational parameter:
 
 
 \begin{align}
@@ -453,18 +216,20 @@ In orbital mechanics the $\mathbf{F}$ is proportional to the distance $\mathbf{r
 \end{align}
 
 
-The acceleration of the space craft can be influnced by different factors like $\mathbf{F}_{G}$ gravity, $\mathbf{F}_{J2}$ J2 perturbations, $\mathbf{F}_{drag}$ atmospheric drag,
-$\mathbf{F}_{sol}$ solar radiation presure and other perturbations $\mathbf{F}_{misc}$.
+\noindent The acceleration of a spacecraft in orbit is influenced by several factors, including the primary gravitational 
+force $\mathbf{F}_G$, the $J_2$ perturbation $\mathbf{F}_{J2}$, atmospheric drag $\mathbf{F}_{\text{drag}}$, solar radiation 
+pressure $\mathbf{F}_{\text{sol}}$, and other miscellaneous perturbations $\mathbf{F}_{\text{misc}}$.
+\vspace{0.5cm}
 
-This wil mean the total force on the satellite would becomes
-
+\noindent The total force acting on the satellite can therefore be expressed as:
 \begin{align}
     \mathbf{F}_{total} = \mathbf{F}_{G} + \mathbf{F}_{J2} + \mathbf{F}_{drag} + \mathbf{F}_{sol} + \mathbf{F}_{misc}
 \end{align}
 
-But as we are only going to model LEO (Low Earth Orbits) for a short period of time onlt the $\mathbf{F}_{G}$ and $\mathbf{F}_{J2}$ is considered.
+\noindent However, since we are only modeling Low Earth Orbits (LEO) over a short time period, only the primary gravitational force $\mathbf{F}_G$ and the $J_2$ 
+perturbation $\mathbf{F}_{J2}$ are considered.
 
-Modelling the J2 pertubation is moddled in ECI using the following equation
+\noindent The $J_2$ perturbation, which accounts for the Earth's oblateness, is modeled in the Earth-Centered Inertial (ECI) frame using the following equation:
 
 \begin{equation}
 \mathbf{a}_{J2} = \frac{3}{2}*J_2*\frac{\mu R_E}{||\mathbf{r}||^5}
@@ -473,53 +238,48 @@ Modelling the J2 pertubation is moddled in ECI using the following equation
  r_z(3-5\frac{z^2}{r^2}) \end{bmatrix}
 \end{equation}
 
-
-Where 
-
-\begin{itemize}
-    \item $\mu$ is Earth's gravitational parameter.
-    \item $R_E$ is the radius of the Earth.
-    \item $J_2$ is the J2 factor
-    \item $\mathbf{r}$ is the satellite position in ECI
-\end{itemize}
+\noindent In this equation, $\mu$ represents Earth's gravitational parameter, $R_E$ is the 
+mean radius of the Earth, $J_2$ is the second zonal harmonic coefficient accounting for the Earth's 
+oblateness, and $\mathbf{r}$ denotes the satellite's position vector expressed in the Earth-Centered Inertial (ECI) frame.
 
 \mysubsubsection{Rotational Dynamics}{Rotational Dynamics}
 
-The rotational dynamics of a rigid body satellite can be described using the Newton-Euler equations, 
-which are applicable to all rigid inertial bodies . The angular momentum of the satellite is expressed as:
+The rotational dynamics of a rigid satellite are governed by the Newton-Euler equations, which apply to all rigid inertial bodies.
+ The angular momentum $\mathbf{H}$ of the satellite is expressed as:
 
 \begin{equation}
 \dot{\mathbf{H}} = \frac{d\mathbf{H}}{dt} = \mathbf{I}\dot{\boldsymbol{\omega}}
 \end{equation}
 
-\noindent where $\mathbf{H}$ represents the angular momentum vector and $\mathbf{I}$ is the diagonalized moment of 
-inertia tensor about the satellite's principal axes. In the absence of external torques, the rotational kinematics 
-of a rigid satellite about its center of mass can be described by Euler's rotational equations:
+\noindent where $\mathbf{H}$ is the angular momentum vector, $\boldsymbol{\omega}$ is the angular velocity vector expressed in the body 
+frame, and $\mathbf{I}$ is the diagonalized moment of inertia tensor about the satellite's principal axes.
+\vspace{0.5cm}
+
+\noindent In the absence of external torques, the rotational motion about the satellite's center of mass can be described by Euler's equations:
 
 \begin{align}
-I_{xx}\dot{\omega}_x &= \omega_y\omega_z(I_{yy} - I_{zz}) \\
-I_{yy}\dot{\omega}_y &= \omega_x\omega_z(I_{zz} - I_{xx}) \\
-I_{zz}\dot{\omega}_z &= \omega_x\omega_y(I_{xx} - I_{yy})
+I_{xx} \dot{\omega}_x &= \omega_y \omega_z (I_{yy} - I_{zz}) \\
+I_{yy} \dot{\omega}_y &= \omega_x \omega_z (I_{zz} - I_{xx}) \\
+I_{zz} \dot{\omega}_z &= \omega_x \omega_y (I_{xx} - I_{yy})
 \end{align}
 
-\noindent where $I_{xx}$, $I_{yy}$, and $I_{zz}$ are the principal moments of inertia, which remain constant and 
-depend on the satellite's mass distribution and geometric configuration. 
+\noindent where $I_{xx}$, $I_{yy}$, and $I_{zz}$ are the principal moments of inertia, which are constant and determined by the satellite's mass distribution and geometry.
+\vspace{0.5cm}
 
-The stability characteristics of the satellite's rotational 
-motion are governed by its mass distribution. According to Marsden and Ratiu , rotation about the major and minor principal 
-axes is inherently stable, while rotation about the intermediate axis exhibits unstable behavior. Under constant energy conditions, any 
-initial rotation about the intermediate axis will gradually redistribute energy to the major and minor axes through nutation effects.
+\noindent The stability of the satellite's rotational motion is influenced by its moment of inertia. According to Marsden and Ratiu, rotation about the 
+major or minor principal axis is stable, while rotation about the intermediate axis is inherently unstable. Under constant energy conditions, any 
+initial rotation around the intermediate axis will tend to redistribute energy toward the major and minor axes due to nutation effects.
+\vspace{0.5cm}
 
-To propagate the quaternion representing the satellite's attitude over time, the quaternion derivative must first be computed.
- The time derivative of the quaternion $\mathbf{q}_{B/I}$, which describes the rotation from the inertial frame to the body frame,
-is calculated using quaternion multiplication with the angular velocity vector:
+\noindent To propagate the satellite's attitude over time, the quaternion derivative must be computed. The quaternion $\mathbf{q}_{B/I}$, which represents the 
+rotation from the inertial frame to the body frame, evolves according to:
 
 \begin{equation}
 \dot{\mathbf{q}}_{B/I} = \frac{1}{2}(\mathbf{q}_{B/I} \otimes \boldsymbol{\omega})
 \end{equation}
 
-\noindent where $\boldsymbol{\omega} = [\omega_x, \omega_y, \omega_z]^T$ is the angular velocity vector expressed in the body frame. 
-Expanding this quaternion multiplication yields:
+\noindent where $\boldsymbol{\omega} = [\omega_x, \omega_y, \omega_z]^T$ is the angular velocity vector in the body frame, and $\otimes$ denotes 
+quaternion multiplication. Expanding this yields:
 
 \begin{equation}
 \dot{\mathbf{q}}_{B/I} = \frac{1}{2}
@@ -531,58 +291,256 @@ q_{B/I,3} \omega_x + q_{B/I,0} \omega_y - q_{B/I,1} \omega_z \\
 \end{bmatrix}
 \end{equation}
 
-\noindent where $q_{B/I,0}$, $q_{B/I,1}$, $q_{B/I,2}$, and $q_{B/I,3}$ are the scalar and vector components of the quaternion, respectively.
+\noindent where $q_{B/I,0}$ is the scalar part and $q_{B/I,1}, q_{B/I,2}, q_{B/I,3}$ are the vector components of the quaternion.
+\vspace{0.5cm}
 
-The quaternion integration is performed using a simple Euler integration scheme. First, the quaternion is propagated forward in time using:
+\noindent Quaternion propagation is performed using a simple Euler integration scheme. First, the quaternion is advanced in time as:
 
 \begin{equation}
-\bar{\mathbf{q}}_{B/I}(t + \Delta t) = \mathbf{q}_{B/I}(t) + \dot{\mathbf{q}}_{B/I}\Delta t
+\bar{\mathbf{q}}_{B/I}(t + \Delta t) = \mathbf{q}_{B/I}(t) + \dot{\mathbf{q}}_{B/I} \Delta t
 \end{equation}
 
-\noindent where $\bar{\mathbf{q}}_{B/I}(t + \Delta t)$ represents the unnormalized quaternion after integration. Since quaternion integration
- may introduce numerical errors that violate the unit quaternion constraint, the result must be renormalized:
+\noindent where $\bar{\mathbf{q}}_{B/I}$ is the unnormalized quaternion. To maintain a valid attitude representation, the quaternion must be renormalized:
 
 \begin{equation}
 \mathbf{q}_{B/I}(t + \Delta t) = \frac{\bar{\mathbf{q}}_{B/I}(t + \Delta t)}{||\bar{\mathbf{q}}_{B/I}(t + \Delta t)||}
 \end{equation}
 
-\noindent This normalization step ensures that the quaternion maintains its unit magnitude, preserving the validity of the attitude representation.
+\noindent This normalization step ensures that the quaternion maintains unit magnitude throughout integration.
+
+\mysection{Refrence Frame Transformations}{Refrence Frame Transformations}
+
+In this project, several different reference frames will be encountered. To accurately construct the measurement model, it is 
+essential to understand each of these reference frames and the transformations between them.
+
+\mysubsection{Transformation Matrix}{Transformation Matrix}
+
+Transformations between different reference frames are a fundamental part of spacecraft modeling and sensor simulation. These 
+transformations are typically expressed using homogeneous transformation matrices, which combine both rotation and translation components 
+into a single $4 \times 4$ matrix.
+
+\mysubsubsection{Rotation Matrix}{Rotation Matrix}
+
+In many practical scenarios, such as pure attitude transformations or body-to-inertial frame conversions, only rotational 
+alignment is needed. In such cases, only the DCM $\mathbf{A}$ is used like discussed in previous chapters, and the transformation is defined as:
+
+\begin{equation}
+    \mathbf{v}_\mathcal{O} = \mathbf{A}_\mathcal{I}^\mathcal{O} \cdot \mathbf{v}_\mathcal{I}
+\end{equation}
+
+\noindent Note that:
+
+\begin{equation}
+    \mathbf{A}_\mathcal{I}^\mathcal{O} = \left( \mathbf{A}_\mathcal{O}^\mathcal{I} \right)^\top
+\end{equation}
+
+\noindent and that the reverse rotation can be applied.
+
+\begin{equation}
+    \mathbf{v}_\mathcal{I} = \left(\mathbf{A}_\mathcal{I}^\mathcal{O}\right)^T \cdot \mathbf{v}_\mathcal{O}
+\end{equation}
+
+\noindent This relationship arises because direction cosine matrices are orthogonal.
+
+\mysubsubsection{Translation}{Translation}
+
+In many of the reference frames the translation of the origin is required, To translate from one refrence frame the the other
+
+\begin{equation}
+    \mathbf{v}_\mathcal{B/I} = \mathbf{v}_\mathcal{B} - \mathbf{r}_\mathcal{I}
+\end{equation}
+
+\noindent Where $\mathbf{v}_\mathcal{B/I}$ is the vector in $\mathcal{B}$ relative to $\mathcal{I}$ and $\mathbf{v}_\mathcal{B}$ is the vector in 
+the body frame and $\mathbf{r}_\mathcal{I}$ is the position of the Body frame origin in the inertial reference frame.
+
+\mysubsubsection{Homogeneous Transformation Matrix}{Homogeneous Transformation Matrix}
+
+\noindent A homogeneous transformation matrix from $\mathcal{I}$ to $\mathcal{O}$ is defined as:
+
+\begin{equation}
+    \mathbf{T}_\mathcal{I}^\mathcal{O} =
+    \begin{bmatrix}
+        \mathbf{A}_\mathcal{I}^\mathcal{O} & -\mathbf{A}_\mathcal{I}^\mathcal{O} \cdot \mathbf{r}_\mathcal{I} \\
+        \mathbf{0}_{1 \times 3} & 1
+    \end{bmatrix}
+\end{equation}
+
+\noindent Here, $\mathbf{A}_\mathcal{I}^\mathcal{O}$ is a $3 \times 3$ direction cosine matrix (DCM) that describes the orientation of frame $\mathcal{O}$ 
+relative to frame $\mathcal{I}$, and $\mathbf{r_I}$ is a translation vector from the origin of $\mathcal{I}$ to the origin of $\mathcal{O}$, expressed 
+in frame $\mathcal{I}$.
+
+\noindent This formulation ensures that both the direction and magnitude of vectors are preserved during the transformation. However, it is important to note 
+that the inverse transformation is \textbf{not} obtained from getting the transpose.
+
+\begin{equation}
+    \mathbf{T}_\mathcal{I}^\mathcal{O} \ne \left(\mathbf{T}_\mathcal{O}^\mathcal{I}\right)^T
+\end{equation}
+
+\mysubsection{Lattitude, longitude and altitude}{Lattitude, longitude and altitude}
+
+The lattitude, longitude and altitude of a feature or the position of the satellite is donated with the $\mathcal{L}$. The lattitude of a feature is the position of how high or low it above the
+equator, having a range of $-90^{\circ}$ to $90^{\circ}$. The longitude is based of the greenwich maridian, a longitude line that pases through the north- and south pole, it has a
+range of $-180^{\circ}$ to $180^{\circ}$. The altitude is measured form the the "WGS84" elliptical globe.
+
+\begin{equation}
+    \mathbf{r}_\mathcal{L} = \begin{bmatrix}
+    \lambda \\
+    \phi \\
+    h    
+    \end{bmatrix} 
+\end{equation}
+
+\mysubsection{Earth Cenetered Earth Fixed}{Earth Cenetered Earth Fixed}
+
+The Earth Centered Earth Fixed also known as Earth Centered Rotating (ECR) refrence frame is represented by the $\mathcal{R}$ and is very simular to the $\mathcal{L}$ reference
+ frame with the z-axis alligned with the northpole and the x-axis points at the crossing of the Prime Maridian an the Equator, where the y-axis completes the right hand rule. The x,y and z-axis is defined in kilometers.
+To covert from $\mathcal{L}$ to $\mathcal{R}$ is to use a "WGS84" transfomr. Where WGS84 stands for World Geodetic System 1984, which is the standard coordinate system used for
+Global Positioning System (GPS). The WGS84 transformation uses a reference ellipsoid that uses a semi-major axis of 6,378 km and a flatting of 1/298.2 .
+
+\begin{equation}
+        \mathbf{T}_{\mathcal{L}}^{\mathcal{F}} = f(\text{WGS84})
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/modelling/ECEF.pdf}
+        \caption{The Earth-Centered, Earth-Fixed (ECEF) reference frame.}
+        \label{fig:ecef}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/modelling/WGS84_mean_Earth_radius.pdf}
+        \caption{WGS84 model showing the mean Earth radius.}
+        \label{fig:wgs84}
+    \end{subfigure}
+    \caption{Geodetic reference frames and models used in Earth observation.}
+    \label{fig:geodetic-frames}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/modelling/GRAVIMETRIC_DATUM_ORIENTATION}
+    \caption{The Earth Cetred Earth Fixed reference frame}
+    \label{fig:3.4}
+\end{figure}
+
+
+
+
+\mysubsection{Earth Centered Inertial}{Earth Ceneterd Inertial}
+
+The Earth Centered Inertial refrence fream (ECI) refrenced by $\mathcal{I}$ shares a refrence frame axis with the ECEF, but is rotated about the z-axis. The Earth
+Centered refrence frame is defined as the x-axis pointing in the direction where the equatorial plane and the ecliptic plane cross, also known as the Vernal equanox, the
+z-axis is degined as the north pole and the Y axis completes the right hadn rule. This rotation is governed by the rotation speed of the earth $\omega_e$ which 
+is $7.2921\times10^{-5}$ rad/s and time $t$. To transform from the ECEF reference frame to the ECI reference frame one shouldrotate the Earth clockwise e.i. 
+
+\begin{equation}
+    \mathbf{A}_{\mathcal{F}}^{\mathcal{I}} = R(\omega_e t) = 
+    \begin{bmatrix}
+        \cos(-\omega_e t) & -\sin(-\omega_e t) & 0\\
+        \sin(-\omega_e t) & \cos(-\omega_e t) & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/ECI.pdf}
+    \caption{Earth Centered Earth Inertial Reference Frame}
+    \label{fig:3.5}
+\end{figure}
+
+\mysubsection{Orbital reference frame}{Orbital reference frame}
+
+The orbital reference frame used is the Local Vertical Local Horizon (LVLH) denoted by $\mathcal{O}$.The LVLH frame is a rotating, orbit-attached corrdinate
+system commonly used in spacecraft dynamics. It moves with the satellite and is defined relative to its orbit around Earth. The z-axis is the local vertical and is also called the Nadir direction, 
+it points to the barycenter of the system, in this case the center of the Earth. The y-axis is called the cross track t points 
+out of the orbital plane, typically the anti-angular momentum vector direction (anti-normal to the orbit plane). The x-axis is the "Local Horizon" also called
+"along track" pointing forward it is tangent to the orbit and completes the right hand rule.
+\vspace{0.5cm}
+
+\noindent If $\mathbf{r}$ is the position vector of the satellite and $\mathbf{v}$ is the velocity vector of the satellite.
+The equation for the reference frame is:
+
+\begin{align}
+    \bar{z}_{\mathcal{O}} &= -\frac{\mathbf{r}}{||\mathbf{r}||} \\
+    \bar{y}_{\mathcal{O}} &= \frac{\mathbf{r}\times\mathbf{v}}{||\mathbf{r}\times\mathbf{v}||}\\
+    \bar{x}_{\mathcal{O}} &= \bar{y}_{\mathcal{O}}\times\bar{z}_{\mathcal{O}}
+\end{align}
+
+\noindent For this reference frame there should also be a refrence frame translation introduced. Which is done by substracing $\mathbf{r}$ from the vector
+
+\begin{equation}
+    \mathbf{f}_{\mathcal{O}} = \mathbf{A}_{\mathcal{I}}^{\mathcal{O}}\times(\mathbf{f}_{\mathcal{I}} - \mathbf{r}_{\mathcal{I}})
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/LVLH.pdf}
+    \caption{The Orbital Reference frame (also known as the LVLH)}
+    \label{fig:3.6}
+\end{figure}
+
+\subsection{Body Referenece frame}
+
+The body reference frame denoted by $\mathcal{B}$ is the reference frame of the satellite body itself, with the center point referenced as the center of mass of the satellite body.
+with the z-axis defined as the yaw, x-axis defined as the roll and the y-axis defined as the pitch of the satellite. With the body frame z-axis and the orbital reference frame 
+as alligned at initialisiation
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/modelling/BRF.pdf}
+    \caption{}
+    \label{fig:BRF}
+\end{figure}
+
 
 
 \mysection{Sensor Modelling}{Sensor Modelling}
 
 \mysubsection{GPS Measurement Model}{GPS Measurement Model}
 
-In the simulation, GPS measurements are generated using the same underlying dynamics as the truth model, which is based on the two-body problem. This ensures consistency between the true satellite motion and the measurement framework. However, to emulate realistic sensor behavior, the GPS measurements are corrupted by both noise and drift.
+In the simulation, GPS measurements are generated using the same underlying dynamics as the truth model, which is based 
+on the two-body problem. This ensures consistency between the true satellite motion and the measurement framework. However, to emulate realistic 
+sensor behavior, the GPS measurements are corrupted by both noise and drift.
+\vspace{0.5cm}
 
-The GPS measurement model is expressed as:
+\noindent One of the GPS sensor outputs is called \$GPGGA which contains the tim, lattitude, longitude and altitude data. To model this measurement 
+the simualted measurement $\mathbf{x}_{\text{true},\text{pos}}$ needs to be converted to a the $\mathcal{L}$ representation
+
+\begin{equation}
+    \mathbf{x}_{\text{true},\text{pos},\mathcal{L}} = f(\text{WGS84},\mathbf{A}_\mathcal{I}^\mathcal{R},\mathbf{x}_{\text{true},\text{pos},\mathcal{I}})
+\end{equation}
+
+\noindent The GPS measurement model is expressed as:
 \begin{equation}
     \mathbf{z}_{GPS}(t) = \mathbf{x}_{\text{true}}(t) + \boldsymbol{\eta}_{GPS}(t) + \mathbf{d}_{GPS}(t),
 \end{equation}
-where:
-\begin{itemize}
-    \item $\mathbf{z}_{GPS}(t)$ is the observed GPS measurement at time $t$,
-    \item $\mathbf{x}_{\text{true}}(t)$ is the true state of the system as propagated by the two-body equations of motion,
-    \item $\boldsymbol{\eta}_{GPS}(t)$ represents zero-mean Gaussian measurement noise, and
-    \item $\mathbf{d}_{GPS}(t)$ is the GPS drift.
-\end{itemize}
 
-The drift component models the slow, unbounded accumulation of error that is characteristic of certain classes of low-cost GPS receivers. It is implemented as a random walk process:
+\noindent Let $\mathbf{z}_{GPS}(t)$ denote the observed GPS measurement at time $t$, which is modeled as the sum of the true system state $\mathbf{x}_{\text{true}}(t)$, 
+as propagated by the two-body equations of motion, additive zero-mean Gaussian measurement noise $\boldsymbol{\eta}_{GPS}(t)$, and a GPS drift component $\mathbf{d}_{GPS}(t)$.
+\vspace{0.5cm}
+
+\noindent The drift component models the slow, unbounded accumulation of error that is characteristic of certain classes of low-cost GPS receivers. 
+It is implemented as a random walk process:
 \begin{equation}
     \mathbf{d}_{GPS}(t) = \mathbf{d}_{GPS}(t - \Delta t) + \mathbf{q}_{GPS}(t),
 \end{equation}
-where:
-\begin{itemize}
-    \item $\mathbf{d}_{GPS}(t - \Delta t)$ is the drift at the previous timestep,
-    \item $\mathbf{q}_{GPS}(t)$ is a zero-mean stochastic increment modeling the drift rate, typically drawn from a Gaussian distribution:
-    \begin{equation}
-        \mathbf{q}_{GPS}(t) \sim \mathcal{N}(0, \sigma_d^2 \mathbf{I}).
-    \end{equation}
-\end{itemize}
-
-This formulation captures both short-term measurement variability through $\boldsymbol{\eta}_{GPS}(t)$ and long-term bias trends via $\mathbf{d}_{GPS}(t)$, allowing for more realistic testing and evaluation of estimation algorithms under degraded or imperfect sensing conditions.
 
 
+\noindent Here, $\mathbf{d}_{GPS}(t - \Delta t)$ represents the GPS drift at the previous timestep, and $\mathbf{q}_{GPS}(t)$ is a zero-mean stochastic increment that models the drift rate. This increment is typically drawn from a Gaussian distribution, given by
+\begin{equation}
+    \mathbf{q}_{GPS}(t) \sim \mathcal{N}(0, \sigma_d^2 \mathbf{I}).
+\end{equation}
+
+
+\noindent This formulation captures both short-term measurement variability through $\boldsymbol{\eta}_{GPS}(t)$ and long-term bias trends 
+via $\mathbf{d}_{GPS}(t)$, allowing for more realistic testing and evaluation of estimation algorithms under degraded or imperfect sensing conditions.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/modelling/GPSMeasurement.png}
@@ -650,7 +608,7 @@ To simulate this noise, a small random rotation axis is sampled from a standard 
     \end{bmatrix}
 \end{equation}
 
-where $\hat{\mathbf{u}}$ is a unit vector sampled from $\mathcal{N}(0,1)^3$ and $\theta = \deg2rad(ST_{\text{noise}})$.
+where $\hat{\mathbf{u}}$ is a unit vector sampled from $\mathcal{N}{(0,1)}^3$ and $\theta = \deg2rad(ST_{\text{noise}})$.
 
 \paragraph{Measurement Model}
 
@@ -932,6 +890,28 @@ The TRIAD method thus yields a closed-form attitude estimate without optimizatio
     \caption{}
     \label{fig:CSS}
 \end{figure}
+
+
+\mysubsection{Sensor Comparison}{Sensors Comparison}
+
+\begin{table}[H]
+    \caption{Your table caption}
+    \footnotesize
+    \centering
+    \begin{tabular}{lccc}    % <--- define number of columns and alignment
+    \toprule
+         & Noise Profile & Drift Rate &  Sampling Rate \\
+         & & & [Hz] \\
+    \midrule
+        GPS & 10 m & 3 m & 10 \\
+        Gyroscope & 0.05 deg & 1e-3 deg & 50 \\
+        Star Tracker & 0.002 deg & - & 1 \\
+        CSS & 5 deg & - & 2 \\
+        Magnetometer & 10 deg & - & 2 \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
 
 \mysection{Conclusion}{Conclusion}
 \label{sec:modconclusion}

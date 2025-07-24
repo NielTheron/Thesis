@@ -1,11 +1,11 @@
 
 \begin{thenomenclature} 
 \nomgroup{C}
-  \item [{$\omega_e$}]\begingroup Rotation speed of the Earth\nomeqref {0}\nompageref{ix}
-  \item [{$c$}]\begingroup A constant.\nomeqref {0}\nompageref{ix}
+  \item [{$\omega_e$}]\begingroup Rotation speed of the Earth\nomeqref {0}\nompageref{x}
+  \item [{$c$}]\begingroup A constant.\nomeqref {0}\nompageref{x}
 \nomgroup{F}
-  \item [{$f$}]\begingroup A function.\nomeqref {0}\nompageref{ix}
+  \item [{$f$}]\begingroup A function.\nomeqref {0}\nompageref{x}
 \nomgroup{V}
-  \item [{$\mathbf{x}$}]\begingroup A variable.\nomeqref {0}\nompageref{ix}
+  \item [{$\mathbf{x}$}]\begingroup A variable.\nomeqref {0}\nompageref{x}
 
 \end{thenomenclature}

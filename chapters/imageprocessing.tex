@@ -58,6 +58,37 @@ y_\mathcal{P}
 \end{bmatrix}
 \end{equation}
 
+\mysubsection{Camera Reference Frame}{Camera Reference Frame}
+
+The camera refrence frame denoted by $\mathcal{C}$. In many Earth Observation missions the camera has its own reference frame defined relative to the Earth. Where the x-axis is
+pointing directly to the Earth's surface indicatting the cameras roll axis, with the y-axis representing the pitch axis represents an angle ahead or behind of the orbit and the
+z-axis representing the yaw axis.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/CRF.pdf}
+    \caption{}
+    \label{fig:CRF}
+\end{figure}
+
+\begin{equation}
+    \mathbf{f}_{\mathcal{C}} = \mathbf{A}_{\mathcal{O}}^{\mathcal{C}}\times\mathbf{f}_{\mathcal{O}}
+\end{equation}
+
+\mysubsection{Image Reference Frame}{Image Reference Frame}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/modelling/MRF.pdf}
+    \caption{}
+    \label{fig:MRF}
+\end{figure}
+
+
+%==================================================================================================================================================================================
+
+
 
 \mysubsection{Intrinsic Camera Parameters}{Intrinsic Camera Parameters}
 
@@ -529,5 +560,13 @@ For the geolocation.
 \textbf{Step 3: Use SIFT for feauture matching}
 
 \textbf{Step 4: Add geolocation}
+
+
+\mysubsection{Practical Considerations}{Practical Considerations}
+
+\mysubsubsection{Number of Valid Feature}{Number of Valid Features}
+
+
+\mysubsection{Conslusion}{Conclusion}
 
 

@@ -1,5 +1,7 @@
 # Stellenbosch University E&E Department LaTeX Template
 
+MJ Booyson
+
 This template was adapted from [this template](https://github.com/kamperh/stellenbosch_ee_report_template) made by Prof Herman Kamper.
 
 To use the template for Skripsie or PhD proposals, just change the document class and ```\degree``` in `frontmatter/title_page.tex`:

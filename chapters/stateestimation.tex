@@ -111,29 +111,254 @@ a Taylor series expansion.
 where
 
 
+\begin{equation}
+  \begin{aligned}
+    \mathbf{f}'(\mathbf{x})
+      &= \mathit{F}(\mathbf{x})
+       = \frac{\partial \mathbf{f}(\mathbf{x})}{\partial \mathbf{x}} \\
+      &=
+    \begin{bmatrix}
+      \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n} \\
+      \vdots & \ddots & \vdots \\
+      \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n}
+    \end{bmatrix}_{m \times n}
+  \end{aligned}
+\end{equation}
+
+$\mathit{F}(\mathbf{x})$ is referred to as the Jacobian matrix. Using this linearisation, the vector function, $\mathbf{g}$ and $\mathbf{h}$
+are approximated as,
+
+\begin{equation}
+    \mathbf{y}_{t-1}, \mathbf{u}_t \approx \mathbf{g}(\boldsymbol{\mu}_{t-1}, \mathbf{u}_t) + \mathbf{G}_t (\mathbf{y}_{t-1} - \boldsymbol{\mu}_{t-1})
+\end{equation}
+
+\begin{equation}
+    \mathbf{h}(\mathbf{y}_t) \approx \mathbf{h}(\boldsymbol{\mu}_t) + \mathbf{H}_t (\mathbf{y}_t - \boldsymbol{\mu}_t)
+\end{equation}
+
+where \( \mathbf{G}_t \) and \( \mathbf{H}_t \) are the Jacobian matrices of \( \mathbf{g} \) and \( \mathbf{h} \), respectively. This linearisation leads to the approximate distribution
+
+\begin{equation}
+    p(\mathbf{y}_t \mid \mathbf{u}_{1:t}, \mathbf{z}_{1:t}) \approx \mathcal{N}(\boldsymbol{\mu}_{t \mid t}, \boldsymbol{\Sigma}_{t \mid t})
+\end{equation}
+
+
 
 \mysection{System Modelling}{System Modelling}
 \label{sec:statesystemmodel}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Figure1.pdf}
+    \caption{Satellite pose estimation concept showing orbital geometry, reference frames}
+    \label{fig:System Modelling}
+\end{figure}
+
+As we can see in Figure \ref{fig:System Modelling} to determine the pose of the satellite the position and the attitude of the satellite in the ECI reference frames needs to be
+determines
+
+\begin{equation}
+    \mathbf{x}_t =
+    \begin{bmatrix}
+        \mathbf{r}_\mathcal{I} & \mathbf{v}_\mathcal{I} & \mathbf{q}_\mathcal{B/I} & \boldsymbol{\omega}_\mathcal{B/I}^\mathcal{B}
+    \end{bmatrix}
+    ^T
+\end{equation}
+
 \mysubsection{Motion Model}{Motion Model}
 \label{sec:statemotionmodel}
 
+The rotation of the satellite body is non-linear and the satellite motion from one timestep to the next when using Newton-Eular coupling can be described by the vector function
+$\mathbf{g}$,
 
+\begin{equation}
+    \mathbf{x}_t = \mathbf{g}(\mathbf{x}_{t-1},\mathbf{u}_t) + \boldsymbol{\epsilon}
+\end{equation}
+
+which is expanded to,
+
+\begin{equation}
+    \mathbf{x}_t
+    =
+    \begin{bmatrix}
+        r_{x,t} \\
+        r_{y,t} \\
+        r_{z,t} \\
+        v_{x,t} \\
+        v_{y,t} \\
+        v_{z,t} \\
+        q_{s,t} \\
+        q_{x,t} \\
+        q_{y,t} \\
+        q_{z,t} \\
+        \omega_{x,t} \\
+        \omega_{y,t} \\
+        \omega_{z,t} \\
+    \end{bmatrix}
+    = \mathbf{x}_{t-1} +
+    \begin{bmatrix}
+        v_{x,t-1} \\
+        v_{x,t-1} \\
+        v_{x,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{x,t-1} + J2_{x,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{y,t-1} + J2_{y,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{z,t-1} + J2_{z,t-1} \\
+        \frac{1}{2}(-\omega_{x,t-1}q_{x,t-1} - \omega_{y,t-1}q_{y,t-1} - \omega_{z,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{x,t-1}q_{s,t-1} + \omega_{z,t-1}q_{y,t-1} - \omega_{y,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{y,t-1}q_{s,t-1} - \omega_{z,t-1}q_{x,t-1} + \omega_{x,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{z,t-1}q_{s,t-1} + \omega_{y,t-1}q_{x,t-1} - \omega_{x,t-1}q_{y,t-1}) \\
+        \frac{1}{\mathit{I}_{xx}}(\mathit{I}_{yy}-\mathit{I}_{zz})\omega_{y,t-1}\omega_{z,t-1} \\
+        \frac{1}{\mathit{I}_{yy}}(\mathit{I}_{zz}-\mathit{I}_{xx})\omega_{z,t-1}\omega_{x,t-1} \\
+        \frac{1}{\mathit{I}_{zz}}(\mathit{I}_{xx}-\mathit{I}_{yy})\omega_{x,t-1}\omega_{y,t-1}
+    \end{bmatrix}
+    \Delta t + 
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        \mathit{T}_x/\mathit{I}_x \\
+        \mathit{T}_y/\mathit{I}_y \\
+        \mathit{T}_z/\mathit{I}_z
+    \end{bmatrix}
+\end{equation}
+
+The body-fixed axes of the target are chosen to coincide with its principle axes of inertia. The principle moment of inertia are given barycenter
+
+\begin{equation}
+    \mathbf{I}_\mathcal{B} = 
+    \begin{bmatrix}
+        \mathit{I}_{xx} & 0 & 0 \\
+        0 & \mathit{I}_{yy} & 0 \\
+        0 & 0 & \mathit{I}_{zz}
+    \end{bmatrix}
+\end{equation}
+
+External torques, $\mathit{T}_x$, $\mathit{T}_y$ and $\mathit{T}_z$, are asssumed to be zero and there is thus no control input, $\mathbf{u}_t$. 
+
+Thus 
+
+\begin{equation}
+    \mathbf{x}_t = \mathbf{g}(\mathbf{x}_{t-1})
+\end{equation}
+
+where
+
+\begin{equation}
+    \mathbf{x}_t
+    =
+    \begin{bmatrix}
+        r_{x,t} \\
+        r_{y,t} \\
+        r_{z,t} \\
+        v_{x,t} \\
+        v_{y,t} \\
+        v_{z,t} \\
+        q_{s,t} \\
+        q_{x,t} \\
+        q_{y,t} \\
+        q_{z,t} \\
+        \omega_{x,t} \\
+        \omega_{y,t} \\
+        \omega_{z,t} \\
+    \end{bmatrix}
+    = \mathbf{x}_{t-1} +
+    \begin{bmatrix}
+        v_{x,t-1} \\
+        v_{x,t-1} \\
+        v_{x,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{x,t-1} + J2_{x,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{y,t-1} + J2_{y,t-1} \\
+        -\frac{\mu}{|\mathbf{r}|^3}*r_{z,t-1} + J2_{z,t-1} \\
+        \frac{1}{2}(-\omega_{x,t-1}q_{x,t-1} - \omega_{y,t-1}q_{y,t-1} - \omega_{z,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{x,t-1}q_{s,t-1} + \omega_{z,t-1}q_{y,t-1} - \omega_{y,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{y,t-1}q_{s,t-1} - \omega_{z,t-1}q_{x,t-1} + \omega_{x,t-1}q_{z,t-1}) \\
+        \frac{1}{2}( \omega_{z,t-1}q_{s,t-1} + \omega_{y,t-1}q_{x,t-1} - \omega_{x,t-1}q_{y,t-1}) \\
+        \frac{1}{\mathit{I}_{xx}}(\mathit{I}_{yy}-\mathit{I}_{zz})\omega_{y,t-1}\omega_{z,t-1} \\
+        \frac{1}{\mathit{I}_{yy}}(\mathit{I}_{zz}-\mathit{I}_{xx})\omega_{z,t-1}\omega_{x,t-1} \\
+        \frac{1}{\mathit{I}_{zz}}(\mathit{I}_{xx}-\mathit{I}_{yy})\omega_{x,t-1}\omega_{y,t-1}
+    \end{bmatrix}
+    \Delta t
+\end{equation}
 
 \mysubsection{Measurement Model}{Measurement Model}
 \label{sec:statemeasuremtmodel}
 
-\mysection{Simulation}{Simulation}
-\label{sec:statessimulation}
+\mysubsection{Earth Tracker Measurement Model}{Earth Tracker Measurement Model}
 
-\mysection{Practical Consideration}{Practical Consideration}
-\label{sec:statepracticalconsiderations}
+The Earth Tracker sends 2 inputs to the EKF, the measurement of the Earth tracker itself 
 
-\mysubsection{Number of Features}{Number of Features}
-\label{sec:statenof}
+\begin{equation}
+    \mathbf{z}_{ET} = \mathbf{f}_\mathcal{B} =
+    \begin{bmatrix}
+        x_\mathcal{B} \\
+        y_\mathcal{B} \\
+        z_\mathcal{B}
+    \end{bmatrix}
+\end{equation}
 
-\mysubsection{Outliers}{Outliers}
-\label{sec:stateoutliers}
+And the Geolocated feature vector through feature mathcing also refered to as the catalogue vector. $ \mathbf{f}_\mathcal{R}$
+
+To transform this vector into a vector to be comparable to the measurement.
+
+\begin{equation}
+    \mathbf{f}_\mathcal{B} = \mathbf{A}_{\mathcal{I},t}^\mathcal{B} \times \mathbf{A}_{\mathcal{R},t}^\mathcal{I} \times \mathbf{f}_\mathcal{R}
+\end{equation}
+
+
+Where $\mathbf{A}_{\mathcal{O},t}^\mathcal{B}$ is a function of the the quaternion $\mathbf{q}_\mathcal{B/I}$
+
+
+
+
+
+\mysubsection{Other Sensor Measurment model}{Other Sensor Measruement Models}
+
+\textbf{GPS}
+
+For the GPS it measures position in the ECEF reference frame, so it need to be converted to toe ECI reference frame.
+
+\begin{equation}
+    \mathbf{H}_{GPS} = 
+    \begin{bmatrix}
+        \cos(\omega_et) & -\sin(\omega_et) & 0 & \mathbf{0}_{1\times10} \\
+        \sin(\omega_et) & \cos(\omega_et) & 0 & \mathbf{0}_{1\times10} \\
+        0 & 0 & 1 & \mathbf{0}_{1\times10}
+    \end{bmatrix}
+\end{equation}
+
+\textbf{Gyroscope}
+
+for the gyroscope, the gyroscope alreadu measures $\boldsymbol{\omega}^\mathcal{B}_\mathcal{B/I}$ so it is just a direct relationship.
+
+\begin{equation}
+    \mathbf{H}_{GYR} = 
+    \begin{bmatrix}
+        \mathbf{0}_{1\times10} & 1 & 0 & 0 \\
+        \mathbf{0}_{1\times10} & 0 & 1 & 0 \\
+        \mathbf{0}_{1\times10} & 0 & 0 & 1 
+    \end{bmatrix}
+\end{equation}
+
+\textbf{TRIAD and Star Tracker}
+
+The Coarse Sun Sensor and Magnetometer measurements are pre-processed into an attitue value of the body frame relative to the Inertial reference frame.$\mathbf{q}_\mathcal{B/I}$
+
+\begin{equation}
+    \mathbf{H}_{TRIAD} = 
+    \begin{bmatrix}
+        \mathbf{0}_{1\times6} & 1 & 0 & 0 & 0 & \mathbf{0}_{1\times3}\\
+        \mathbf{0}_{1\times6} & 0 & 1 & 0 & 0 &\mathbf{0}_{1\times3}\\
+        \mathbf{0}_{1\times6} & 0 & 0 & 1 & 0 &\mathbf{0}_{1\times3}\\
+        \mathbf{0}_{1\times6} & 0 & 0 & 0 & 1 & \mathbf{0}_{1\times3}
+    \end{bmatrix}
+\end{equation}
 
 \mysection{Conclusion}{Conclusion}
 \label{sec:stateconclusion}

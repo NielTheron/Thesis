@@ -3,30 +3,33 @@
 \babel@toc {afrikaans}{}\relax 
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{3}{figure.caption.13}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{6}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces This figure represents the Earth Ceterned Earth Fixed reference frame with the X-axis defined in the direction of the equator and primemaridean with z-axis defined as the north pole and the y-axis completing the right had rule.}}{9}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces This figure represents the Earth Centered Inertial Reference frame with the x-axis defined in the direction of the vernel equanox, which is the defined as the crossing of the ecliptic plane and the eqautor, the z-axis is defined as the north pole and the y-axis completes the rght hand rule.}}{10}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces This figure represent the Local Vertical Local Horizon Referenece frame, more commonly refered to as the orbitial refrence frame. In the orbitial refrence frame the z-axis is defined as Nadir, meaning that it always points to the center of mass perfectly parallel to the oribital plane, the x-axis is defined as the vector tangentail to the plane, also known as the along track vector, and y is the completion of the right hand rule.}}{11}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces \relax }}{11}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces \relax }}{12}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces \relax }}{12}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Quaternion Rotation}}{14}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces \relax }}{19}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Orientation of the six coarse sun sensors on the CubeSat}}{22}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces \relax }}{24}{figure.caption.33}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces \relax }}{27}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Eular 1-2-3 Rotation\cite {Jongh}}}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Quaternion Rotation}}{8}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Geodetic reference frames and models used in Earth observation.}}{14}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The Earth Cetred Earth Fixed reference frame}}{15}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Earth Centered Earth Inertial Reference Frame}}{16}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The Orbital Reference frame (also known as the LVLH)}}{17}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces \relax }}{17}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces \relax }}{19}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Orientation of the six coarse sun sensors on the CubeSat}}{21}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces \relax }}{23}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces \relax }}{26}{figure.caption.31}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PinHole Model}}{28}{figure.caption.35}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Image Plane}}{29}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces High Resolution Image projected on Ellipsoid}}{36}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Origin Correction}}{37}{figure.caption.38}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Origin Correction 2}}{37}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PinHole Model}}{28}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Image Plane}}{29}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax }}{30}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \relax }}{30}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces High Resolution Image projected on Ellipsoid}}{37}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Origin Correction}}{38}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Origin Correction 2}}{38}{figure.caption.39}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive estimator algorithm flowchart}}{39}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive estimator algorithm flowchart}}{40}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{43}{figure.caption.41}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Image Plane}}{43}{figure.caption.41}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Image Plane}}{47}{figure.caption.42}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
