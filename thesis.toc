@@ -5,100 +5,110 @@
 \contentsline {chapter}{Uittreksel}{iv}{chapter*.4}%
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{Table of Contents}{v}{chapter*.4}%
-\contentsline {chapter}{List of Figures}{viii}{chapter*.5}%
-\contentsline {chapter}{List of Tables}{viii}{chapter*.6}%
-\contentsline {chapter}{Nomenclature}{x}{chapter*.8}%
-\contentsline {section}{Variables and functions}{x}{section*.9}%
-\contentsline {section}{Acronyms and abbreviations}{xi}{section*.10}%
-\contentsline {section}{Definitions}{xii}{section*.12}%
-\contentsline {section}{Variables and functions}{1}{section*.12}%
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Problem Background}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Problem Definition}{2}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Proposed Solution}{4}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Document Outline}{4}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Literature}{5}{chapter.2}%
+\contentsline {chapter}{List of Figures}{ix}{chapter*.5}%
+\contentsline {chapter}{List of Tables}{xiii}{chapter*.6}%
+\contentsline {chapter}{Nomenclature}{xv}{chapter*.8}%
+\contentsline {section}{Variables and functions}{xv}{section*.9}%
+\contentsline {section}{Acronyms and abbreviations}{xx}{section*.10}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Problem Background}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Proposed Solution: Visual Navigation for Pose Estimation}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Contributions and Thesis Outline}{3}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Literature Study}{5}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introduction}{5}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Modelling}{6}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{6}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Rigid Body Mechanics}{6}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Kinematics}{6}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Dynamics}{9}{subsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}Translational Dynamics}{9}{subsubsection.3.2.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2.2}Rotational Dynamics}{10}{subsubsection.3.2.2.2}%
-\contentsline {section}{\numberline {3.3}Refrence Frame Transformations}{12}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Transformation Matrix}{12}{subsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.1.1}Rotation Matrix}{12}{subsubsection.3.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.3.1.2}Translation}{13}{subsubsection.3.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.3.1.3}Homogeneous Transformation Matrix}{13}{subsubsection.3.3.1.3}%
-\contentsline {subsection}{\numberline {3.3.2}Lattitude, longitude and altitude}{13}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Earth Cenetered Earth Fixed}{14}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Earth Centered Inertial}{15}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Orbital reference frame}{16}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Body Referenece frame}{17}{subsection.3.3.6}%
-\contentsline {section}{\numberline {3.4}Sensor Modelling}{18}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}GPS Measurement Model}{18}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Gyroscope Measuement Model}{19}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Star Tracker}{20}{subsection.3.4.3}%
-\contentsline {paragraph}{Noise Quaternion Generation}{20}{paragraph*.22}%
-\contentsline {paragraph}{Measurement Model}{20}{paragraph*.23}%
-\contentsline {subsection}{\numberline {3.4.4}Coarse Sun Senser}{20}{subsection.3.4.4}%
-\contentsline {paragraph}{Sun Vector in Inertial Frame}{21}{paragraph*.24}%
-\contentsline {paragraph}{Transformation to Body Frame}{21}{paragraph*.25}%
-\contentsline {paragraph}{Sensor Layout and Response}{21}{paragraph*.26}%
-\contentsline {paragraph}{Measurement Noise}{22}{paragraph*.28}%
-\contentsline {paragraph}{Sun Vector Estimation}{22}{paragraph*.29}%
-\contentsline {subsection}{\numberline {3.4.5}Magnetometer}{22}{subsection.3.4.5}%
-\contentsline {subsection}{\numberline {3.4.6}TRIAD Attitude Estimation}{24}{subsection.3.4.6}%
-\contentsline {subsection}{\numberline {3.4.7}Sensor Comparison}{27}{subsection.3.4.7}%
-\contentsline {section}{\numberline {3.5}Conclusion}{27}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Image Processing}{28}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introduction}{28}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Pinhole Camera Model}{28}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Camera Reference Frame}{29}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Image Reference Frame}{30}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Intrinsic Camera Parameters}{30}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Extrensic Camera Paramters}{32}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Back Projection}{32}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Satellite Image Characteristics}{32}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Ground Sample Distance}{32}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Imaging Geometry}{33}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Lens Distortions}{33}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Feature Detection and Description}{33}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Classical Feature Detectors}{33}{subsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.1.1}SIFT}{33}{subsubsection.4.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.4.1.2}SURF}{34}{subsubsection.4.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.4.1.3}ORB}{35}{subsubsection.4.4.1.3}%
-\contentsline {subsubsection}{\numberline {4.4.1.4}Comparison}{36}{subsubsection.4.4.1.4}%
-\contentsline {section}{\numberline {4.5}Measurement Extraction}{36}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Image Generation}{36}{subsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.1.1}Rendering the Earth}{36}{subsubsection.4.5.1.1}%
-\contentsline {subsection}{\numberline {4.5.2}Earth Tracker Algorithm}{37}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Geolocation Process}{39}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Practical Considerations}{39}{subsection.4.5.4}%
-\contentsline {subsubsection}{\numberline {4.5.4.1}Number of Valid Feature}{39}{subsubsection.4.5.4.1}%
-\contentsline {subsection}{\numberline {4.5.5}Conslusion}{39}{subsection.4.5.5}%
-\contentsline {chapter}{\numberline {5}State Estimation}{40}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introduction}{40}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Recursive Estimation}{40}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Kalman Filter}{42}{section.5.3}%
-\contentsline {section}{\numberline {5.4}System Modelling}{43}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Motion Model}{44}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Measurement Model}{45}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Earth Tracker Measurement Model}{45}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Other Sensor Measurment model}{45}{subsection.5.4.4}%
-\contentsline {section}{\numberline {5.5}Conclusion}{46}{section.5.5}%
-\contentsline {chapter}{\numberline {6}System Integration}{47}{chapter.6}%
-\contentsline {section}{\numberline {6.1}System Diagram}{47}{section.6.1}%
-\contentsline {section}{\numberline {6.2}System Initialization}{47}{section.6.2}%
-\contentsline {paragraph}{Reference Frame Alignment at Initialization}{49}{paragraph*.43}%
-\contentsline {paragraph}{Angular Velocity Initialization}{49}{paragraph*.44}%
-\contentsline {chapter}{\numberline {7}Experiments}{51}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introduction}{51}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Conclusion}{51}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Conclusions and Future Work}{52}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusion}{52}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Future Work}{52}{section.8.2}%
-\contentsline {chapter}{References}{53}{chapter*.45}%
-\contentsline {chapter}{\numberline {A}Appendix title goes here}{54}{appendix.A}%
+\contentsline {section}{\numberline {2.2}Industry Trends}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Relative Pose Estimation}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Absolute Pose Estimation}{10}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Traditional Pose Estimation}{10}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Visual Based Navigation}{13}{subsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.1}Image Processing}{16}{subsubsection.2.4.2.1}%
+\contentsline {subsubsection}{\numberline {2.4.2.2}State Estimation}{19}{subsubsection.2.4.2.2}%
+\contentsline {section}{\numberline {2.5}Conclusion}{20}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Modelling}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Rigid Body Mechanics}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Kinematics}{22}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Dynamics}{25}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Translational Dynamics}{26}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Rotational Dynamics}{28}{subsubsection.3.2.2.2}%
+\contentsline {section}{\numberline {3.3}Reference Frame Transformations}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Transformation Matrix}{31}{subsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.1}Rotation Matrix}{31}{subsubsection.3.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.2}Translation}{31}{subsubsection.3.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.3.1.3}Homogeneous Transformation Matrix}{32}{subsubsection.3.3.1.3}%
+\contentsline {subsection}{\numberline {3.3.2}Latitude, Longitude, and Altitude}{32}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Earth Cenetered Earth Fixed}{35}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Earth Centered Inertial}{36}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Orbital Reference Frame}{38}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Body Referenece Frame}{39}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}North - East - Down/ East - North - Up }{40}{subsection.3.3.7}%
+\contentsline {section}{\numberline {3.4}Sensor Modelling}{41}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}GPS Sensor Model}{42}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Gyroscope Sensor Model}{43}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Coarse Sun Sensor Model}{45}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Star Tracker Sensor Model}{47}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Magnetometer Sensor Model}{49}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Conclusion}{51}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Image Processing}{53}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{53}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Satellite Image Characteristics}{53}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Imaging Geometry}{53}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Image Resolution}{56}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Spatial Resolution}{56}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Temporal Resolution}{57}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Radiometric resolution}{58}{subsubsection.4.2.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Image Detectors}{59}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Environmental Noise}{60}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Camera Model}{63}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Pinhole Model}{63}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Intrinsic Camera Matrix}{65}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Extrinsic Camera Matrix}{66}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Lens Distortion}{67}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Radial Distortion}{67}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Tangential Distortion}{68}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Chromatic Abberation}{69}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Earth Tracker}{71}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Image Generation}{71}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Feature Detection}{73}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Earth Tracker Algorithm}{74}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Catalogue Generation}{75}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Conclusion}{77}{section.4.6}%
+\contentsline {chapter}{\numberline {5}State Estimation}{78}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{78}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Recursive Estimation}{78}{section.5.2}%
+\contentsline {section}{\numberline {5.3}The Extended Kalman Filter}{80}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}The Prediction Step}{81}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}The Update Step}{82}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Multi-Sensor Fusion Techniques}{83}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}System Modelling}{85}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Motion Model}{85}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Sensor Measurement Model}{87}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}Earth Tracker Measurement Model}{88}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}GPS Measurement Model}{88}{subsubsection.5.4.2.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}Gyroscope Measurement Model}{89}{subsubsection.5.4.2.3}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}Coarse Sun Sensor Measurement Model}{89}{subsubsection.5.4.2.4}%
+\contentsline {subsubsection}{\numberline {5.4.2.5}Magnetometer Measurement Model}{90}{subsubsection.5.4.2.5}%
+\contentsline {subsubsection}{\numberline {5.4.2.6}Star Tracker Measurement Model}{90}{subsubsection.5.4.2.6}%
+\contentsline {section}{\numberline {5.5}System Initialization}{91}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Position Initialisation}{91}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Velocity Initialisation}{92}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Attitude Initialisation}{92}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Angular Velocity Initialisation}{93}{subsection.5.5.4}%
+\contentsline {section}{\numberline {5.6}System Integration}{94}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Satellite System}{94}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Earth Tracker System}{95}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Pose Estimation System}{96}{subsection.5.6.3}%
+\contentsline {section}{\numberline {5.7}Conclusion}{96}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Experiments}{98}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{98}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Test Configuration}{98}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Sensor Test}{99}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Feature Test}{100}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Distortion Test}{100}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Conclusion}{100}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{101}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusion}{101}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future Work}{101}{section.7.2}%
+\contentsline {chapter}{References}{102}{chapter*.84}%
+\contentsline {chapter}{\numberline {A}Appendix title goes here}{107}{appendix.A}%
 \contentsfinish 

@@ -1,11 +1,106 @@
 
 \begin{thenomenclature} 
 \nomgroup{C}
-  \item [{$\omega_e$}]\begingroup Rotation speed of the Earth\nomeqref {0}\nompageref{x}
-  \item [{$c$}]\begingroup A constant.\nomeqref {0}\nompageref{x}
+  \item [{$\mu$}]\begingroup Earth's gravitational parameter (398600 km$^3$/s$^2$)\nomeqref {0}\nompageref{1}
+  \item [{$\omega_e$}]\begingroup Rotation speed of the Earth (7.2921 $\times$ 10$^{-5}$ rad/s)\nomeqref {0}\nompageref{1}
+  \item [{$a$}]\begingroup Semi-major axis of WGS84 ellipsoid (6378 km)\nomeqref {0}\nompageref{1}
+  \item [{$b$}]\begingroup Semi-minor axis of WGS84 ellipsoid (6356 km)\nomeqref {0}\nompageref{1}
+  \item [{$I_{xx}$}]\begingroup Moment of inertia about x-axis\nomeqref {0}\nompageref{1}
+  \item [{$I_{yy}$}]\begingroup Moment of inertia about y-axis\nomeqref {0}\nompageref{1}
+  \item [{$I_{zz}$}]\begingroup Moment of inertia about z-axis\nomeqref {0}\nompageref{1}
+  \item [{$J_2$}]\begingroup Second zonal harmonic coefficient (1.082 $\times$ 10$^{-3}$)\nomeqref {0}\nompageref{1}
+  \item [{$R_E$}]\begingroup Mean radius of the Earth (6378 km)\nomeqref {0}\nompageref{1}
 \nomgroup{F}
-  \item [{$f$}]\begingroup A function.\nomeqref {0}\nompageref{x}
+  \item [{$\arctan2(\cdot)$}]\begingroup Four-quadrant inverse tangent function\nomeqref {0}\nompageref{1}
+  \item [{$\text{rotm2quat}(\cdot)$}]\begingroup Rotation matrix to quaternion conversion\nomeqref {0}\nompageref{1}
+  \item [{$\text{wrldmagm}(\cdot)$}]\begingroup World magnetic model (IGRF) function\nomeqref {0}\nompageref{1}
+  \item [{$f(\cdot)$}]\begingroup Process/motion model function\nomeqref {0}\nompageref{1}
+  \item [{$h(\cdot)$}]\begingroup Measurement model function\nomeqref {0}\nompageref{1}
+\nomgroup{M}
+  \item [{$\mathbf{A}$}]\begingroup Direction cosine matrix (DCM) / rotation matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{F}$}]\begingroup Jacobian of process model\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{G}$}]\begingroup Control matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{H}$}]\begingroup Jacobian of measurement model\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{I}$}]\begingroup Inertia tensor / identity matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{K}$}]\begingroup Intrinsic camera matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{K}$}]\begingroup Kalman gain matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{P}$}]\begingroup State covariance matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{Q}$}]\begingroup Process noise covariance matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{R}$}]\begingroup Measurement noise covariance matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{R}$}]\begingroup Rotation matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{S}$}]\begingroup Innovation covariance matrix\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{T}$}]\begingroup Homogeneous transformation matrix\nomeqref {0}\nompageref{1}
+\nomgroup{N}
+  \item [{$\boldsymbol{\eta}$}]\begingroup Measurement noise vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{d}$}]\begingroup Drift/bias vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{q}$}]\begingroup Drift rate noise\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{v}$}]\begingroup Measurement noise\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{w}$}]\begingroup Process noise vector\nomeqref {0}\nompageref{1}
+  \item [{$\sigma^2$}]\begingroup Variance\nomeqref {0}\nompageref{1}
+\nomgroup{O}
+  \item [{$(\cdot)^+$}]\begingroup Homogeneous coordinate representation\nomeqref {0}\nompageref{1}
+  \item [{$(\cdot)^T$}]\begingroup Matrix/vector transpose\nomeqref {0}\nompageref{1}
+  \item [{$(\cdot)^{-1}$}]\begingroup Matrix inverse\nomeqref {0}\nompageref{1}
+  \item [{$\bar{\cdot}$}]\begingroup Unit vector\nomeqref {0}\nompageref{1}
+  \item [{$\cdot$}]\begingroup Dot product\nomeqref {0}\nompageref{1}
+  \item [{$\ddot{\cdot}$}]\begingroup Second time derivative\nomeqref {0}\nompageref{1}
+  \item [{$\dot{\cdot}$}]\begingroup Time derivative\nomeqref {0}\nompageref{1}
+  \item [{$\hat{\cdot}$}]\begingroup Estimated value\nomeqref {0}\nompageref{1}
+  \item [{$\otimes$}]\begingroup Quaternion multiplication\nomeqref {0}\nompageref{1}
+  \item [{$\times$}]\begingroup Cross product\nomeqref {0}\nompageref{1}
+\nomgroup{S}
+  \item [{$B$}]\begingroup Body reference frame\nomeqref {0}\nompageref{1}
+  \item [{$C$}]\begingroup Camera reference frame\nomeqref {0}\nompageref{1}
+  \item [{$E$}]\begingroup East-North-Up (ENU) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$I$}]\begingroup Inertial (ECI) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$L$}]\begingroup Geodetic (LLA) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$M$}]\begingroup Image plane (metric) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$N$}]\begingroup North-East-Down (NED) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$O$}]\begingroup Orbital (LVLH) reference frame\nomeqref {0}\nompageref{1}
+  \item [{$P$}]\begingroup Pixel plane reference frame\nomeqref {0}\nompageref{1}
+  \item [{$R$}]\begingroup Earth-Centered Earth-Fixed (ECEF) reference frame\nomeqref {0}\nompageref{1}
 \nomgroup{V}
-  \item [{$\mathbf{x}$}]\begingroup A variable.\nomeqref {0}\nompageref{x}
+  \item [{$\alpha$}]\begingroup Skewing factor\nomeqref {0}\nompageref{1}
+  \item [{$\boldsymbol{\omega}$}]\begingroup Angular velocity vector\nomeqref {0}\nompageref{1}
+  \item [{$\Delta t$}]\begingroup Time step\nomeqref {0}\nompageref{1}
+  \item [{$\hat{\mathbf{x}}$}]\begingroup Estimated state vector\nomeqref {0}\nompageref{1}
+  \item [{$\hat{\mathbf{z}}$}]\begingroup Predicted measurement vector\nomeqref {0}\nompageref{1}
+  \item [{$\lambda$}]\begingroup Longitude (geodetic)\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{a}$}]\begingroup Acceleration vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{F}$}]\begingroup Force vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{f}$}]\begingroup Feature vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{H}$}]\begingroup Angular momentum vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{p}$}]\begingroup Point vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{q}$}]\begingroup Quaternion vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{r}$}]\begingroup Position vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{S}$}]\begingroup Sun vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{s}$}]\begingroup Star vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{T}$}]\begingroup Torque vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{u}$}]\begingroup Control input vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{v}$}]\begingroup Velocity vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{x}$}]\begingroup State vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{x}_{\text{true}}$}]\begingroup True state vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{y}$}]\begingroup Innovation/residual vector\nomeqref {0}\nompageref{1}
+  \item [{$\mathbf{z}$}]\begingroup Measurement vector\nomeqref {0}\nompageref{1}
+  \item [{$\phi$}]\begingroup Roll angle (Euler angle)\nomeqref {0}\nompageref{1}
+  \item [{$\psi$}]\begingroup Yaw angle (Euler angle)\nomeqref {0}\nompageref{1}
+  \item [{$\theta$}]\begingroup Pitch angle (Euler angle)\nomeqref {0}\nompageref{1}
+  \item [{$\varphi$}]\begingroup Latitude (geodetic)\nomeqref {0}\nompageref{1}
+  \item [{$c_x$}]\begingroup Horizontal principal point offset\nomeqref {0}\nompageref{1}
+  \item [{$c_y$}]\begingroup Vertical principal point offset\nomeqref {0}\nompageref{1}
+  \item [{$f$}]\begingroup Focal length\nomeqref {0}\nompageref{1}
+  \item [{$h$}]\begingroup Altitude\nomeqref {0}\nompageref{1}
+  \item [{$k_1, k_2, k_3$}]\begingroup Radial distortion coefficients\nomeqref {0}\nompageref{1}
+  \item [{$m$}]\begingroup Mass\nomeqref {0}\nompageref{1}
+  \item [{$p$}]\begingroup Pixel pitch\nomeqref {0}\nompageref{1}
+  \item [{$p_1, p_2$}]\begingroup Tangential distortion coefficients\nomeqref {0}\nompageref{1}
+  \item [{$q_s$}]\begingroup Quaternion scalar component\nomeqref {0}\nompageref{1}
+  \item [{$q_x$}]\begingroup Quaternion x-component\nomeqref {0}\nompageref{1}
+  \item [{$q_y$}]\begingroup Quaternion y-component\nomeqref {0}\nompageref{1}
+  \item [{$q_z$}]\begingroup Quaternion z-component\nomeqref {0}\nompageref{1}
+  \item [{$r$}]\begingroup Radial distance/position magnitude\nomeqref {0}\nompageref{1}
+  \item [{$s_x$}]\begingroup Horizontal scale factor\nomeqref {0}\nompageref{1}
+  \item [{$s_y$}]\begingroup Vertical scale factor\nomeqref {0}\nompageref{1}
+  \item [{$t$}]\begingroup Time\nomeqref {0}\nompageref{1}
 
 \end{thenomenclature}

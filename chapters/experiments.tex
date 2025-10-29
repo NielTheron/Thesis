@@ -1,9 +1,120 @@
 \mychapter{Experiments}{Experiments}{}
 \label{chap:experiment}
 
+%========================================================================================================================================================================
 \mysection{Introduction}{Introduction}
 \label{sec:expintro}
 
+This aim of this chapter is to verify the theory that what provided in the previous chapters using the simulation environment that is develop. This chapter will
+begin with describing the test setup in the simulation environment, afterwhich three tests will be run. The first test will determine the accuracy of the sensor
+itself and the robustness of the state estimator in sensor fusion. Then a test is run where the systems ability to accuratly determine the pose of the satellite depending
+of the amount of features present in the image. Lastly, a test against the robustness of the system against lens distortions.
 
+%========================================================================================================================================================================
+\mysection{Test Configuration}{Test Configuration}
+\label{sec:BaseTest}
+
+The simulation enviroment is developed in MATLAB $^{TM}$. Each test wil be run in a high inclined orbit over Cape Town, where in the 1st,2nd and 3rd test the sensor accuracy
+amount of features and lens distortion will be change, respectively.
+\vspace{0.5cm}
+
+\noindent
+The camera parameters will be standardised to the following values. The camera is based on the TriScape100x satellite camera from Simera Sense, which both has the same 
+focal length, but the resolution as decreased so that the simulation can porcess the images faster. And the Pixel size has been increased as the smallest GSD gathers from
+the copernicus browser has a GSD of 15m.
+
+\begin{table}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        Characteristic          & Simulated Camera & Simera Sense Camera & Units \\
+        \hline
+        Horizontal Resolution   & 720   & 4096      & pixel \\
+        Vertical Resolution     & 720   & 3072      & pixel \\
+        Focal Lenght            & 580   & 580       & mm \\
+        Pitch                   & 17.4  & 5.5       & $\mu$m \\
+        GSD @ 500 km            & 15    & 4.75      & m/pixel \\
+        Swath                   & 10.8  & 19.4      & km \\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/experiments/TriScapeCamera.png}
+    \caption{The simera sense TriScape Camera}
+    \label{fig:TSC}
+\end{figure}
+
+
+And the initial conditions of the satellite are indicated in the values below, these are considered as the defualt values. If a value is changed, it wil explicitedly be mention in the subsequent test.
+
+\begin{table}
+    \begin{center}
+        \begin{tabular}{|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Constant} \\
+        \hline
+        GM          & $3.986 \times 10^5 \, km^3/s^2$ \\
+        $R_{earth}$ & $6.378 \times 10^3 \, km$ \\
+        $J_2$       & $1.082 \times 10^{-3}$ \\
+        $\omega_e$  & $7.292 \times 10^{-5} \, rad/s$ \\
+        \hline
+        \multicolumn{2}{|c|}{Initial States} \\
+        \hline
+        Lattiude    & $48.85^{\circ}$ \\
+        Longitude   & $0.96^{\circ}$ \\
+        Altitude    & $500 \, km$ \\
+        Roll        & $0^{\circ}$ \\
+        Pitch       & $0^{\circ}$ \\
+        Yaw         & $0^{\circ}$ \\
+        Roll Rate   & $0^{\circ}/s$ \\
+        Pitch Rate  & $0.0011^{\circ}/s$ \\
+        Yaw Rate    & $0^{\circ}/s$ \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+
+
+%========================================================================================================================================================================
+\mysection{Sensor Test}{Sensor Test}
+\label{sec:SensorTest}
+
+\begin{itemize}
+    \item ET Alone
+    \item ST + GPS Alone
+    \item ET + GPS
+    \item ET + ST
+    \item ET + GPS + ST
+    \item ET + Mag + CSS
+    \item ET + GPS + Mag + CSS
+    \item ET + GPS + Mag + CSS + ST 
+\end{itemize}
+
+%========================================================================================================================================================================
+\mysection{Feature Test}{Feature Test}
+\label{sec:FeatureTest}
+
+\begin{itemize}
+    \item ET + SIFT (10,100,1000)
+    \item ET + SURF (10,100,1000)
+    \item ET + ORB  (10,100,1000)
+\end{itemize}
+
+%========================================================================================================================================================================
+\mysection{Distortion Test}{Distortion Test}
+\label{sec:DistortionTest}
+
+\begin{itemize}
+    \item ET + Tangential Distortion
+    \item ET + Radial Distortion
+    \item ET + Chromatic Distortion
+    \item ET + Off Nadir Images
+\end{itemize}
+
+%=========================================================================================================================================================================
 \mysection{Conclusion}{Conclusion}
 \label{sec:expcon}

@@ -6,8 +6,25 @@
 \renewcommand{\altnomname}{Variables and functions}
 \markboth{}{\scshape \nomname}
 \setlength{\nomlabelwidth}{3cm}
+
+% Define the grouping for nomenclature
+\renewcommand{\nomgroup}[1]{%
+	\ifthenelse{\equal{#1}{V}}{\item[{\rmfamily\scshape\Large Variables}]}{%
+		\ifthenelse{\equal{#1}{C}}{\item[{\rmfamily\scshape\Large Constants}]}{%
+			\ifthenelse{\equal{#1}{F}}{\item[{\rmfamily\scshape\Large Functions}]}{%
+				\ifthenelse{\equal{#1}{M}}{\item[{\rmfamily\scshape\Large Matrices}]}{%
+					\ifthenelse{\equal{#1}{O}}{\item[{\rmfamily\scshape\Large Operators and Notation}]}{%
+						\ifthenelse{\equal{#1}{S}}{\item[{\rmfamily\scshape\Large Reference Frame Subscripts}]}{%
+							\ifthenelse{\equal{#1}{N}}{\item[{\rmfamily\scshape\Large Noise Terms}]}{}%
+						}%
+					}%
+				}%
+			}%
+		}%
+	}%
+}
+
 \printnomenclature
-\input{frontmatter/variables_and_functions}
 
 \newpage
 \phantomsection\label{sec:acronyms}  % Add unique label
@@ -17,9 +34,10 @@
 \printacronyms[display=used]
 
 \glsaddall
-\newpage
-\phantomsection\label{sec:definitions}  % Add unique label
-\renewcommand\glossaryname{Definitions}
-\printnoidxglossaries
+% \newpage
+% \phantomsection\label{sec:definitions}  % Add unique label
+% \renewcommand\glossaryname{Definitions}
+% \printnoidxglossaries
+
 
 \newpage

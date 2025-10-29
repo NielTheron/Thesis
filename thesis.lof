@@ -3,34 +3,81 @@
 \babel@toc {afrikaans}{}\relax 
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{3}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Conceptual diagram of the proposed visual navigation problem, illustrating the key reference frames (ECI, Body) and the geometric relationship between the satellite's imager and known features on the Earth's surface.}}{2}{figure.caption.11}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Annual number of CubeSat launches from 2002 to 2018, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite {Villela}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite {Villela}.}}{6}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces In this figure we can see how much space is taken up by the optical payload in the Pheonix CubeSat from the Arizona State University, which is about 1.5U in a 3U CubeSat. \cite {CubeCam}}}{7}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Conceptual diagram of a chaser satellite performing relative pose estimation of a target satellite for an on-orbit servicing mission. \cite {Xing}}}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison of sensor modalities: (a) Monocular image and (b) Stereo camera pair triangulation.}}{9}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces NORAD Ground Tracks and Estimation for 4 x 10 min TLE data. \cite {Kahr2013}}}{11}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces A typical star tracker used for high-precision attitude determination.\cite {CubeStar}}}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces A magnetometer for measuring the direction of the Earth's magnetic field.\cite {CubeMag}}}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces A typical visual geo-localization pipeline, illustrating the use of geolocated features and a pre-rendered database. \cite {Chen2021}.}}{14}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Attitude estimation and control reference frames of the satellite \cite {Klancar2012}.}}{15}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Carozza et al. vision-based attitude estimation framework, illustrating the use of feature matching and homography \cite {Carozza2013}.}}{16}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Feature Mathcing using SURF and RANDSAC \cite {Kouyama2017}}}{17}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Feature matching using the SIFT algorithm and calulating error vectors \cite {Klancar2013} }}{18}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Feature detection using ORB \cite {Mateos2024}.}}{19}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Literature study framework and concepts learned out of each section.}}{20}{figure.caption.26}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Eular 1-2-3 Rotation\cite {Jongh}}}{8}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Quaternion Rotation}}{8}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Geodetic reference frames and models used in Earth observation.}}{14}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces The Earth Cetred Earth Fixed reference frame}}{15}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Earth Centered Earth Inertial Reference Frame}}{16}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The Orbital Reference frame (also known as the LVLH)}}{17}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces \relax }}{17}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces \relax }}{19}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Orientation of the six coarse sun sensors on the CubeSat}}{21}{figure.caption.27}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces \relax }}{23}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces \relax }}{26}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Eular 3-2-1 rotation sequence (yaw-pitch-roll) describes a 3D orientation.}}{24}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Quaterion rotation represented by the rotation axis $\bar {e}$ and rotation angle $\theta $.}}{24}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The real position and real volcity of the satellite at an altitude of 500km and an inclination of 48.8$^\circ $, illustrating the change in position and velocity overtime governed by the gravitational kinematics.}}{27}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The J2 error introduced into system, illustrating its effects on the position and velocity.}}{28}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The Dzhanibekov effect to verify the dynamics.}}{29}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Illustration of the attitude coupling effect arising from differences in the spacecraft's principal moments of inertia. Variations in these inertial properties can cause rotations about one axis to induce secondary motions about the other axes, demonstrating the intrinsic coupling between rotational dynamics and the spacecraft's mass distribution.}}{30}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The WGS84 reference ellipsoid, a mathematically defined model of the Earth's shape used as the basis for the World Geodetic System 1984 (WGS84). It approximates the Earth as an oblate spheroid with a defined semi-major and semi-minor axis, providing a standard reference for geodetic measurements, satellite positioning, and global navigation systems.}}{33}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Comparison of different Earth models: the perfect sphere, the reference ellipsoid, and the geoid. The spherical model is a simple approximation with constant radius, the ellipsoid accounts for the Earth’s flattening at the poles and bulging at the equator, and the geoid represents the irregular shape of the Earth’s gravity field, closely following mean sea level. This comparison highlights the increasing accuracy and complexity of models used in geodesy, navigation, and Earth observation.}}{34}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces A Digital Elevation Model (DEM) of the African continent, generated using USGS software. This DEM provides a detailed representation of the terrain's elevation, capturing variations in topography such as mountains, valleys, and plateaus, and is widely used in geospatial analysis, environmental modeling, and Earth observation studies.}}{35}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces The Earth-Centered, Earth-Fixed (ECEF) reference frame, a Cartesian coordinate system fixed relative to the Earth, with its origin at the Earth's center of mass. The $\bar {x}$-axis points toward the intersection of the equator and the prime meridian, the $\bar {y}$-axis points 90° east of the X-axis along the equator, and the $\bar {z}$-axis aligns with the Earth's rotational axis toward the North Pole. This frame is commonly used for satellite navigation, geodesy, and Earth observation applications.}}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The Earth-Centered Inertial (ECI) reference frame, an inertial Cartesian coordinate system with its origin at the Earth's center of mass. Unlike Earth-fixed frames, the ECI frame does not rotate with the Earth, making it suitable for describing the motion of satellites, spacecraft, and other celestial objects relative to the stars. It provides a consistent reference for orbital mechanics and space navigation.}}{37}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces The Orbital Reference Frame, also known as the Local Vertical Local Horizontal (LVLH) frame, is a spacecraft-centered coordinate system used to describe positions and orientations relative to an orbiting body. Its origin is at the spacecraft's center of mass, the $\bar {z}$-axis points toward the center of the Earth (nadir), the $\bar {y}$-axis is aligned opposite to the orbital angular momentum vector (orbit normal), and the $\bar {x}$-axis completes the right-handed system, pointing along the velocity vector in the orbital plane. This frame is widely used in attitude control, guidance, and navigation for satellites.}}{39}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces The Body Reference Frame, denoted by $\mathcal {B}$, is fixed to the satellite itself, with its origin at the satellite’s center of mass. The axes are defined relative to the satellite's orientation: the $\bar {x}$-axis corresponds to roll, the $\bar {y}$-axis to pitch, and the $\bar {z}$-axis to yaw.}}{40}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces The East-North-Up refrence frame}}{41}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces GPS measurement and noise model derived from the $\mathbf {x}_{\text {true}}$ state in the $\mathcal {L}$ reference frame.}}{43}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Groundtrack representation of the simulated GPS measurements, illustrating the apparent Earth rotation as the satellite completes an orbit.}}{43}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Simulated gyroscope measurement showing high-frequency noise and drift.}}{45}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Orientation of the six coarse sun sensors on the CubeSat}}{46}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Simulated CSS measurement illustrating the magnitude of the direction of the sun and the noise.}}{47}{figure.caption.45}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Represenstation of star vectors calcualted out of the center of mass of the satellite, each star vector is a unit vector defined in the BRF.}}{48}{figure.caption.46}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Simulated Star Tracker Mesurements from the fisrt 4 Stars, the figure shows how the unit vectors (direction) changes as the satellite orbits.}}{49}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces The total magnetic field intensity given by the \textit {worldmgn} function using IGRF.}}{50}{figure.caption.48}%
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Simulated Magnetoemeter measurements indicating the magnetific field strength in nT and which direction it is measured in according to the IGRF.}}{51}{figure.caption.49}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PinHole Model}}{28}{figure.caption.33}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Image Plane}}{29}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax }}{30}{figure.caption.35}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces \relax }}{30}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces High Resolution Image projected on Ellipsoid}}{37}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Origin Correction}}{38}{figure.caption.38}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Origin Correction 2}}{38}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The relationship between sensor pitch, focal length, satellite altitude, and Ground Sampling Distance (GSD). The pixel pitch ($p$) determines the physical size of each sensor element, while the focal length ($f$) and satellite altitude ($h$) together define how this sensor geometry maps to the ground. A smaller pixel pitch or a longer focal length results in a finer GSD (higher image resolution), whereas increasing altitude enlarges the GSD, reducing spatial resolution.}}{54}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An illustartion of the distortion of the $GSD$ and $FOV$ of an satellite image when taken Off-Nadir (at an oblique angle) \cite {OFFN}}}{55}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The effect off-nadir angle on satellite imagery.}}{56}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Illustration of the relationship between spatial resolution and Ground Sampling Distance (GSD). As GSD increases, each pixel represents a larger area on the ground, resulting in lower image resolution and less detail. Conversely, smaller GSD values correspond to higher resolution, capturing finer features in the scene.}}{57}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Illustration of temporal resolution in satellite imagery represented by a tree growing \cite {Tree}. Temporal resolution refers to how frequently a satellite revisits the same location. Higher temporal resolution, achieved by shorter revisit intervals or larger satellite constellations, allows changes on the ground, such as vegetation growth or urban development, to be monitored more closely over time.}}{58}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Images are captured using different wave lengths and reconstructed to convey different information.}}{59}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Images are captured using different imager detectors.}}{60}{figure.caption.56}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Difference in satellite imagery due to atmospheric asoption and scattering \cite {Atmos, Dove}}}{61}{figure.caption.57}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces The effect of cloud cover changing the spectral signature of and image.}}{62}{figure.caption.58}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces The effect of seasonal and time differences.}}{62}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces A satellite imager illustrated as an ideal pinhole model camera.}}{64}{figure.caption.60}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces The realtionship between the camera refernce frame and the pixel plane reference frame.}}{65}{figure.caption.61}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Radial lens disortion applied to an satellite image of Cape Town stadium.}}{68}{figure.caption.62}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Tangential lens disortion applied to a satellite image of Cape Town stadium.}}{69}{figure.caption.63}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces The effect of the lens on different wave lengths of light which will cause some wavelenghts to be out of focus and enlarged. \cite {Chroma}}}{70}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Chromatic Abberation on a satellite image of Cape Town stadium}}{70}{figure.caption.65}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Earth rendered in the simulation environment}}{71}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces High resolution mosiac strip of Paris, France}}{72}{figure.caption.67}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces This is the high resolution strip placed on the surface of the simulated Earth.}}{72}{figure.caption.68}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces An generated satellite imager as seen from the satellite imager}}{73}{figure.caption.69}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces The french country side is used to compare the different feature points detected by SIFT, SURF and ORB}}{73}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces An illustration of feature points being projected back to feature vectors.}}{75}{figure.caption.71}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Catalogue generation using raycasting.}}{77}{figure.caption.72}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive estimator algorithm flowchart}}{40}{figure.caption.40}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Satellite pose estimation concept showing orbital geometry, reference frames}}{43}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive estimator algorithm flowchart \cite {deJongh2019}}}{79}{figure.caption.73}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The fully integrated Batch EKF architecture, which combines all raw sensor data into a single, complex measurement model $\mathbf {h}(\mathbf {x})$ for concurrent processing.}}{83}{figure.caption.74}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces The Multi-Filter EKF architecture, featuring independent local filters for each sensor and a master filter to fuse the local estimates into a global state.}}{84}{figure.caption.75}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces The Sequential Update EKF architecture, illustrating a single prediction step followed by multiple, sequential update steps for each individual sensor measurement.}}{84}{figure.caption.76}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Satellite pose estimation states in the ECI reference frame}}{85}{figure.caption.77}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Block diagram of the satellite simulation architecture. The 'true' motion model provides the ground truth state to two parallel pipelines: one generating distorted camera images and the other generating auxiliary sensor data.}}{94}{figure.caption.78}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Block diagram of the Earth Tracker System's data processing pipeline. An input image undergoes feature detection, and the resulting feature pixels are processed through two concurrent streams: 2D-to-3D projection to generate the primary measurement vector, and catalogue generation to create geolocated features for pose estimation.}}{95}{figure.caption.79}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Block diagram of the Pose Estimation System. A sequential update EKF fuses the Earth Tracker measurement, the geolocated catalogue vector, and auxiliary sensor data to produce an optimal estimate of the satellite's state.}}{96}{figure.caption.80}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Image Plane}}{47}{figure.caption.42}%
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The simera sense TriScape Camera}}{99}{figure.caption.82}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

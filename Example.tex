@@ -26,3 +26,39 @@ Have a look at my explanation in Section \ref{sec:relatedwork} on page \pageref{
     \caption{Your figure caption.}
     \label{fig:enter-label}
 \end{figure}
+
+\mysubsection{Sensor Comparison}{Sensors Comparison}
+
+\begin{table}[H]
+    \caption{The comparison between sensors used.}
+    \footnotesize
+    \centering
+    \begin{tabular}{lccc}
+    \toprule
+         & $\sigma$ & Drift Rate &  Sampling Rate \\
+         & & & [Hz] \\
+    \midrule
+        GPS & 10 m & 3 m & 10 \\
+        Gyroscope & 0.05 deg & 1e-3 deg & 50 \\
+        Star Tracker & 0.002 deg & - & 1 \\
+        CSS & 5 deg & - & 2 \\
+        Magnetometer & 10 deg & - & 2 \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+
+This is the parameters used to produce the sensor data seen in this chapter.
+@misc{sun_thesis_guide,
+	author = {{Stellenbosch University}},
+    title = {Formatting your thesis},
+	year = {2024},
+    note = "\url{http://bit.ly/SUThesisFormat}",
+}
+
+@misc{sun_latex_template,
+	author = {Danie Els},
+    title = {Stellenbosch University thesis bundle},
+	year = {2024},
+    note = "\url{https://ctan.org/pkg/stellenbosch-2}",
+}

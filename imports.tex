@@ -157,6 +157,7 @@
 \NewAcroTemplate[list]{styleabbrev}{%
 	\normalsize
 	\AcroNeedPackage{array}%
+	\AcroNeedPackage{longtable}%
 	\acronymsmapF{
 		\AcroAddRow{
 			\vspace{1.0ex}\par
@@ -166,16 +167,14 @@
 			{\acrotranslate{page}\nobreakspace}
 			{\acrotranslate{pages}\nobreakspace}%
 			\tabularnewline
-			% 			\vspace{1.8ex}\par
 		}%
 	}
 	{\AcroRerun}%
-	%    \acroheading
 	\acropreamble
 	\par\noindent
-	\begin{tabular}{>{\bfseries}lp{.7\linewidth}}
+	\begin{longtable}{>{\bfseries}lp{.7\linewidth}}
 		\AcronymTable
-	\end{tabular}
+	\end{longtable}
 }
 
 \acsetup{

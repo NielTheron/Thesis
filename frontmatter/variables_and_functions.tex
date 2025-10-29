@@ -1,4 +1,129 @@
-\nomenclature[v]{$\mathbf{x}$}{A variable.}
-\nomenclature[f]{$f$}{A function.}
-\nomenclature[c]{$c$}{A constant.}
-\nomenclature[c]{$\omega_e$}{Rotation speed of the Earth}
+% ========================================
+% VARIABLES
+% ========================================
+\nomenclature[v]{$\mathbf{x}$}{State vector}
+\nomenclature[v]{$\hat{\mathbf{x}}$}{Estimated state vector}
+\nomenclature[v]{$\mathbf{x}_{\text{true}}$}{True state vector}
+\nomenclature[v]{$\mathbf{r}$}{Position vector}
+\nomenclature[v]{$\mathbf{v}$}{Velocity vector}
+\nomenclature[v]{$\mathbf{q}$}{Quaternion vector}
+\nomenclature[v]{$\boldsymbol{\omega}$}{Angular velocity vector}
+\nomenclature[v]{$\mathbf{a}$}{Acceleration vector}
+\nomenclature[v]{$\mathbf{F}$}{Force vector}
+\nomenclature[v]{$\mathbf{T}$}{Torque vector}
+\nomenclature[v]{$\mathbf{H}$}{Angular momentum vector}
+\nomenclature[v]{$\mathbf{z}$}{Measurement vector}
+\nomenclature[v]{$\hat{\mathbf{z}}$}{Predicted measurement vector}
+\nomenclature[v]{$\mathbf{y}$}{Innovation/residual vector}
+\nomenclature[v]{$\mathbf{u}$}{Control input vector}
+\nomenclature[v]{$\mathbf{f}$}{Feature vector}
+\nomenclature[v]{$\mathbf{p}$}{Point vector}
+\nomenclature[v]{$\mathbf{S}$}{Sun vector}
+\nomenclature[v]{$\mathbf{s}$}{Star vector}
+
+% Scalars
+\nomenclature[v]{$\phi$}{Roll angle (Euler angle)}
+\nomenclature[v]{$\theta$}{Pitch angle (Euler angle)}
+\nomenclature[v]{$\psi$}{Yaw angle (Euler angle)}
+\nomenclature[v]{$\varphi$}{Latitude (geodetic)}
+\nomenclature[v]{$\lambda$}{Longitude (geodetic)}
+\nomenclature[v]{$h$}{Altitude}
+\nomenclature[v]{$t$}{Time}
+\nomenclature[v]{$\Delta t$}{Time step}
+\nomenclature[v]{$m$}{Mass}
+\nomenclature[v]{$r$}{Radial distance/position magnitude}
+
+% Quaternion components
+\nomenclature[v]{$q_s$}{Quaternion scalar component}
+\nomenclature[v]{$q_x$}{Quaternion x-component}
+\nomenclature[v]{$q_y$}{Quaternion y-component}
+\nomenclature[v]{$q_z$}{Quaternion z-component}
+
+% Camera/imaging parameters
+\nomenclature[v]{$f$}{Focal length}
+\nomenclature[v]{$p$}{Pixel pitch}
+\nomenclature[v]{$s_x$}{Horizontal scale factor}
+\nomenclature[v]{$s_y$}{Vertical scale factor}
+\nomenclature[v]{$c_x$}{Horizontal principal point offset}
+\nomenclature[v]{$c_y$}{Vertical principal point offset}
+\nomenclature[v]{$\alpha$}{Skewing factor}
+\nomenclature[v]{$k_1, k_2, k_3$}{Radial distortion coefficients}
+\nomenclature[v]{$p_1, p_2$}{Tangential distortion coefficients}
+
+% ========================================
+% CONSTANTS
+% ========================================
+\nomenclature[c]{$\mu$}{Earth's gravitational parameter (398600 km$^3$/s$^2$)}
+\nomenclature[c]{$\omega_e$}{Rotation speed of the Earth (7.2921 $\times$ 10$^{-5}$ rad/s)}
+\nomenclature[c]{$R_E$}{Mean radius of the Earth (6378 km)}
+\nomenclature[c]{$J_2$}{Second zonal harmonic coefficient (1.082 $\times$ 10$^{-3}$)}
+\nomenclature[c]{$a$}{Semi-major axis of WGS84 ellipsoid (6378 km)}
+\nomenclature[c]{$b$}{Semi-minor axis of WGS84 ellipsoid (6356 km)}
+
+% Moments of inertia
+\nomenclature[c]{$I_{xx}$}{Moment of inertia about x-axis}
+\nomenclature[c]{$I_{yy}$}{Moment of inertia about y-axis}
+\nomenclature[c]{$I_{zz}$}{Moment of inertia about z-axis}
+
+% ========================================
+% MATRICES
+% ========================================
+\nomenclature[m]{$\mathbf{A}$}{Direction cosine matrix (DCM) / rotation matrix}
+\nomenclature[m]{$\mathbf{T}$}{Homogeneous transformation matrix}
+\nomenclature[m]{$\mathbf{R}$}{Rotation matrix}
+\nomenclature[m]{$\mathbf{I}$}{Inertia tensor / identity matrix}
+\nomenclature[m]{$\mathbf{P}$}{State covariance matrix}
+\nomenclature[m]{$\mathbf{Q}$}{Process noise covariance matrix}
+\nomenclature[m]{$\mathbf{R}$}{Measurement noise covariance matrix}
+\nomenclature[m]{$\mathbf{K}$}{Kalman gain matrix}
+\nomenclature[m]{$\mathbf{F}$}{Jacobian of process model}
+\nomenclature[m]{$\mathbf{H}$}{Jacobian of measurement model}
+\nomenclature[m]{$\mathbf{S}$}{Innovation covariance matrix}
+\nomenclature[m]{$\mathbf{K}$}{Intrinsic camera matrix}
+\nomenclature[m]{$\mathbf{G}$}{Control matrix}
+
+% ========================================
+% FUNCTIONS
+% ========================================
+\nomenclature[f]{$f(\cdot)$}{Process/motion model function}
+\nomenclature[f]{$h(\cdot)$}{Measurement model function}
+\nomenclature[f]{$\arctan2(\cdot)$}{Four-quadrant inverse tangent function}
+\nomenclature[f]{$\text{rotm2quat}(\cdot)$}{Rotation matrix to quaternion conversion}
+\nomenclature[f]{$\text{wrldmagm}(\cdot)$}{World magnetic model (IGRF) function}
+
+% ========================================
+% OPERATORS AND NOTATION
+% ========================================
+\nomenclature[o]{$\otimes$}{Quaternion multiplication}
+\nomenclature[o]{$\times$}{Cross product}
+\nomenclature[o]{$\cdot$}{Dot product}
+\nomenclature[o]{$\|\cdot\|$}{Euclidean norm}
+\nomenclature[o]{$(\cdot)^T$}{Matrix/vector transpose}
+\nomenclature[o]{$(\cdot)^{-1}$}{Matrix inverse}
+\nomenclature[o]{$\hat{\cdot}$}{Estimated value}
+\nomenclature[o]{$\bar{\cdot}$}{Unit vector}
+\nomenclature[o]{$\dot{\cdot}$}{Time derivative}
+\nomenclature[o]{$\ddot{\cdot}$}{Second time derivative}
+\nomenclature[o]{$(\cdot)^+$}{Homogeneous coordinate representation}
+
+% ========================================
+% SUBSCRIPTS AND SUPERSCRIPTS
+% ========================================
+\nomenclature[s]{$I$}{Inertial (ECI) reference frame}
+\nomenclature[s]{$R$}{Earth-Centered Earth-Fixed (ECEF) reference frame}
+\nomenclature[s]{$O$}{Orbital (LVLH) reference frame}
+\nomenclature[s]{$B$}{Body reference frame}
+\nomenclature[s]{$C$}{Camera reference frame}
+\nomenclature[s]{$L$}{Geodetic (LLA) reference frame}
+\nomenclature[s]{$N$}{North-East-Down (NED) reference frame}
+\nomenclature[s]{$E$}{East-North-Up (ENU) reference frame}
+\nomenclature[s]{$M$}{Image plane (metric) reference frame}
+\nomenclature[s]{$P$}{Pixel plane reference frame}
+
+% Noise terms
+\nomenclature[n]{$\boldsymbol{\eta}$}{Measurement noise vector}
+\nomenclature[n]{$\mathbf{w}$}{Process noise vector}
+\nomenclature[n]{$\mathbf{v}$}{Measurement noise}
+\nomenclature[n]{$\mathbf{d}$}{Drift/bias vector}
+\nomenclature[n]{$\mathbf{q}$}{Drift rate noise}
+\nomenclature[n]{$\sigma^2$}{Variance}

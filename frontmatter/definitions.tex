@@ -1,28 +1,565 @@
-\newglossaryentry{low_resource_language}
+\newglossaryentry{ADCS}
 {
-	name=Student,
-	text=student,
-	description={is an entity needing a thesis to transcend the state of being a student.},
-	plural=students
-}
-
-\newglossaryentry{State Estimation}
-{
-	name=State Estimation,
-	text=student,
-	description={The ability to determine a state of a system using mathematical models.}
+	name=Attitude Determination and Control System,
+	text=attitude determination and control system,
+	description={A subsystem responsible for determining and controlling the orientation of a satellite in space. It uses sensors such as star trackers, magnetometers, and sun sensors to measure attitude, and actuators such as reaction wheels or magnetorquers to adjust it.},
+	plural=attitude determination and control systems
 }
 
 \newglossaryentry{Attitude}
 { 
 	name=Attitude,
 	text=attitude,
-	description={The orientation of a satellite in space.}
+	description={The orientation of a satellite in space, typically described by the rotational relationship between the body-fixed coordinate system and a reference coordinate system.},
+	plural=attitudes
+}
+
+\newglossaryentry{Back-projection}
+{
+	name=Back-projection,
+	text=back-projection,
+	description={The process of converting a 2D feature point in an image back into a 3D feature vector in space, effectively reversing the camera projection.}
+}
+
+\newglossaryentry{Batch EKF}
+{
+	name=Batch EKF,
+	text=batch EKF,
+	description={An Extended Kalman Filter architecture where all sensor measurements are combined into a single complex measurement model and processed concurrently.}
+}
+
+\newglossaryentry{Body Reference Frame}
+{
+	name=Body Reference Frame,
+	text=body reference frame,
+	description={A coordinate system fixed to the satellite body, with origin at the center of mass. The axes are typically aligned with the satellite's principal axes of inertia.},
+	plural=body reference frames
+}
+
+\newglossaryentry{Camera Reference Frame}
+{
+	name=Camera Reference Frame,
+	text=camera reference frame,
+	description={A coordinate system attached to the camera, with the z-axis pointing along the optical axis and the origin at the optical center.},
+	plural=camera reference frames
+}
+
+\newglossaryentry{Catalogue}
+{
+	name=Catalogue,
+	text=catalogue,
+	description={A database of geolocated features with known coordinates used for matching and pose estimation. In this work, it contains latitude, longitude, and altitude of detected features.},
+	plural=catalogues
+}
+
+\newglossaryentry{Chromatic Aberration}
+{
+	name=Chromatic Aberration,
+	text=chromatic aberration,
+	description={A type of lens distortion where different wavelengths of light focus at different distances from the lens, causing color fringing at high-contrast edges.}
+}
+
+\newglossaryentry{COTS}
+{
+	name=Commercial Off-The-Shelf,
+	text=commercial off-the-shelf,
+	description={Components that are readily available for purchase from commercial suppliers, as opposed to custom-designed or space-rated hardware. COTS components reduce cost but may sacrifice performance or reliability.}
+}
+
+\newglossaryentry{CubeSat}
+{
+	name=CubeSat,
+	text=CubeSat,
+	description={A type of miniaturized satellite made up of multiples of 10×10×10 cm cubic units, designed using standardized specifications to reduce cost and development time.},
+	plural=CubeSats
+}
+
+\newglossaryentry{DCM}
+{
+	name=Direction Cosine Matrix,
+	text=direction cosine matrix,
+	description={A 3×3 rotation matrix that describes the orientation of one coordinate frame with respect to another. Also called a rotation matrix.},
+	plural=direction cosine matrices
+}
+
+\newglossaryentry{DEM}
+{
+	name=Digital Elevation Model,
+	text=digital elevation model,
+	description={A 3D representation of terrain surface that incorporates detailed topographic information including mountains, valleys, and other local features at high spatial resolution.},
+	plural=digital elevation models
+}
+
+\newglossaryentry{Dzhanibekov Effect}
+{
+	name=Dzhanibekov Effect,
+	text=Dzhanibekov effect,
+	description={An instability phenomenon where rotation about the intermediate principal axis of inertia causes periodic flipping of the body's orientation.}
+}
+
+\newglossaryentry{Earth-Centered Earth-Fixed}
+{
+	name=Earth-Centered Earth-Fixed,
+	text=Earth-centered Earth-fixed,
+	description={A Cartesian coordinate system with origin at Earth's center of mass, rotating with the Earth. The z-axis points toward the North Pole, and the x-axis intersects the Prime Meridian at the Equator.}
+}
+
+\newglossaryentry{Earth-Centered Inertial}
+{
+	name=Earth-Centered Inertial,
+	text=Earth-centered inertial,
+	description={A non-rotating coordinate system with origin at Earth's center of mass. The z-axis points toward the North Pole, and the x-axis points toward the Vernal Equinox. Used for orbital dynamics and space navigation.}
+}
+
+\newglossaryentry{Earth Observation}
+{
+	name=Earth Observation,
+	text=Earth observation,
+	description={The use of satellite-borne sensors to monitor the planet for scientific and commercial purposes, typically involving high-resolution imagery of specific targets on Earth's surface.}
+}
+
+\newglossaryentry{Earth Tracker}
+{
+	name=Earth Tracker,
+	text=Earth Tracker,
+	description={A vision-based sensor developed in this work that uses satellite imagery and feature detection to estimate the satellite's pose by matching observed features to a geolocated catalogue.}
+}
+
+\newglossaryentry{EKF}
+{
+	name=Extended Kalman Filter,
+	text=extended Kalman filter,
+	description={A nonlinear variant of the Kalman filter that linearizes nonlinear functions using first-order Taylor expansion around the current state estimate.}
+}
+
+\newglossaryentry{Euler Angles}
+{
+	name=Euler Angles,
+	text=Euler angles,
+	description={A set of three angles (typically roll, pitch, and yaw) used to describe the orientation of a rigid body. Susceptible to gimbal lock singularities.},
+	plural=Euler angles
+}
+
+\newglossaryentry{Extrinsic Parameters}
+{
+	name=Extrinsic Parameters,
+	text=extrinsic parameters,
+	description={Camera parameters that define the position and orientation of the camera reference frame relative to another reference frame, typically expressed as a rotation and translation.},
+	plural=extrinsic parameters
+}
+
+\newglossaryentry{Feature Detection}
+{
+	name=Feature Detection,
+	text=feature detection,
+	description={The process of identifying distinctive and repeatable points within an image that can be used for image matching, tracking, and pose estimation.}
+}
+
+\newglossaryentry{Feature Vector}
+{
+	name=Feature Vector,
+	text=feature vector,
+	description={A 3D vector representation of a feature point in space, obtained through back-projection from a 2D image pixel.},
+	plural=feature vectors
+}
+
+\newglossaryentry{Field of View}
+{
+	name=Field of View,
+	text=field of view,
+	description={The angular extent of the observable area visible through a camera or sensor at any given moment, typically measured as the angle between opposite image boundaries.}
+}
+
+\newglossaryentry{Geoid}
+{
+	name=Geoid,
+	text=geoid,
+	description={An equipotential surface of Earth's gravity field that corresponds to mean sea level, accounting for gravitational anomalies but not local terrain variations.}
+}
+
+\newglossaryentry{Geolocation}
+{
+	name=Geolocation,
+	text=geolocation,
+	description={The process of determining the geographic coordinates (latitude, longitude, altitude) of a feature or object.}
+}
+
+\newglossaryentry{Gimbal Lock}
+{
+	name=Gimbal Lock,
+	text=gimbal lock,
+	description={A mathematical singularity that occurs when using Euler angles, where two rotational axes become aligned and one degree of freedom is lost.}
+}
+
+\newglossaryentry{GNSS}
+{
+	name=Global Navigation Satellite System,
+	text=global navigation satellite system,
+	description={A satellite-based system that provides autonomous geospatial positioning. Examples include GPS, GLONASS, Galileo, and BeiDou.}
+}
+
+\newglossaryentry{Ground Sampling Distance}
+{
+	name=Ground Sampling Distance,
+	text=ground sampling distance,
+	description={The physical distance between the centers of two adjacent pixels measured on the ground in satellite imagery. Smaller GSD indicates higher spatial resolution.}
+}
+
+\newglossaryentry{Homogeneous Transformation}
+{
+	name=Homogeneous Transformation,
+	text=homogeneous transformation,
+	description={A 4×4 matrix that combines rotation and translation into a single transformation, using homogeneous coordinates where position vectors are augmented with a fourth element.},
+	plural=homogeneous transformations
+}
+
+\newglossaryentry{IGRF}
+{
+	name=International Geomagnetic Reference Field,
+	text=international geomagnetic reference field,
+	description={A standard mathematical representation of Earth's main magnetic field and its secular variation, used for navigation and attitude determination.}
+}
+
+\newglossaryentry{Innovation}
+{
+	name=Innovation,
+	text=innovation,
+	description={In Kalman filtering, the difference between an actual sensor measurement and the predicted measurement, representing new information available to the filter.},
+	plural=innovations
+}
+
+\newglossaryentry{Intrinsic Parameters}
+{
+	name=Intrinsic Parameters,
+	text=intrinsic parameters,
+	description={Camera parameters internal to the camera that define how 3D points are projected onto the 2D image plane, including focal length, pixel size, and principal point offset.},
+	plural=intrinsic parameters
+}
+
+\newglossaryentry{J2 Perturbation}
+{
+	name=J2 Perturbation,
+	text=J2 perturbation,
+	description={An orbital perturbation caused by Earth's oblateness (flattening at the poles), represented by the second zonal harmonic coefficient in the gravitational potential.}
+}
+
+\newglossaryentry{J2000}
+{
+	name=J2000,
+	text=J2000,
+	description={A standard epoch (January 1, 2000, 12:00 TT) used as a reference for celestial coordinate systems and orbital elements.}
+}
+
+\newglossaryentry{Jacobian}
+{
+	name=Jacobian,
+	text=Jacobian,
+	description={A matrix of partial derivatives representing the local linear approximation of a nonlinear function, used in the EKF to linearize process and measurement models.},
+	plural=Jacobians
+}
+
+\newglossaryentry{Kalman Gain}
+{
+	name=Kalman Gain,
+	text=Kalman gain,
+	description={A matrix that determines the weight given to the innovation (measurement residual) when updating the state estimate in a Kalman filter.}
+}
+
+\newglossaryentry{LEO}
+{
+	name=Low Earth Orbit,
+	text=low Earth orbit,
+	description={An orbital regime typically between 160 and 2000 km altitude, characterized by relatively short orbital periods and higher atmospheric drag than higher orbits.}
+}
+
+\newglossaryentry{LVLH}
+{
+	name=Local Vertical Local Horizon,
+	text=local vertical local horizon,
+	description={An orbital reference frame that moves with the satellite, with the z-axis pointing toward Earth's center (nadir), the y-axis perpendicular to the orbital plane, and the x-axis tangent to the orbit.}
+}
+
+\newglossaryentry{Measurement Model}
+{
+	name=Measurement Model,
+	text=measurement model,
+	description={A mathematical function that relates the system states to sensor observations, used in state estimation to predict what measurements should be observed given a state estimate.},
+	plural=measurement models
+}
+
+\newglossaryentry{Motion Model}
+{
+	name=Motion Model,
+	text=motion model,
+	description={A mathematical model describing how the system states evolve over time, incorporating dynamics, kinematics, and external forces.},
+	plural=motion models
+}
+
+\newglossaryentry{Multispectral Imager}
+{
+	name=Multispectral Imager,
+	text=multispectral imager,
+	description={A sensor that captures images in multiple specific wavelength bands, including visible and non-visible portions of the electromagnetic spectrum.},
+	plural=multispectral imagers
+}
+
+\newglossaryentry{Nadir}
+{
+	name=Nadir,
+	text=nadir,
+	description={The direction pointing directly toward Earth's center from a satellite's position. A nadir-pointing camera looks straight down at the surface.}
+}
+
+\newglossaryentry{Nanosatellite}
+{
+	name=Nanosatellite,
+	text=nanosatellite,
+	description={A satellite with mass between 1 and 10 kg, typically built using standardized CubeSat specifications.},
+	plural=nanosatellites
+}
+
+\newglossaryentry{Off-Nadir Angle}
+{
+	name=Off-Nadir Angle,
+	text=off-nadir angle,
+	description={The angle between the nadir direction and the camera's pointing direction. Increases geometric distortion and affects ground sampling distance.}
+}
+
+\newglossaryentry{ORB}
+{
+	name=Oriented FAST and Rotated BRIEF,
+	text=oriented FAST and rotated BRIEF,
+	description={A fast binary feature descriptor that provides scale and rotation invariance with lower computational cost than SIFT or SURF.}
+}
+
+\newglossaryentry{Payload-as-a-Sensor}
+{
+	name=Payload-as-a-Sensor,
+	text=payload-as-a-sensor,
+	description={An approach where the primary science instrument (typically a camera) is repurposed as a navigation sensor to reduce system cost and complexity.}
+}
+
+\newglossaryentry{Pinhole Camera Model}
+{
+	name=Pinhole Camera Model,
+	text=pinhole camera model,
+	description={An idealized geometric camera model where light rays pass through a single point (the optical center) to form an inverted image on an image plane.}
+}
+
+\newglossaryentry{Pixel Pitch}
+{
+	name=Pixel Pitch,
+	text=pixel pitch,
+	description={The physical size of a single pixel on an imaging sensor, typically measured in micrometers.}
+}
+
+\newglossaryentry{PnP}
+{
+	name=Perspective-n-Point,
+	text=perspective-n-point,
+	description={A problem in computer vision of estimating the pose of a camera given 3D points in space and their corresponding 2D projections in an image.}
 }
 
 \newglossaryentry{Pose}
 {
 	name=Pose,
 	text=pose,
-	description={The combination of a satellite's position and attitude.}
+	description={The combination of a satellite's position and attitude, representing its complete six-degree-of-freedom state in space.},
+	plural=poses
+}
+
+\newglossaryentry{Pushbroom Sensor}
+{
+	name=Pushbroom Sensor,
+	text=pushbroom sensor,
+	description={An imaging sensor that captures one row of pixels at a time, relying on the satellite's forward motion to build up a complete 2D image.},
+	plural=pushbroom sensors
+}
+
+\newglossaryentry{Quaternion}
+{
+	name=Quaternion,
+	text=quaternion,
+	description={A four-element mathematical representation of rotation consisting of one scalar and three vector components, avoiding gimbal lock singularities inherent in Euler angles.},
+	plural=quaternions
+}
+
+\newglossaryentry{Radial Distortion}
+{
+	name=Radial Distortion,
+	text=radial distortion,
+	description={A lens aberration where magnification varies with radial distance from the optical center, causing straight lines to appear curved (barrel or pincushion distortion).}
+}
+
+\newglossaryentry{RANSAC}
+{
+	name=Random Sample Consensus,
+	text=random sample consensus,
+	description={A robust algorithm for estimating model parameters in the presence of outliers by iteratively fitting models to random subsets of data.}
+}
+
+\newglossaryentry{Raycasting}
+{
+	name=Raycasting,
+	text=raycasting,
+	description={A technique for determining the intersection of a ray with a 3D surface, used in this work to geolocate features by finding where feature vectors intersect Earth's surface.}
+}
+
+\newglossaryentry{Recursive Estimation}
+{
+	name=Recursive Estimation,
+	text=recursive estimation,
+	description={A method of updating state estimates by combining prior state distributions with new measurements at each time step, rather than reprocessing all historical data.}
+}
+
+\newglossaryentry{Reference Frame}
+{
+	name=Reference Frame,
+	text=reference frame,
+	description={A coordinate system with a defined origin and orientation used to describe positions, velocities, and rotations in space.},
+	plural=reference frames
+}
+
+\newglossaryentry{Rigid Body Dynamics}
+{
+	name=Rigid Body Dynamics,
+	text=rigid body dynamics,
+	description={The study of the motion of solid objects that do not deform under applied forces, governed by Newton-Euler equations.}
+}
+
+\newglossaryentry{Sensor Fusion}
+{
+	name=Sensor Fusion,
+	text=sensor fusion,
+	description={The process of combining measurements from multiple sensors to produce more accurate and reliable state estimates than could be achieved using any single sensor.}
+}
+
+\newglossaryentry{Sequential Update}
+{
+	name=Sequential Update,
+	text=sequential update,
+	description={An EKF architecture where sensor measurements are processed one at a time rather than simultaneously, allowing for asynchronous sensor integration.}
+}
+
+\newglossaryentry{SIFT}
+{
+	name=Scale-Invariant Feature Transform,
+	text=scale-invariant feature transform,
+	description={A feature detection algorithm that identifies distinctive keypoints invariant to scale, rotation, and illumination changes, widely used in image matching and recognition.}
+}
+
+\newglossaryentry{SLAM}
+{
+	name=Simultaneous Localization and Mapping,
+	text=simultaneous localization and mapping,
+	description={A technique where a mobile system simultaneously builds a map of its environment while determining its location within that map.}
+}
+
+\newglossaryentry{Snapshot Sensor}
+{
+	name=Snapshot Sensor,
+	text=snapshot sensor,
+	description={An imaging sensor with a global shutter that captures an entire 2D array of pixels simultaneously in a single exposure.},
+	plural=snapshot sensors
+}
+
+\newglossaryentry{Spatial Resolution}
+{
+	name=Spatial Resolution,
+	text=spatial resolution,
+	description={The level of detail visible in an image, typically measured by ground sampling distance. Higher spatial resolution allows finer features to be distinguished.}
+}
+
+\newglossaryentry{State Estimation}
+{
+	name=State Estimation,
+	text=state estimation,
+	description={The process of determining the values of system states (position, velocity, attitude, etc.) using mathematical models and sensor measurements.}
+}
+
+\newglossaryentry{State Vector}
+{
+	name=State Vector,
+	text=state vector,
+	description={A vector containing all the variables that describe the complete state of a system at a given time.},
+	plural=state vectors
+}
+
+\newglossaryentry{Sun-Synchronous Orbit}
+{
+	name=Sun-Synchronous Orbit,
+	text=sun-synchronous orbit,
+	description={A near-polar orbit where the satellite passes over any given point at approximately the same local solar time, useful for consistent lighting conditions in Earth observation.},
+	plural=sun-synchronous orbits
+}
+
+\newglossaryentry{SURF}
+{
+	name=Speeded-Up Robust Features,
+	text=speeded-up robust features,
+	description={A feature detection algorithm that approximates SIFT using integral images for faster computation while maintaining robustness to scale and rotation.}
+}
+
+\newglossaryentry{SWAP-C}
+{
+	name=SWaP-C,
+	text=SWaP-C,
+	description={Size, Weight, Power, and Cost constraints that drive the design philosophy of small satellites and CubeSats.}
+}
+
+\newglossaryentry{Swath}
+{
+	name=Swath,
+	text=swath,
+	description={The total ground area covered by a satellite imager in a single pass, determined by the field of view and orbital altitude.}
+}
+
+\newglossaryentry{Tangential Distortion}
+{
+	name=Tangential Distortion,
+	text=tangential distortion,
+	description={A lens distortion that occurs when the lens and image sensor are not perfectly parallel, causing the image to appear tilted or skewed.}
+}
+
+\newglossaryentry{Temporal Resolution}
+{
+	name=Temporal Resolution,
+	text=temporal resolution,
+	description={The frequency with which a satellite revisits a site or target area, determining how often updated imagery is available.}
+}
+
+\newglossaryentry{TLE}
+{
+	name=Two-Line Elements,
+	text=two-line elements,
+	description={A standardized data format containing the six classical Keplerian orbital elements used to describe satellite orbits, distributed by NORAD.}
+}
+
+\newglossaryentry{Two-Body Problem}
+{
+	name=Two-Body Problem,
+	text=two-body problem,
+	description={A simplified orbital mechanics problem considering only the gravitational attraction between two bodies, ignoring perturbations from other forces.}
+}
+
+\newglossaryentry{Visual Odometry}
+{
+	name=Visual Odometry,
+	text=visual odometry,
+	description={The process of determining the position and orientation of a vehicle by analyzing sequences of images from onboard cameras.}
+}
+
+\newglossaryentry{WGS84}
+{
+	name=World Geodetic System 1984,
+	text=World Geodetic System 1984,
+	description={A standard geodetic reference system that models Earth as an oblate spheroid with specified semi-major and semi-minor axes, widely used in GPS and navigation.}
+}
+
+\newglossaryentry{Whiskbroom Sensor}
+{
+	name=Whiskbroom Sensor,
+	text=whiskbroom sensor,
+	description={An imaging sensor that captures one pixel at a time by scanning across the swath using a rotating mirror, relying on satellite motion to build a complete image.},
+	plural=whiskbroom sensors
 }

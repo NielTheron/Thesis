@@ -1,109 +1,113 @@
 \mychapter{Introduction}{Introduction}{}
 \label{chap:introduction}
 
+%==============================================================================================================================================
 \mysection{Problem Background}{Problem Background}
 \label{sec:overview}
 
-- Satellites are getting smaller
-- Because this leads to stallites having reduced costs and timelines
-- This is enables by the miniraturisation of electronics
-
-- One of the big industires in satellites is remote sensing
-- Remote Sening is the application where satellites are used to monitor the Earth
-- One of the applications is to take images of the Earth
-
-- This leads to the problem that high accuracy is needed to take images of the targets on the Earth's surface
-- COTS components which is mainly used on small satellites lack the accuracy needed
-- Magnetometers is to low of an accuracy
-- Star Trackers have the right accuracy, but is expensive
-
-\mysection{Problem Definition}{Problem Defintion}
-\label{sec:moddef}
-
-A satellite orbiting Earth in the Earth-Centered Inertial (ECI) reference frame performs Earth observation missions, 
-continuously capturing high-resolution imagery of the planet's surface for scientific, commercial, or operational purposes. 
-To fulfill mission objectives effectively, the satellite must provide not only high-quality imagery but also precise geographic 
-information about observed areas. This requires accurate knowledge of the satellite's six-degree-of-freedom pose 
-(three-dimensional position and three-dimensional attitude) relative to the ECI frame at the moment each image is captured.
+\noindent
+In recent years, the satellite industry has undergone a significant paradigm shift toward smaller, more cost-effective platforms. This trend is largely enabled by 
+the ongoing miniaturization of electronics and sensor technology, which has allowed for the development of highly capable small satellites, including nanosatellites and 
+CubeSats. The primary drivers behind this shift are the substantially reduced development costs and accelerated timelines associated with these smaller platforms, which 
+have made space accessible for academic, commercial, and governmental entities \cite{Villela,bouwmeester2010}.
 \vspace{0.5cm}
 
-\noindent Traditional satellite pose determination relies on external systems such as Global Navigation Satellite Systems (GNSS) 
-and ground-based tracking networks. However, this thesis investigates an autonomous approach where the satellite performs 
-"visual navigation" by identifying known ground features in its imagery and using these observations to determine its orbital 
-state. The satellite essentially performs "reverse GPS" - instead of receiving position signals from space, it observes 
-recognizable landmarks on Earth's surface and computes its pose from these visual references.
+\noindent
+A predominant application within this rapidly growing market is Earth Observation (EO), which involves using satellite-borne sensors to monitor the planet for a 
+wide range of scientific and commercial purposes. A key requirement for many EO missions is the ability to capture high-resolution imagery (for a GSD in the range of 5-10m) of specific, pre-defined targets 
+on the Earth's surface. This, in turn, necessitates a high degree of pointing accuracy (typically in the range of 0.01$^\circ$ or better) from the satellite's Attitude Determination 
+and Control System (ADCS) \cite{Toth2016, Lesikar, Zhang2024}.
 \vspace{0.5cm}
 
-\noindent The core technical challenge lies in the transformation from raw imagery to precise pose estimates. This involves several 
-interdependent problems: \textbf{(1) Feature Detection} - identifying which pixels in the imagery correspond to cataloged 
-landmarks among millions of pixel observations; \textbf{(2) Geometric Inversion} - solving the complex inverse problem of 
-determining six-dimensional pose from two-dimensional image projections of three-dimensional landmarks with known geographic 
-coordinates; and \textbf{(3) Uncertainty Management} - handling measurement noise, feature detection errors, and dynamic orbital 
-motion in real-time. This thesis assumes the availability of a pre-established catalog of ground features with precisely 
-known geographic coordinates in the ECI frame. The feature matching problem - associating detected image features with specific 
-catalog entries - is considered solved through prior knowledge of the observed terrain and existing geographic databases.
-\vspace{0.5cm}
+\noindent
+This requirement introduces the critical technical challenge at the heart of this research. The low-cost philosophy of small satellites mandates the use of 
+Commercial-Off-The-Shelf (COTS) components, creating a trade-off between cost and performance \cite{Villela,bouwmeester2010}. A significant gap exists between the pointing accuracy required for meaningful 
+remote sensing and what is achievable with standard, low-cost ADCS sensors. For instance, magnetometers provide robust, continious attitude information but lack the necessary 
+precision, while high-performance star trackers can deliver the required accuracy but are often prohibitively expensive \cite{Ibrahim2020}. This dilemma creates a pressing need for novel, 
+cost-effective solutions that can bridge this performance gap.
 
-\begin{figure}[htbp]
+%================================================================================================================================================
+\mysection{Proposed Solution: Visual Navigation for Pose Estimation}{Proposed Solution: Visual Navigation for Pose Estimation}
+\label{sec:solution}
+
+\noindent
+To address this challenge, this thesis investigates an autonomous visual navigation approach to determine the satellite's full six-degree-of-freedom (6-DOF) pose, 
+encompassing both its three-dimensional position and attitude. Instead of relying on traditional external systems like GNSS, the satellite performs a type of "reverse GPS" by 
+identifying known ground features in its own imagery to compute its state. The primary novelty of this work is the application of visual navigation techniques, 
+commonly used in robotics, to Earth-orbiting satellites. Traditional satellite ADCS architectures rely on a suite of dedicated sensors, whereas this 
+thesis demonstrates a "payload-as-a-sensor" approach, repurposing the primary science imager as the main navigation instrument. Figure \ref{fig:satellite_concept} 
+illustrates the core mechanics of this problem, showing the relationship between the satellite and the Earth in the Earth-Centered Inertial (ECI) reference frame and 
+how it relates to the 6-DOF navigation challenge.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/Figure1.pdf}
-    \caption{Satellite pose estimation concept showing orbital geometry, reference frames}
+    \includegraphics[width=0.8\textwidth]{figures/stateestimation/OverallSystem.pdf}
+    \caption{Conceptual diagram of the proposed visual navigation problem, illustrating the key reference frames (ECI, Body) and the geometric relationship between the 
+    satellite's imager and known features on the Earth's surface.}
     \label{fig:satellite_concept}
 \end{figure}
 
-This problem structure aligns with a simplified version of the Simultaneous Localization and Mapping (SLAM) framework. 
-In this context, \textbf{localization} corresponds to determining the satellite's pose relative to the ECI frame using 
-observations of cataloged features, while the \textbf{mapping} component is reduced to feature catalog utilization rather 
-than creation. Since the geographic locations of observable features are assumed known a priori, the primary focus becomes the 
-pose estimation problem given established feature correspondences.
+\noindent
+This "payload-as-a-sensor" methodology presents several significant advantages. It offers a potential reduction in system cost and complexity by eliminating the need for 
+expensive, high-fidelity sensors. It also enhances system efficiency by enabling the dual-use of the primary imager during periods when it might otherwise be idle. 
+Finally, it provides a direct, relative measurement of the satellite's pointing with respect to the Earth, which is fundamentally what is required for high-accuracy EO missions.
 \vspace{0.5cm}
 
-The satellite's pose estimation system must account for the dynamic nature of orbital motion, 
-the geometric relationship between the camera frame and satellite body frame, and the projection 
-characteristics of the imaging system, while maintaining computational efficiency suitable for 
-real-time onboard processing. 
+\noindent
+The core technical challenge lies in transforming raw imagery into a precise pose estimate. Although conceptually related to Simultaneous Localization and Mapping (SLAM), the problem considered here involves only the localization component. Unlike full SLAM, where both the environment and the pose are estimated simultaneously, the "map", a catalogue of georeferenced ground features, is assumed to be known a priori. The focus is therefore on the localization task, which entails addressing three key challenges:
 
+\begin{itemize}
+    \item \textbf{Geometric Inversion:} The complex inverse problem of determining a 6-DOF pose from 2D image projections of known 3D landmarks.
+    \item \textbf{Uncertainty Management:} The real-time handling of measurement noise and dynamic orbital motion within a recursive filter.
+    \item \textbf{Sensor Fusion Integration:} Incorporating visual measurements into the traditional Attitude Determination and Control System (ADCS) through sensor 
+    fusion techniques, enabling synergistic use of camera, gyroscope, magnetometer, and other sensor data.
+\end{itemize}
+\vspace{0.5cm}
 
+\noindent
+To maintain a clear research focus, this thesis presumes that the feature matching problem, where the correct association of image features to catalogue entries, is solved. 
+This necessary simplification allows the research to concentrate on its core contribution: developing a state estimation framework that optimally leverages the geometric 
+data from these established feature correspondences.
 
-\mysection{Proposed Solution}{Proposed Solution}
-\label{sec:description}
+%============================================================================================================================================
+\mysection{Contributions and Thesis Outline}{Contributions and Thesis Outline}
+\label{sec:contributions_outline}
 
-- Proposed solution is to develop an estimation algorithm that can estimate the full state of the satellite
-- The Full State of a Satellite is its postition in Space and its attitude or its orientation in space.
-- The satellite uses the imager itself to determine position and attitude.
-- This can lead to reduce costs as the satellite is using an instrument which is already onboard the satellite.
-- Utilising the components when it is idle
-- Observing the target directly
+\noindent
+The main contributions of this thesis are:
+\begin{itemize}
+    \itemsep0em
+    \item The formulation of a novel satellite state estimation framework that adapts visual odometry principles from robotics for Earth-orbiting applications.
+    \item The development of a "payload-as-a-sensor" model that integrates the primary imager as a navigation sensor within an Extended Kalman Filter.
+    \item The design and implementation of a complete simulation environment to validate the performance of the proposed visual navigation system under various operational conditions.
+\end{itemize}
 
+\noindent
+The remainder of this document is structured as follows:
+\vspace{0.5cm}
 
-\mysection{Document Outline}{Document Outline}
-\label{sec:outline}
+\noindent
+\textbf{Chapter 2} presents a comprehensive literature review, examining both relative and absolute pose estimation methods. It then explores traditional pose estimation
+and visual-based navigation approaches, followed by an investigation of contemporary image processing techniques, state estimation methods, and sensor fusion strategies 
+involving traditional sensors.
+\vspace{0.5cm}
 
-- Chapter 2: Wil investigate previous sensors that is being used to determine Propose
-- Previous techniques estimating the pose
-- Some light touching on feature detection as this is crucial to the pose estimation system
+\noindent
+\textbf{Chapter 3} establishes the mathematical framework for the simulation, detailing rigid body mechanics, reference frame transformations, and the models for auxiliary sensors.
+\vspace{0.5cm}
 
-- Chapter 3: Wil introduce the modelling of the system
-- Rigid Body Kinematics
-- Position Kinematics
-- Attitude Kinematics
-- Kalman Filters
-- Extended Kalman Filters
+\noindent
+\textbf{Chapter 4} details the development of the vision-based Earth Tracker, including the camera model, lens distortion simulation, and the algorithms for generating measurement vectors and feature catalogues.
+\vspace{0.5cm}
 
-- Chapter 4: Measurement Generation
-- Feature detection
-- PinHole Camera Model.
-- The Plant
-- The Plant Model
-- The Measurment Model
+\noindent
+\textbf{Chapter 5} focuses on the design of the state estimation algorithm, presenting the theoretical background of recursive estimation and the detailed derivation of the Extended Kalman Filter (EKF) for this specific application.
+\vspace{0.5cm}
 
-- Chapter 5: State estimation
-- The Extended Kalman Filter
-- Update Step
-- Prediction Step
-- Simulator
+\noindent
+\textbf{Chapter 6} presents the simulation results and a thorough performance analysis of the system under various test conditions, including sensor noise, feature availability, and distortion effects.
+\vspace{0.5cm}
 
-- Chapter 6 is results
-
-- Chapter 7 is Conclusion
-- Future Work
+\noindent
+\textbf{Chapter 7} concludes the thesis by summarizing the key findings, discussing the limitations of the work, and proposing avenues for future research.
+\vspace{0.5cm}

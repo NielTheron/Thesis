@@ -1,190 +1,342 @@
-\mychapter{Literature}{Literature}{}
+\mychapter{Literature Study}{Literature Study}{}
 \label{chap:literature}
 
+%=======================================================================================================================================================
 \mysection{Introduction}{Introduction}
 \label{sec:litintro}
-% Overview of satellite pose estimation challenges for Earth observation
-% Importance of accurate pose determination for nanosatellites and CubeSats
-% Traditional vs. vision-based approaches
-% Chapter organization and scope
 
-% \mysection{Satellite Position and Attitude Determination Systems}{Satellite Position and Attitude Determination Systems}
-% \label{sec:litposatt}
+\noindent
+This chapter provides the contextual and technological background underlying the development of a novel visual navigation system for nanosatellite pose estimation. 
+It begins by addressing the economic motivation and rationale behind the problem, as identified in existing literature.
+\vspace{0.5cm}
 
-% \mysubsection{Position Determination Methods}{Position Determination Methods}
-% \label{sec:posdet}
-% % Global Navigation Satellite Systems (GNSS/GPS)
-% % - Accuracy limitations and availability
-% % - Power consumption considerations for CubeSats
+\noindent
+The chapter then follows a cascading structure. It first distinguishes between relative and absolute pose estimation, establishing the foundational 
+concepts for attitude determination. Next, it compares traditional pose estimation sensors with emerging vision-based navigation techniques, 
+highlighting the shift toward optical solutions in modern nanosatellite missions. The discussion then situates vision-based navigation within the 
+context of space applications, before exploring its two core components in detail: image processing and state estimation through sensor fusion.
+
+%=======================================================================================================================================================
+\mysection{Industry Trends}{Industry Trends}
+\label{sec:}
+
+\noindent
+The landscape of the space industry has undergone a radical transformation, moving from a highly exclusive domain to a commercially 
+accessible one. Historically, the greatest barriers to entry were the large costs associated with developing specialised satellite components 
+and the prohibitive expenses of space launch campaigns, which restricted missions primarily to government or military funding \cite{Jones, Drenthe}. 
+This dynamic has fundamentally changed due to two synergistic global trends: the relentless miniaturisation of electronics and the competitive reduction in launch 
+costs by new commercial providers. This reduction in launch costs has significantly lowered the price per kilogram to Low Earth Orbit (LEO) \cite{Adilov}, thereby democratizing access to space for commercial and educational sectors. As illustrated in Figure \ref{fig:cubesat_growth}, the number of CubeSat launches is projected to increase rapidly in the coming years \cite{Nagel,Villela,bouwmeester2010}.
+\vspace{0.5cm}
+
+\noindent
+This shift necessitated a new development paradigm based on standardisation and an iterative approach, culminating in the widespread adoption of 
+the CubeSat platform \cite{Mahmoud, Villela}. The CubeSat standard is defined by its strict SWaP-C (Size, Weight, Power, and Cost) 
+constraints \cite{Bomani, Bouzoukis}. The necessity of low cost means that CubeSats heavily rely on Commercial Off-the-Shelf (COTS) components. 
+While this maintains affordability, COTS-based sensors are inherently less accurate and reliable than their expensive, space-rated counterparts \cite{Selva}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Villela.png}
+    \caption{Annual number of CubeSat launches from 2002 to 2018, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite{Villela}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite{Villela}.}
+    \label{fig:cubesat_growth}
+\end{figure}
+
+\noindent
+The low cost of CubeSats has driven a surge in lucrative Earth Observation (EO) missions, where high-resolution cameras 
+function as the primary payload \cite{Azami, Nagel}. EO applications demand highly accurate target tracking and 
+precise pose (position and attitude) estimation \cite{Azami}. Crucially, the size and power requirements of the EO payload severely 
+limit the allocation of resources to the Attitude Determination and Control Subsystem (ADCS) \cite{Selva} as illustrated in Figure \ref{fig:adcs_limitation} in the Arizona State University Pheonix CubeSat \cite{CubeCam}. This constraint often forces mission designers to omit the highly accurate, but large and expensive, star tracker, relying instead on coarse sensors like the Magnetometer and Coarse Sun Sensors (CSS) \cite{Bomani,Toth2016}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/literaturestudy/CubeCam.jpg}
+    \caption{In this figure we can see how much space is taken up by the optical payload in the Pheonix CubeSat from the Arizona State University, which is about 1.5U in a 3U CubeSat.  \cite{CubeCam}}
+    \label{fig:adcs_limitation}
+\end{figure}
+
+\noindent
+To mitigate the ADCS performance gap resulting from the SWaP-C constraints, a key focus in current research is 
+the "payload-as-a-sensor" concept. This approach involves utilizing the already-onboard imaging 
+payload as a supplementary ADCS sensor. The goal is two-fold: to either completely replace the expensive star tracker 
+by using the camera for high-accuracy attitude determination, or to significantly improve the overall pose estimation accuracy
+by fusing the visual data with the coarse Magnetometer and CSS readings, thereby leveraging an existing component for enhanced mission capability.
+
+%=======================================================================================================================================================
+\mysection{Relative Pose Estimation}{Relative Pose Estimation}
+
+\noindent
+When discussing pose estimation in the context of space applications, the term is largely borrowed from the field of autonomous robotics \cite{Korf}. 
+On Earth, a ground vehicle might use localisation algorithms, such as Simultaneous Localisation and Mapping (SLAM), to estimate its position and orientation 
+relative to a map it has created of its environment \cite{Korf, Sabatini}. In space-based applications, this concept is adapted to relative pose estimation, which is crucial for close-proximity operations like rendezvous, docking, Active Debris Removal (ADR), and on-orbit servicing \cite{Sabatini, Xing, deJongh2019}. The typical scenario involves a ``chaser'' satellite that must determine the pose, that is, the relative position and attitude of a ``target'' satellite \cite{Meng, Sabatini, Kisantal, Xing, deJongh2019}. This concept is illustrated in Figure \ref{fig:relative_pose_concept} where a chief (chaser) satellite is executing relative pose esitmation on a deputy (target) satellite.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Xing.png}
+    \caption{Conceptual diagram of a chaser satellite performing relative pose estimation of a target satellite for an on-orbit servicing mission. \cite{Xing}}
+    \label{fig:relative_pose_concept}
+\end{figure}
 
 
-% % Ground-Based Tracking Systems
-% % - Two-Line Element (TLE) sets and orbital propagation
-% % - Ground station ranging and limitations
-% % Relative positioning techniques
+\noindent
+Several techniques are employed for relative pose estimation. Visual odometry, using either a single monocular camera or a stereo camera pair, is a popular method due to the low power consumption, cost, and mass of cameras compared to active sensors \cite{Kisantal, Sabatini}. Monocular cameras are often favoured for their simplicity, particularly on smaller spacecraft like CubeSats where a sufficient baseline for effective stereo vision is not feasible \cite{deJongh2019}. While a single camera cannot inherently measure depth, techniques have been developed to overcome this limitation \cite{Korf}. Stereo vision systems, however, can acquire sparse 3D point clouds through triangulation, making them a viable standalone sensor for tracking unknown targets \cite{Sabatini, Korf}. Figure \ref{fig:sensor_modalities} illustrates pose estimation using a monocular camera and triangulation using a stereo camera \cite{Korf} Light Detection and Ranging (LiDAR) is another prominent sensor used to generate 3D point clouds of a target, offering high accuracy over larger distances but at a greater cost and power requirement \cite{Sabatini, Korf, deJongh2019}.
 
-% \mysubsection{Attitude Determination Systems}{Attitude Determination Systems}
-% \label{sec:attdet}
-% % Star Trackers
-% % - High accuracy (arc-second level) but high cost and power
-% % - Current CubeSat star tracker solutions (ST200, ST400)
-% % Coarse Sun Sensors
-% % - Low accuracy but reliable and low power
-% % - Typical accuracy ranges and applications
-% % Magnetometers
-% % - Three-axis magnetometers for attitude estimation
-% % - TRIAD and QUEST algorithms
-% % Gyroscopes and IMUs
-% % - MEMS gyroscopes in CubeSat applications
-% % - Drift characteristics and calibration requirements
-% % Multi-sensor fusion approaches
-% % - Sensor complementarity and redundancy
-% % - Cost-accuracy trade-offs for small satellites
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/literaturestudy/Kisantal.png}
+        \caption{Pose Estimation using monocular imager \cite{Kisantal}.}
+        \label{fig:sensor_modalities_a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/literaturestudy/Jongh.png}
+        \caption{Feature mathcing and pairing using a stereo imager \cite{Korf}}
+        \label{fig:sensor_modalities_b}
+    \end{subfigure}
+    \caption{Comparison of sensor modalities: (a) Monocular image and (b) Stereo camera pair triangulation.}
+    \label{fig:sensor_modalities}
+\end{figure}
 
-% \mysection{Earth Observation Satellite Systems and Imaging Technologies}{Earth Observation Satellite Systems and Imaging Technologies}
+\noindent
+To extract meaningful data from sensor inputs, various feature-based methods are utilized. These can be categorised into three main types \cite{Meng}:
+\begin{itemize}
+    \item \textbf{Points/Corners}: These features are widely used and form the basis of the \textbf{Perspective-n-Point (PnP)} problem, where the pose is determined from correspondences between 3D points on the object and their 2D projections in the image \cite{Meng, Kisantal, deJongh2019}. Algorithms like the Scale-Invariant Feature Transform (SIFT) are commonly used to detect and match these features robustly \cite{Kisantal}. However, corner-based methods can be the least robust under varying lighting conditions and can be difficult to track reliably \cite{Meng}.
+    \item \textbf{Lines}: Often found on man-made objects like satellites, line features are generally more robust than points \cite{Meng}. The \textbf{Perspective-n-Lines (PnL)} problem involves estimating pose from line correspondences \cite{Meng}.
+    \item \textbf{Circles/Ellipses}: Features like docking rings or thruster nozzles appear as circles on a satellite, which project as ellipses in an image \cite{Meng, Sabatini}. Ellipse-based pose estimation is considered the most robust method, especially in noisy conditions and poor lighting, though it can suffer from dual-solution ambiguity where two possible poses can be calculated from a single view \cite{Meng, Kisantal}. Combining a circle feature with a line feature can help resolve this ambiguity and recover the full 6-DOF pose \cite{Meng}.
+\end{itemize}
 
-% \mysubsection{Heritage Earth Observation Missions}{Heritage Earth Observation Missions}
-% % Landsat Series
-% % - Imaging capabilities and geometric accuracy requirements
-% % - Camera types: pushbroom vs. whiskbroom scanners
-% % Sentinel Series
-% % - Multi-Spectral Instrument (MSI) characteristics
-% % - Pointing accuracy and stability requirements
+\noindent
+Once features are extracted, estimation algorithms process this information to determine the final pose. Classical techniques like the Extended Kalman Filter (EKF) are widely used to fuse sensor measurements with a dynamic or kinematic model of the target's motion \cite{Kisantal, Sabatini, deJongh2019, Korf}. The EKF recursively estimates the system states, including position, attitude, and their corresponding velocities, making it suitable for tracking moving objects over time \cite{Kisantal, Sabatini}. More recently, Convolutional Neural Networks (CNNs) and other deep learning models have emerged as powerful alternatives, outperforming traditional methods in many computer vision tasks \cite{deJongh2019, Korf}. These approaches can directly regress the 6-DOF pose from an image (an ``end-to-end'' solution) or predict an intermediate representation like the 2D locations of keypoints, which are then used with a PnP solver to calculate the final pose \cite{Sabatini, Korf}. A significant challenge for these data-driven methods is the scarcity of real, labelled spaceborne imagery for training, leading to a heavy reliance on photorealistic synthetic data \cite{Kisantal, Korf}.
 
-% \mysubsection{Commercial Earth Observation Satellites}{Commercial Earth Observation Satellites}
-% % Planet Labs Constellation
-% % - PlanetScope Dove satellites: frame cameras, 3.7m resolution
-% % - SkySat: Cassegrain telescopes with CMOS detectors, 50cm resolution
-% % - RapidEye: pushbroom scanners (retired 2020)
-% % Maxar Technologies
-% % - WorldView Series: high-resolution pushbroom imaging
-% % - WorldView Legion: next-generation constellation, 30cm resolution
-% % - Camera technologies and pointing requirements
-% % Airbus Defence and Space
-% % - Pléiades Constellation: 0.5m resolution, agile imaging
-% % - SPOT Series: systematic Earth coverage
-% % NASA Earth Science Missions
-% % - MODIS (Terra/Aqua): 36-band imaging, 250m-1km resolution
-% % - VIIRS: day/night imaging capabilities
-% % - Specialized atmospheric and climate sensors
+%=======================================================================================================================================================
+\mysection{Absolute Pose Estimation}{Absolute Pose Estimation}
 
-% \mysubsection{Camera Technologies in Earth Observation}{Camera Technologies in Earth Observation}
-% % Imaging sensor types
-% % - CCD vs. CMOS technologies in space applications
-% % - Frame cameras vs. pushbroom/whiskbroom scanners
-% % Pointing accuracy requirements by resolution
-% % - Sub-meter imagery: arc-second level pointing
-% % - Moderate resolution: arc-minute level acceptable
-% % Calibration and stability requirements
+In contrast to relative pose estimation absolute pose estimation for a satellite involves finding its state within a fixed, non-moving reference frame. A satellite's position is typically defined within an absolute inertial reference frame, such as the J2000 International Celestial Reference Frame (ICRF). Its attitude is then described as the orientation of the satellite's body-fixed frame relative to this inertial frame or, for convenience in many control applications, relative to a local, moving frame like the orbital reference frame.
 
-% \mysubsection{Emerging Satellite Constellations}{Emerging Satellite Constellations}
-% % Next-generation commercial systems
-% % - Planet Pelican: 30cm resolution successor to SkySat
-% % - Umbra: SAR constellation for all-weather imaging
-% % - Satellogic: multispectral and hyperspectral capabilities
-% % - Tanager-1: hyperspectral Earth observation
+%=======================================================================================================================================================
+\mysubsection{Traditional Pose Estimation}{Traditional Pose Estimation}
 
-% \mysection{Computer Vision for Satellite Applications}{Computer Vision for Satellite Applications}
+Traditionally, the complete pose of a satellite is determined and controlled by two separate subsystems: the Attitude Determination and Control System (ADCS) for orientation, and the Orbit Control System (OCS) for position. As such, these two components of the pose are typically estimated independently.
+\vspace{0.5cm}
 
-% \mysubsection{Classical Feature Detection Methods}{Classical Feature Detection Methods}
-% % Scale-Invariant Feature Transform (SIFT)
-% % - 128-dimensional descriptors and invariance properties
-% % - Performance with satellite imagery and multi-temporal matching
-% % - Computational requirements for space applications
-% % Speeded-Up Robust Features (SURF)
-% % - Computational advantages over SIFT
-% % - 64-dimensional descriptors and performance trade-offs
-% % Oriented FAST and Rotated BRIEF (ORB)
-% % - Real-time performance capabilities
-% % - Suitability for resource-constrained platforms
-% % Comparative analysis for satellite pose estimation
-% % - Robustness to lighting changes and atmospheric effects
-% % - Feature matching accuracy under geometric distortions
+\noindent
+\textbf{Position Estimation:}
 
-% \mysubsection{Earth Feature Tracking and Landmark Recognition}{Earth Feature Tracking and Landmark Recognition}
-% % Ground feature selection criteria
-% % - Persistent landmarks vs. dynamic features
-% % - Urban vs. natural feature reliability
-% % Multi-temporal feature tracking
-% % - Seasonal and lighting variations
-% % - Long-term feature stability
+\noindent
+The absolute position of a satellite in orbit is most commonly determined using signals from a Global Navigation Satellite System (GNSS), such as the Global Positioning System (GPS). Onboard GNSS receivers provide the necessary data to compute the satellite's orbital state vector,its position and velocity,relative to Earth. For applications demanding higher precision, advancements in GNSS technology make use of the International GPS Service (IGS) network, which provides precise orbital and clock corrections. By compensating for satellite clock errors and other biases, these refined techniques can achieve absolute positioning accuracies within approximately 40 cm \cite{Han}.
+\vspace{0.5cm}
 
-% \mysection{Vision-Based Pose Estimation Techniques}{Vision-Based Pose Estimation Techniques}
+\noindent
+While GNSS-based methods are ideal for satellites equipped with receivers, not all spacecraft have such capabilities. In these cases, alternative approaches are employed to estimate orbital position. One of the most widely used methods is based on data published by the North American Aerospace Defense Command (NORAD), which provides Two-Line Elements (TLEs), which is a a standardized format containing the six classical Keplerian orbital elements (e.g., mean motion, eccentricity, and inclination). These elements are propagated using the Simplified General Perturbations model (SGP4), an analytical model that accounts for perturbations such as Earth’s gravity harmonics and atmospheric drag. Although less precise than GNSS-based solutions, TLE-based orbit determination remains an essential and accessible tool for tracking satellites, typically achieving positional accuracies within a few kilometers for objects in Low Earth Orbit \cite{Kahr2013,Hoots2004,Goh2018}.
 
-% \mysubsection{Camera-Based Navigation Systems}{Camera-Based Navigation Systems}
-% % Simultaneous Localization and Mapping (SLAM)
-% % - Visual SLAM approaches for satellite applications
-% % - Landmark initialization and management
-% % Visual odometry techniques
-% % - Monocular vs. stereo approaches
-% % - Integration with orbital dynamics
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/literaturestudy/Norad.png}
+\caption{NORAD Ground Tracks and Estimation for 4 x 10 min TLE data. \cite{Kahr2013}}
+\label{fig:gnss_concept}
+\end{figure}
 
-% \mysubsection{Geometric Pose Estimation Methods}{Geometric Pose Estimation Methods}
-% % Perspective-n-Point (PnP) solutions
-% % - 2D-3D correspondence establishment
-% % - Robust estimation techniques (RANSAC)
-% % Feature-based pose recovery
-% % - Essential matrix and fundamental matrix estimation
-% % - Multi-view geometry applications
+\noindent
+\textbf{Attitude Estimation:}
 
-% \mysection{State Estimation and Sensor Fusion}{State Estimation and Sensor Fusion}
+\noindent
+Attitude determination is an ongoing and critical field of research in spacecraft engineering. Traditionally, a satellite is equipped with a suite of sensors to measure its orientation relative to external references. This sensor suite often includes magnetometers (as seen in Figure \ref{fig:magnetometer}), coarse and fine sun sensors, and star trackers (as seen in Figure \ref{fig:star_tracker}) \cite{Bennett2021,Zahran,Liebe1995}. These are often complemented by internal sensors like gyroscopes which measure the rate of change of the attitude. The data from these various sensors are fused using estimation algorithms to provide a robust and accurate attitude solution.
+\vspace{0.5cm}
 
-% \mysubsection{Filtering Techniques for Satellite Applications}{Filtering Techniques for Satellite Applications}
-% % Extended Kalman Filter (EKF)
-% % - Nonlinear state estimation for attitude and position
-% % - Quaternion-based attitude representations
-% % Unscented Kalman Filter (UKF)
-% % - Handling nonlinear measurement models
-% % - Computational considerations for CubeSats
-% % Particle Filters
-% % - Multi-modal estimation and robustness
-% % - Computational complexity trade-offs
+\noindent
+A brief summary of the different attitude sensors, their capabilities, limitations, and typical accuracies is provided in Table~\ref{tab:sensors_operation_accuracy} and Table~\ref{tab:sensors_advantages_limitations} \cite{Springmann}.
 
-% \mysubsection{Multi-Sensor Fusion Architectures}{Multi-Sensor Fusion Architectures}
-% % Vision-IMU integration
-% % - Tightly coupled vs. loosely coupled approaches
-% % - Error state estimation techniques
-% % Vision-GNSS fusion
-% % - Complementary sensor characteristics
-% % - Relative vs. absolute positioning
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/literaturestudy/CubeStar.png}
+        \caption{A typical star tracker used for high-precision attitude determination.\cite{CubeStar}}
+        \label{fig:star_tracker}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/literaturestudy/CubeMag.png}
+        \caption{A magnetometer for measuring the direction of the Earth's magnetic field.\cite{CubeMag}}
+        \label{fig:magnetometer}
+    \end{minipage}
+\end{figure}
 
-% \mysubsection{Robustness and Reliability Techniques}{Robustness and Reliability Techniques}
-% % Outlier detection and rejection
-% % - Statistical methods for measurement validation
-% % - Robust estimation techniques
-% % Failure detection and accommodation
-% % - Sensor redundancy and graceful degradation
-% % - Performance monitoring and health assessment
+% Table 1: sensor, principle, accuracy
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X c @{}}
+\toprule
+\textbf{Sensor Type} & \textbf{Principle of Operation} & \textbf{Typical Accuracy} \\
+\midrule
+Star Tracker      & Matches observed star patterns to an onboard catalog & High (0.0003$^\circ$ to 0.01$^\circ$) \\
+Sun Sensor        & Measures the light intensity & Coarse (0.005$^\circ$ to 3$^\circ$) \\
+Magnetometer      & Measures local magnetic field vector and compares to a model & Coarse (0.5$^\circ$ to 3$^\circ$) \\
+Gyroscope (IMU)   & Senses angular velocity via inertial effects (e.g., MEMS, FOG) & High rate, low noise (short-term) \\
+Horizon Sensor    & Detects infrared contrast at Earth's limb & Moderate (0.1$^\circ$ to 0.25$^\circ$) \\
+\bottomrule
+\end{tabularx}
+\caption{Sensor type, principle of operation, and typical accuracy.}
+\label{tab:sensors_operation_accuracy}
+\end{table}
 
-% \mysection{Earth-Tracking Systems for Satellite Pose Estimation}{Earth-Tracking Systems for Satellite Pose Estimation}
+% Table 2: sensor, advantages, limitations
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X @{}}
+\toprule
+\textbf{Sensor Type} & \textbf{Advantages} & \textbf{Limitations} \\
+\midrule
+Star Tracker      & Very high accuracy, provides 3-axis absolute attitude & Computationally intensive, susceptible to blinding, expensive \\
+Sun Sensor        & Simple, reliable, low power & Only provides 2-axis information, inoperable in eclipse \\
+Magnetometer      & Low power, works in eclipse, inexpensive & Requires a magnetic field (LEO), needs orbit knowledge, susceptible to interference \\
+Gyroscope (IMU)   & High update rate, independent of external references & Suffers from bias and drift, requires initialization and correction \\
+Horizon Sensor    & Simple, reliable Earth-pointing reference & Provides only 2-axis (pitch/roll) info, accuracy varies with altitude/season \\
+\bottomrule
+\end{tabularx}
+\caption{Sensor advantages and limitations.}
+\label{tab:sensors_advantages_limitations}
+\end{table}
 
-% \mysubsection{Ground Feature Databases and Maps}{Ground Feature Databases and Maps}
-% % Global elevation models and terrain databases
-% % - SRTM, ASTER GDEM availability and accuracy
-% % Landmark databases for navigation
-% % - Persistent feature catalogs
-% % - Real-time vs. pre-computed approaches
+%======================================================================================================================================================
+\mysubsection{Visual Based Navigation}{Visual Based Navigation}
 
-% \mysubsection{Applications and Performance Requirements}{Applications and Performance Requirements}
-% % Earth observation pointing requirements
-% % - Target acquisition and tracking accuracy
-% % - Image quality and geometric fidelity
-% % Autonomous navigation capabilities
-% % - Reduced ground contact and operational autonomy
+\noindent
+Visual-based navigation is a method of determining the pose of a vehicle by analyzing sequences of images captured by an onboard camera. This approach has become increasingly important for autonomous systems operating in environments where traditional navigation aids, such as GPS, are unreliable or unavailable \cite{Parra}. The underlying principle involves detecting and tracking distinctive visual features or patterns across consecutive image frames to infer motion. Broadly, visual navigation methods can be divided into two categories: absolute geo-localization, which estimates a global pose by matching images to a geo-referenced database, and relative pose estimation, which computes motion incrementally between frames \cite{Chen2021, Parra}. These approaches are often complementary, relative methods ensure continuous short-term tracking, while absolute methods periodically correct accumulated drift by anchoring the system to fixed global references.
+\vspace{0.5cm}
 
-% \mysection{Literature Gap Analysis and Research Opportunities}{Literature Gap Analysis and Research Opportunities}
-% % Current limitations in CubeSat pose estimation
-% % - Cost vs. accuracy trade-offs
-% % - Limited availability of space-qualified high-accuracy sensors
-% % Vision-based solutions for small satellites
-% % - Leveraging existing imaging payloads
-% % - Real-time processing constraints and solutions
-% % Integration challenges and opportunities
-% % - Multi-sensor fusion complexity
-% % - Ground truth validation difficulties
+\noindent
+Absolute geo-localization relies on matching real-time images captured by a vehicle to a pre-existing geo-referenced database such as satellite imagery or topographic maps. This strategy is widely applied in the Unmanned Aerial Vehicle (UAV) domain, which shares many operational similarities with satellite missions, particularly in vision-based navigation and localization.
+\vspace{0.5cm}
 
-% \mysection{Conclusion}{Conclusion}
-% % Summary of key findings from literature review
-% % Identification of research gaps and opportunities
-% % Justification for proposed vision-based approach
-% % Preview of methodology and contributions
+\noindent
+A representative example of this approach is the framework developed by Chen et al. for UAVs, which implements a two-stage process for real-time visual geo-localization \cite{Chen2021}. The first stage involves offline database preparation, where synthetic color images and depth maps are rendered from satellite and topographic data for a wide range of possible poses. From these, both global and local feature descriptors are extracted and stored in a database. The second stage, online inference, is performed during flight. Here, each incoming ``query'' image captured by the UAV is compared to the database using global descriptors to retrieve the top candidate matches. The vehicle's six-degree-of-freedom (6-DOF) pose is then refined by matching local descriptors and solving a Perspective-\textit{n}-Point (PnP) problem between 2D query image features and corresponding 3D database points derived from the depth maps \cite{Chen2021}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/literaturestudy/Chen UAV.png}
+    \caption{A typical visual geo-localization pipeline, illustrating the use of geolocated features and a pre-rendered database. \cite{Chen2021}.}
+    \label{fig:visual_pipeline}
+\end{figure}
+
+\noindent
+The principles of visual-based navigation developed for UAVs have also been adapted for satellite applications. In the context of orbital operations, Wu et al. \cite{Wu2024} introduced a system that estimates a satellite's absolute position and attitude using an infrared Earth sensor, traditionally an attitude instrument, repurposed for autonomous navigation. The main challenge addressed in this work is cross-modal image matching between the infrared sensor data and a visible-light reference map. To overcome this, the authors employ a hierarchical registration approach composed of two stages:
+\begin{itemize}
+    \item \textbf{Coarse Registration:} A Convolutional Neural Network (CNN) extracts deep, abstract features that are robust to differences in resolution, illumination, and distortion \cite{Wu2024}.
+    \item \textbf{Fine Registration:} Edge-based extended phase correlation is then applied to achieve precise sub-pixel alignment between the sensed and reference images \cite{Wu2024}.
+\end{itemize}
+By combining the outputs of both stages, the system achieves simultaneous estimation of the satellite's 6-DOF pose. A notable contribution of this work is the development of a new Earth background thermal infrared radiation model, required to create a suitable reference dataset for accurate matching \cite{Wu2024}.
+\vspace{0.5cm}
+
+\noindent
+Complementary to this, Klancar et al. \cite{Klancar2012} proposed a visual-based attitude control system for remote sensing satellites that relies solely on the onboard observation camera. Their approach integrates imaging and control by using the same optical payload for both Earth observation and attitude determination. The core of this method is an image-based visual servoing algorithm, which uses feature tracking to drive the reaction wheels and maintain a target within the image center. Specifically, Scale-Invariant Feature Transform (SIFT) features are matched between the current image and a reference target image, with the resulting feature displacement used as feedback in a proportional-derivative (PD) control law. The algorithm effectively estimates orientation errors and commands corrective torques, achieving accurate tracking without explicit camera calibration. Using the SGP3 orbital model and Google Earth imagery, simulation results demonstrated robust stabilization and pointing performance \cite{Klancar2012}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{figures/literaturestudy/KlancerECI.png}
+    \caption{Attitude estimation and control reference frames of the satellite \cite{Klancar2012}.}
+    \label{fig:visual_pipeline_klancar}
+\end{figure}
+
+\noindent
+Further refinement of vision-based attitude estimation was presented by Carozza et al. \cite{Carozza2013}, who conducted a detailed analysis of the error sources associated with determining a satellite's three-axis attitude from consecutive overlapping Earth images. Their method estimates attitude changes by registering feature points between successive images, compensating for parallax caused by satellite translation, and modeling the remaining motion as a homography, which is then used to derive quaternion-based attitude changes. The study emphasizes error quantification within the image registration pipeline, which incorporates Shi-Tomasi corner detection, phase correlation, and the Lucas-Kanade Tracker (LKT) with sub-pixel precision, all robustly filtered using RANSAC. Their findings reveal that finite sub-pixel tracking accuracy (on the order of hundredths of a pixel) introduces periodic oscillations and drift in attitude estimation. Moreover, the system exhibits greater sensitivity to roll and pitch compared to yaw, defining an intrinsic accuracy limit governed by the precision of sub-pixel motion tracking \cite{Carozza2013}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Carozza.png}
+    \caption{Carozza et al. vision-based attitude estimation framework, illustrating the use of feature matching and homography \cite{Carozza2013}.}
+    \label{fig:visual_pipeline_carozza}
+\end{figure}
+
+\noindent
+The proposed work, detailed in this thesis, adopts and extends the vision-based navigation principles established by the methods discussed here, but with a unique focus and architecture. The approach explicitly follows the payload-as-a-sensor methodology, repurposing the main Earth imager for navigation. Unlike the attitude-only systems by Klancar et al. and Carozza et al. \cite{Klancar2012, Carozza2013}, this thesis aims for full 6-DOF pose estimation, which is a more comprehensive state space. While related to Chen et al.'s absolute geo-localization and Wu et al.'s use of a reference map \cite{Wu2024, Chen2021}, the method here frames the problem as a localization component of SLAM, where the "map" is assumed to be known a priori. Furthermore, the core technical contribution is the state estimation framework that optimally leverages the geometric data from these established feature correspondences using an  Kalman Filter for multi-sensor fusion. This explicitly addresses the sensor fusion challenge, integrating visual data with traditional auxiliary sensors, a point not centrally focused on by the comparative image registration or visual servoing methods presented.
+
+%=======================================================================================================================================================
+\mysubsubsection{Image Processing}{Image Processing}
+
+\noindent
+Feature detection and matching form the foundation of image-based navigation and attitude estimation, with various algorithms developed to balance robustness, computational efficiency, and invariance to environmental factors. Kouyama et al. \cite{Kouyama2017} utilized Speeded-Up Robust Features (SURF) in conjunction with a Random Sample Consensus (RANSAC) framework to determine satellite attitude through feature correspondence between observation images and a registered base map. Their approach emphasizes geometric consistency and outlier rejection, as shown in Figure~\ref{fig:Kouyama}, enabling accurate estimation of the attitude matrix even under partial cloud coverage and variable lighting. In contrast, Klancar et al. \cite{Klancar2013} adopted the Scale-Invariant Feature Transform (SIFT), originally proposed by Lowe \cite{Lowe2004}, which provides strong invariance to scale, rotation, and illumination. While both SURF and SIFT rely on local image gradients to form distinctive descriptors, SIFT's higher computational load is compensated by its superior distinctiveness, making it particularly effective for visual servoing applications in satellite attitude control as illustrated in Figure \ref{fig:Klancer}. In Klancar's framework, matched SIFT features between a reference and a live image generate an image-plane error vector, directly corresponding to angular misalignment, which can then be corrected through feedback control of the reaction wheels.
+\vspace{0.5cm}  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/literaturestudy/Kouyama.png}
+    \caption{Feature Mathcing using SURF and RANDSAC \cite{Kouyama2017}}
+    \label{fig:Kouyama}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/literaturestudy/Klancer Sift.png}
+    \caption{Feature matching using the SIFT algorithm and calulating error vectors \cite{Klancar2013} }
+    \label{fig:Klancer}
+\end{figure}
+
+\noindent
+For aerial applications, Mateos et al. \cite{Mateos2024} demonstrated a trade-off between accuracy and computational cost by employing the Oriented FAST and Rotated BRIEF (ORB) descriptor for Visual Odometry (VO) in GPS-denied environments as illustrated in Figure \ref{fig:Mateos}. ORB forgoes scale-space extrema detection in favor of binary feature extraction, allowing for real-time performance on resource-limited embedded systems. While ORB lacks the precision of SIFT or SURF in handling significant viewpoint and illumination changes, its use of Hamming distance for feature comparison and rapid keypoint generation makes it well-suited for short-baseline motion estimation where inter-frame transformations are small. Across these techniques, a common pipeline emerges: keypoint extraction, descriptor generation, feature matching, and outlier removal. The difference lies primarily in computational intensity and robustness to environmental variation. SIFT and SURF excel in high-fidelity mapping and long-term stability, whereas ORB provides lightweight, near-real-time capability for onboard processing. These algorithms collectively represent the evolution of image-based navigation, from robust but computationally heavy descriptors like SIFT, through SURF's balance of speed and reliability, to ORB's optimization for embedded autonomy, underscoring that the optimal choice depends on platform constraints, mission requirements, and environmental dynamics.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Mateos.png}
+    \caption{Feature detection using ORB \cite{Mateos2024}.}
+    \label{fig:Mateos}
+\end{figure}
+
+%=======================================================================================================================================================
+\mysubsubsection{State Estimation}{State Estimation}
+
+\noindent
+State estimation techniques for satellite attitude determination have evolved to balance accuracy, robustness, and computational efficiency. Bamber et al. \cite{Bamber} introduces a high-performance geometric inversion method that relates sub-pixel displacements in Earth observation imagery to the satellite's attitude, constructing the Direction Cosine Matrix for full three-axis determination. This deterministic approach delivers highly accurate short-term estimates without recursive filtering or process noise modeling, particularly suitable for high-resolution optical payloads.
+\vspace{0.5cm}
+
+\noindent
+In contrast, Caballero et al. \cite{Caballero2009} presents a two-stage vision-based framework combining Homography-Based Visual Odometry with SLAM. Local motion is estimated from consecutive frames under a planar scene assumption, using robust statistical methods and Singular Value Decomposition to extract rotation and translation. These local estimates are then integrated in a SLAM framework to mitigate cumulative drift, demonstrating the strength of relative motion estimation even without absolute sensors. Building on homography concepts, Caballero et al. \cite{Caballero2009} uses an Extended Kalman Filter (EKF) to optimize inter-image alignment for mosaic building. By re-estimating homographies during loop closures, the EKF reduces accumulated drift and incorporates measurement uncertainty, illustrating how stochastic filtering can enhance long-term consistency in visual systems.
+\vspace{0.5cm}
+
+\noindent
+Robust filtering approaches include the Robust Unscented Kalman Filter (RUKF) \cite{Soken2014}, which adaptively tunes the measurement noise covariance to detect and compensate for faulty measurements in real time, offering stability under degraded sensor conditions. Similarly, Carmi et al. \cite{Carmi2009} proposes an Adaptive Genetic Algorithm-Embedded Quaternion Particle Filter (GA-QPF), representing attitude with weighted particles and estimating gyro biases via a Maximum Likelihood process. This probabilistic, non-parametric approach avoids Gaussian assumptions, maintains quaternion normalization, and is highly robust to nonlinear spacecraft dynamics.
+\vspace{0.5cm}
+
+\noindent
+Overall, these studies highlight a spectrum of estimation philosophies: deterministic geometric inversion (\cite{Bamber}) provides high instantaneous accuracy, visual odometry and SLAM \cite{Caballero2009} enable relative motion estimation with drift correction, EKF-based refinement \cite{Caballero2009} ensures long-term consistency, and adaptive stochastic methods (\cite{Soken2014, Carmi2009}) prioritize robustness under uncertainty. Together, they illustrate the trade-offs between short-term precision, temporal continuity, and resilience in satellite attitude and state estimation.
+
+
+%=======================================================================================================================================================
+\mysection{Conclusion}{Conclusion}
+\label{sec:litconc}
+
+From the literature studied, it is clear that pose estimation is an ongoing topic of interest. A brief summary of the concepts is covered as illustrated in Figure \ref{fig:Litrature study}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/literaturestudy/LitStudyFrameWork.pdf}
+    \caption{Literature study framework and concepts learned out of each section.}
+    \label{fig:Litrature study}
+\end{figure}
+
+\noindent
+The literature demonstrates a steady evolution in satellite attitude and position estimation, moving from traditional sensor-based approaches toward autonomous, vision-driven systems. This shift has been accelerated by the miniaturization of satellite technology, which demands lightweight, low-power alternatives to conventional navigation sensors.
+\vspace{0.5cm}
+
+\noindent
+In relative pose estimation, both monocular and stereo camera systems have been widely used. Stereo systems directly recover depth through image disparity, while monocular systems infer motion by tracking features across image sequences. These approaches are particularly valuable for close-proximity operations such as formation flying and rendezvous, where real-time visual feedback can substitute for heavier range or radar sensors.
+\vspace{0.5cm}
+
+\noindent
+Absolute pose estimation traditionally depends on star trackers, sun sensors, and magnetometers to provide high-precision attitude data. However, these instruments can be costly and resource-intensive. Recent vision-based methods instead use georeferenced maps, Earth observation images, and online databases to match observed terrain features with known ground references, allowing satellites to infer global orientation and position visually.
+\vspace{0.5cm}
+
+\noindent
+In vision-based navigation, effective image processing and feature extraction are critical. Algorithms such as SIFT, SURF, and ORB are frequently employed to detect, describe, and match features between onboard imagery and reference datasets. To ensure robustness against mismatches and outliers, the RANSAC algorithm is often applied during the feature matching stage to refine correspondences and estimate the underlying geometric transformation. The combination of these methods provides reliable feature associations that are invariant to illumination, scale, and rotation, making them highly suitable for spaceborne imaging conditions.
+\vspace{0.5cm}
+
+\noindent
+For state estimation and sensor fusion, the literature highlights the extensive use of probabilistic filters such as the Extended Kalman Filter (EKF), Unscented Kalman Filter (UKF), and Particle Filter (PF). These frameworks fuse measurements from multiple sensors,including cameras, gyroscopes, accelerometers, and magnetometers,to produce continuous, noise-tolerant estimates of attitude and angular velocity.
+\vspace{0.5cm}
+
+\noindent
+Overall, the reviewed studies reveal a convergence between computer vision, sensor fusion, and nanosatellite technology. This convergence is enabling compact satellites to achieve accurate, autonomous navigation without heavy reliance on traditional sensors. The insights gained from these works form the foundation for the proposed methodology developed in the next chapter.
