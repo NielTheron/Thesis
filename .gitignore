@@ -1,3 +1,9 @@
 # Ignore Folders
 /figures/
 
+# Ignore Files
+*.pdf
+*.svg
+*.jpg
+*.png
+*.log
