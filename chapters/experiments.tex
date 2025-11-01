@@ -5,23 +5,19 @@
 \mysection{Introduction}{Introduction}
 \label{sec:expintro}
 
-This aim of this chapter is to verify the theory that what provided in the previous chapters using the simulation environment that is develop. This chapter will
+This aim of this chapter is to verify the theory that what provided in the previous chapters using the simulation environment that is developed. This chapter will
 begin with describing the test setup in the simulation environment, afterwhich three tests will be run. The first test will determine the accuracy of the sensor
-itself and the robustness of the state estimator in sensor fusion. Then a test is run where the systems ability to accuratly determine the pose of the satellite depending
-of the amount of features present in the image. Lastly, a test against the robustness of the system against lens distortions.
+itself and the robustness of the state estimator in sensor fusion. Then a test is run where the systems ability to accuratly determine the pose of the satellite depending of the amount of features present in the image. Lastly, a test against the robustness of the system against temporal distortions.
 
-%========================================================================================================================================================================
+%==================================================================================================================================================================
 \mysection{Test Configuration}{Test Configuration}
 \label{sec:BaseTest}
 
-The simulation enviroment is developed in MATLAB $^{TM}$. Each test wil be run in a high inclined orbit over Cape Town, where in the 1st,2nd and 3rd test the sensor accuracy
-amount of features and lens distortion will be change, respectively.
+The simulation enviroment is developed in MATLAB. Each test wil be run in a high inclined orbit over Cape Town.
 \vspace{0.5cm}
 
 \noindent
-The camera parameters will be standardised to the following values. The camera is based on the TriScape100x satellite camera from Simera Sense, which both has the same 
-focal length, but the resolution as decreased so that the simulation can porcess the images faster. And the Pixel size has been increased as the smallest GSD gathers from
-the copernicus browser has a GSD of 15m.
+The camera parameters will be standardised to the following values. The camera is based on the TriScape100x satellite camera from Simera Sense, which both has the same focal length, but the resolution as decreased so that the simulation can porcess the images faster. And the Pixel size has been increased as the smallest GSD gathers from the copernicus browser has a GSD of 15m.
 
 \begin{table}
     \begin{center}
@@ -42,7 +38,7 @@ the copernicus browser has a GSD of 15m.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/experiments/TriScapeCamera.png}
+    \includegraphics[width=0.2\textwidth]{figures/experiments/TriScapeCamera.png}
     \caption{The simera sense TriScape Camera}
     \label{fig:TSC}
 \end{figure}
@@ -50,70 +46,343 @@ the copernicus browser has a GSD of 15m.
 
 And the initial conditions of the satellite are indicated in the values below, these are considered as the defualt values. If a value is changed, it wil explicitedly be mention in the subsequent test.
 
-\begin{table}
+\begin{table}[H]
     \begin{center}
-        \begin{tabular}{|c|c|}
+        \begin{tabular}{|l|l|l|}
         \hline
-        \multicolumn{2}{|c|}{Constant} \\
+        \multicolumn{3}{|c|}{Constants} \\
         \hline
-        GM          & $3.986 \times 10^5 \, km^3/s^2$ \\
-        $R_{earth}$ & $6.378 \times 10^3 \, km$ \\
-        $J_2$       & $1.082 \times 10^{-3}$ \\
-        $\omega_e$  & $7.292 \times 10^{-5} \, rad/s$ \\
+        Attribute    & Simulator                         & Filter \\
         \hline
-        \multicolumn{2}{|c|}{Initial States} \\
+        Sample Rate  & $30 \, Hz $                          & $30 \, Hz$ \\
+        GM           & $3.986 \times 10^5 \, km^3/s^2$   & $3.986 \times 10^5 \, km^3/s^2$ \\
+        $R_{earth}$  & $6.378 \times 10^3 \, km$         & $6.378 \times 10^3 \, km$ \\
+        $J_2$        & $1.082 \times 10^{-3}$            & $0$ \\
+        $\omega_e$   & $7.292 \times 10^{-5} \, rad/s$   & $7.292 \times 10^{-5} \, rad/s$ \\
+        $Inertia Tensor$ & $diag(1,1,1) \, kg\cdot m^{2}$     & $diag(1.05,0.95,1.02) \, kg\cdot m^{2}$ \\
         \hline
-        Lattiude    & $48.85^{\circ}$ \\
-        Longitude   & $0.96^{\circ}$ \\
-        Altitude    & $500 \, km$ \\
-        Roll        & $0^{\circ}$ \\
-        Pitch       & $0^{\circ}$ \\
-        Yaw         & $0^{\circ}$ \\
-        Roll Rate   & $0^{\circ}/s$ \\
-        Pitch Rate  & $0.0011^{\circ}/s$ \\
-        Yaw Rate    & $0^{\circ}/s$ \\
+        \multicolumn{3}{|c|}{Initial States} \\
+        \hline
+        Attribute    & Simulator           & Filter \\
+        \hline
+        Latitude     & $-33.90^{\circ}$    & $-33.91^{\circ}$ \\
+        Longitude    & $18.41^{\circ}$     & $18.42^{\circ}$ \\
+        Altitude     & $500 \, km$         & $500 \, km$ \\
+        Roll         & $0^{\circ}$         & $0^{\circ}$ \\
+        Pitch        & $0.5^{\circ}$       & $0^{\circ}$ \\
+        Yaw          & $0^{\circ}$         & $0^{\circ}$ \\
+        Roll Rate    & $2^{\circ}/s$       & $0^{\circ}/s$ \\
+        Pitch Rate   & $0^{\circ}/s$       & $0^{\circ}/s$ \\
+        Yaw Rate     & $0^{\circ}/s$       & $0^{\circ}/s$ \\
+        \hline
         \end{tabular}
     \end{center}
 \end{table}
 
+\noindent
+The EKF Covariance Matrix $P$ and Process Noise Matrix $Q$ is also initialised using the following parameters
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Attribute} & \textbf{P} & \textbf{Q} \\
+        \hline
+        $r_x$ & $1000 \, m$ &  $100 \, m$\\
+        $r_y$ & $1000 \, m$ &  $100 \, m$\\
+        $r_z$ & $1000 \, m$ &  $100 \, m$\\
+        \hline
+        $v_x$ & $100 \, m/s$ & $50 \, m/s$ \\
+        $v_y$ & $100 \, m/s$ & $50 \, m/s$ \\
+        $v_z$ & $100 \, m/s$ & $50 \, m/s$ \\
+        \hline
+        Att   & $10 ^{\circ} $ & $5 ^{\circ}$ \\
+        \hline
+        $w_x$ & $1 ^{\circ}/s$ &  $0.5 ^{\circ}/s$ \\
+        $w_y$ & $1 ^{\circ}/s$ &  $0.5 ^{\circ}/s$ \\
+        $w_z$ & $1 ^{\circ}/s$ &  $0.5 ^{\circ}/s$ \\
+        \hline
+    \end{tabular}
+\end{table}
 
 
 %========================================================================================================================================================================
 \mysection{Sensor Test}{Sensor Test}
 \label{sec:SensorTest}
 
-\begin{itemize}
-    \item ET Alone
-    \item ST + GPS Alone
-    \item ET + GPS
-    \item ET + ST
-    \item ET + GPS + ST
-    \item ET + Mag + CSS
-    \item ET + GPS + Mag + CSS
-    \item ET + GPS + Mag + CSS + ST 
-\end{itemize}
+In the sensor test we are going to evaluate the performance of the Earth Tracker.
+
+\mysubsection{Earth Tracker Alone}{Earth Tracker Alone}
+
+In this section we are going to test the Earth Tracker alone to see it's capabilities.
+The Earth Tracker is calibrated as follows.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sensor} & \textbf{Sample Rate} & \textbf{Noise} \\ \hline
+ET  &  1 $Hz$ & 10 $m$ \\ \hline
+ET  &  1 $Hz$ & 1500 $m$ \\ \hline
+\end{tabular}
+\caption{Sensor characteristics including sample rate, noise, and drift.}
+\label{tab:ET_characteristics}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/experiments/ETMeaurements.pdf}
+        \caption{ET Feature 1 true and estimated measurement}
+        \label{fig:ETMeasurement}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/experiments/ETMeasurementError.pdf}
+        \caption{The error in feature 1 true and estimated measurements}
+        \label{fig:ETMeasurementError}
+    \end{subfigure}
+    \caption{Earth Tracker Measruement and measruemetn error of Feature 1}
+    \label{fig:ETMeas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/experiments/ETSystemError.pdf}
+    \caption{The error graph between the true and estimated state generated by the Eart Tracker}
+    \label{fig:ETSystem}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/experiments/ETAttitudeError.pdf}
+    \caption{The Attitude Error of the Earth Tracker}
+    \label{fig:ETSError}
+\end{figure}.
+
+In Figure \ref{fig:ETMeas, fig:ETSystem, fig:ETSError} we can see that the Earth Tracker can estimated the position an attitude quite well, there is a large position error that is about 1,4km in the z- direction this is expected as the Earth tracker only uses the lens charaterictics to estimated the position of the satellite, but for attitude estimation we can see that there is maximum error of 2 $^{\circ}$ and an average error of $0.208 ^{\circ}$, this means that the ET tracker and definitly be used as an attitude sensor alone if needed.
+
+\mysubsection{The ADCS Suite}{The ADCS Suite}
+
+In this test we want to know if it would be viable to replace the star tracker entirely with and Earth Tracker which is a sensor already on the satellite being under utilised. So the tes consucted below is of the combination of the GPS, GYRO, CSS, MAG.
+
+It is important to note that the order of which the sensors are updated are crucial to the results. In this simulation the order is ;
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|p{8cm}|}  % p{8cm} allows text wrapping in the Reason column
+\hline
+\textbf{Rank} & \textbf{Sensor} & \textbf{Reason} \\ \hline
+1st & GPS  & Adds Position estimation which will aid the Attitude Estimation Sensors \\ \hline
+2nd & Gyro & Adds direct Angular Velocity Measurements that will aid the Attitude Estimation Sensors \\ \hline
+3rd & CSS  & Is the most coarse of the Attitude Sensors \\ \hline
+4th & MAG  & Is less coarse than the CSS but less fine than the Star Tracker \\ \hline
+5th & ET   & The Earth Tracker provides estimation of the full state of the system, expected to \\ \hline
+6th & ST   & The most accurate Sensor \\ \hline
+\end{tabular}
+\caption{Sensor ranking by filter order and justification.}
+\label{tab:sensor_rank}
+\end{table}
+
+The sensors are calibrated as follows.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sensor} & \textbf{Sample Rate} & \textbf{Noise} & \textbf{Drift} \\ \hline
+GPS  &  10 $Hz$ & 5 $m$ & 0.1 $m/\sqrt{hr}$  \\ \hline
+Gyro &  30 $Hz$ &  0.1 $^{\circ}$  & 0.01 $^{\circ}/\sqrt{hr}$ \\ \hline
+CSS  &  10 $Hz$ &  5 $^{\circ}$ &   \\ \hline
+MAG  &  10 $Hz$ &  500 $nT$ &  \\ \hline
+\end{tabular}
+\caption{Sensor characteristics including sample rate, noise, and drift.}
+\label{tab:sensor_characteristics}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/experiments/ADCSSuiteResults.pdf}
+    \caption{The error graph between the true and estimated state generated by the ADCS suite}
+    \label{fig:ADCSSuite}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/experiments/SuiteError.pdf}
+    \caption{The Attitude Error of the ADCS Suite}
+    \label{fig:ADCSSuiteError}
+\end{figure}
+
+In Figure \ref{fig:ADCSSuite,figADCSSuiteError} we can see that there is a constant position error in the x and y position coordintates, x begin around $-100 \, m$ and y being around $-250 \, m$ this can be because the main position sensor is the GPS and it meaasures x and Y coordinates in lattitude and longitude and these are hard to convert in the measurement model. We can also see an attitude direction error of a maxiumum of 14 $^{\circ}$ and a average of 2.84 $^{\circ}$.
+
+\mysubsection{Earth Tracker vs Star Tracker}{Earth Tracker vs Star Tracker}
+
+In this section we are going to compate the Earth Tracker and the Star Tracker Head On.
+
+The star tracker is initialised with this characteristics
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sensor} & \textbf{Sample Rate} & \textbf{Noise} \\ \hline
+ST  &  1 $Hz$ & 30 $arcseconds$ \\ \hline
+\end{tabular}
+\caption{Sensor characteristics including sample rate, noise, and drift.}
+\label{tab:ST_characteristics}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/experiments/ETSuiteSystem.pdf}
+    \caption{The error graph between the true and estimated state generated by the ADCS suite}
+    \label{fig:ADCSSuite}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/experiments/ETSuiteAttitude.pdf}
+    \caption{The Attitude Error of the ADCS Suite}
+    \label{fig:ADCSSuiteError}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/experiments/STSystem.pdf}
+    \caption{The error graph between the true and estimated state generated by the ADCS suite}
+    \label{fig:STSystem}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/experiments/STError.pdf}
+    \caption{The Attitude Error of the ADCS Suite}
+    \label{fig:STError}
+\end{figure}
+
+Summary of results.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Experiment} & \textbf{Position Error} & \textbf{Attitude Error} \\ \hline
+ET & 1526 m & 0.208 $^{\circ}$  \\ \hline
+ET & 453 m  & 0.851 $^{\circ}$ \\ \hline
+ADCS Suite & 264 m & 2.957 $^{\circ}$ \\ \hline
+ET + ADCS Suite & 273 m &  1.187 $^{\circ}$\\ \hline
+ST + ADCS Suite & 722 m &  0.954 $^{\circ}$ \\ \hline
+\end{tabular}
+\caption{Comparison of position and attitude errors for different experiments.}
+\label{tab:experiment_errors}
+\end{table}
 
 %========================================================================================================================================================================
 \mysection{Feature Test}{Feature Test}
 \label{sec:FeatureTest}
 
-\begin{itemize}
-    \item ET + SIFT (10,100,1000)
-    \item ET + SURF (10,100,1000)
-    \item ET + ORB  (10,100,1000)
-\end{itemize}
+In this section we ar going to inspect how the amount of features influences the the accuarcy of the Earth Tracker.
+This Idea can be extended to lens distortion. As a lens is more and more distorted it wil become increasingly harder for the feature matcher to acquire correct features and thus less features will be used.
+
+The Earth Tracker is set to:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Sensor} & \textbf{Sample Rate} & \textbf{Noise} \\ \hline
+ET  &  1 $Hz$ & 1500 $m$ \\ \hline
+\end{tabular}
+\caption{Sensor characteristics including sample rate, noise, and drift.}
+\label{tab:ET_characteristics2}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Detector} & \multicolumn{2}{c|}{\textbf{1}} & \multicolumn{2}{c|}{\textbf{5}} & \multicolumn{2}{c|}{\textbf{10}} \\ \hline
+ & \textbf{Pos Error} & \textbf{Att Error} & \textbf{Pos Error} & \textbf{Att Error} & \textbf{Pos Error} & \textbf{Att Error} \\ \hline
+SIFT & 304 m & 32.953$^{\circ}$ & 601 m & 0.607$^{\circ}$ & 834 m & 0.424$^{\circ}$ \\ \hline
+SURF & 247 m & 33.429$^{\circ}$ & 594 m & 0.664$^{\circ}$ & 808 m & 0.458$^{\circ}$ \\ \hline
+ORB  & 321 m & 32.546$^{\circ}$ & 543 m & 0.760$^{\circ}$ & 743 m & 0.536$^{\circ}$ \\ \hline
+\end{tabular}
+\caption{Performance of feature detectors for different numbers of features, showing position and attitude errors.}
+\label{tab:feature_detectors_split}
+\end{table}
+
+For the sake of complettion lens distortion is also tested.
+
+\begin{table}[H]
+\centering
+\caption{Lens Distortion Parameters}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Type} & \textbf{Parameter} & \textbf{Value} \\ \hline
+\multirow{3}{*}{Radial} & $K_1$ & 0.001 \\ 
+ & $K_2$ & 0.001 \\ 
+ & $K_3$ & 0.001 \\ \hline
+\multirow{2}{*}{Tangential} & $P_1$ & 0.0001 \\ 
+ & $P_2$ & 0.0001 \\ \hline
+\multirow{3}{*}{Chromatic} & $R$ & 0.98 \\ 
+ & $G$ & 1 \\ 
+ & $B$ & 1.02 \\ \hline
+\end{tabular}
+\end{table}
+
+Multiple test did verify that the system is heavily dependent on accurate feature mathcing and proper lens correction.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/experiments/EILD2.png}
+        \caption{Feature Matching wihtout lens distortion}
+        \label{fig:ETMeasurement}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/experiments/EILD2.png}
+        \caption{Feature Mathcing with lens distortion}
+        \label{fig:ETMeasurementError}
+    \end{subfigure}
+    \caption{Earth Tracker Measurement with lens distortion}
+    \label{fig:ETMeas}
+\end{figure}
+
+Even with normal lens distortion parameters the measurements from the Earth Tracker was useless.
 
 %========================================================================================================================================================================
-\mysection{Distortion Test}{Distortion Test}
+\mysection{TemporalTest}{Temporal Test}
 \label{sec:DistortionTest}
 
-\begin{itemize}
-    \item ET + Tangential Distortion
-    \item ET + Radial Distortion
-    \item ET + Chromatic Distortion
-    \item ET + Off Nadir Images
-\end{itemize}
+One of the very practical aspects of feature images is that it is properly time stamped, this test is to check how robust the system is against timestamp errors.
+For this the suite is used again, but now at different sampling periods
+
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Experiment}} & \multicolumn{2}{c|}{\textbf{With Time Delay}} & \multicolumn{2}{c|}{\textbf{Without Time Delay}} \\ \cline{2-5}
+ & \textbf{Position Error} & \textbf{Attitude Error} & \textbf{Position Error} & \textbf{Attitude Error} \\ \hline
+ET 1 Hz & 279 m & 1.210$^{\circ}$ & 265 m & 1.105$^{\circ}$ \\ \hline
+ET 15 Hz & 347 m & 0.713$^{\circ}$ &  m & $^{\circ}$ \\ \hline
+ET 30 HZ & 385 m & 0.665$^{\circ}$ & 
+\end{tabular}
+\caption{Comparison of position and attitude errors for different experiments with and without time delay.}
+\label{tab:experiment_errors}
+\end{table}
+
 
 %=========================================================================================================================================================================
 \mysection{Conclusion}{Conclusion}

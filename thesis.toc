@@ -6,10 +6,10 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{Table of Contents}{v}{chapter*.4}%
 \contentsline {chapter}{List of Figures}{ix}{chapter*.5}%
-\contentsline {chapter}{List of Tables}{xiii}{chapter*.6}%
-\contentsline {chapter}{Nomenclature}{xv}{chapter*.8}%
-\contentsline {section}{Variables and functions}{xv}{section*.9}%
-\contentsline {section}{Acronyms and abbreviations}{xx}{section*.10}%
+\contentsline {chapter}{List of Tables}{xiv}{chapter*.6}%
+\contentsline {chapter}{Nomenclature}{xvi}{chapter*.8}%
+\contentsline {section}{Variables and functions}{xvi}{section*.9}%
+\contentsline {section}{Acronyms and abbreviations}{xxi}{section*.10}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Problem Background}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Proposed Solution: Visual Navigation for Pose Estimation}{2}{section.1.2}%
@@ -102,13 +102,16 @@
 \contentsline {chapter}{\numberline {6}Experiments}{98}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Introduction}{98}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Test Configuration}{98}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Sensor Test}{99}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Feature Test}{100}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Distortion Test}{100}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Conclusion}{100}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{101}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Conclusion}{101}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Future Work}{101}{section.7.2}%
-\contentsline {chapter}{References}{102}{chapter*.84}%
-\contentsline {chapter}{\numberline {A}Appendix title goes here}{107}{appendix.A}%
+\contentsline {section}{\numberline {6.3}Sensor Test}{100}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Earth Tracker Alone}{100}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}The ADCS Suite}{102}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Earth Tracker vs Star Tracker}{104}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Feature Test}{106}{section.6.4}%
+\contentsline {section}{\numberline {6.5}TemporalTest}{108}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Conclusion}{108}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{109}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusion}{109}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future Work}{109}{section.7.2}%
+\contentsline {chapter}{References}{110}{chapter*.104}%
+\contentsline {chapter}{\numberline {A}Appendix title goes here}{115}{appendix.A}%
 \contentsfinish 

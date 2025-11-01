@@ -559,8 +559,8 @@ shape of objects in the image. This distortion is goverend by
 
 \begin{equation}
     \begin{split}
-    \mathbf{x}_{\mathcal{P},r}  &= \mathbf{x}_{\mathcal{P},n}(1 + k_1r^2 + k_2r^4 + k_3r^6) \\
-    \mathbf{y}_{\mathcal{P},r}  &= \mathbf{y}_{\mathcal{P},n}(1+ k_1r^2 + k_2r^4 + k_3r^6)
+    \mathbf{x}_{\mathcal{P},r}  &= \mathbf{x}_{\mathcal{P},n}(k_1r^2 + k_2r^4 + k_3r^6) \\
+    \mathbf{y}_{\mathcal{P},r}  &= \mathbf{y}_{\mathcal{P},n} (k_1r^2 + k_2r^4 + k_3r^6)
     \end{split}
 \end{equation}
 
@@ -597,8 +597,8 @@ result, straight lines may appear slanted, and the overall image geometry can be
 
 \begin{equation}
     \begin{split}
-    \mathbf{x}_{\mathcal{P},t}  &= 2p_1\mathbf{x}_{\mathcal{P},n} \mathbf{y}_{\mathcal{P},n}  + p_2(r^2 + 2\mathbf{x}_{\mathcal{P},n} ^2) \\
-    \mathbf{y}_{\mathcal{P},t}  &= p_1(r^2 + 2\mathbf{y}_{\mathcal{P},n} ^2) + 2p_2\mathbf{x}_{\mathcal{P},n} \mathbf{y}_{\mathcal{P},n}
+    \mathbf{x}_{\mathcal{P},t}  &= p_1(r^2 + 2\mathbf{x}_{\mathcal{P},n} ^2) + 2p_2\mathbf{x}_{\mathcal{P},n} \mathbf{y}_{\mathcal{P},n}  \\
+    \mathbf{y}_{\mathcal{P},t}  &= 2p_1\mathbf{x}_{\mathcal{P},n} \mathbf{y}_{\mathcal{P},n}  + p_2(r^2 + 2\mathbf{y}_{\mathcal{P},n} ^2) 
     \end{split}
 \end{equation}
 
