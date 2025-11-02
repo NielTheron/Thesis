@@ -2,25 +2,18 @@
 \addcontentsline{toc}{chapter}{Abstract}
 \makeatletter\@mkboth{}{\scshape Abstract}\makeatother
 
-\noindent Pose estimation on nanosatellites is still an on going topic of interest.
-It is important for satellite to know there position and attitude to do accurate target tracking.
-Traditional solutions to the pose estimation problem is mainly star trackers, which looks at the constalations of stars to determine the attitude
-and GPS to determine the position of the satellite along with other sensors like magnetometers and coarse sun sensors.
+\noindent
+Accurate pose estimation is a critical requirement for nanosatellites performing Earth observation, attitude control, and target tracking. Conventional approaches rely on star trackers and GPS receivers, supplemented by coarse sensors such as magnetometers and sun sensors. While these solutions are effective, they are often costly, power-intensive, and unsuitable for resource-constrained CubeSat platforms. This research introduces the \textit{Earth Tracker}, a vision-based navigation system that repurposes the satellite’s primary imaging payload as a multifunctional sensor for both attitude and position estimation.
 
 \vspace{0.5cm}
 
-\noindent In this thesis, a sensor is developed that utilises the onboard satellite imager, to estimate the position and the attitude of the satellite.
-The sensor uses a camera model to take pictures of the Earth surface, a feature detector is ran on the image using scale invariant feature transform (SIFT)
-to identify and establish corrospondance of features. A full state kinematic estimator using the extended Kalman Filter (EKF) based on the simultanous
-localisation and mapping (SLAM) approach. The filter makes used of feature vectors and feature discripters detected on the image. This is used to estimate
-attitude and position of the satellite.
+\noindent
+A complete MATLAB simulation environment was developed to model the satellite's dynamics, sensor measurements, and image acquisition. The Earth Tracker uses a pinhole camera model to simulate Earth images and applies the Scale-Invariant Feature Transform (SIFT) algorithm to detect and match surface features. These features are integrated into an Extended Kalman Filter (EKF) framework to estimate the full six-degree-of-freedom (6-DOF) state of the satellite, combining visual information with auxiliary sensor data for improved robustness. Comparative analyses with traditional star tracker and GPS-based configurations were conducted to evaluate performance.
 
 \vspace{0.5cm}
 
-\noindent An simulation environment in MATLAB is developed to propagate a satellite and determine the ground truth pose. Several traditional sensors
-like the star tracker and magnetometer and GPS to be able to compare the Earth Tracker and create the possiblity to fuse the sensors and determine the accuracy.
-Results show that the filter estimates the system states successfully. It is concluded that \dots
-
+\noindent
+Results show that the Earth Tracker achieves sub-degree attitude accuracy and reliable state convergence under nominal conditions, validating the feasibility of visual navigation for small satellites. Although position estimation remains less precise due to geometric limitations, the findings demonstrate that imaging payloads can provide accurate, autonomous navigation without the need for dedicated attitude sensors. This research thus contributes a significant step toward compact, cost-efficient, and vision-driven navigation systems for future nanosatellite missions.
 
 \newpage
 \selectlanguage{afrikaans}
@@ -28,5 +21,18 @@ Results show that the filter estimates the system states successfully. It is con
 \chapter*{Uittreksel}
 \addcontentsline{toc}{chapter}{Uittreksel}
 \makeatletter\@mkboth{}{\scshape Uittreksel}\makeatother
+
+\noindent
+Akkurate posisie- en houdingbepaling is 'n noodsaaklike vereiste vir nanosatelliete wat betrokke is by aardwaarneming, houdingbeheer en teikenopsporing. Tradisionele benaderings maak staat op sternasporers en GPS-ontvangers, aangevul deur growwe sensors soos magnetometers en son sensors. Alhoewel hierdie oplossings doeltreffend is, is dit dikwels duur, energie-intensief en ongeskik vir hulpbronbeperkte CubeSat-platforms. Hierdie studie stel die \textit{Earth Tracker} bekend, 'n visiegebaseerde navigasiestelsel wat die satelliet se hoofbeeldsensor hergebruik as 'n multifunksionele instrument vir beide houding- en posisieskatting.
+
+\vspace{0.5cm}
+
+\noindent
+'n Volledige MATLAB-simulasie-omgewing is ontwikkel om die satelliet se dinamika, sensormetings en beeldvorming te modelleer. Die Earth Tracker gebruik 'n gaatjiekamera-model om aardbeelde te simuleer en pas die \textit{Scale-Invariant Feature Transform} (SIFT) algoritme toe om kenmerke op die aardoppervlak te identifiseer en te vergelyk. Hierdie kenmerke word in 'n Uitgebreide Kalman Filter (EKF) raamwerk geïntegreer om die satelliet se volledige ses-vryheidsgraad (6-DOF) toestand te skat, deur visuele data met hulp sensors te kombineer vir groter robuustheid. Vergelykende ontledings met tradisionele sternasporers en GPS-opstellings is uitgevoer om die stelsel se werkverrigting te evalueer.
+
+\vspace{0.5cm}
+
+\noindent
+Resultate toon dat die Earth Tracker 'n houdingnauwkeurigheid van minder as een graad behaal en betroubare toestandskonvergensie handhaaf onder normale toestande, wat die uitvoerbaarheid van visuele navigasie vir nanosatelliete bevestig. Alhoewel posisieskatting minder akkuraat bly weens geometriese beperkings, demonstreer die bevindings dat beeldladingstelsels 'n praktiese en outonome alternatief bied sonder die behoefte aan toegewyde houding sensors. Hierdie navorsing dra dus by tot die ontwikkeling van kompakte, koste-effektiewe en visiegebaseerde navigasiestelsels vir toekomstige nanosatellietmissies.
 
 \selectlanguage{english}

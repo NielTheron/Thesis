@@ -10,15 +10,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Sensor characteristics including sample rate, noise, and drift.}}{100}{table.caption.85}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Sensor ranking by filter order and justification.}}{102}{table.caption.89}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Sensor characteristics including sample rate, noise, and drift.}}{102}{table.caption.90}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces Sensor characteristics including sample rate, noise, and drift.}}{104}{table.caption.93}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces Comparison of position and attitude errors for different experiments.}}{106}{table.caption.98}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Sensor characteristics including sample rate, noise, and drift.}}{106}{table.caption.99}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces Performance of feature detectors for different numbers of features, showing position and attitude errors.}}{107}{table.caption.100}%
-\contentsline {table}{\numberline {6.8}{\ignorespaces Lens Distortion Parameters}}{107}{table.caption.101}%
-\contentsline {table}{\numberline {6.9}{\ignorespaces Comparison of position and attitude errors for different experiments with and without time delay.}}{108}{table.caption.103}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces The initial conditions of the system with the changes in the simulation environment and the estimator environment shown.}}{100}{table.caption.83}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Earth Tracker sensor characteristics for standalone testing.}}{102}{table.caption.86}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Sequential EKF sensor update order and justification.}}{105}{table.caption.91}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces ADCS suite sensor characteristics.}}{105}{table.caption.92}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Star tracker sensor characteristics.}}{107}{table.caption.95}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Comparison of position and attitude errors across sensor configurations.}}{110}{table.caption.100}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Feature detector performance comparison showing average position and attitude errors.}}{111}{table.caption.101}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Lens distortion parameters used in testing.}}{113}{table.caption.103}%
+\contentsline {table}{\numberline {6.9}{\ignorespaces Earth Tracker configuration for temporal delay testing.}}{114}{table.caption.105}%
+\contentsline {table}{\numberline {6.10}{\ignorespaces Impact of measurement delay on Earth Tracker estimation accuracy.}}{114}{table.caption.106}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

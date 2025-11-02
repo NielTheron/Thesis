@@ -5,7 +5,36 @@
 \mysection{Conclusion}{Conclusion}
 \label{sec:conclusion}
 
+\noindent
+This thesis presented the development and validation of a novel vision-based navigation system, the \textit{Earth Tracker}, designed to estimate the full six-degree-of-freedom (6-DOF) pose of a nanosatellite by leveraging its onboard imaging payload. The proposed system demonstrates that the main Earth observation camera can be repurposed as a navigation sensor, offering an accurate, low-cost, and power-efficient alternative to traditional attitude determination systems such as star trackers. The outcomes of this research confirm the feasibility of the ``payload-as-a-sensor'' concept and its potential to significantly improve small satellite autonomy without requiring additional hardware. 
+\vspace{0.5cm}
 
+\noindent
+The study began by analysing the state of the art in satellite pose estimation and the evolving needs of the small satellite industry. The literature highlighted a growing reliance on Commercial-Off-The-Shelf (COTS) components driven by Size, Weight, Power, and Cost (SWaP-C) constraints, which inherently limit the performance of conventional Attitude Determination and Control Systems (ADCS). This motivated the exploration of visual navigation as a means to bridge the accuracy gap between coarse sensors and high-end star trackers. By adopting methodologies from robotics, particularly those related to visual odometry and Simultaneous Localization and Mapping (SLAM), this work adapted visual navigation techniques to orbital conditions, where geometric relationships between image features and known ground coordinates form the foundation for state estimation. 
+\vspace{0.5cm}
+
+\noindent
+A complete satellite simulation environment was developed in MATLAB to evaluate the Earth Tracker concept. The simulation incorporated rigid body dynamics, sensor models, orbital motion, and a high-fidelity camera model to emulate realistic satellite imagery. Using this environment, the Extended Kalman Filter (EKF) framework was implemented to estimate satellite states through recursive fusion of visual and auxiliary sensor measurements. The system used image-derived feature vectors from SIFT-based detections as its primary measurement input, fused with data from gyroscopes, magnetometers, and coarse sun sensors. The simulation structure enabled systematic evaluation of sensor configurations, measurement delays, and lens distortion effects. 
+\vspace{0.5cm}
+
+\noindent
+Experimental results confirmed that the Earth Tracker achieved consistent and accurate pose estimation. The system successfully estimated attitude with an average error below $1.2^{\circ}$, approaching the performance of a dedicated star tracker, while maintaining robust convergence across various orbital and imaging conditions. The position estimates, while less accurate, demonstrated that meaningful spatial information could be derived from the imaging process even without explicit GNSS data. These findings validate the theoretical feasibility of full-state estimation from a single optical sensor and demonstrate the potential for substantial cost reduction and redundancy in satellite navigation systems. 
+\vspace{0.5cm}
+
+\noindent
+Nevertheless, the results also highlighted limitations inherent to monocular vision systems. The most notable challenges were altitude ambiguity in position estimation and sensitivity to feature availability, illumination, and image distortion. Furthermore, while lens distortion correction improved measurement fidelity, it introduced additional computational complexity. The system’s performance also depended heavily on precise temporal synchronization between the imaging sensor and filter updates, as delays of more than a few seconds led to significant degradation in estimation accuracy. These factors underscore the importance of rigorous calibration, synchronization, and image preprocessing in any operational implementation of the Earth Tracker. 
+\vspace{0.5cm}
+
+\noindent
+Despite these limitations, the research demonstrates the promise of vision-based pose estimation for resource-constrained platforms. The Earth Tracker offers several practical advantages: it reduces hardware redundancy by leveraging existing payload data; it provides a direct reference to the Earth’s surface, which is inherently relevant for Earth Observation missions; and it complements other sensors within a unified estimation framework. As small satellites continue to proliferate, particularly in constellations and formation-flying applications, visual navigation systems like the Earth Tracker can provide valuable autonomy and robustness in GPS-denied environments. 
+\vspace{0.5cm}
+
+\noindent
+In summary, this thesis contributes a complete theoretical, algorithmic, and experimental foundation for integrating vision-based navigation into nanosatellite systems. The work establishes a proof of concept for using an imaging payload as a navigation sensor and identifies the critical factors governing its performance. By achieving sub-degree attitude accuracy and consistent state estimation using only optical and low-cost auxiliary sensors, the Earth Tracker sets the stage for future missions to adopt visual navigation as a standard component of spacecraft autonomy. 
+\vspace{0.5cm}
+
+\noindent
+The findings presented here mark a meaningful step toward the long-term vision of fully autonomous, vision-driven nanosatellites capable of determining their own orientation and position directly from their view of the Earth. 
 
 
 
@@ -14,19 +43,40 @@
 \label{sec:futurework}
 
 \noindent
-For future work more indef develop needs to be done for cloud matching and masking as my system really
-- Proper Feature matching
-In this work there is a huge gap left open in the feature matching scope. In this work feature mathcing was considered "prefect" using the raycasting method. 
-But in reality there would be a feature mathcing component and a on-board database generation component also seen in the literature 
+While this work has successfully demonstrated the feasibility of the Earth Tracker system for satellite pose estimation, several avenues for future research remain to enhance its robustness, accuracy, and practical applicability.
+\vspace{0.5cm}
 
+\noindent
+\textbf{Feature Matching and Database Generation.}
+A significant limitation of the current work is the assumption of perfect feature matching through raycasting. For a fully operational system, a comprehensive feature matching pipeline is essential. As demonstrated by Chen et al. \cite{Chen2021} and Wu et al. \cite{Wu2024}, this typically involves coarse registration using global descriptors followed by fine registration through local feature matching with SIFT, SURF, or ORB. Robust outlier rejection mechanisms such as RANSAC \cite{Kouyama2017} will be critical to handle mismatches. Additionally, an on-board database generation component must continuously update the feature catalogue as the satellite traverses different regions, optimized for memory-efficient storage and rapid querying.
+\vspace{0.5cm}
 
-- Dynamic features
-- Cloud masking
-- Robust Feature Detection
-- The ET system only works on cicular orbits
-- System can by simplified to use phase estimation instead of full Catersian estimation
-- Different Types of Biomes
-- More accurate models
-- Field Testing
-- Lens Correction
-- Computational Analysis
+\noindent
+\textbf{Dynamic Feature Management.}
+The current implementation uses a fixed number of features, which is insufficient for real-world scenarios where feature availability varies dramatically. Over featureless regions such as oceans or deserts, few usable landmarks exist, while urban areas provide abundant features. The system must adaptively adjust tracked features based on detection confidence and geometric diversity. During eclipse periods or over low-contrast regions, the filter should rely more heavily on auxiliary sensors while appropriately reflecting increased uncertainty in the state covariance.
+\vspace{0.5cm}
+
+\noindent
+\textbf{Cloud Masking and Robust Feature Selection.}
+Cloud cover presents a critical challenge, as high-contrast cloud edges are readily detected but unsuitable as stable reference points. Future work must integrate cloud detection and masking algorithms into the preprocessing pipeline, excluding cloud regions from feature detection or assigning them lower confidence weights. Beyond cloud masking, intelligent feature selection is essential—temporal robustness requires prioritizing persistent features like coastlines and infrastructure over transient features like agricultural fields. Spatial robustness demands well-distributed features with strong geometric constraints to avoid estimation degeneracies.
+\vspace{0.5cm}
+
+\noindent
+\textbf{Extension to Non-Circular Orbits.}
+The current system assumes circular orbits, treating altitude as constant. For elliptical orbits, the framework must be augmented to estimate altitude dynamically. One approach uses geolocated feature points to triangulate altitude through geometric constraints when multiple known features are visible simultaneously. Alternatively, auxiliary altitude sensors can be fused with vision-based estimates through the EKF framework.
+\vspace{0.5cm}
+
+\noindent
+\textbf{Orbital Phase and Higher-Fidelity Models.}
+The Cartesian state representation could be reformulated to estimate orbital phase directly, reducing dimensionality and improving computational efficiency for satellites in well-characterized orbits. Additionally, the simplified two-body model and Newton-Euler dynamics should be enhanced with perturbations from Earth's oblateness, atmospheric drag, solar radiation pressure, and environmental torques. Runge-Kutta integration methods should replace basic Euler integration to reduce truncation errors and improve long-term accuracy.
+\vspace{0.5cm}
+
+\noindent
+\textbf{Experimental Validation.}
+The Earth Tracker requires real-world testing beyond simulation. A practical validation approach involves ground-based hardware-in-the-loop testing where a CubeSat camera observes projected Earth observation video, allowing quantitative accuracy assessment against ground truth. Following successful ground testing, an in-orbit demonstration mission should compare pose estimates to traditional ADCS sensor data across diverse conditions.
+\vspace{0.5cm}
+
+\noindent
+\textbf{Lens Correction and Computational Feasibility.}
+While lens distortion is modeled in this work, operational systems should apply correction as preprocessing to improve feature localization accuracy. More critically, a detailed computational analysis is needed to determine whether the Earth Tracker can operate within CubeSat constraints. This analysis must profile memory footprint, processing time, and power consumption on representative embedded platforms. If limitations arise, optimization strategies including hierarchical detection, hardware acceleration, and adaptive frame rates should be explored to determine whether navigation performance gains justify the computational cost relative to conventional ADCS configurations.
+

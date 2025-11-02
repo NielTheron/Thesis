@@ -102,16 +102,18 @@
 \contentsline {chapter}{\numberline {6}Experiments}{98}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Introduction}{98}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Test Configuration}{98}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Sensor Test}{100}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Earth Tracker Alone}{100}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}The ADCS Suite}{102}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Earth Tracker vs Star Tracker}{104}{subsection.6.3.3}%
-\contentsline {section}{\numberline {6.4}Feature Test}{106}{section.6.4}%
-\contentsline {section}{\numberline {6.5}TemporalTest}{108}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Conclusion}{108}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{109}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Conclusion}{109}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Future Work}{109}{section.7.2}%
-\contentsline {chapter}{References}{110}{chapter*.104}%
-\contentsline {chapter}{\numberline {A}Appendix title goes here}{115}{appendix.A}%
+\contentsline {section}{\numberline {6.3}Sensor Testing}{101}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Earth Tracker Standalone}{102}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}ADCS Suite Standalone}{104}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Earth Tracker versus Star Tracker}{107}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Summary of Results}{110}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Feature Detector Testing}{110}{subsection.6.3.5}%
+\contentsline {subsection}{\numberline {6.3.6}Lens Distortion Testing}{112}{subsection.6.3.6}%
+\contentsline {section}{\numberline {6.4}Temporal Test}{114}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Conclusion}{115}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Conclusions and Future Work}{117}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusion}{117}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future Work}{119}{section.7.2}%
+\contentsline {chapter}{References}{121}{chapter*.108}%
+\contentsline {chapter}{\numberline {A}Appendix title goes here}{126}{appendix.A}%
 \contentsfinish 
