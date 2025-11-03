@@ -14,7 +14,7 @@ The study began by analysing the state of the art in satellite pose estimation a
 \vspace{0.5cm}
 
 \noindent
-A complete satellite simulation environment was developed in MATLAB to evaluate the Earth Tracker concept. The simulation incorporated rigid body dynamics, sensor models, orbital motion, and a high-fidelity camera model to emulate realistic satellite imagery. Using this environment, the Extended Kalman Filter (EKF) framework was implemented to estimate satellite states through recursive fusion of visual and auxiliary sensor measurements. The system used image-derived feature vectors from SIFT-based detections as its primary measurement input, fused with data from gyroscopes, magnetometers, and coarse sun sensors. The simulation structure enabled systematic evaluation of sensor configurations, measurement delays, and lens distortion effects. 
+A complete satellite simulation environment was developed in MATLAB to evaluate the Earth Tracker concept. The simulation incorporated rigid body dynamics, sensor models, orbital motion, and a high-fidelity camera model to emulate realistic satellite imagery. Using this environment, the Extended Kalman Filter (EKF) was implemented to estimate satellite states through recursive fusion of visual and auxiliary sensor measurements. The system used image-derived feature vectors from SIFT-based detections as its primary measurement input, fused with data from gyroscopes, magnetometers, and coarse sun sensors. The simulation structure enabled systematic evaluation of sensor configurations, measurement delays, and lens distortion effects. 
 \vspace{0.5cm}
 
 \noindent
@@ -22,11 +22,11 @@ Experimental results confirmed that the Earth Tracker achieved consistent and ac
 \vspace{0.5cm}
 
 \noindent
-Nevertheless, the results also highlighted limitations inherent to monocular vision systems. The most notable challenges were altitude ambiguity in position estimation and sensitivity to feature availability, illumination, and image distortion. Furthermore, while lens distortion correction improved measurement fidelity, it introduced additional computational complexity. The system’s performance also depended heavily on precise temporal synchronization between the imaging sensor and filter updates, as delays of more than a few seconds led to significant degradation in estimation accuracy. These factors underscore the importance of rigorous calibration, synchronization, and image preprocessing in any operational implementation of the Earth Tracker. 
+Nevertheless, the results also highlighted limitations inherent to monocular vision systems. The most notable challenges were altitude ambiguity in position estimation and sensitivity to feature availability, illumination, and image distortion. The system’s performance also depended heavily on precise temporal synchronization between the imaging sensor and filter updates, as delays of more than a few seconds led to significant degradation in estimation accuracy. These factors underscore the importance of rigorous calibration, synchronization, and image preprocessing in any operational implementation of the Earth Tracker. 
 \vspace{0.5cm}
 
 \noindent
-Despite these limitations, the research demonstrates the promise of vision-based pose estimation for resource-constrained platforms. The Earth Tracker offers several practical advantages: it reduces hardware redundancy by leveraging existing payload data; it provides a direct reference to the Earth’s surface, which is inherently relevant for Earth Observation missions; and it complements other sensors within a unified estimation framework. As small satellites continue to proliferate, particularly in constellations and formation-flying applications, visual navigation systems like the Earth Tracker can provide valuable autonomy and robustness in GPS-denied environments. 
+Despite these limitations, the research demonstrates the promise of vision-based pose estimation for resource-constrained platforms. The Earth Tracker offers several practical advantages: it reduces hardware redundancy by leveraging existing payload data; it provides a direct reference to the Earth’s surface, which is inherently relevant for Earth Observation missions; and it complements other sensors within a unified estimation. As small satellites continue to multiply, particularly in constellations and formation-flying applications, visual navigation systems like the Earth Tracker can provide valuable autonomy and robustness in GPS-denied environments. 
 \vspace{0.5cm}
 
 \noindent
@@ -58,12 +58,12 @@ The current implementation uses a fixed number of features, which is insufficien
 
 \noindent
 \textbf{Cloud Masking and Robust Feature Selection.}
-Cloud cover presents a critical challenge, as high-contrast cloud edges are readily detected but unsuitable as stable reference points. Future work must integrate cloud detection and masking algorithms into the preprocessing pipeline, excluding cloud regions from feature detection or assigning them lower confidence weights. Beyond cloud masking, intelligent feature selection is essential—temporal robustness requires prioritizing persistent features like coastlines and infrastructure over transient features like agricultural fields. Spatial robustness demands well-distributed features with strong geometric constraints to avoid estimation degeneracies.
+Cloud cover presents a critical challenge, as high-contrast cloud edges are readily detected but unsuitable as stable reference points. Future work must integrate cloud detection and masking algorithms into the preprocessing pipeline, excluding cloud regions from feature detection or assigning them lower confidence weights. Beyond cloud masking, intelligent feature selection is essential, temporal robustness requires prioritizing persistent features like coastlines and infrastructure over transient features like agricultural fields. Spatial robustness demands well-distributed features with strong geometric constraints to avoid estimation degeneracies.
 \vspace{0.5cm}
 
 \noindent
 \textbf{Extension to Non-Circular Orbits.}
-The current system assumes circular orbits, treating altitude as constant. For elliptical orbits, the framework must be augmented to estimate altitude dynamically. One approach uses geolocated feature points to triangulate altitude through geometric constraints when multiple known features are visible simultaneously. Alternatively, auxiliary altitude sensors can be fused with vision-based estimates through the EKF framework.
+The current system assumes circular orbits, treating altitude as constant. For elliptical orbits, the estimation algorithm must be augmented to estimate altitude dynamically. One approach uses geolocated feature points to triangulate altitude through geometric constraints when multiple known features are visible simultaneously. Alternatively, auxiliary altitude sensors can be fused with vision-based estimates through the EKF.
 \vspace{0.5cm}
 
 \noindent
