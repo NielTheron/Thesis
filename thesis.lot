@@ -10,18 +10,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Simulation and Filter Constants and Initial States}}{100}{table.caption.82}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Camera characteristics for the simulated and Simera Sense cameras.}}{100}{table.caption.83}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Initial covariance ($P$) and process noise ($Q$) parameters for each state variable.}}{101}{table.caption.85}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces Earth Tracker sensor characteristics for standalone testing.}}{102}{table.caption.86}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces Comparison of position and attitude errors across sensor configurations.}}{104}{table.caption.91}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Sequential EKF sensor update order and justification.}}{105}{table.caption.92}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces ADCS suite sensor characteristics.}}{105}{table.caption.93}%
-\contentsline {table}{\numberline {6.8}{\ignorespaces Star tracker sensor characteristics.}}{107}{table.caption.96}%
-\contentsline {table}{\numberline {6.9}{\ignorespaces Comparison of position and attitude errors across sensor configurations.}}{110}{table.caption.100}%
-\contentsline {table}{\numberline {6.10}{\ignorespaces Feature detector performance comparison showing average position and attitude errors.}}{111}{table.caption.101}%
-\contentsline {table}{\numberline {6.11}{\ignorespaces Lens distortion parameters used in testing.}}{113}{table.caption.103}%
-\contentsline {table}{\numberline {6.12}{\ignorespaces Earth Tracker configuration for temporal delay testing.}}{114}{table.caption.105}%
-\contentsline {table}{\numberline {6.13}{\ignorespaces Impact of measurement delay on Earth Tracker estimation accuracy.}}{114}{table.caption.106}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Comparison of the constants and initial state parameters used in the simulation environment and the EKF implementation.}}{100}{table.caption.82}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Comparison of the camera characteristics used in the simulation with those of the real Simera Sense TriScape camera.}}{100}{table.caption.83}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Initial covariance ($\mathbf {P}_0$) and process noise ($\mathbf {Q}$) parameters for each state variable.}}{101}{table.caption.85}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Earth Tracker sensor configurations for standalone testing.}}{103}{table.caption.87}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Comparison of position and attitude errors across different ET sensor configurations.}}{106}{table.caption.93}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Ranking of sensors based on performance and suitability in the sequential EKF update process.}}{107}{table.caption.94}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces ADCS sensor configurations used for standalone and combined testing, including sampling rate, measurement noise, and drift parameters.}}{107}{table.caption.95}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Comparison of position and attitude estimation accuracy across sensor configurations.}}{110}{table.caption.100}%
+\contentsline {table}{\numberline {6.9}{\ignorespaces Summary of position and attitude estimation errors across all tested configurations.}}{110}{table.caption.101}%
+\contentsline {table}{\numberline {6.10}{\ignorespaces Feature detector performance comparison showing average position and attitude errors.}}{112}{table.caption.104}%
+\contentsline {table}{\numberline {6.11}{\ignorespaces Lens distortion parameters used in testing.}}{114}{table.caption.106}%
+\contentsline {table}{\numberline {6.12}{\ignorespaces Earth Tracker configuration for temporal delay testing.}}{116}{table.caption.108}%
+\contentsline {table}{\numberline {6.13}{\ignorespaces Impact of measurement delay on Earth Tracker estimation accuracy.}}{116}{table.caption.109}%
 \addvspace {10\p@ }
 \contentsfinish 
