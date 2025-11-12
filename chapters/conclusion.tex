@@ -18,15 +18,15 @@ A complete satellite simulation environment was developed in MATLAB to evaluate 
 \vspace{0.5cm}
 
 \noindent
-Experimental results confirmed that the Earth Tracker achieved consistent and accurate pose estimation. The Earth Tracker and GPS system successfully estimated attitude with an average error below $20$ arcseconds, approaching the performance of a dedicated star tracker, while maintaining robust convergence across various orbital and imaging conditions. The position estimates, while less accurate, demonstrated that meaningful spatial information could be derived from the imaging process even without explicit GNSS data. These findings validate the theoretical feasibility of full-state estimation from a single optical sensor and demonstrate the potential for substantial cost reduction and redundancy in satellite navigation systems. 
+Experimental results confirmed that the Earth Tracker achieved consistent and accurate pose estimation. The Earth Tracker with attitude only estimation estimated attitude with an average error below $9$ arcseconds, approaching the performance of a dedicated star tracker, while maintaining robust convergence across various orbital and imaging conditions. The position estimates, while less accurate, demonstrated that meaningful spatial information could be derived from the imaging process even without explicit GNSS data. These findings validate the theoretical feasibility of full-state estimation from a single optical sensor and demonstrate the potential for substantial cost reduction and redundancy in satellite navigation systems. 
 \vspace{0.5cm}
 
 \noindent
-Nevertheless, the results also highlighted limitations inherent to monocular vision systems. The most notable challenges were altitude ambiguity in position estimation and sensitivity to feature availability, illumination, and image distortion. The system’s performance also depended heavily on precise temporal synchronization between the imaging sensor and filter updates, as delays of more than a few seconds led to significant degradation in estimation accuracy. These factors underscore the importance of rigorous calibration, synchronization, and image preprocessing in any operational implementation of the Earth Tracker. 
+Nevertheless, the results also highlighted limitations inherent to monocular vision systems. The most notable challenges were altitude ambiguity in position estimation and sensitivity to feature availability, illumination, and image distortion. The system's performance also depended heavily on precise temporal synchronization between the imaging sensor and filter updates, as delays of more than a few seconds led to significant degradation in estimation accuracy. These factors underscore the importance of rigorous calibration, synchronization, and image preprocessing in any operational implementation of the Earth Tracker. 
 \vspace{0.5cm}
 
 \noindent
-Despite these limitations, the research demonstrates the promise of vision-based pose estimation for resource-constrained platforms. The Earth Tracker offers several practical advantages: it reduces hardware redundancy by leveraging existing payload data; it provides a direct reference to the Earth’s surface, which is inherently relevant for Earth Observation missions; and it complements other sensors within a unified estimation. As small satellites continue to multiply, particularly in constellations and formation-flying applications, visual navigation systems like the Earth Tracker can provide valuable autonomy and robustness in GPS-denied environments. 
+Despite these limitations, the research demonstrates the promise of vision-based pose estimation for resource-constrained platforms. The Earth Tracker offers several practical advantages: it reduces hardware redundancy by leveraging existing payload data; it provides a direct reference to the Earth's surface, which is inherently relevant for Earth Observation missions; and it complements other sensors within a unified estimation. As small satellites continue to multiply, particularly in constellations and formation-flying applications, visual navigation systems like the Earth Tracker can provide valuable autonomy and robustness in GPS-denied environments. 
 \vspace{0.5cm}
 
 \noindent
@@ -35,7 +35,6 @@ In summary, this thesis contributes a complete theoretical, algorithmic, and exp
 
 \noindent
 The findings presented here mark a meaningful step toward the long-term vision of fully autonomous, vision-driven nanosatellites capable of determining their own orientation and position directly from their view of the Earth. 
-
 
 
 %==========================================================================================================================================

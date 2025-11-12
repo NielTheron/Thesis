@@ -5,7 +5,7 @@
 \mysection{Introduction}{Introduction}
 \label{sec:expintro}
 
-This chapter aims to validate the theoretical concepts discussed in the previous chapters through the use of the developed simulation environment. This chapter will begin with describing the test setup in the simulation environment, afterwhich three tests will be run. The first test will determine the accuracy of the sensor itself and the robustness of the state estimator in sensor fusion. Then a test is run where the systems ability to accurately determine the pose of the satellite depending of the amount of features present in the image. Lastly, a test against the robustness of the system against temporal distortions.
+This chapter aims to validate the theoretical concepts discussed in the previous chapters through the use of the developed simulation environment. This chapter will begin with describing the test setup in the simulation environment, afterwhich three tests will be run. The first test will determine the accuracy of the sensor itself and the performance of the state estimator in sensor fusion with other sensors. Then a test is run where the systems ability to accurately determine the pose of the satellite depending of the amount of features present in the image. The last test investigates the robustness of the system against temporal effects.
 
 %==================================================================================================================================================================
 \mysection{Test Configuration}{Test Configuration}
@@ -72,7 +72,7 @@ The simulation environment is developed in MATLAB. Each test is conducted using 
 
 
 \noindent
-The camera parameters used in the simulation are standardized as listed in Table \ref{tab:CameraParameters}. The camera model is derived from the TriScape100x satellite imager developed by Simera Sense, illustrated in Figure \ref{fig:TSC}. It retains the same focal length as the original sensor but uses a reduced image resolution to improve processing efficiency within the simulation environment. Furthermore, the pixel size has been increased to match the minimum ground sampling distance (GSD) of 15 m, consistent with the Sentinel-2 imagery obtained from the Copernicus data browser.
+The camera parameters used in the simulation are standardized as listed in Table \ref{tab:CameraParameters}. The camera model is derived from the TriScape100x satellite imager developed by Simera Sense, illustrated in Figure \ref{fig:TSC} \cite{TriScape}. It retains the same focal length as the original sensor but uses a reduced image resolution to improve processing efficiency within the simulation environment. Furthermore, the pixel size has been increased to match the minimum ground sampling distance (GSD) of 15 m, consistent with the Sentinel-2 imagery obtained from the Copernicus data browser.
 
 \begin{table}[H]
     \centering
@@ -94,7 +94,7 @@ The camera parameters used in the simulation are standardized as listed in Table
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/experiments/TriScapeCamera.png}
-    \caption{The Simera Sense TriScape camera used as the primary imaging payload for Earth observation in the simulation study.}
+    \caption{The Simera Sense TriScape camera used as the primary imaging payload for Earth observation in the simulation study. \cite{TriScape}}
     \label{fig:TSC}
 \end{figure}
 
@@ -102,27 +102,22 @@ The camera parameters used in the simulation are standardized as listed in Table
 The Extended Kalman Filter (EKF) is initialised with appropriate uncertainty parameters to reflect the initial state estimate accuracy and system dynamics. The covariance matrix $\mathbf{P}_0$ represents the initial uncertainty in the state estimate, with diagonal elements corresponding to the variance of position, velocity, attitude and angular velocity. The process noise covariance matrix $\mathbf{Q}$ characterizes the uncertainty introduced by unmodeled dynamics and disturbances during state propagation. These matrices are initialised using the parameters specified below in Table \ref{tab:CovarianceParameters}, which have been tuned to balance filter responsiveness and stability throughout the simulation.
 
 \begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        \textbf{Attribute} & $\mathbf{P}_0$ & $\mathbf{Q}$ \\ \hline
-        $r_x$ & $500 \, m$ & $100 \, m$ \\
-        $r_y$ & $500 \, m$ & $100 \, m$ \\
-        $r_z$ & $500 \, m$ & $100 \, m$ \\ \hline
-        $v_x$ & $10 \, m/s$ & $2 \, m/s$ \\
-        $v_y$ & $10 \, m/s$ & $2 \, m/s$ \\
-        $v_z$ & $10 \, m/s$ & $2 \, m/s$ \\ \hline
-        Att   & $10^{\circ}$ & $5^{\circ}$ \\ \hline
-        $w_x$ & $1^{\circ}/s$ & $0.5^{\circ}/s$ \\
-        $w_y$ & $1^{\circ}/s$ & $0.5^{\circ}/s$ \\
-        $w_z$ & $1^{\circ}/s$ & $0.5^{\circ}/s$ \\ \hline
-    \end{tabular}
-    \caption{Initial covariance ($\mathbf{P}_0$) and process noise ($\mathbf{Q}$) parameters for each state variable.}
-    \label{tab:CovarianceParameters}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{State} & $\text{diag}(\mathbf{P}_0)$ & $\text{diag}(\mathbf{Q})$ \\ \hline
+Position $[r_x, r_y, r_z]$ & $[500, 500, 500]^2$ m$^2$ & $[100, 100, 100]^2$ m$^2$ \\
+Velocity $[v_x, v_y, v_z]$ & $[10, 10, 10]^2$ (m/s)$^2$ & $[2, 2, 2]^2$ (m/s)$^2$ \\
+Attitude (Att) & $(10^\circ)^2$ & $(5^\circ)^2$ \\
+Angular velocity $[w_x, w_y, w_z]$ & $[1, 1, 1]^2$ ($^\circ$/s)$^2$ & $[0.5, 0.5, 0.5]^2$ ($^\circ$/s)$^2$ \\ \hline
+\end{tabular}
+\caption{Diagonal entries of the initial covariance ($\mathbf{P}_0$) and process noise ($\mathbf{Q}$) matrices. The listed values are standard deviations ($\sigma$) and are squared to form the actual covariance values.}
+\label{tab:CovarianceParameters}
 \end{table}
 
+
 \noindent
-Figure \ref{fig:FilterError} illustrates the discrepancies between the simulator and the filter predictions. This scenario corresponds to the filter estimating the system states without incorporating any sensor measurements, relying entirely on the model dynamics. The figure highlights how the state estimates deviate over time due to model uncertainties and unmodeled dynamics.
+Figure \ref{fig:FilterError} illustrates the discrepancies between the simulator and the filter predictions. This scenario corresponds to the filter estimating the system states without incorporating any sensor measurements, relying entirely on the model dynamics. The model dynamics include the $J_2$ pertubations and a small rotational offset of 144 arcseconds in the quaternion model. The Figure \ref{fig:FilterError} highlights how the state estimates deviate over time due to model uncertainties and unmodeled dynamics, which is expected.
 
 \begin{figure}[H]
     \centering
@@ -160,7 +155,7 @@ ET + GPS & 1 Hz & 10 m \\ \hline
 \end{table}
 
 \noindent
-Figures \ref{fig:ETHighTrust} and \ref{fig:ETLowTrust} illustrate that when the Earth Tracker is assigned a high trust level, the EKF relies almost entirely on its measurements to determine position and attitude. Under these conditions, the position error reaches approximately 1.53 km, while the attitude error remains at 0.17$^{\circ}$. In the low-trust configuration, clear discrepancies appear between the simulated and estimated states, as previously shown in Figure \ref{fig:FilterError}. Although the attitude estimation initially demonstrates high accuracy, it gradually begins to diverge over time.
+Figures \ref{fig:ETHighTrust} and \ref{fig:ETLowTrust} illustrate that when the Earth Tracker is assigned a high trust level, the EKF relies almost entirely on its measurements to determine position and attitude. Under these conditions, the position error reaches approximately 1.53 km, while the attitude error remains at 0.17$^{\circ}$. In the low-trust configuration, clear discrepancies appear between the simulated and estimated states, as previously shown in Figure \ref{fig:FilterError}. Although the attitude estimation initially demonstrates high accuracy, it gradually begins to diverge over time, due to the increasing position error which effects the Earth Tracker measurements.
 
 
 \begin{figure}[H]
@@ -178,7 +173,7 @@ Figures \ref{fig:ETHighTrust} and \ref{fig:ETLowTrust} illustrate that when the 
 \end{figure}
 
 \noindent
-Figures \ref{fig:ETAttitudeOnly}, \ref{fig:ETPositionOnly}, and \ref{fig:ETGPS} demonstrate that when only attitude is estimated, the attitude error decreases substantially from 587.86 arcseconds to 8.697 arcseconds. This result suggests a coupling between position and attitude estimation within the measurement model, where uncertainty in position propagates into the attitude estimate. Interestingly, Figure \ref{fig:ETPositionOnly} shows that estimating position alone does not improve position accuracy, implying that accurate position knowledge plays a more critical role in enhancing attitude estimation than the reverse. As shown in Figure \ref{fig:ETGPS}, providing the satellite's position information with the GPS significantly improves attitude accuracy to 18.45 arcseconds, indicating that this configuration presents a viable and effective solution.
+Figures \ref{fig:ETAttitudeOnly} to \ref{fig:ETGPS} demonstrate that when only attitude is estimated, the attitude error decreases substantially from 587.86 arcseconds to 8.697 arcseconds. This result suggests a coupling between position and attitude estimation within the measurement model, where uncertainty in position propagates into the attitude estimate. Interestingly, Figure \ref{fig:ETPositionOnly} shows that estimating position alone does not improve position accuracy, implying that accurate position knowledge plays a more critical role in enhancing attitude estimation than the reverse. The position-only estimation is also highly sensitive to the 500 km lens characteristic assumption used in the Earth Tracker. Further research is needed to develop a dynamic altitude sensing approach, potentially through pattern or batch feature processing rather than estimating with one feature at a time. As shown in Figure \ref{fig:ETGPS}, providing the satellite's position information with the GPS significantly improves attitude accuracy to 18.45 arcseconds, indicating that this configuration presents a viable and effective solution.
 
 \begin{figure}[H]
     \centering
@@ -203,7 +198,7 @@ Figures \ref{fig:ETAttitudeOnly}, \ref{fig:ETPositionOnly}, and \ref{fig:ETGPS} 
 \end{figure}
 
 \noindent
-Table \ref{tab:ET_errors} further clarifies the performance trends observed across the different Earth Tracker configurations. The high-trust standalone Earth Tracker exhibits the poorest overall performance, with an average attitude error of 587 arcseconds, primarily due to the filter's overreliance on potentially noisy visual measurements and the Earth Trackers 2D-3D conversion model. In contrast, when the Earth Tracker is supplemented with accurate position information, either through GPS or other aiding sensors,the attitude estimation improves dramatically to 18.45 arcseconds. This result highlights the strong dependency between accurate positional knowledge and attitude determination in the Earth Tracker's measurement model. It also reinforces the potential of fusing visual and positional data to achieve reliable six-degree-of-freedom state estimation, particularly in scenarios where a star tracker is unavailable or infeasible.
+Table \ref{tab:ET_errors} further clarifies the performance trends observed across the different Earth Tracker configurations. The high-trust standalone Earth Tracker exhibits the poorest overall performance, with an average attitude error of 587 arcseconds, primarily due to the filter's overreliance on potentially noisy visual measurements and the Earth Trackers 2D-3D conversion model. In contrast, when the Earth Tracker is supplemented with accurate position information, either through GPS or other aiding sensors, the attitude estimation improves dramatically to 18.45 arcseconds. This result highlights the strong dependency between accurate positional knowledge and attitude determination in the Earth Tracker's measurement model. It also reinforces the potential of fusing visual and positional data to achieve reliable six-degree-of-freedom state estimation, particularly in scenarios where a star tracker is unavailable or infeasible.
 
 \begin{table}[H]
 \centering
@@ -225,7 +220,7 @@ ET + GPS            & 10    & 18.45 \\ \hline
 \mysubsection{Earth Tracker and Star Tracker in an ADCS System}{Earth Tracker and Star Tracker in an ADCS System}
 
 \noindent
-This experiment compares the performance of the Earth Tracker and the Star Tracker within an ADCS. The analysis begins by evaluating each tracker independently to assess their individual capabilities, followed by their integration within the full ADCS sensor suite. The ADCS suite comprises a GPS receiver, gyroscope, magnetometer, and coarse sun sensor, serving as a baseline configuration for evaluating the performance enhancements provided by the Earth and Star Trackers.
+This experiment compares the performance of the Earth Tracker and the Star Tracker within an ADCS. The analysis begins by evaluating the star tracker independently to assess it's capabilities, followed by the Earth Tracker and Star Tracker integration within the full ADCS sensor suite. The ADCS suite comprises a GPS receiver, gyroscope, magnetometer, and coarse sun sensor, serving as a baseline configuration for evaluating the performance enhancements provided by the Earth and Star Trackers.
 \vspace{0.5cm}
 
 \noindent
@@ -301,7 +296,8 @@ Figures \ref{fig:STADCS} and \ref{fig:ETADCS} directly compare the performance o
 \end{figure}
 
 \noindent
-As summarized in Table \ref{tab:ADCS_Stats}, both trackers enhance the ADCS suite’s overall estimation performance. While the Star Tracker provides marginally better accuracy, the Earth Tracker demonstrates significant promise as a practical alternative, particularly considering it can utilize the existing payload camera onboard a satellite without requiring additional dedicated hardware.
+As summarized in Table \ref{tab:ADCS_Stats}, both trackers enhance the ADCS suite's overall estimation performance by roughly 3 times. While the Star Tracker provides marginally better accuracy, the Earth Tracker demonstrates significant promise as a practical alternative, particularly considering it can utilize the existing payload camera onboard a satellite without requiring additional dedicated hardware. It is worth noting in Figure \ref{fig:FeatureDetection} that the Earth Tracker achieved an accuracy of 8.69 arcseconds. This indicates that the ADCS suite did not reach this level of precision, as the CSS and magnetometer are sampled at 10 Hz, while the Earth Tracker and Star Tracker are sampled only at 1 Hz. This suggests that more in-depth tuning of the EKF is required to achieve better performance. Nevertheless, the Earth Tracker demonstrates a significant improvement, comparable to that of the Star Tracker, even within a roughly tuned filter.
+ 
 
 \begin{table}[H]
 \centering
@@ -321,13 +317,13 @@ ET + ADCS       & 11     & 1.26     \\ \hline
 \mysubsection{Summary of Results}{Summary of Results}
 
 \noindent
-Table \ref{tab:experiment_errors} summarizes the estimation performance across all tested configurations. The results highlight key trade-offs between measurement reliability, sensor fusion strategies, and achievable accuracy. Notably, the Earth Tracker combined with GPS achieved an attitude estimation accuracy of 18.45 arcseconds, demonstrating that even under simplified simulation conditions, the Earth Tracker can meaningfully enhance spacecraft attitude determination.
+Table \ref{tab:experiment_errors} summarizes the estimation performance across all tested configurations. The results highlight key trade-offs between measurement reliability, sensor fusion strategies, and achievable accuracy. Notably, the Earth Tracker  attitude only estimation accuracy of 8.69 arcseconds, demonstrating that even under simplified simulation conditions, the Earth Tracker can meaningfully enhance spacecraft attitude determination.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Configuration} & \textbf{Average Position Error (m)} & \textbf{Average Attitude Error ($^{\circ}$)} \\ \hline
+\textbf{Configuration} & \textbf{Average Pos Error (m)} & \textbf{Average Att Error ($^{\circ}$)} \\ \hline
 ET Alone (High Trust)   & 1530 & 587.8 arcseconds               \\ \hline
 ET Alone (Low Trust)    & 71   & 52.42 arcseconds               \\ \hline
 ET Attitude Only        & -    & 8.697 arcseconds               \\ \hline
@@ -342,16 +338,18 @@ ST + ADCS Suite         & 8    & 1.04                           \\ \hline
 \label{tab:experiment_errors}
 \end{table}
 
+%=======================================================================================================
+
 \mysection{Feature Testing}{Feature Testing}
 
 \noindent
-Feature testing evaluates the sensitivity and reliability of the Earth Tracker’s vision-based measurement model under varying image-processing conditions. The experiments aim to quantify the influence of feature detection algorithms, feature count, and lens distortion on pose estimation accuracy. Specifically, the performance of SIFT, SURF, and ORB detectors is assessed across multiple feature configurations, followed by an analysis of optical distortion effects on feature geometry and matching consistency. These investigations establish the practical limitations of the Earth Tracker’s visual subsystem and inform the selection of suitable detection and calibration strategies for on-board implementation.
+Feature testing evaluates the sensitivity and reliability of the Earth Tracker’s vision-based measurement model under varying image-processing conditions. The experiments aim to quantify the influence of feature detection algorithms, feature count, and lens distortion on pose estimation accuracy. Specifically, the performance of SIFT, SURF, and ORB detectors is assessed across multiple feature configurations, followed by an analysis of optical distortion effects on feature geometry and matching consistency. These investigations establish the practical limitations of the Earth Tracker’s visual subsystem and inform the selection of suitable detection and calibration strategies for on-board implementation these test are done with the same setup as Table \ref{tab:CovarianceParameters} and the high trust ET model.
 
 %===========================================================================================================================================================
 \mysubsection{Feature Detector Testing}{Feature Detector Testing}
 
 \noindent
-Figure \ref{fig:ETMeasurements} illustrates the comparison between the true and estimated Earth Tracker measurements for Feature 1, demonstrating close alignment between the two datasets. The measurement error in Figure \ref{fig:ETMeasurementError} confirms that the difference between the true and estimated feature vectors remains below 200 meters, indicating high accuracy in the feature detection and back-projection process.
+Figure \ref{fig:ETMeasurements} illustrates the comparison between the true and estimated Earth Tracker measurements for Feature 1 in the body reference frame, demonstrating close alignment between the two datasets. The measurement error in Figure \ref{fig:ETMeasurementError} confirms that the difference between the true and estimated feature vectors remains below 200 meters, indicating high accuracy in the feature detection and back-projection process. These errors can be caused by the differences in the WGS ellipsoid model and the 500 km lens characteristic assumption made for the 2D-3D back projection process. 
 
 \begin{figure}[H]
     \centering
@@ -390,34 +388,34 @@ ORB  & 495 & 0.572 & 1452 & 0.157 & 1495 & 0.160 \\ \hline
     % Row 1
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTSIFT1.png}
-        \caption{SIFT with 1 feature at $t = 0$.}
+        \caption{SIFT detection with 1 feature at $t = 0.$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTSURF1.png}
-        \caption{SURF with 1 feature at $t = 0$.}
+        \caption{SURF detection with 1 feature at $t = 0.$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTORB1.png}
-        \caption{ORB with 1 feature at $t = 0$.}
+        \caption{ORB detection with 1 feature at $t = 0.$}
     \end{subfigure}
     
     % Row 2
     \vspace{0.5cm}
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTSIFT10.png}
-        \caption{SIFT with 10 features at $t = 0$.}
+        \caption{SIFT detection with 10 features at $t = 0.$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTSURF10.png}
-        \caption{SURF with 10 features at $t = 0$.}
+        \caption{SURF detection with 10 features at $t = 0.$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\linewidth]{figures/experiments/ESTORB10.png}
-        \caption{ORB with 10 features at $t = 0$.}
+        \caption{ORB detection with 10 features at $t = 0.$}
     \end{subfigure}
     
     \caption{Comparison of feature detector outputs for 1 and 10 detected features.}
@@ -425,11 +423,11 @@ ORB  & 495 & 0.572 & 1452 & 0.157 & 1495 & 0.160 \\ \hline
 \end{figure}
 
 \noindent
-The results indicate that using a single detected feature provides insufficient geometric constraints for accurate pose estimation. With only one feature, all detectors exhibit attitude errors exceeding 0.5$^{\circ}$, while position accuracy remains moderate (approximately 470–500 m). This confirms that multiple spatially diverse features are necessary for robust orientation estimation.
+The results indicate that using a single detected feature provides insufficient geometric constraints for accurate pose estimation. With only one feature, all detectors exhibit attitude errors exceeding 0.5$^{\circ}$, while position accuracy remains moderate (approximately 470-500 m). This confirms that multiple spatially diverse features are necessary for robust orientation estimation.
 
 \vspace{0.5cm}
 \noindent
-As the number of detected features increases, attitude accuracy improves significantly. From Table \ref{tab:feature_detectors_split} and Figure \ref{fig:3x2}, configurations using five or more features achieve high accuracy levels, with attitude errors ranging between 0.157$^{\circ}$ and 0.162$^{\circ}$. This improvement highlights the importance of feature diversity in providing sufficient geometric information for accurate attitude determination. However, position errors unexpectedly increase with additional features,from approximately 470 m with one feature to around 1500 m with ten features. Interestingly as littel as five features where needed to obtain the saturation point of the Earth Tracker capabilties, indicating that even with few robust features the Earth Tracker can be a viable sensor. 
+As the number of detected features increases, attitude accuracy improves significantly. From Table \ref{tab:feature_detectors_split} and Figure \ref{fig:3x2}, configurations using five or more features achieve high accuracy levels, with attitude errors ranging between 0.157$^{\circ}$ and 0.162$^{\circ}$. This improvement highlights the importance of feature diversity in providing sufficient geometric information for accurate attitude determination. However, the mean position errors unexpectedly increase with additional features,from approximately 470 m with one feature to around 1500 m with ten features. Interestingly as little as five features where needed to obtain the saturation point of the Earth Tracker capabilties, indicating that even with few robust features the Earth Tracker can be a viable sensor. 
 
 \vspace{0.5cm}
 \noindent
@@ -437,7 +435,7 @@ This counterintuitive trend arises from the inherent altitude ambiguity in monoc
 
 \vspace{0.5cm}
 \noindent
-Comparing the detectors, SURF achieves the best overall accuracy, particularly in attitude estimation, with the lowest error of 0.525$^{\circ}$ for single-feature tests and consistent performance across multi-feature configurations. ORB achieves the lowest position errors for 5 and 10 features (1452 m and 1495 m, respectively) while maintaining competitive attitude accuracy (0.157$^{\circ}$–0.572$^{\circ}$). SIFT performs similarly to SURF, though it exhibits slightly higher attitude errors for the single-feature case. The performance differences among the three detectors remain within 15\% for both position and attitude metrics, suggesting that selection should primarily consider computational efficiency. Notably, even on on the high-perfomance desktopo hardware used in this simulation, ORB executed significantly faster than SIFT and SURF. For real-time implementation on resource constrained CubeSat processors with limited computational power and memory, ORB emerges as the most practical choice, offering competitive accuracy. 
+Comparing the detectors, SURF achieves the best overall accuracy, particularly in attitude estimation, with the lowest error of 0.525$^{\circ}$ for single-feature tests and consistent performance across multi-feature configurations. ORB achieves the lowest position errors for 5 and 10 features (1452 m and 1495 m, respectively) while maintaining competitive attitude accuracy (0.157$^{\circ}$-0.572$^{\circ}$). SIFT performs similarly to SURF, though it exhibits slightly higher attitude errors for the single-feature case. The performance differences among the three detectors remain within 15\% for both position and attitude metrics, suggesting that selection should primarily consider computational efficiency. Notably, even on on the high-perfomance desktopo hardware used in this simulation, ORB executed significantly faster than SIFT and SURF. For real-time implementation on resource constrained satellite processors with limited computational power and memory, ORB emerges as the most practical choice, offering competitive accuracy. 
 
 %===============================================================================================================================================
 \mysubsection{Lens Distortion Testing}{Lens Distortion Testing}
@@ -488,7 +486,7 @@ The results reveal that even moderate lens distortion parameters, representative
 \vspace{0.5cm}
 
 \noindent
-This sensitivity to lens distortion underscores the critical importance of accurate camera calibration and distortion correction as a preprocessing step. For operational implementations, the camera intrinsic parameters and distortion coefficients must be precisely characterized either through ground-based calibration using standard patterns (such as checkerboard targets) or through in-flight self-calibration techniques. Without proper distortion correction, the geometric accuracy assumptions underlying the Earth Tracker measurement model are violated, leading to catastrophic performance degradation. Future work should prioritize robust calibration procedures and potentially explore distortion-invariant feature detection methods to enhance system resilience to optical imperfections.
+This sensitivity to lens distortion underscores the critical importance of accurate camera calibration and distortion correction as a preprocessing step. For operational implementations, the camera intrinsic parameters and distortion coefficients must be precisely characterized either through ground-based calibration using standard patterns (such as checkerboard targets) or through in-flight self-calibration techniques. Without proper distortion correction, the geometric accuracy assumptions underlying the Earth Tracker measurement model are violated, leading to significant performance degradation. Future work should prioritize robust calibration procedures and potentially explore distortion-invariant feature detection methods to enhance system resilience to optical imperfections.
 
 %========================================================================================================================================================================
 \mysection{Temporal Test}{Temporal Test}
@@ -554,15 +552,15 @@ This chapter presented a comprehensive evaluation of the developed satellite pos
 \vspace{0.5cm}
 
 \noindent
-The standalone Earth Tracker exhibited strong attitude estimation capabilities when aided with accurate position information, achieving an attitude error as low as 18.45 arcseconds and a position error of 10 m. Without position aiding, the standalone Earth Tracker in high-trust mode showed significant position errors (1.53 km) and degraded attitude performance (587.8 arcseconds), highlighting the strong coupling between position and attitude in the visual measurement model.
+The standalone Earth Tracker exhibited strong attitude estimation capabilities when aided with accurate position information, achieving an attitude error as low as 8.69 arcseconds.. Without position aiding, the standalone Earth Tracker in high-trust mode showed significant position errors (1.53 km) and degraded attitude performance (587.8 arcseconds), highlighting the strong coupling between position and attitude in the visual measurement model. Nevertheless, this still indicates that the Earth Tracker can be used as a standalone attitude sensor.
 \vspace{0.5cm}
 
 \noindent
-Integrating the Earth Tracker or Star Tracker with the ADCS suite significantly improved estimation accuracy. The Star Tracker combined with ADCS achieved an average attitude error of 1.04° and a position error of 8 m, while the Earth Tracker with ADCS reached an attitude error of 1.26° and a position error of 11 m, demonstrating that the Earth Tracker can serve as a practical alternative when additional attitude sensors are unavailable.
+Integrating the Earth Tracker or Star Tracker with the ADCS suite significantly improved estimation accuracy almost by 3 times. The Earth Tracker and Star Tracker contributed nearly the same level of improvement to the system. Although the results are somewhat inaccurate, than as expected, they indicate that with proper EKF tuning, the Earth Tracker can serve as a practical alternative when additional attitude sensors are unavailable.
 \vspace{0.5cm}
 
 \noindent
-Feature testing revealed that increasing the number of detected features improved attitude accuracy, with errors reducing from 0.554° for a single SIFT feature to 0.162° for ten features, while position errors increased due to monocular altitude ambiguity (approximately 470–1,516 m across configurations). Among feature detectors, SURF provided the most consistent attitude accuracy, whereas ORB offered competitive performance with lower computational cost, making it suitable for real-time CubeSat applications.
+Feature testing revealed that increasing the number of detected features improved attitude accuracy, with errors reducing from 0.554° for a single SIFT feature to 0.162° for ten features, while position errors increased due to monocular altitude ambiguity (approximately 470-1516 m across configurations). Among feature detectors, SURF provided the most consistent attitude accuracy, whereas ORB offered competitive performance with lower computational cost, making it suitable for real-time CubeSat applications.
 \vspace{0.5cm}
 
 \noindent

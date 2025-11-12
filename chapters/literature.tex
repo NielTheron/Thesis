@@ -25,19 +25,19 @@ The landscape of the space industry has undergone a radical transformation, movi
 accessible one. Historically, the greatest barriers to entry were the large costs associated with developing specialised satellite components 
 and the prohibitive expenses of space launch campaigns, which restricted missions primarily to government or military funding \cite{Jones, Drenthe}. 
 This dynamic has fundamentally changed due to two synergistic global trends: the relentless miniaturisation of electronics and the competitive reduction in launch 
-costs by new commercial providers. This reduction in launch costs has significantly lowered the price per kilogram to Low Earth Orbit (LEO) \cite{Adilov}, thereby democratizing access to space for commercial and educational sectors. As illustrated in Figure \ref{fig:cubesat_growth}, the number of CubeSat launches is projected to increase rapidly in the coming years \cite{Nagel,Villela,bouwmeester2010}.
+costs by new commercial providers. This reduction in launch costs has significantly lowered the price per kilogram to Low Earth Orbit (LEO) \cite{Adilov}, thereby democratizing access to space for commercial and educational sectors. As illustrated in Figure \ref{fig:cubesat_growth}, the number of CubeSat launches is projected to increase rapidly in the coming years \cite{Nagel,Villela,bouwmeester2010,Kulu}.
 \vspace{0.5cm}
 
 \noindent
 This shift necessitated a new development paradigm based on standardisation and an iterative approach, culminating in the widespread adoption of 
-the CubeSat platform \cite{Mahmoud, Villela}. The CubeSat standard is defined by its strict SWaP-C (Size, Weight, Power, and Cost) 
+the CubeSat platform \cite{Mahmoud, Villela, Kulu}. The CubeSat standard is defined by its strict SWaP-C (Size, Weight, Power, and Cost) 
 constraints \cite{Bomani, Bouzoukis}. The necessity of low cost means that CubeSats heavily rely on Commercial Off-the-Shelf (COTS) components. 
 While this maintains affordability, COTS-based sensors are inherently less accurate and reliable than their expensive, space-rated counterparts \cite{Selva}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Villela.png}
-    \caption{Annual number of CubeSat launches from 2002 to 2018, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite{Villela}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite{Villela}.}
+    \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Nanosats.png}
+    \caption{Annual number of CubeSat launches from 1998 to 2025, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite{Villela, Kulu}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite{Villela}.}
     \label{fig:cubesat_growth}
 \end{figure}
 
@@ -92,7 +92,7 @@ Several techniques are employed for relative pose estimation. Visual odometry, u
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/literaturestudy/Jongh.png}
-        \caption{Feature mathcing and pairing using a stereo imager \cite{Korf}}
+        \caption{Feature matching and pairing using a stereo imager \cite{Korf}}
         \label{fig:sensor_modalities_b}
     \end{subfigure}
     \caption{Comparison of sensor modalities: (a) Monocular image and (b) Stereo camera pair triangulation.}
@@ -134,7 +134,7 @@ While GNSS-based methods are ideal for satellites equipped with receivers, not a
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/literaturestudy/Norad.png}
-\caption{NORAD Ground Tracks and Estimation for 4 x 10 min TLE data. \cite{Kahr2013}}
+\caption{NORAD Ground Tracks and Position Estimation from TLE data. \cite{Kahr2013}}
 \label{fig:gnss_concept}
 \end{figure}
 
@@ -142,7 +142,7 @@ While GNSS-based methods are ideal for satellites equipped with receivers, not a
 \textbf{Attitude Estimation:}
 
 \noindent
-Attitude determination is an ongoing and critical field of research in spacecraft engineering. Traditionally, a satellite is equipped with a suite of sensors to measure its orientation relative to external references. This sensor suite often includes magnetometers (as seen in Figure \ref{fig:magnetometer}), coarse and fine sun sensors, and star trackers (as seen in Figure \ref{fig:star_tracker}) \cite{Bennett2021,Zahran,Liebe1995}. These are often complemented by internal sensors like gyroscopes which measure the rate of change of the attitude. The data from these various sensors are fused using estimation algorithms to provide a robust and accurate attitude solution.
+Attitude determination is an ongoing and critical field of research in spacecraft engineering. Traditionally, a satellite is equipped with a suite of sensors to measure its orientation relative to external references such as the sun, or a model of the Earth's magnetic field (e.g the IGRF model) or star field catalogues. This sensor suite often includes magnetometers (as seen in Figure \ref{fig:magnetometer}), coarse and fine sun sensors, and star trackers (as seen in Figure \ref{fig:star_tracker}) \cite{Bennett2021,Zahran,Liebe1995}. These are often complemented by internal sensors like gyroscopes which measure the rate of change of the attitude. The data from these various sensors are fused using estimation algorithms to provide a robust and accurate attitude solution as some sensors can only provide two-degrees of freedom like the CSS and magnetometer.
 \vspace{0.5cm}
 
 \noindent

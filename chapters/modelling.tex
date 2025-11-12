@@ -276,14 +276,14 @@ which is illustrated in Figure \ref{fig:3.3} as the position and velocity change
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{figures/modelling/Position.pdf}
-    \caption{The real position and real volcity of the satellite at an altitude of 500km and an inclination of 48.8$^\circ$, illustrating the change in position and velocity overtime governed by the gravitational kinematics.}
+    \caption{The real position and real volcity including the J2 effects of the satellite at an altitude of 500km and an inclination of 48.8$^\circ$, illustrating the change in position and velocity over time governed by the gravitational kinematics.}
     \label{fig:3.3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{figures/modelling/J2.pdf}
-    \caption{The J2 error introduced into system, illustrating its effects on the position and velocity.}
+    \caption{The J2 error introduced into system, illustrating its effects on the true position and true velocity.}
     \label{fig:3.4}
 \end{figure}
 
@@ -372,7 +372,7 @@ quaternion multiplication. Expanding this yields:
 \mathbf{q}_{B/I}(t + \Delta t) = \frac{\bar{\mathbf{q}}_{B/I}(t + \Delta t)}{||\bar{\mathbf{q}}_{B/I}(t + \Delta t)||}
 \end{equation}
 
-\noindent This normalization step ensures that the quaternion maintains unit magnitude throughout integration.
+\noindent This normalization step ensures that the quaternion maintains unit magnitude throughout integration, otherwise a quaternion with a magnitude $\ne$ 1 will indicate an impossible rotation.
 \vspace{0.5cm}
 
 \noindent
@@ -380,7 +380,7 @@ In the Figure \ref{fig:Coupling} it illustrates that the quaternions change with
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.1\linewidth]{figures/modelling/Coupling.pdf}
+    \includegraphics[width=\linewidth]{figures/modelling/Coupling.pdf}
     \caption{Illustration of the attitude coupling effect arising from differences in the spacecraft's principal moments of inertia. Variations in these inertial properties can cause rotations about one axis to induce secondary motions about the other axes, demonstrating the intrinsic coupling between rotational dynamics and the spacecraft's mass distribution.}
     \label{fig:Coupling}
 \end{figure}
@@ -621,7 +621,7 @@ The orbital reference frame used is the Local Vertical Local Horizon (LVLH) deno
 system commonly used in spacecraft dynamics. It moves with the satellite and is defined relative to its orbit around Earth. The $\bar{z}$-axis is the local vertical and is 
 also called the Nadir direction, it points to the barycenter of the system, in this case the center of the Earth. The $\bar{y}$-axis is called the cross track that points 
 out of the orbital plane, typically the anti-angular momentum vector direction (anti-normal to the orbit plane). The $\bar{x}$-axis is the "Local Horizon" also called
-"along track" pointing forward it is tangent to the orbit and completes the right hand rule.
+"along track" pointing forward it is tangent to the orbit and completes the right hand rule. It is worth noting that this is only true for circular orbits.
 \vspace{0.5cm}
 
 \noindent If $\mathbf{r}_\mathcal{I}$ is the position vector of the satellite and $\mathbf{v}_\mathcal{I}$ is the velocity vector of the satellite.
@@ -692,7 +692,7 @@ a DCM needs to be constructed from the true attitude $\mathbf{q}_\mathcal{B/O}$ 
 %==================================================================================================================================================================
 \mysubsection{North - East - Down/ East - North - Up }{East - North - Down/ East - North -Up}
 
-The North-East-Down (NED) and East-North-Up (ENU) reference frames are not promanant refrence frames in this work, but it is worth a mention
+The North-East-Down (NED) and East-North-Up (ENU) reference frames are not prominent refrence frames in this work, but it is worth a mention
 as it is used in sensor modeling and system initialization. Both frames are defined at a specific location by the geodetic latitude $\phi$, longitude $\lambda$, 
 and altitude $h$. The ENU frame has axes pointing East, North, and Up, whereas the NED frame has axes pointing North, East, and Down as we can see in Figure \ref{fig:ENU}
 The transformation from the Earth-Centered Earth-Fixed (ECEF) frame to the ENU frame is:
@@ -734,7 +734,7 @@ The transformation from the Earth-Centered Earth-Fixed (ECEF) frame to the ENU f
 \label{sec:SensorModelling}
 
 \noindent
-To properly model the satellite sensors, it is necessary to define the \textbf{truth state vector} $\mathbf{x}_\text{true}$, which represents the complete, ideal state of the satellite. All sensor measurements are simulated relative to this true state. The truth state includes the satellite's position and velocity in the Earth-Centered Inertial (ECI) frame, its orientation as a quaternion describing the rotation from the orbital frame to the body frame, and its angular velocity relative to the orbital frame:
+In this work, the auxiliary ADCS sensors are modeled to enable the controlled addition of realistic noise profiles, allowing for a more accurate representation of in-orbit sensor behavior. This approach facilitates the integration of sensor imperfections, such as bias, drift, and measurement noise, into the Kalman Filter. By doing so, the performance and robustness of the full state estimator can be evaluated under conditions that closely resemble those encountered in real satellite operations. To properly model the satellite sensors, it is necessary to define the \textbf{truth state vector} $\mathbf{x}_\text{true}$, which represents the complete, ideal state of the satellite. All sensor measurements are simulated relative to this true state. The truth state includes the satellite's position and velocity in the Earth-Centered Inertial (ECI) frame, its orientation as a quaternion describing the rotation from the orbital frame to the body frame, and its angular velocity relative to the orbital frame:
 
 \begin{equation}
 \begin{split}
@@ -806,7 +806,7 @@ In simulation, GPS measurements are generated using the same underlying orbital 
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figures/modelling/GPS3.pdf}
-        \caption{Zoomed-in view showing measurement noise.}
+        \caption{Zoomed-in view showing measurement noise. The noise is exaggerated to show effect.}
         \label{fig:gps-b}
     \end{subfigure}
     \caption{GPS measurement and noise model derived from the $\mathbf{x}_{\text{true}}$ state in the $\mathcal{L}$ reference frame.}
@@ -1026,7 +1026,7 @@ that the Star Tracker has a 360° FOV and can see throughout the entire orbit.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/modelling/STMeasurement.pdf}
-    \caption{Simulated Star Tracker Mesurements from the fisrt 4 Stars, the figure shows how the unit vectors (direction) changes as the satellite orbits.}
+    \caption{Simulated Star Tracker Mesurements from the first 4 Stars, the figure shows how the unit vectors (direction) changes as the satellite orbits.}
     \label{fig:STM}
 \end{figure}
 
@@ -1103,7 +1103,7 @@ that calibration and compensation are applied as illustrated in Figure \ref{fig:
 \label{sec:modconclusion}
 
 \noindent
-This chapter presented the complete modelling framework of the satellite system, encompassing the orbital dynamics, attitude kinematics, and sensor representations. The two-body dynamics model provided the foundation for simulating the satellite's motion, while the attitude model described the rotational behaviour through quaternion-based propagation. Furthermore, the inclusion of sensor models such as the star tracker, magnetometer, accelerometer, and GPS enabled realistic measurement simulations that reflect the practical constraints of on-orbit systems. Together, these components established a coherent and physically consistent platform upon which the remainder of the study is built.
+This chapter presented the complete modelling of the satellite system, encompassing the orbital dynamics, attitude kinematics, and sensor representations. The two-body dynamics model provided the foundation for simulating the satellite's motion, while the attitude model described the rotational behaviour through quaternion-based propagation. Furthermore, the inclusion of sensor models such as the star tracker, magnetometer, accelerometer, and GPS enabled realistic measurement simulations that reflect the practical constraints of on-orbit systems. Together, these components established a coherent and physically consistent platform upon which the remainder of the study is built.
 \vspace{0.5cm}
 
 \noindent
@@ -1111,6 +1111,6 @@ Beyond defining the mathematical relationships, the modelling process also clari
 \vspace{0.5cm}
 
 \noindent
-The next chapter, Image Processing (Chapter \ref{chap:imgpros}), builds upon this framework to extract spatial and temporal information from the simulated imagery, while State Estimation (Chapter \ref{chap:stateestimation}) integrates these processed measurements into a unified estimation architecture. 
+The next chapter, Image Processing (Chapter \ref{chap:imgpros}), builds upon this system to extract spatial and temporal information from the simulated imagery, while State Estimation (Chapter \ref{chap:stateestimation}) integrates these processed measurements into a unified estimation architecture. 
 
 %=================================================================================================================================================================

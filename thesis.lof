@@ -3,13 +3,13 @@
 \babel@toc {afrikaans}{}\relax 
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Conceptual diagram of the proposed visual navigation problem, illustrating the key reference frames (ECI, Body) and the geometric relationship between the satellite's imager and known features on the Earth's surface.}}{2}{figure.caption.11}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Conceptual diagram of the proposed visual navigation problem, showing the key reference frames (ECI and Body), the position vector $r_\mathcal {I}$, and the satellite's orientation $q_\mathcal {B/O}$. The diagram also illustrates the geometric relationship between the satellite's imaging sensor and known surface features on Earth.}}{2}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Annual number of CubeSat launches from 2002 to 2018, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite {Villela}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite {Villela}.}}{6}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Annual number of CubeSat launches from 1998 to 2025, illustrating the rapid growth and adoption of small satellite platforms over the past two decades \cite {Villela, Kulu}. The trend highlights the increasing accessibility of space technologies driven by reduced launch costs, standardized CubeSat architectures, and expanding participation from commercial, educational, and research institutions. \cite {Villela}.}}{6}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces In this figure we can see how much space is taken up by the optical payload in the Pheonix CubeSat from the Arizona State University, which is about 1.5U in a 3U CubeSat. \cite {CubeCam}}}{7}{figure.caption.13}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Conceptual diagram of a chaser satellite performing relative pose estimation of a target satellite for an on-orbit servicing mission. \cite {Xing}}}{8}{figure.caption.14}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison of sensor modalities: (a) Monocular image and (b) Stereo camera pair triangulation.}}{9}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces NORAD Ground Tracks and Estimation for 4 x 10 min TLE data. \cite {Kahr2013}}}{11}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces NORAD Ground Tracks and Position Estimation from TLE data. \cite {Kahr2013}}}{11}{figure.caption.16}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces A typical star tracker used for high-precision attitude determination.\cite {CubeStar}}}{12}{figure.caption.17}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces A magnetometer for measuring the direction of the Earth's magnetic field.\cite {CubeMag}}}{12}{figure.caption.17}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces A typical visual geo-localization pipeline, illustrating the use of geolocated features and a pre-rendered database. \cite {Chen2021}.}}{14}{figure.caption.20}%
@@ -22,8 +22,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces The Eular 3-2-1 rotation sequence (yaw-pitch-roll) describes a 3D orientation.}}{24}{figure.caption.27}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Quaterion rotation represented by the rotation axis $\bar {e}$ and rotation angle $\theta $.}}{24}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces The real position and real volcity of the satellite at an altitude of 500km and an inclination of 48.8$^\circ $, illustrating the change in position and velocity overtime governed by the gravitational kinematics.}}{27}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces The J2 error introduced into system, illustrating its effects on the position and velocity.}}{28}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The real position and real volcity including the J2 effects of the satellite at an altitude of 500km and an inclination of 48.8$^\circ $, illustrating the change in position and velocity over time governed by the gravitational kinematics.}}{27}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The J2 error introduced into system, illustrating its effects on the true position and true velocity.}}{28}{figure.caption.30}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces The Dzhanibekov effect to verify the dynamics.}}{29}{figure.caption.31}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Illustration of the attitude coupling effect arising from differences in the spacecraft's principal moments of inertia. Variations in these inertial properties can cause rotations about one axis to induce secondary motions about the other axes, demonstrating the intrinsic coupling between rotational dynamics and the spacecraft's mass distribution.}}{30}{figure.caption.32}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces The WGS84 reference ellipsoid, a mathematically defined model of the Earth's shape used as the basis for the World Geodetic System 1984 (WGS84). It approximates the Earth as an oblate spheroid with a defined semi-major and semi-minor axis, providing a standard reference for geodetic measurements, satellite positioning, and global navigation systems.}}{33}{figure.caption.33}%
@@ -40,20 +40,20 @@
 \contentsline {figure}{\numberline {3.18}{\ignorespaces Orientation of the six coarse sun sensors on the CubeSat}}{46}{figure.caption.44}%
 \contentsline {figure}{\numberline {3.19}{\ignorespaces Simulated CSS measurement illustrating the magnitude of the direction of the sun and the noise.}}{47}{figure.caption.45}%
 \contentsline {figure}{\numberline {3.20}{\ignorespaces Represenstation of star vectors calcualted out of the center of mass of the satellite, each star vector is a unit vector defined in the BRF.}}{48}{figure.caption.46}%
-\contentsline {figure}{\numberline {3.21}{\ignorespaces Simulated Star Tracker Mesurements from the fisrt 4 Stars, the figure shows how the unit vectors (direction) changes as the satellite orbits.}}{49}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Simulated Star Tracker Mesurements from the first 4 Stars, the figure shows how the unit vectors (direction) changes as the satellite orbits.}}{49}{figure.caption.47}%
 \contentsline {figure}{\numberline {3.22}{\ignorespaces The total magnetic field intensity given by the \textit {worldmgn} function using IGRF.}}{50}{figure.caption.48}%
 \contentsline {figure}{\numberline {3.23}{\ignorespaces Simulated Magnetoemeter measurements indicating the magnetific field strength in nT and which direction it is measured in according to the IGRF.}}{51}{figure.caption.49}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces The relationship between sensor pitch, focal length, satellite altitude, and Ground Sampling Distance (GSD). The pixel pitch ($p$) determines the physical size of each sensor element, while the focal length ($f$) and satellite altitude ($h$) together define how this sensor geometry maps to the ground. A smaller pixel pitch or a longer focal length results in a finer GSD (higher image resolution), whereas increasing altitude enlarges the GSD, reducing spatial resolution.}}{54}{figure.caption.50}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces An illustartion of the distortion of the $GSD$ and $FOV$ of an satellite image when taken Off-Nadir (at an oblique angle) \cite {OFFN}}}{55}{figure.caption.51}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces The effect off-nadir angle on satellite imagery.}}{56}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Illustration of the relationship between spatial resolution and Ground Sampling Distance (GSD). As GSD increases, each pixel represents a larger area on the ground, resulting in lower image resolution and less detail. Conversely, smaller GSD values correspond to higher resolution, capturing finer features in the scene.}}{57}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The effect off-nadir angle on satellite imagery. \cite {EUSI}}}{56}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Illustration of the relationship between spatial resolution and Ground Sampling Distance (GSD). As GSD increases, each pixel represents a larger area on the ground, resulting in lower image resolution and less detail. Conversely, smaller GSD values correspond to higher resolution, capturing finer features in the scene. \cite {Copernicus}}}{57}{figure.caption.53}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Illustration of temporal resolution in satellite imagery represented by a tree growing \cite {Tree}. Temporal resolution refers to how frequently a satellite revisits the same location. Higher temporal resolution, achieved by shorter revisit intervals or larger satellite constellations, allows changes on the ground, such as vegetation growth or urban development, to be monitored more closely over time.}}{58}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Images are captured using different wave lengths and reconstructed to convey different information.}}{59}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Images are captured using different wave lengths and reconstructed to convey different information. \cite {Copernicus}}}{59}{figure.caption.55}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Images are captured using different imager detectors.}}{60}{figure.caption.56}%
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Difference in satellite imagery due to atmospheric asoption and scattering \cite {Atmos, Dove}}}{61}{figure.caption.57}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces The effect of cloud cover changing the spectral signature of and image.}}{62}{figure.caption.58}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces The effect of seasonal and time differences.}}{62}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces The effect of cloud cover changing the spectral signature of and image. \cite {Copernicus}}}{62}{figure.caption.58}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces The effect of seasonal and time differences. \cite {Copernicus}}}{62}{figure.caption.59}%
 \contentsline {figure}{\numberline {4.11}{\ignorespaces A satellite imager illustrated as an ideal pinhole model camera.}}{64}{figure.caption.60}%
 \contentsline {figure}{\numberline {4.12}{\ignorespaces The realtionship between the camera refernce frame and the pixel plane reference frame.}}{65}{figure.caption.61}%
 \contentsline {figure}{\numberline {4.13}{\ignorespaces Radial lens disortion applied to an satellite image of Cape Town stadium.}}{68}{figure.caption.62}%
@@ -63,7 +63,7 @@
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Earth rendered in the simulation environment}}{71}{figure.caption.66}%
 \contentsline {figure}{\numberline {4.18}{\ignorespaces High resolution mosiac strip of Paris, France}}{72}{figure.caption.67}%
 \contentsline {figure}{\numberline {4.19}{\ignorespaces This is the high resolution strip placed on the surface of the simulated Earth.}}{72}{figure.caption.68}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces An generated satellite imager as seen from the satellite imager}}{73}{figure.caption.69}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces A generated satellite image as seen from the simualted satellite imager over the Paris landscape.}}{73}{figure.caption.69}%
 \contentsline {figure}{\numberline {4.21}{\ignorespaces The french country side is used to compare the different feature points detected by SIFT, SURF and ORB}}{73}{figure.caption.70}%
 \contentsline {figure}{\numberline {4.22}{\ignorespaces An illustration of feature points being projected back to feature vectors.}}{75}{figure.caption.71}%
 \contentsline {figure}{\numberline {4.23}{\ignorespaces Catalogue generation using raycasting.}}{77}{figure.caption.72}%
@@ -78,13 +78,13 @@
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Block diagram of the Pose Estimation System. A sequential update EKF fuses the Earth Tracker measurement, the geolocated catalogue vector, and auxiliary sensor data to produce an optimal estimate of the satellite's state.}}{96}{figure.caption.80}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Satellite images captured at different time steps of the simulation. Cape Town begin shown in the first image and Port Alfred in the last.}}{99}{figure.caption.81}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces The Simera Sense TriScape camera used as the primary imaging payload for Earth observation in the simulation study.}}{101}{figure.caption.84}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The Simera Sense TriScape camera used as the primary imaging payload for Earth observation in the simulation study. \cite {TriScape}}}{101}{figure.caption.84}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Position and attitude estimation error of the filter with no measurement inputs.}}{102}{figure.caption.86}%
 \contentsline {figure}{\numberline {6.4}{\ignorespaces High trust configuration for position and attitude estimation of the Earth Tracker.}}{103}{figure.caption.88}%
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Low trust configuration for position and attitude estimation of the Earth Tracker.}}{104}{figure.caption.89}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Position and attitude error of Earth Tracker in attitude only configureration.}}{104}{figure.caption.90}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Position and attitude error of Earth Tracker in attitude only configureration.}}{105}{figure.caption.90}%
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Position and attitude error of Earth Tracker in positioin only configuration.}}{105}{figure.caption.91}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Position and attitude estimation error of Earth Tracker and GPS configuration.}}{105}{figure.caption.92}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Position and attitude estimation error of Earth Tracker and GPS configuration.}}{106}{figure.caption.92}%
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Star Tracker position and attitude estimation error in the EKF.}}{108}{figure.caption.96}%
 \contentsline {figure}{\numberline {6.10}{\ignorespaces ADCS Suite position and attitude estimation error in the EKF.}}{108}{figure.caption.97}%
 \contentsline {figure}{\numberline {6.11}{\ignorespaces Position and attitude estimation errors for the Star Tracker integrated with the ADCS suite.}}{109}{figure.caption.98}%

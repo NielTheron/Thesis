@@ -7,14 +7,13 @@
 
 \noindent
 In recent years, the satellite industry has undergone a significant paradigm shift toward smaller, more cost-effective platforms. This trend is largely enabled by 
-the ongoing miniaturization of electronics and sensor technology, which has allowed for the development of highly capable small satellites, including nanosatellites and 
-CubeSats. The primary drivers behind this shift are the substantially reduced development costs and accelerated timelines associated with these smaller platforms, which 
+the ongoing miniaturization of electronics and sensor technology, which has allowed for the development of highly capable small satellites. The primary drivers behind this shift are the substantially reduced development costs and accelerated timelines associated with these smaller platforms, which 
 have made space accessible for academic, commercial, and governmental entities \cite{Villela,bouwmeester2010}.
 \vspace{0.5cm}
 
 \noindent
 A predominant application within this rapidly growing market is Earth Observation (EO), which involves using satellite-borne sensors to monitor the planet for a 
-wide range of scientific and commercial purposes. A key requirement for many EO missions is the ability to capture high-resolution imagery (for a GSD in the range of 5-10m) of specific, pre-defined targets 
+wide range of scientific and commercial purposes. A key requirement for many EO missions is the ability to capture reasonably high-resolution imagery (for a GSD in the range of 5-10m) of specific, pre-defined targets 
 on the Earth's surface. This, in turn, necessitates a high degree of pointing accuracy (typically in the range of 0.01$^\circ$ or better) from the satellite's Attitude Determination 
 and Control System (ADCS) \cite{Toth2016, Lesikar, Zhang2024}.
 \vspace{0.5cm}
@@ -42,8 +41,7 @@ how it relates to the 6-DOF navigation challenge.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/stateestimation/OverallSystem.pdf}
-    \caption{Conceptual diagram of the proposed visual navigation problem, illustrating the key reference frames (ECI, Body) and the geometric relationship between the 
-    satellite's imager and known features on the Earth's surface.}
+    \caption{Conceptual diagram of the proposed visual navigation problem, showing the key reference frames (ECI and Body), the position vector $r_\mathcal{I}$, and the satellite's orientation $q_\mathcal{B/O}$. The diagram also illustrates the geometric relationship between the satellite's imaging sensor and known surface features on Earth.}
     \label{fig:satellite_concept}
 \end{figure}
 
@@ -54,7 +52,7 @@ Finally, it provides a direct, relative measurement of the satellite's pointing 
 \vspace{0.5cm}
 
 \noindent
-The core technical challenge lies in transforming raw imagery into a precise pose estimate. Although conceptually related to Simultaneous Localization and Mapping (SLAM), the problem considered here involves only the localization component. Unlike full SLAM, where both the environment and the pose are estimated simultaneously, the "map", a catalogue of georeferenced ground features, is assumed to be known a priori. The focus is therefore on the localization task, which entails addressing three key challenges:
+The core technical challenge lies in transforming raw imagery into a precise pose estimate, which was explored in \cite{Towards}. Although conceptually related to Simultaneous Localization and Mapping (SLAM), the problem considered here involves only the localization component. Unlike full SLAM, where both the environment and the pose are estimated simultaneously, the "map", a catalogue of georeferenced ground features, is assumed to be known a priori. The focus is therefore on the localization task, which entails addressing three key challenges:
 
 \begin{itemize}
     \item \textbf{Geometric Inversion:} The complex inverse problem of determining a 6-DOF pose from 2D image projections of known 3D landmarks.

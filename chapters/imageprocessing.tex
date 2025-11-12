@@ -96,7 +96,7 @@ the accuracy of orthorectification and making reliable feature extraction more d
         \caption{The Eiffel tower taken with a 44 degree off-nadir angle.}
         \label{fig:ONA2}
     \end{subfigure}
-    \caption{The effect off-nadir angle on satellite imagery.}
+    \caption{The effect off-nadir angle on satellite imagery. \cite{EUSI}}
     \label{fig:OffImg}
 \end{figure}
 
@@ -136,7 +136,7 @@ As defined in \ref{sec:satImgChar} the GSD defines the spatial resolution of a s
         \caption{GSD of 40m}
         \label{fig:GSD3}
     \end{subfigure}
-    \caption{Illustration of the relationship between spatial resolution and Ground Sampling Distance (GSD). As GSD increases, each pixel represents a larger area on the ground, resulting in lower image resolution and less detail. Conversely, smaller GSD values correspond to higher resolution, capturing finer features in the scene.}
+    \caption{Illustration of the relationship between spatial resolution and Ground Sampling Distance (GSD). As GSD increases, each pixel represents a larger area on the ground, resulting in lower image resolution and less detail. Conversely, smaller GSD values correspond to higher resolution, capturing finer features in the scene. \cite{Copernicus}}
     \label{fig:GSD_all}
 \end{figure}
 
@@ -145,7 +145,7 @@ As defined in \ref{sec:satImgChar} the GSD defines the spatial resolution of a s
 Just as satellites have spatial resolution, they also have temporal resolution. Temporal resolution is defined by the frequency with which a satellite 
 revisits a site or target area. For example, Sentinel-2A and Sentinel-2B have a revisit rate of 10 days individually \cite{Wang}, 
 resulting in a temporal resolution of 5 days. This means that by increasing the number of satellites in a constellation, a higher temporal resolution can be 
-achieved. An example of a tree growing is illustrated in Figure \ref{fig:TempRes} \cite{Tree}, showing that the higher temporal resolution implies that an area could be observed to be growing steadily and conversily the lower the temporal resolution the more rapid the growth of a area might be seen, indicating less temporal detail. Many satellites with high temporal resolution are placed in sun-synchronous orbits, which are near-polar and allow the satellite to pass over the same location at approximately the same local solar time each day.
+achieved. An example of a tree growing is illustrated in Figure \ref{fig:TempRes} \cite{Tree}, showing that the higher temporal resolution implies that an area could be observed to be growing steadily and conversily the lower the temporal resolution the more rapid the growth of a area might be seen, indicating less temporal detail. Many satellites with high temporal resolution are placed in sun-synchronous orbits, which are near-polar and allow the satellite to pass over the same location at approximately the same local solar time each pass.
 
 \begin{figure}[H]
     \centering
@@ -173,7 +173,7 @@ An example is shown in Figure~\ref{fig:MSI}, which illustrates the spectral band
     \begin{subfigure}[b]{0.32\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/imageprocessing/FalseColour.png}
-        \caption{False Colour (NIR)}
+        \caption{Satellite Image in False Colour (NIR)}
         \label{fig:FalseColour}
     \end{subfigure}
     \hfill
@@ -187,10 +187,10 @@ An example is shown in Figure~\ref{fig:MSI}, which illustrates the spectral band
     \begin{subfigure}[b]{0.32\linewidth}
         \centering
         \includegraphics[width=\linewidth]{figures/imageprocessing/SWIR.png}
-        \caption{Short-Wave Infrared (SWIR)}
+        \caption{Satellite Image in Short-Wave Infrared (SWIR)}
         \label{fig:SWIR}
     \end{subfigure}
-    \caption{Images are captured using different wave lengths and reconstructed to convey different information.}
+    \caption{Images are captured using different wave lengths and reconstructed to convey different information. \cite{Copernicus}}
     \label{fig:MSI}
 \end{figure}
 
@@ -278,7 +278,7 @@ cloud detection and masking methods are often applied, and satellites with highe
         \caption{Cape Town with cloud cover.}
         \label{fig:Cloud2}
     \end{subfigure}
-    \caption{The effect of cloud cover changing the spectral signature of and image.}
+    \caption{The effect of cloud cover changing the spectral signature of and image. \cite{Copernicus}}
     \label{fig:Cloud}
 \end{figure}
 
@@ -304,7 +304,7 @@ a forest may appear lush and green in summer but sparse and brown in winter, eve
         \caption{Cape Town in the dry season.}
         \label{fig:Time2}
     \end{subfigure}
-    \caption{The effect of seasonal and time differences.}
+    \caption{The effect of seasonal and time differences. \cite{Copernicus}}
     \label{fig:Time}
 \end{figure}
 
@@ -318,7 +318,7 @@ avoid drawing incorrect conclusions from noisy or inconsistent data.
 Accurate modeling of a satellite camera is essential for understanding how three-dimensional scenes are projected onto a two-dimensional image plane. 
 The camera model defines the geometric and photometric relationships between points in the observed scene and their corresponding image measurements. 
 This section introduces the fundamental concepts of camera modeling, beginning with the idealized pinhole model, followed by the definition of intrinsic parameters that map the camera's projection onto a pixel-based image, and finally the extrinsic parameters that relate the camera frame to the satellite body frame. 
-Together, these models form the basis for projecting and interpreting satellite imagery in subsequent image processing and state estimation tasks.
+Together, these models form the basis for projecting and interpreting satellite imagery in subsequent image processing and state estimation tasks, as decribed in part by \cite{Korf,deJongh2019}
 
 %================================================================================================================================================================
 \mysubsection{Pinhole Model}{Pinhole Model}
@@ -734,13 +734,13 @@ To simulate the Earth's rotation, both the Earth and the high-resolution imagery
 \vspace{0.5cm}
 
 \noindent
-To capture an image, the virtual camera is positioned at the satellite’s location within the simulator and oriented in a pure nadir direction. The resulting 
+To capture an image, the virtual camera is positioned at the satellite’s location within the MATLAB 3D render environment and oriented in a pure nadir direction. The resulting 
 image is shown in Figure \ref{fig:GenSatImg}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/imageprocessing/sat_image_001.png}
-    \caption{An generated satellite imager as seen from the satellite imager}
+    \caption{A generated satellite image as seen from the simualted satellite imager over the Paris landscape.}
     \label{fig:GenSatImg}
 \end{figure}
 
@@ -849,7 +849,7 @@ In Figure \ref{fig:ProjectionPoints} the z-axis is scaled to show the feature ve
 \label{sec:CatalogueGeneration}
 
 In this work, creating a catalogue requires proper geolocation. Although feature matching is beyond the scope of this work and the features are randomly 
-generated, the true position of the satellite is assumed, and raycasting is implemented to bypass feature matching.
+generated, the true position of the satellite is assumed, and raycasting is implemented to bypass feature matching, described in part by \cite{RayIntersection1, RayIntersection2, Klancar2013}
 \vspace{0.5cm}
 
 \noindent
@@ -949,8 +949,5 @@ Finally, the Earth Tracker itself is addressed. The image generation process is 
 simulator for the Earth Tracker to use. The Earth Tracker algorithm is then derived from the intrinsic and extrinsic camera parameters and uses back projection to convert
 from a 2D feature point to a 3D feature vector. For proper pose estimation the feature geolocation is also needed, but to bypass the feature matching process raycasting is described
 and used.
-
-
-
 
 %==============================================================================================================================================================

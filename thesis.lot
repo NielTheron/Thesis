@@ -12,7 +12,7 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {6.1}{\ignorespaces Comparison of the constants and initial state parameters used in the simulation environment and the EKF implementation.}}{100}{table.caption.82}%
 \contentsline {table}{\numberline {6.2}{\ignorespaces Comparison of the camera characteristics used in the simulation with those of the real Simera Sense TriScape camera.}}{100}{table.caption.83}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Initial covariance ($\mathbf {P}_0$) and process noise ($\mathbf {Q}$) parameters for each state variable.}}{101}{table.caption.85}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Diagonal entries of the initial covariance ($\mathbf {P}_0$) and process noise ($\mathbf {Q}$) matrices. The listed values are standard deviations ($\sigma $) and are squared to form the actual covariance values.}}{101}{table.caption.85}%
 \contentsline {table}{\numberline {6.4}{\ignorespaces Earth Tracker sensor configurations for standalone testing.}}{103}{table.caption.87}%
 \contentsline {table}{\numberline {6.5}{\ignorespaces Comparison of position and attitude errors across different ET sensor configurations.}}{106}{table.caption.93}%
 \contentsline {table}{\numberline {6.6}{\ignorespaces Ranking of sensors based on performance and suitability in the sequential EKF update process.}}{107}{table.caption.94}%

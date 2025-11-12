@@ -21,45 +21,45 @@ Warning--empty journal in Lesikar
 Warning--empty year in Lesikar
 
 Done.
-You've used 60 entries,
+You've used 66 entries,
             4783 wiz_defined-function locations,
-            1288 strings with 18066 characters,
-and the built_in function-call counts, 43264 in all, are:
-= -- 3829
-> -- 1280
-< -- 233
-+ -- 633
-- -- 306
-* -- 2267
-:= -- 6687
-add.period$ -- 121
-call.type$ -- 60
-change.case$ -- 135
-chr.to.int$ -- 488
-cite$ -- 62
-duplicate$ -- 3068
-empty$ -- 3222
-format.name$ -- 413
-if$ -- 9510
+            1320 strings with 18937 characters,
+and the built_in function-call counts, 46219 in all, are:
+= -- 4102
+> -- 1338
+< -- 238
++ -- 663
+- -- 322
+* -- 2381
+:= -- 7179
+add.period$ -- 132
+call.type$ -- 66
+change.case$ -- 151
+chr.to.int$ -- 494
+cite$ -- 68
+duplicate$ -- 3302
+empty$ -- 3475
+format.name$ -- 436
+if$ -- 10139
 int.to.chr$ -- 2
-int.to.str$ -- 61
-missing$ -- 549
-newline$ -- 204
-num.names$ -- 180
-pop$ -- 1563
+int.to.str$ -- 67
+missing$ -- 598
+newline$ -- 222
+num.names$ -- 198
+pop$ -- 1729
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 66
 quote$ -- 2
-skip$ -- 3158
+skip$ -- 3375
 stack$ -- 0
-substring$ -- 1245
-swap$ -- 2090
+substring$ -- 1272
+swap$ -- 2207
 text.length$ -- 56
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 926
+type$ -- 1016
 warning$ -- 2
-while$ -- 194
+while$ -- 206
 width$ -- 0
-write$ -- 651
+write$ -- 708
 (There were 2 warnings)

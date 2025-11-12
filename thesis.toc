@@ -44,7 +44,7 @@
 \contentsline {subsection}{\numberline {3.3.7}North - East - Down/ East - North - Up }{40}{subsection.3.3.7}%
 \contentsline {section}{\numberline {3.4}Sensor Modelling}{41}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}GPS Sensor Model}{42}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Gyroscope Sensor Model}{43}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.2}Gyroscope Sensor Model}{44}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Coarse Sun Sensor Model}{45}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}Star Tracker Sensor Model}{47}{subsection.3.4.4}%
 \contentsline {subsection}{\numberline {3.4.5}Magnetometer Sensor Model}{49}{subsection.3.4.5}%

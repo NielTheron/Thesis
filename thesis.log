@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  6 NOV 2025 16:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  11 NOV 2025 17:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1632,9 +1632,9 @@ Package microtype Info: Character `029' is missing
 
 [9
 
-{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
 
-[10{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
+[10{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 
 [11]
 
@@ -1681,15 +1681,17 @@ Chapter 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 
+l.40 
       [1
 
 ]
-<figures/stateestimation/OverallSystem.pdf, id=1279, 267.52345pt x 137.11827pt>
+<figures/stateestimation/OverallSystem.pdf, id=1294, 267.52345pt x 137.11827pt>
 File: figures/stateestimation/OverallSystem.pdf Graphic file (type pdf)
 <use figures/stateestimation/OverallSystem.pdf>
-Package pdftex.def Info: figures/stateestimation/OverallSystem.pdf  used on input line 44.
+Package pdftex.def Info: figures/stateestimation/OverallSystem.pdf  used on input line 43.
 (pdftex.def)             Requested size: 364.19667pt x 186.68341pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 44.
 
 
 [2 <./figures/stateestimation/OverallSystem.pdf>]
@@ -1703,20 +1705,20 @@ Chapter 2.
 [5
 
 ]
-<figures/literaturestudy/Villela.png, id=1338, 1065.9825pt x 606.01407pt>
-File: figures/literaturestudy/Villela.png Graphic file (type png)
-<use figures/literaturestudy/Villela.png>
-Package pdftex.def Info: figures/literaturestudy/Villela.png  used on input line 39.
-(pdftex.def)             Requested size: 364.19667pt x 207.04073pt.
-<figures/literaturestudy/CubeCam.jpg, id=1352, 963.6pt x 949.5475pt>
+<figures/literaturestudy/Nanosats.png, id=1358, 963.6pt x 542.025pt>
+File: figures/literaturestudy/Nanosats.png Graphic file (type png)
+<use figures/literaturestudy/Nanosats.png>
+Package pdftex.def Info: figures/literaturestudy/Nanosats.png  used on input line 39.
+(pdftex.def)             Requested size: 364.19667pt x 204.8551pt.
+<figures/literaturestudy/CubeCam.jpg, id=1373, 963.6pt x 949.5475pt>
 File: figures/literaturestudy/CubeCam.jpg Graphic file (type jpg)
 <use figures/literaturestudy/CubeCam.jpg>
 Package pdftex.def Info: figures/literaturestudy/CubeCam.jpg  used on input line 52.
 (pdftex.def)             Requested size: 182.09486pt x 179.43065pt.
 
 
-[6 <./figures/literaturestudy/Villela.png>]
-<figures/literaturestudy/Xing.png, id=1377, 742.27313pt x 431.36156pt>
+[6 <./figures/literaturestudy/Nanosats.png (PNG copy)>]
+<figures/literaturestudy/Xing.png, id=1398, 742.27313pt x 431.36156pt>
 File: figures/literaturestudy/Xing.png Graphic file (type png)
 <use figures/literaturestudy/Xing.png>
 Package pdftex.def Info: figures/literaturestudy/Xing.png  used on input line 74.
@@ -1724,12 +1726,12 @@ Package pdftex.def Info: figures/literaturestudy/Xing.png  used on input line 74
 
 
 [7 <./figures/literaturestudy/CubeCam.jpg>]
-<figures/literaturestudy/Kisantal.png, id=1400, 674.52pt x 592.46344pt>
+<figures/literaturestudy/Kisantal.png, id=1421, 674.52pt x 592.46344pt>
 File: figures/literaturestudy/Kisantal.png Graphic file (type png)
 <use figures/literaturestudy/Kisantal.png>
 Package pdftex.def Info: figures/literaturestudy/Kisantal.png  used on input line 87.
 (pdftex.def)             Requested size: 218.51521pt x 191.92456pt.
-<figures/literaturestudy/Jongh.png, id=1403, 1118.67938pt x 332.74312pt>
+<figures/literaturestudy/Jongh.png, id=1424, 1118.67938pt x 332.74312pt>
 File: figures/literaturestudy/Jongh.png Graphic file (type png)
 <use figures/literaturestudy/Jongh.png>
 Package pdftex.def Info: figures/literaturestudy/Jongh.png  used on input line 94.
@@ -1745,17 +1747,17 @@ Package microtype Info: Character `029' is missing
 
 
 [10]
-<figures/literaturestudy/Norad.png, id=1452, 539.01375pt x 282.30469pt>
+<figures/literaturestudy/Norad.png, id=1473, 539.01375pt x 282.30469pt>
 File: figures/literaturestudy/Norad.png Graphic file (type png)
 <use figures/literaturestudy/Norad.png>
 Package pdftex.def Info: figures/literaturestudy/Norad.png  used on input line 136.
 (pdftex.def)             Requested size: 364.19667pt x 190.74557pt.
-<figures/literaturestudy/CubeStar.png, id=1462, 305.64188pt x 219.06844pt>
+<figures/literaturestudy/CubeStar.png, id=1483, 305.64188pt x 219.06844pt>
 File: figures/literaturestudy/CubeStar.png Graphic file (type png)
 <use figures/literaturestudy/CubeStar.png>
 Package pdftex.def Info: figures/literaturestudy/CubeStar.png  used on input line 155.
 (pdftex.def)             Requested size: 145.67644pt x 104.4129pt.
-<figures/literaturestudy/CubeMag.png, id=1465, 418.56375pt x 229.60782pt>
+<figures/literaturestudy/CubeMag.png, id=1486, 418.56375pt x 229.60782pt>
 File: figures/literaturestudy/CubeMag.png Graphic file (type png)
 <use figures/literaturestudy/CubeMag.png>
 Package pdftex.def Info: figures/literaturestudy/CubeMag.png  used on input line 161.
@@ -1765,7 +1767,7 @@ Package pdftex.def Info: figures/literaturestudy/CubeMag.png  used on input line
 [11 <./figures/literaturestudy/Norad.png>]
 
 [12 <./figures/literaturestudy/CubeStar.png> <./figures/literaturestudy/CubeMag.png>]
-<figures/literaturestudy/Chen UAV.png, id=1489, 455.45157pt x 500.62032pt>
+<figures/literaturestudy/Chen UAV.png, id=1510, 455.45157pt x 500.62032pt>
 File: figures/literaturestudy/Chen UAV.png Graphic file (type png)
 <use figures/literaturestudy/Chen UAV.png>
 Package pdftex.def Info: figures/literaturestudy/Chen UAV.png  used on input line 221.
@@ -1775,12 +1777,12 @@ Package pdftex.def Info: figures/literaturestudy/Chen UAV.png  used on input lin
 [13]
 
 [14 <./figures/literaturestudy/Chen UAV.png>]
-<figures/literaturestudy/KlancerECI.png, id=1510, 269.50688pt x 378.66469pt>
+<figures/literaturestudy/KlancerECI.png, id=1531, 269.50688pt x 378.66469pt>
 File: figures/literaturestudy/KlancerECI.png Graphic file (type png)
 <use figures/literaturestudy/KlancerECI.png>
 Package pdftex.def Info: figures/literaturestudy/KlancerECI.png  used on input line 240.
 (pdftex.def)             Requested size: 159.33821pt x 223.87823pt.
-<figures/literaturestudy/Carozza.png, id=1515, 563.10374pt x 405.01312pt>
+<figures/literaturestudy/Carozza.png, id=1536, 563.10374pt x 405.01312pt>
 File: figures/literaturestudy/Carozza.png Graphic file (type png)
 <use figures/literaturestudy/Carozza.png>
 Package pdftex.def Info: figures/literaturestudy/Carozza.png  used on input line 250.
@@ -1790,12 +1792,12 @@ Package pdftex.def Info: figures/literaturestudy/Carozza.png  used on input line
 [15 <./figures/literaturestudy/KlancerECI.png>]
 
 [16 <./figures/literaturestudy/Carozza.png>]
-<figures/literaturestudy/Kouyama.png, id=1537, 531.48563pt x 274.02374pt>
+<figures/literaturestudy/Kouyama.png, id=1558, 531.48563pt x 274.02374pt>
 File: figures/literaturestudy/Kouyama.png Graphic file (type png)
 <use figures/literaturestudy/Kouyama.png>
 Package pdftex.def Info: figures/literaturestudy/Kouyama.png  used on input line 267.
 (pdftex.def)             Requested size: 318.66948pt x 164.30261pt.
-<figures/literaturestudy/Klancer Sift.png, id=1540, 255.20343pt x 225.84375pt>
+<figures/literaturestudy/Klancer Sift.png, id=1561, 255.20343pt x 225.84375pt>
 File: figures/literaturestudy/Klancer Sift.png Graphic file (type png)
 <use figures/literaturestudy/Klancer Sift.png>
 Package pdftex.def Info: figures/literaturestudy/Klancer Sift.png  used on input line 274.
@@ -1803,7 +1805,7 @@ Package pdftex.def Info: figures/literaturestudy/Klancer Sift.png  used on input
 
 
 [17 <./figures/literaturestudy/Kouyama.png>]
-<figures/literaturestudy/Mateos.png, id=1551, 531.48563pt x 345.54094pt>
+<figures/literaturestudy/Mateos.png, id=1572, 531.48563pt x 345.54094pt>
 File: figures/literaturestudy/Mateos.png Graphic file (type png)
 <use figures/literaturestudy/Mateos.png>
 Package pdftex.def Info: figures/literaturestudy/Mateos.png  used on input line 284.
@@ -1813,7 +1815,7 @@ Package pdftex.def Info: figures/literaturestudy/Mateos.png  used on input line 
 [18 <./figures/literaturestudy/Klancer Sift.png>]
 
 [19 <./figures/literaturestudy/Mateos.png>]
-<figures/literaturestudy/LitStudyFrameWork.pdf, id=1579, 817.14342pt x 603.18839pt>
+<figures/literaturestudy/LitStudyFrameWork.pdf, id=1600, 817.14342pt x 603.18839pt>
 File: figures/literaturestudy/LitStudyFrameWork.pdf Graphic file (type pdf)
 <use figures/literaturestudy/LitStudyFrameWork.pdf>
 Package pdftex.def Info: figures/literaturestudy/LitStudyFrameWork.pdf  used on input line 316.
@@ -1829,7 +1831,7 @@ Chapter 3.
 [22
 
 ]
-<figures/modelling/321Rotation.pdf, id=1613, 995.84645pt x 426.79132pt>
+<figures/modelling/321Rotation.pdf, id=1634, 995.84645pt x 426.79132pt>
 File: figures/modelling/321Rotation.pdf Graphic file (type pdf)
 <use figures/modelling/321Rotation.pdf>
 Package pdftex.def Info: figures/modelling/321Rotation.pdf  used on input line 102.
@@ -1837,13 +1839,11 @@ Package pdftex.def Info: figures/modelling/321Rotation.pdf  used on input line 1
 
 
 [23{C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
-<figures/modelling/QRotation.pdf, id=1629, 231.68016pt x 214.72043pt>
+<figures/modelling/QRotation.pdf, id=1650, 231.68016pt x 214.72043pt>
 File: figures/modelling/QRotation.pdf Graphic file (type pdf)
 <use figures/modelling/QRotation.pdf>
 Package pdftex.def Info: figures/modelling/QRotation.pdf  used on input line 124.
 (pdftex.def)             Requested size: 136.57462pt x 126.5791pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 125.
 
 
 [24 <./figures/modelling/321Rotation.pdf> <./figures/modelling/QRotation.pdf
@@ -1854,12 +1854,12 @@ pdfTeX warning: pdflatex (file ./figures/modelling/QRotation.pdf): PDF inclusion
 [25]
 
 [26]
-<figures/modelling/Position.pdf, id=1660, 1637.11626pt x 632.3625pt>
+<figures/modelling/Position.pdf, id=1680, 1637.11626pt x 632.3625pt>
 File: figures/modelling/Position.pdf Graphic file (type pdf)
 <use figures/modelling/Position.pdf>
 Package pdftex.def Info: figures/modelling/Position.pdf  used on input line 278.
 (pdftex.def)             Requested size: 455.24411pt x 175.84451pt.
-<figures/modelling/J2.pdf, id=1661, 1483.5425pt x 632.3625pt>
+<figures/modelling/J2.pdf, id=1681, 1483.5425pt x 632.3625pt>
 File: figures/modelling/J2.pdf Graphic file (type pdf)
 <use figures/modelling/J2.pdf>
 Package pdftex.def Info: figures/modelling/J2.pdf  used on input line 285.
@@ -1869,7 +1869,7 @@ Package pdftex.def Info: figures/modelling/J2.pdf  used on input line 285.
 [27 <./figures/modelling/Position.pdf>]
 
 [28 <./figures/modelling/J2.pdf>]
-<figures/modelling/Wingnut.pdf, id=1712, 843.15pt x 632.3625pt>
+<figures/modelling/Wingnut.pdf, id=1732, 843.15pt x 632.3625pt>
 File: figures/modelling/Wingnut.pdf Graphic file (type pdf)
 <use figures/modelling/Wingnut.pdf>
 Package pdftex.def Info: figures/modelling/Wingnut.pdf  used on input line 331.
@@ -1877,22 +1877,17 @@ Package pdftex.def Info: figures/modelling/Wingnut.pdf  used on input line 331.
 
 
 [29 <./figures/modelling/Wingnut.pdf>]
-<figures/modelling/Coupling.pdf, id=1732, 1814.78pt x 632.3625pt>
+<figures/modelling/Coupling.pdf, id=1752, 1814.78pt x 632.3625pt>
 File: figures/modelling/Coupling.pdf Graphic file (type pdf)
 <use figures/modelling/Coupling.pdf>
 Package pdftex.def Info: figures/modelling/Coupling.pdf  used on input line 383.
-(pdftex.def)             Requested size: 500.77129pt x 174.49364pt.
-
-Overfull \hbox (45.52718pt too wide) in paragraph at lines 383--384
- [][] 
- []
-
+(pdftex.def)             Requested size: 455.24411pt x 158.63058pt.
 
 
 [30 <./figures/modelling/Coupling.pdf>]
 
 [31]
-<figures/modelling/WGS84.pdf, id=1752, 323.92125pt x 287.30997pt>
+<figures/modelling/WGS84.pdf, id=1772, 323.92125pt x 287.30997pt>
 File: figures/modelling/WGS84.pdf Graphic file (type pdf)
 <use figures/modelling/WGS84.pdf>
 Package pdftex.def Info: figures/modelling/WGS84.pdf  used on input line 508.
@@ -1900,7 +1895,7 @@ Package pdftex.def Info: figures/modelling/WGS84.pdf  used on input line 508.
 
 
 [32]
-<figures/modelling/Spheres.pdf, id=1764, 764.8575pt x 304.13625pt>
+<figures/modelling/Spheres.pdf, id=1784, 764.8575pt x 304.13625pt>
 File: figures/modelling/Spheres.pdf Graphic file (type pdf)
 <use figures/modelling/Spheres.pdf>
 Package pdftex.def Info: figures/modelling/Spheres.pdf  used on input line 525.
@@ -1908,7 +1903,7 @@ Package pdftex.def Info: figures/modelling/Spheres.pdf  used on input line 525.
 
 
 [33 <./figures/modelling/WGS84.pdf>]
-<figures/modelling/DEM.jpg, id=1778, 4818.0pt x 6022.5pt>
+<figures/modelling/DEM.jpg, id=1798, 4818.0pt x 6022.5pt>
 File: figures/modelling/DEM.jpg Graphic file (type jpg)
 <use figures/modelling/DEM.jpg>
 Package pdftex.def Info: figures/modelling/DEM.jpg  used on input line 536.
@@ -1918,7 +1913,7 @@ Package pdftex.def Info: figures/modelling/DEM.jpg  used on input line 536.
 [34 <./figures/modelling/Spheres.pdf>]
 
 [35 <./figures/modelling/DEM.jpg>]
-<figures/modelling/ECEF.pdf, id=1801, 266.9975pt x 249.93375pt>
+<figures/modelling/ECEF.pdf, id=1821, 266.9975pt x 249.93375pt>
 File: figures/modelling/ECEF.pdf Graphic file (type pdf)
 <use figures/modelling/ECEF.pdf>
 Package pdftex.def Info: figures/modelling/ECEF.pdf  used on input line 568.
@@ -1926,7 +1921,7 @@ Package pdftex.def Info: figures/modelling/ECEF.pdf  used on input line 568.
 
 
 [36 <./figures/modelling/ECEF.pdf>]
-<figures/modelling/ECI.pdf, id=1816, 301.125pt x 241.90375pt>
+<figures/modelling/ECI.pdf, id=1836, 301.125pt x 241.90375pt>
 File: figures/modelling/ECI.pdf Graphic file (type pdf)
 <use figures/modelling/ECI.pdf>
 Package pdftex.def Info: figures/modelling/ECI.pdf  used on input line 612.
@@ -1934,7 +1929,7 @@ Package pdftex.def Info: figures/modelling/ECI.pdf  used on input line 612.
 
 
 [37 <./figures/modelling/ECI.pdf>]
-<figures/modelling/LVLH.pdf, id=1832, 302.12875pt x 170.6375pt>
+<figures/modelling/LVLH.pdf, id=1852, 302.12875pt x 170.6375pt>
 File: figures/modelling/LVLH.pdf Graphic file (type pdf)
 <use figures/modelling/LVLH.pdf>
 Package pdftex.def Info: figures/modelling/LVLH.pdf  used on input line 658.
@@ -1942,7 +1937,7 @@ Package pdftex.def Info: figures/modelling/LVLH.pdf  used on input line 658.
 
 
 [38]
-<figures/modelling/BRF.pdf, id=1844, 213.79875pt x 143.53625pt>
+<figures/modelling/BRF.pdf, id=1864, 213.79875pt x 143.53625pt>
 File: figures/modelling/BRF.pdf Graphic file (type pdf)
 <use figures/modelling/BRF.pdf>
 Package pdftex.def Info: figures/modelling/BRF.pdf  used on input line 687.
@@ -1950,7 +1945,7 @@ Package pdftex.def Info: figures/modelling/BRF.pdf  used on input line 687.
 
 
 [39 <./figures/modelling/LVLH.pdf>]
-<figures/modelling/NED.pdf, id=1860, 358.21733pt x 371.27885pt>
+<figures/modelling/NED.pdf, id=1880, 358.21733pt x 371.27885pt>
 File: figures/modelling/NED.pdf Graphic file (type pdf)
 <use figures/modelling/NED.pdf>
 Package pdftex.def Info: figures/modelling/NED.pdf  used on input line 726.
@@ -1960,22 +1955,21 @@ Package pdftex.def Info: figures/modelling/NED.pdf  used on input line 726.
 [40 <./figures/modelling/BRF.pdf>]
 
 [41 <./figures/modelling/NED.pdf>]
-<figures/modelling/GPS2.pdf, id=1906, 843.15pt x 632.3625pt>
+
+[42]
+<figures/modelling/GPS2.pdf, id=1934, 843.15pt x 632.3625pt>
 File: figures/modelling/GPS2.pdf Graphic file (type pdf)
 <use figures/modelling/GPS2.pdf>
 Package pdftex.def Info: figures/modelling/GPS2.pdf  used on input line 801.
 (pdftex.def)             Requested size: 204.85846pt x 153.64201pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 802.
-<figures/modelling/GPS3.pdf, id=1907, 843.15pt x 632.3625pt>
+<figures/modelling/GPS3.pdf, id=1935, 843.15pt x 632.3625pt>
 File: figures/modelling/GPS3.pdf Graphic file (type pdf)
 <use figures/modelling/GPS3.pdf>
 Package pdftex.def Info: figures/modelling/GPS3.pdf  used on input line 808.
 (pdftex.def)             Requested size: 204.85846pt x 153.64201pt.
-
-
-[42]
-<figures/modelling/GPS.pdf, id=1917, 843.15pt x 632.3625pt>
+<figures/modelling/GPS.pdf, id=1936, 843.15pt x 632.3625pt>
 File: figures/modelling/GPS.pdf Graphic file (type pdf)
 <use figures/modelling/GPS.pdf>
 Package pdftex.def Info: figures/modelling/GPS.pdf  used on input line 818.
@@ -1991,7 +1985,7 @@ pdfTeX warning: pdflatex (file ./figures/modelling/GPS.pdf): PDF inclusion: mult
 >]
 
 [44]
-<figures/modelling/GYRO.pdf, id=2180, 1537.745pt x 632.3625pt>
+<figures/modelling/GYRO.pdf, id=2200, 1537.745pt x 632.3625pt>
 File: figures/modelling/GYRO.pdf Graphic file (type pdf)
 <use figures/modelling/GYRO.pdf>
 Package pdftex.def Info: figures/modelling/GYRO.pdf  used on input line 884.
@@ -1999,28 +1993,28 @@ Package pdftex.def Info: figures/modelling/GYRO.pdf  used on input line 884.
 
 
 [45 <./figures/modelling/GYRO.pdf>]
-<figures/modelling/CSS.pdf, id=2206, 308.15125pt x 300.12125pt>
+<figures/modelling/CSS.pdf, id=2226, 308.15125pt x 300.12125pt>
 File: figures/modelling/CSS.pdf Graphic file (type pdf)
 <use figures/modelling/CSS.pdf>
 Package pdftex.def Info: figures/modelling/CSS.pdf  used on input line 929.
 (pdftex.def)             Requested size: 182.09486pt x 177.35393pt.
-<figures/modelling/CSSMeasurement.pdf, id=2207, 673.51656pt x 441.64935pt>
+
+
+[46 <./figures/modelling/CSS.pdf>]
+<figures/modelling/CSSMeasurement.pdf, id=2237, 673.51656pt x 441.64935pt>
 File: figures/modelling/CSSMeasurement.pdf Graphic file (type pdf)
 <use figures/modelling/CSSMeasurement.pdf>
 Package pdftex.def Info: figures/modelling/CSSMeasurement.pdf  used on input line 967.
 (pdftex.def)             Requested size: 364.19667pt x 238.81729pt.
 
 
-[46 <./figures/modelling/CSS.pdf>]
-<figures/modelling/ST.pdf, id=2220, 299.2736pt x 303.22203pt>
+[47 <./figures/modelling/CSSMeasurement.pdf>]
+<figures/modelling/ST.pdf, id=2260, 299.2736pt x 303.22203pt>
 File: figures/modelling/ST.pdf Graphic file (type pdf)
 <use figures/modelling/ST.pdf>
 Package pdftex.def Info: figures/modelling/ST.pdf  used on input line 1000.
 (pdftex.def)             Requested size: 182.09486pt x 184.49785pt.
-
-
-[47 <./figures/modelling/CSSMeasurement.pdf>]
-<figures/modelling/STMeasurement.pdf, id=2242, 666.48877pt x 428.60094pt>
+<figures/modelling/STMeasurement.pdf, id=2262, 666.48877pt x 428.60094pt>
 File: figures/modelling/STMeasurement.pdf Graphic file (type pdf)
 <use figures/modelling/STMeasurement.pdf>
 Package pdftex.def Info: figures/modelling/STMeasurement.pdf  used on input line 1028.
@@ -2028,7 +2022,7 @@ Package pdftex.def Info: figures/modelling/STMeasurement.pdf  used on input line
 
 
 [48 <./figures/modelling/ST.pdf>]
-<figures/modelling/MagneticField.pdf, id=2251, 1230.09563pt x 608.2725pt>
+<figures/modelling/MagneticField.pdf, id=2271, 1230.09563pt x 608.2725pt>
 File: figures/modelling/MagneticField.pdf Graphic file (type pdf)
 <use figures/modelling/MagneticField.pdf>
 Package pdftex.def Info: figures/modelling/MagneticField.pdf  used on input line 1049.
@@ -2038,7 +2032,7 @@ Package pdftex.def Info: figures/modelling/MagneticField.pdf  used on input line
 [49 <./figures/modelling/STMeasurement.pdf>]
 
 [50 <./figures/modelling/MagneticField.pdf>]
-<figures/modelling/MagM.pdf, id=2292, 673.51656pt x 441.64935pt>
+<figures/modelling/MagM.pdf, id=2312, 673.51656pt x 441.64935pt>
 File: figures/modelling/MagM.pdf Graphic file (type pdf)
 <use figures/modelling/MagM.pdf>
 Package pdftex.def Info: figures/modelling/MagM.pdf  used on input line 1096.
@@ -2054,12 +2048,12 @@ Chapter 4.
 [53
 
 ]
-<figures/imageprocessing/GSD.pdf, id=2310, 239.89626pt x 277.035pt>
+<figures/imageprocessing/GSD.pdf, id=2330, 239.89626pt x 277.035pt>
 File: figures/imageprocessing/GSD.pdf Graphic file (type pdf)
 <use figures/imageprocessing/GSD.pdf>
 Package pdftex.def Info: figures/imageprocessing/GSD.pdf  used on input line 42.
 (pdftex.def)             Requested size: 182.09486pt x 210.2867pt.
-<figures/imageprocessing/OFFN.png, id=2313, 799.98875pt x 731.73375pt>
+<figures/imageprocessing/OFFN.png, id=2333, 799.98875pt x 731.73375pt>
 File: figures/imageprocessing/OFFN.png Graphic file (type png)
 <use figures/imageprocessing/OFFN.png>
 Package pdftex.def Info: figures/imageprocessing/OFFN.png  used on input line 70.
@@ -2067,12 +2061,12 @@ Package pdftex.def Info: figures/imageprocessing/OFFN.png  used on input line 70
 
 
 [54 <./figures/imageprocessing/GSD.pdf>]
-<figures/imageprocessing/6ONA.png, id=2332, 578.16pt x 578.16pt>
+<figures/imageprocessing/6ONA.png, id=2352, 578.16pt x 578.16pt>
 File: figures/imageprocessing/6ONA.png Graphic file (type png)
 <use figures/imageprocessing/6ONA.png>
 Package pdftex.def Info: figures/imageprocessing/6ONA.png  used on input line 88.
 (pdftex.def)             Requested size: 218.51521pt x 218.5121pt.
-<figures/imageprocessing/44ONA.png, id=2333, 578.16pt x 578.16pt>
+<figures/imageprocessing/44ONA.png, id=2353, 578.16pt x 578.16pt>
 File: figures/imageprocessing/44ONA.png Graphic file (type png)
 <use figures/imageprocessing/44ONA.png>
 Package pdftex.def Info: figures/imageprocessing/44ONA.png  used on input line 95.
@@ -2080,17 +2074,17 @@ Package pdftex.def Info: figures/imageprocessing/44ONA.png  used on input line 9
 
 
 [55 <./figures/imageprocessing/OFFN.png>]
-<figures/imageprocessing/10.png, id=2342, 697.60625pt x 579.16376pt>
+<figures/imageprocessing/10.png, id=2363, 697.60625pt x 579.16376pt>
 File: figures/imageprocessing/10.png Graphic file (type png)
 <use figures/imageprocessing/10.png>
 Package pdftex.def Info: figures/imageprocessing/10.png  used on input line 121.
 (pdftex.def)             Requested size: 145.68144pt x 120.9475pt.
-<figures/imageprocessing/20.png, id=2343, 349.305pt x 290.08376pt>
+<figures/imageprocessing/20.png, id=2364, 349.305pt x 290.08376pt>
 File: figures/imageprocessing/20.png Graphic file (type png)
 <use figures/imageprocessing/20.png>
 Package pdftex.def Info: figures/imageprocessing/20.png  used on input line 128.
 (pdftex.def)             Requested size: 145.68144pt x 120.98448pt.
-<figures/imageprocessing/40.png, id=2344, 174.6525pt x 144.54pt>
+<figures/imageprocessing/40.png, id=2365, 174.6525pt x 144.54pt>
 File: figures/imageprocessing/40.png Graphic file (type png)
 <use figures/imageprocessing/40.png>
 Package pdftex.def Info: figures/imageprocessing/40.png  used on input line 135.
@@ -2098,7 +2092,7 @@ Package pdftex.def Info: figures/imageprocessing/40.png  used on input line 135.
 
 
 [56 <./figures/imageprocessing/6ONA.png> <./figures/imageprocessing/44ONA.png>]
-<figures/imageprocessing/Temporal Resolution.png, id=2354, 469.755pt x 158.84344pt>
+<figures/imageprocessing/Temporal Resolution.png, id=2377, 469.755pt x 158.84344pt>
 File: figures/imageprocessing/Temporal Resolution.png Graphic file (type png)
 <use figures/imageprocessing/Temporal Resolution.png>
 Package pdftex.def Info: figures/imageprocessing/Temporal Resolution.png  used on input line 152.
@@ -2106,17 +2100,17 @@ Package pdftex.def Info: figures/imageprocessing/Temporal Resolution.png  used o
 
 
 [57 <./figures/imageprocessing/10.png> <./figures/imageprocessing/20.png> <./figures/imageprocessing/40.png>]
-<figures/imageprocessing/FalseColour.png, id=2366, 697.60625pt x 579.16376pt>
+<figures/imageprocessing/FalseColour.png, id=2389, 697.60625pt x 579.16376pt>
 File: figures/imageprocessing/FalseColour.png Graphic file (type png)
 <use figures/imageprocessing/FalseColour.png>
 Package pdftex.def Info: figures/imageprocessing/FalseColour.png  used on input line 175.
 (pdftex.def)             Requested size: 145.68144pt x 120.9475pt.
-<figures/imageprocessing/NDVI.png, id=2367, 697.60625pt x 579.16376pt>
+<figures/imageprocessing/NDVI.png, id=2390, 697.60625pt x 579.16376pt>
 File: figures/imageprocessing/NDVI.png Graphic file (type png)
 <use figures/imageprocessing/NDVI.png>
 Package pdftex.def Info: figures/imageprocessing/NDVI.png  used on input line 182.
 (pdftex.def)             Requested size: 145.68144pt x 120.9475pt.
-<figures/imageprocessing/SWIR.png, id=2368, 697.60625pt x 579.16376pt>
+<figures/imageprocessing/SWIR.png, id=2391, 697.60625pt x 579.16376pt>
 File: figures/imageprocessing/SWIR.png Graphic file (type png)
 <use figures/imageprocessing/SWIR.png>
 Package pdftex.def Info: figures/imageprocessing/SWIR.png  used on input line 189.
@@ -2124,17 +2118,17 @@ Package pdftex.def Info: figures/imageprocessing/SWIR.png  used on input line 18
 
 
 [58 <./figures/imageprocessing/Temporal Resolution.png>]
-<figures/imageprocessing/CameraSensor1.pdf, id=2380, 713.29352pt x 497.5671pt>
+<figures/imageprocessing/CameraSensor1.pdf, id=2405, 713.29352pt x 497.5671pt>
 File: figures/imageprocessing/CameraSensor1.pdf Graphic file (type pdf)
 <use figures/imageprocessing/CameraSensor1.pdf>
 Package pdftex.def Info: figures/imageprocessing/CameraSensor1.pdf  used on input line 212.
 (pdftex.def)             Requested size: 204.85846pt x 142.90137pt.
-<figures/imageprocessing/CameraSensor2.pdf, id=2381, 711.31892pt x 497.5671pt>
+<figures/imageprocessing/CameraSensor2.pdf, id=2406, 711.31892pt x 497.5671pt>
 File: figures/imageprocessing/CameraSensor2.pdf Graphic file (type pdf)
 <use figures/imageprocessing/CameraSensor2.pdf>
 Package pdftex.def Info: figures/imageprocessing/CameraSensor2.pdf  used on input line 219.
 (pdftex.def)             Requested size: 204.85846pt x 143.29617pt.
-<figures/imageprocessing/CameraSensor3.pdf, id=2382, 599.48166pt x 497.5671pt>
+<figures/imageprocessing/CameraSensor3.pdf, id=2407, 599.48166pt x 497.5671pt>
 File: figures/imageprocessing/CameraSensor3.pdf Graphic file (type pdf)
 <use figures/imageprocessing/CameraSensor3.pdf>
 Package pdftex.def Info: figures/imageprocessing/CameraSensor3.pdf  used on input line 229.
@@ -2142,7 +2136,7 @@ Package pdftex.def Info: figures/imageprocessing/CameraSensor3.pdf  used on inpu
 
 
 [59 <./figures/imageprocessing/FalseColour.png> <./figures/imageprocessing/NDVI.png> <./figures/imageprocessing/SWIR.png>]
-<figures/imageprocessing/scattering.png, id=2395, 1927.2pt x 1383.1675pt>
+<figures/imageprocessing/scattering.png, id=2420, 1927.2pt x 1383.1675pt>
 File: figures/imageprocessing/scattering.png Graphic file (type png)
 <use figures/imageprocessing/scattering.png>
 Package pdftex.def Info: figures/imageprocessing/scattering.png  used on input line 254.
@@ -2156,12 +2150,12 @@ pdfTeX warning: pdflatex (file ./figures/imageprocessing/CameraSensor2.pdf): PDF
 
 pdfTeX warning: pdflatex (file ./figures/imageprocessing/CameraSensor3.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<figures/imageprocessing/Cape1.jpg, id=2426, 898.35625pt x 669.50125pt>
+<figures/imageprocessing/Cape1.jpg, id=2451, 898.35625pt x 669.50125pt>
 File: figures/imageprocessing/Cape1.jpg Graphic file (type jpg)
 <use figures/imageprocessing/Cape1.jpg>
 Package pdftex.def Info: figures/imageprocessing/Cape1.jpg  used on input line 270.
 (pdftex.def)             Requested size: 218.51521pt x 162.84932pt.
-<figures/imageprocessing/Cape2.jpg, id=2427, 898.35625pt x 669.50125pt>
+<figures/imageprocessing/Cape2.jpg, id=2452, 898.35625pt x 669.50125pt>
 File: figures/imageprocessing/Cape2.jpg Graphic file (type jpg)
 <use figures/imageprocessing/Cape2.jpg>
 Package pdftex.def Info: figures/imageprocessing/Cape2.jpg  used on input line 277.
@@ -2173,7 +2167,7 @@ File: figures/imageprocessing/Cape1.jpg Graphic file (type jpg)
 <use figures/imageprocessing/Cape1.jpg>
 Package pdftex.def Info: figures/imageprocessing/Cape1.jpg  used on input line 296.
 (pdftex.def)             Requested size: 218.51521pt x 162.84932pt.
-<figures/imageprocessing/Cape3.jpg, id=2434, 898.35625pt x 669.50125pt>
+<figures/imageprocessing/Cape3.jpg, id=2461, 898.35625pt x 669.50125pt>
 File: figures/imageprocessing/Cape3.jpg Graphic file (type jpg)
 <use figures/imageprocessing/Cape3.jpg>
 Package pdftex.def Info: figures/imageprocessing/Cape3.jpg  used on input line 303.
@@ -2181,7 +2175,7 @@ Package pdftex.def Info: figures/imageprocessing/Cape3.jpg  used on input line 3
 
 
 [62 <./figures/imageprocessing/Cape1.jpg> <./figures/imageprocessing/Cape2.jpg> <./figures/imageprocessing/Cape3.jpg>]
-<figures/imageprocessing/PinholeModel3.pdf, id=2440, 533.995pt x 442.65375pt>
+<figures/imageprocessing/PinholeModel3.pdf, id=2471, 533.995pt x 442.65375pt>
 File: figures/imageprocessing/PinholeModel3.pdf Graphic file (type pdf)
 <use figures/imageprocessing/PinholeModel3.pdf>
 Package pdftex.def Info: figures/imageprocessing/PinholeModel3.pdf  used on input line 333.
@@ -2191,7 +2185,7 @@ Package pdftex.def Info: figures/imageprocessing/PinholeModel3.pdf  used on inpu
 [63]
 
 [64 <./figures/imageprocessing/PinholeModel3.pdf>]
-<figures/imageprocessing/ImagePlane1.pdf, id=2462, 269.005pt x 261.97874pt>
+<figures/imageprocessing/ImagePlane1.pdf, id=2493, 269.005pt x 261.97874pt>
 File: figures/imageprocessing/ImagePlane1.pdf Graphic file (type pdf)
 <use figures/imageprocessing/ImagePlane1.pdf>
 Package pdftex.def Info: figures/imageprocessing/ImagePlane1.pdf  used on input line 383.
@@ -2207,7 +2201,7 @@ File: figures/imageprocessing/10.png Graphic file (type png)
 <use figures/imageprocessing/10.png>
 Package pdftex.def Info: figures/imageprocessing/10.png  used on input line 576.
 (pdftex.def)             Requested size: 218.51521pt x 181.41241pt.
-<figures/imageprocessing/RadialDistortion.jpg, id=2494, 816.04875pt x 673.76718pt>
+<figures/imageprocessing/RadialDistortion.jpg, id=2525, 816.04875pt x 673.76718pt>
 File: figures/imageprocessing/RadialDistortion.jpg Graphic file (type jpg)
 <use figures/imageprocessing/RadialDistortion.jpg>
 Package pdftex.def Info: figures/imageprocessing/RadialDistortion.jpg  used on input line 583.
@@ -2219,12 +2213,12 @@ File: figures/imageprocessing/10.png Graphic file (type png)
 <use figures/imageprocessing/10.png>
 Package pdftex.def Info: figures/imageprocessing/10.png  used on input line 616.
 (pdftex.def)             Requested size: 218.51521pt x 181.41241pt.
-<figures/imageprocessing/TangentialDistortion.png, id=2503, 669.2503pt x 555.19922pt>
+<figures/imageprocessing/TangentialDistortion.png, id=2534, 669.2503pt x 555.19922pt>
 File: figures/imageprocessing/TangentialDistortion.png Graphic file (type png)
 <use figures/imageprocessing/TangentialDistortion.png>
 Package pdftex.def Info: figures/imageprocessing/TangentialDistortion.png  used on input line 623.
 (pdftex.def)             Requested size: 218.51521pt x 181.27629pt.
-<figures/imageprocessing/Chromatic_aberration.pdf, id=2507, 2167.17172pt x 1304.5111pt>
+<figures/imageprocessing/Chromatic_aberration.pdf, id=2538, 2167.17172pt x 1304.5111pt>
 File: figures/imageprocessing/Chromatic_aberration.pdf Graphic file (type pdf)
 <use figures/imageprocessing/Chromatic_aberration.pdf>
 Package pdftex.def Info: figures/imageprocessing/Chromatic_aberration.pdf  used on input line 656.
@@ -2236,7 +2230,7 @@ File: figures/imageprocessing/10.png Graphic file (type png)
 <use figures/imageprocessing/10.png>
 Package pdftex.def Info: figures/imageprocessing/10.png  used on input line 669.
 (pdftex.def)             Requested size: 218.51521pt x 181.41241pt.
-<figures/imageprocessing/10_chromatic.png, id=2516, 697.60625pt x 579.16376pt>
+<figures/imageprocessing/10_chromatic.png, id=2547, 697.60625pt x 579.16376pt>
 File: figures/imageprocessing/10_chromatic.png Graphic file (type png)
 <use figures/imageprocessing/10_chromatic.png>
 Package pdftex.def Info: figures/imageprocessing/10_chromatic.png  used on input line 676.
@@ -2244,12 +2238,12 @@ Package pdftex.def Info: figures/imageprocessing/10_chromatic.png  used on input
 
 
 [70 <./figures/imageprocessing/Chromatic_aberration.pdf> <./figures/imageprocessing/10_chromatic.png (PNG copy)>]
-<figures/imageprocessing/EarthSim1.png, id=2529, 368.50172pt x 339.14203pt>
+<figures/imageprocessing/EarthSim1.png, id=2560, 368.50172pt x 339.14203pt>
 File: figures/imageprocessing/EarthSim1.png Graphic file (type png)
 <use figures/imageprocessing/EarthSim1.png>
 Package pdftex.def Info: figures/imageprocessing/EarthSim1.png  used on input line 703.
 (pdftex.def)             Requested size: 182.09486pt x 167.58344pt.
-<figures/imageprocessing/ParisTest1.jpg, id=2531, 8845.54688pt x 1513.15312pt>
+<figures/imageprocessing/ParisTest1.jpg, id=2562, 8845.54688pt x 1513.15312pt>
 File: figures/imageprocessing/ParisTest1.jpg Graphic file (type jpg)
 <use figures/imageprocessing/ParisTest1.jpg>
 Package pdftex.def Info: figures/imageprocessing/ParisTest1.jpg  used on input line 716.
@@ -2257,12 +2251,12 @@ Package pdftex.def Info: figures/imageprocessing/ParisTest1.jpg  used on input l
 
 
 [71 <./figures/imageprocessing/EarthSim1.png>]
-<figures/imageprocessing/HighResImage.png, id=2538, 344.0052pt x 344.0052pt>
+<figures/imageprocessing/HighResImage.png, id=2569, 344.0052pt x 344.0052pt>
 File: figures/imageprocessing/HighResImage.png Graphic file (type png)
 <use figures/imageprocessing/HighResImage.png>
 Package pdftex.def Info: figures/imageprocessing/HighResImage.png  used on input line 727.
 (pdftex.def)             Requested size: 182.09486pt x 182.09616pt.
-<figures/imageprocessing/sat_image_001.png, id=2540, 722.7pt x 722.7pt>
+<figures/imageprocessing/sat_image_001.png, id=2571, 722.7pt x 722.7pt>
 File: figures/imageprocessing/sat_image_001.png Graphic file (type png)
 <use figures/imageprocessing/sat_image_001.png>
 Package pdftex.def Info: figures/imageprocessing/sat_image_001.png  used on input line 742.
@@ -2270,17 +2264,17 @@ Package pdftex.def Info: figures/imageprocessing/sat_image_001.png  used on inpu
 
 
 [72 <./figures/imageprocessing/ParisTest1.jpg> <./figures/imageprocessing/HighResImage.png>]
-<figures/imageprocessing/SIFT.png, id=2547, 722.7pt x 722.7pt>
+<figures/imageprocessing/SIFT.png, id=2578, 722.7pt x 722.7pt>
 File: figures/imageprocessing/SIFT.png Graphic file (type png)
 <use figures/imageprocessing/SIFT.png>
 Package pdftex.def Info: figures/imageprocessing/SIFT.png  used on input line 762.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/imageprocessing/SURF.png, id=2548, 722.7pt x 722.7pt>
+<figures/imageprocessing/SURF.png, id=2579, 722.7pt x 722.7pt>
 File: figures/imageprocessing/SURF.png Graphic file (type png)
 <use figures/imageprocessing/SURF.png>
 Package pdftex.def Info: figures/imageprocessing/SURF.png  used on input line 769.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/imageprocessing/ORB.png, id=2549, 722.7pt x 722.7pt>
+<figures/imageprocessing/ORB.png, id=2580, 722.7pt x 722.7pt>
 File: figures/imageprocessing/ORB.png Graphic file (type png)
 <use figures/imageprocessing/ORB.png>
 Package pdftex.def Info: figures/imageprocessing/ORB.png  used on input line 776.
@@ -2288,7 +2282,7 @@ Package pdftex.def Info: figures/imageprocessing/ORB.png  used on input line 776
 
 
 [73 <./figures/imageprocessing/sat_image_001.png (PNG copy)> <./figures/imageprocessing/SIFT.png (PNG copy)> <./figures/imageprocessing/SURF.png (PNG copy)> <./figures/imageprocessing/ORB.png (PNG copy)>]
-<figures/imageprocessing/ProjectionImage.png, id=2556, 664.73344pt x 469.755pt>
+<figures/imageprocessing/ProjectionImage.png, id=2587, 664.73344pt x 469.755pt>
 File: figures/imageprocessing/ProjectionImage.png Graphic file (type png)
 <use figures/imageprocessing/ProjectionImage.png>
 Package pdftex.def Info: figures/imageprocessing/ProjectionImage.png  used on input line 840.
@@ -2298,12 +2292,12 @@ Package pdftex.def Info: figures/imageprocessing/ProjectionImage.png  used on in
 [74]
 
 [75 <./figures/imageprocessing/ProjectionImage.png>]
-<figures/imageprocessing/featurePixels.pdf, id=2575, 610.2803pt x 535.00003pt>
+<figures/imageprocessing/featurePixels.pdf, id=2611, 610.2803pt x 535.00003pt>
 File: figures/imageprocessing/featurePixels.pdf Graphic file (type pdf)
 <use figures/imageprocessing/featurePixels.pdf>
 Package pdftex.def Info: figures/imageprocessing/featurePixels.pdf  used on input line 916.
 (pdftex.def)             Requested size: 204.85846pt x 179.58734pt.
-<figures/imageprocessing/GeoLocations.pdf, id=2576, 654.44469pt x 535.00003pt>
+<figures/imageprocessing/GeoLocations.pdf, id=2612, 654.44469pt x 535.00003pt>
 File: figures/imageprocessing/GeoLocations.pdf Graphic file (type pdf)
 <use figures/imageprocessing/GeoLocations.pdf>
 Package pdftex.def Info: figures/imageprocessing/GeoLocations.pdf  used on input line 923.
@@ -2327,7 +2321,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 941--946
 pdfTeX warning: pdflatex (file ./figures/imageprocessing/GeoLocations.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
 Chapter 5.
-<figures/StateEstimation/Recursive Estimation.png, id=2633, 202.50656pt x 158.09062pt>
+<figures/StateEstimation/Recursive Estimation.png, id=2669, 202.50656pt x 158.09062pt>
 File: figures/StateEstimation/Recursive Estimation.png Graphic file (type png)
 <use figures/StateEstimation/Recursive Estimation.png>
 Package pdftex.def Info: figures/StateEstimation/Recursive Estimation.png  used on input line 24.
@@ -2345,12 +2339,12 @@ Package pdftex.def Info: figures/StateEstimation/Recursive Estimation.png  used 
 [81]
 
 [82]
-<figures/stateestimation/EKFComplexModel.pdf, id=2676, 442.92854pt x 93.3915pt>
+<figures/stateestimation/EKFComplexModel.pdf, id=2712, 442.92854pt x 93.3915pt>
 File: figures/stateestimation/EKFComplexModel.pdf Graphic file (type pdf)
 <use figures/stateestimation/EKFComplexModel.pdf>
 Package pdftex.def Info: figures/stateestimation/EKFComplexModel.pdf  used on input line 229.
 (pdftex.def)             Requested size: 318.66948pt x 67.19336pt.
-<figures/stateestimation/EKFMaster.pdf, id=2677, 746.69215pt x 151.05504pt>
+<figures/stateestimation/EKFMaster.pdf, id=2713, 746.69215pt x 151.05504pt>
 File: figures/stateestimation/EKFMaster.pdf Graphic file (type pdf)
 <use figures/stateestimation/EKFMaster.pdf>
 Package pdftex.def Info: figures/stateestimation/EKFMaster.pdf  used on input line 242.
@@ -2358,7 +2352,7 @@ Package pdftex.def Info: figures/stateestimation/EKFMaster.pdf  used on input li
 
 
 [83 <./figures/stateestimation/EKFComplexModel.pdf>]
-<figures/stateestimation/EKFSequencial.pdf, id=2692, 443.64935pt x 294.2257pt>
+<figures/stateestimation/EKFSequencial.pdf, id=2728, 443.64935pt x 294.2257pt>
 File: figures/stateestimation/EKFSequencial.pdf Graphic file (type pdf)
 <use figures/stateestimation/EKFSequencial.pdf>
 Package pdftex.def Info: figures/stateestimation/EKFSequencial.pdf  used on input line 255.
@@ -2390,7 +2384,7 @@ Package pdftex.def Info: figures/stateestimation/OverallSystem.pdf  used on inpu
 [91]
 
 [92]
-<figures/stateestimation/PlantDiagram.pdf, id=2793, 1124.63803pt x 479.2222pt>
+<figures/stateestimation/PlantDiagram.pdf, id=2829, 1124.63803pt x 479.2222pt>
 File: figures/stateestimation/PlantDiagram.pdf Graphic file (type pdf)
 <use figures/stateestimation/PlantDiagram.pdf>
 Package pdftex.def Info: figures/stateestimation/PlantDiagram.pdf  used on input line 807.
@@ -2398,7 +2392,7 @@ Package pdftex.def Info: figures/stateestimation/PlantDiagram.pdf  used on input
 
 
 [93]
-<figures/stateestimation/EarthTrackerDiagram.pdf, id=2802, 973.31133pt x 293.73096pt>
+<figures/stateestimation/EarthTrackerDiagram.pdf, id=2838, 973.31133pt x 293.73096pt>
 File: figures/stateestimation/EarthTrackerDiagram.pdf Graphic file (type pdf)
 <use figures/stateestimation/EarthTrackerDiagram.pdf>
 Package pdftex.def Info: figures/stateestimation/EarthTrackerDiagram.pdf  used on input line 828.
@@ -2406,7 +2400,7 @@ Package pdftex.def Info: figures/stateestimation/EarthTrackerDiagram.pdf  used o
 
 
 [94 <./figures/stateestimation/PlantDiagram.pdf>]
-<figures/stateestimation/EKFDiagram.pdf, id=2816, 668.11pt x 427.07924pt>
+<figures/stateestimation/EKFDiagram.pdf, id=2852, 668.11pt x 427.07924pt>
 File: figures/stateestimation/EKFDiagram.pdf Graphic file (type pdf)
 <use figures/stateestimation/EKFDiagram.pdf>
 Package pdftex.def Info: figures/stateestimation/EKFDiagram.pdf  used on input line 854.
@@ -2419,22 +2413,22 @@ Package pdftex.def Info: figures/stateestimation/EKFDiagram.pdf  used on input l
 
 [97]
 Chapter 6.
-<figures/experiments/sat_image_001.png, id=2848, 722.7pt x 722.7pt>
+<figures/experiments/sat_image_001.png, id=2884, 722.7pt x 722.7pt>
 File: figures/experiments/sat_image_001.png Graphic file (type png)
 <use figures/experiments/sat_image_001.png>
 Package pdftex.def Info: figures/experiments/sat_image_001.png  used on input line 20.
 (pdftex.def)             Requested size: 204.85846pt x 204.85785pt.
-<figures/experiments/sat_image_901.png, id=2849, 722.7pt x 722.7pt>
+<figures/experiments/sat_image_901.png, id=2885, 722.7pt x 722.7pt>
 File: figures/experiments/sat_image_901.png Graphic file (type png)
 <use figures/experiments/sat_image_901.png>
 Package pdftex.def Info: figures/experiments/sat_image_901.png  used on input line 25.
 (pdftex.def)             Requested size: 204.85846pt x 204.85785pt.
-<figures/experiments/sat_image_1801.png, id=2850, 722.7pt x 722.7pt>
+<figures/experiments/sat_image_1801.png, id=2886, 722.7pt x 722.7pt>
 File: figures/experiments/sat_image_1801.png Graphic file (type png)
 <use figures/experiments/sat_image_1801.png>
 Package pdftex.def Info: figures/experiments/sat_image_1801.png  used on input line 32.
 (pdftex.def)             Requested size: 204.85846pt x 204.85785pt.
-<figures/experiments/sat_image_3571.png, id=2851, 722.7pt x 722.7pt>
+<figures/experiments/sat_image_3571.png, id=2887, 722.7pt x 722.7pt>
 File: figures/experiments/sat_image_3571.png Graphic file (type png)
 <use figures/experiments/sat_image_3571.png>
 Package pdftex.def Info: figures/experiments/sat_image_3571.png  used on input line 37.
@@ -2446,7 +2440,7 @@ Package pdftex.def Info: figures/experiments/sat_image_3571.png  used on input l
 ]
 
 [99 <./figures/experiments/sat_image_001.png (PNG copy)> <./figures/experiments/sat_image_901.png (PNG copy)> <./figures/experiments/sat_image_1801.png (PNG copy)> <./figures/experiments/sat_image_3571.png (PNG copy)>]
-<figures/experiments/TriScapeCamera.png, id=2862, 602.25pt x 486.31688pt>
+<figures/experiments/TriScapeCamera.png, id=2899, 602.25pt x 486.31688pt>
 File: figures/experiments/TriScapeCamera.png Graphic file (type png)
 <use figures/experiments/TriScapeCamera.png>
 Package pdftex.def Info: figures/experiments/TriScapeCamera.png  used on input line 96.
@@ -2454,163 +2448,157 @@ Package pdftex.def Info: figures/experiments/TriScapeCamera.png  used on input l
 
 
 [100]
-<figures/experiments/FilterError.pdf, id=2869, 820.06375pt x 360.34625pt>
+<figures/experiments/FilterError.pdf, id=2909, 820.06375pt x 360.34625pt>
 File: figures/experiments/FilterError.pdf Graphic file (type pdf)
 <use figures/experiments/FilterError.pdf>
-Package pdftex.def Info: figures/experiments/FilterError.pdf  used on input line 129.
+Package pdftex.def Info: figures/experiments/FilterError.pdf  used on input line 124.
 (pdftex.def)             Requested size: 455.24411pt x 200.04402pt.
 
 
 [101 <./figures/experiments/TriScapeCamera.png>]
 
 [102 <./figures/experiments/FilterError.pdf>]
-<figures/experiments/ETHighTrust.pdf, id=2908, 832.10875pt x 358.33875pt>
+<figures/experiments/ETHighTrust.pdf, id=2948, 832.10875pt x 358.33875pt>
 File: figures/experiments/ETHighTrust.pdf Graphic file (type pdf)
 <use figures/experiments/ETHighTrust.pdf>
-Package pdftex.def Info: figures/experiments/ETHighTrust.pdf  used on input line 168.
+Package pdftex.def Info: figures/experiments/ETHighTrust.pdf  used on input line 163.
 (pdftex.def)             Requested size: 455.24411pt x 196.04803pt.
-<figures/experiments/ETLowTrust.pdf, id=2909, 824.07875pt x 358.33875pt>
+<figures/experiments/ETLowTrust.pdf, id=2949, 824.07875pt x 358.33875pt>
 File: figures/experiments/ETLowTrust.pdf Graphic file (type pdf)
 <use figures/experiments/ETLowTrust.pdf>
-Package pdftex.def Info: figures/experiments/ETLowTrust.pdf  used on input line 175.
+Package pdftex.def Info: figures/experiments/ETLowTrust.pdf  used on input line 170.
 (pdftex.def)             Requested size: 455.24411pt x 197.9563pt.
 
 
 [103 <./figures/experiments/ETHighTrust.pdf>]
-<figures/experiments/ETAttitudeOnly.pdf, id=2938, 825.0825pt x 358.33875pt>
+<figures/experiments/ETAttitudeOnly.pdf, id=2977, 825.0825pt x 358.33875pt>
 File: figures/experiments/ETAttitudeOnly.pdf Graphic file (type pdf)
 <use figures/experiments/ETAttitudeOnly.pdf>
-Package pdftex.def Info: figures/experiments/ETAttitudeOnly.pdf  used on input line 185.
+Package pdftex.def Info: figures/experiments/ETAttitudeOnly.pdf  used on input line 180.
 (pdftex.def)             Requested size: 455.24411pt x 197.71571pt.
-<figures/experiments/ETPositionOnly.pdf, id=2939, 836.12375pt x 358.33875pt>
+
+
+[104 <./figures/experiments/ETLowTrust.pdf>]
+<figures/experiments/ETPositionOnly.pdf, id=3000, 836.12375pt x 358.33875pt>
 File: figures/experiments/ETPositionOnly.pdf Graphic file (type pdf)
 <use figures/experiments/ETPositionOnly.pdf>
-Package pdftex.def Info: figures/experiments/ETPositionOnly.pdf  used on input line 193.
+Package pdftex.def Info: figures/experiments/ETPositionOnly.pdf  used on input line 188.
 (pdftex.def)             Requested size: 455.24411pt x 195.10757pt.
-
-
-[104 <./figures/experiments/ETLowTrust.pdf> <./figures/experiments/ETAttitudeOnly.pdf>]
-<figures/experiments/ETGPS.pdf, id=2980, 817.0525pt x 358.33875pt>
+<figures/experiments/ETGPS.pdf, id=3001, 817.0525pt x 358.33875pt>
 File: figures/experiments/ETGPS.pdf Graphic file (type pdf)
 <use figures/experiments/ETGPS.pdf>
-Package pdftex.def Info: figures/experiments/ETGPS.pdf  used on input line 200.
+Package pdftex.def Info: figures/experiments/ETGPS.pdf  used on input line 195.
 (pdftex.def)             Requested size: 455.24411pt x 199.66225pt.
 
 
-[105 <./figures/experiments/ETPositionOnly.pdf> <./figures/experiments/ETGPS.pdf>]
+[105 <./figures/experiments/ETAttitudeOnly.pdf> <./figures/experiments/ETPositionOnly.pdf>]
 
-[106]
-<figures/experiments/STOnly.pdf, id=3037, 816.04875pt x 358.33875pt>
-File: figures/experiments/STOnly.pdf Graphic file (type pdf)
-<use figures/experiments/STOnly.pdf>
-Package pdftex.def Info: figures/experiments/STOnly.pdf  used on input line 274.
-(pdftex.def)             Requested size: 455.24411pt x 199.90283pt.
-
+[106 <./figures/experiments/ETGPS.pdf>]
 
 [107]
-<figures/experiments/ADCSOnly.pdf, id=3042, 824.07875pt x 360.34625pt>
+<figures/experiments/STOnly.pdf, id=3080, 816.04875pt x 358.33875pt>
+File: figures/experiments/STOnly.pdf Graphic file (type pdf)
+<use figures/experiments/STOnly.pdf>
+Package pdftex.def Info: figures/experiments/STOnly.pdf  used on input line 269.
+(pdftex.def)             Requested size: 455.24411pt x 199.90283pt.
+<figures/experiments/ADCSOnly.pdf, id=3081, 824.07875pt x 360.34625pt>
 File: figures/experiments/ADCSOnly.pdf Graphic file (type pdf)
 <use figures/experiments/ADCSOnly.pdf>
-Package pdftex.def Info: figures/experiments/ADCSOnly.pdf  used on input line 281.
+Package pdftex.def Info: figures/experiments/ADCSOnly.pdf  used on input line 276.
 (pdftex.def)             Requested size: 455.24411pt x 199.06529pt.
-<figures/experiments/STADCS.pdf, id=3045, 837.1275pt x 358.33875pt>
+<figures/experiments/STADCS.pdf, id=3084, 837.1275pt x 358.33875pt>
 File: figures/experiments/STADCS.pdf Graphic file (type pdf)
 <use figures/experiments/STADCS.pdf>
-Package pdftex.def Info: figures/experiments/STADCS.pdf  used on input line 291.
+Package pdftex.def Info: figures/experiments/STADCS.pdf  used on input line 286.
 (pdftex.def)             Requested size: 455.24411pt x 194.86699pt.
 
 
 [108 <./figures/experiments/STOnly.pdf> <./figures/experiments/ADCSOnly.pdf>]
-<figures/experiments/ETADCS.pdf, id=3093, 837.1275pt x 358.33875pt>
+<figures/experiments/ETADCS.pdf, id=3132, 837.1275pt x 358.33875pt>
 File: figures/experiments/ETADCS.pdf Graphic file (type pdf)
 <use figures/experiments/ETADCS.pdf>
-Package pdftex.def Info: figures/experiments/ETADCS.pdf  used on input line 298.
+Package pdftex.def Info: figures/experiments/ETADCS.pdf  used on input line 293.
 (pdftex.def)             Requested size: 455.24411pt x 194.86699pt.
 
 
 [109 <./figures/experiments/STADCS.pdf> <./figures/experiments/ETADCS.pdf>]
-Overfull \hbox (25.77637pt too wide) in paragraph at lines 328--341
- [][] 
- []
-
-
 
 [110]
-<figures/experiments/ETMeasurements.pdf, id=3143, 738.76pt x 439.6425pt>
+<figures/experiments/ETMeasurements.pdf, id=3184, 738.76pt x 439.6425pt>
 File: figures/experiments/ETMeasurements.pdf Graphic file (type pdf)
 <use figures/experiments/ETMeasurements.pdf>
-Package pdftex.def Info: figures/experiments/ETMeasurements.pdf  used on input line 358.
+Package pdftex.def Info: figures/experiments/ETMeasurements.pdf  used on input line 356.
 (pdftex.def)             Requested size: 409.71692pt x 243.82333pt.
-<figures/experiments/ETMeasurementError.pdf, id=3144, 704.6325pt x 435.6275pt>
+<figures/experiments/ETMeasurementError.pdf, id=3185, 704.6325pt x 435.6275pt>
 File: figures/experiments/ETMeasurementError.pdf Graphic file (type pdf)
 <use figures/experiments/ETMeasurementError.pdf>
-Package pdftex.def Info: figures/experiments/ETMeasurementError.pdf  used on input line 365.
+Package pdftex.def Info: figures/experiments/ETMeasurementError.pdf  used on input line 363.
 (pdftex.def)             Requested size: 409.71692pt x 253.30225pt.
 
 
 [111 <./figures/experiments/ETMeasurements.pdf>]
-<figures/experiments/ESTSIFT1.png, id=3167, 722.7pt x 722.7pt>
+<figures/experiments/ESTSIFT1.png, id=3208, 722.7pt x 722.7pt>
 File: figures/experiments/ESTSIFT1.png Graphic file (type png)
 <use figures/experiments/ESTSIFT1.png>
-Package pdftex.def Info: figures/experiments/ESTSIFT1.png  used on input line 392.
+Package pdftex.def Info: figures/experiments/ESTSIFT1.png  used on input line 390.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/experiments/ESTSURF1.png, id=3168, 722.7pt x 722.7pt>
+<figures/experiments/ESTSURF1.png, id=3209, 722.7pt x 722.7pt>
 File: figures/experiments/ESTSURF1.png Graphic file (type png)
 <use figures/experiments/ESTSURF1.png>
-Package pdftex.def Info: figures/experiments/ESTSURF1.png  used on input line 397.
+Package pdftex.def Info: figures/experiments/ESTSURF1.png  used on input line 395.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/experiments/ESTORB1.png, id=3169, 722.7pt x 722.7pt>
+<figures/experiments/ESTORB1.png, id=3210, 722.7pt x 722.7pt>
 File: figures/experiments/ESTORB1.png Graphic file (type png)
 <use figures/experiments/ESTORB1.png>
-Package pdftex.def Info: figures/experiments/ESTORB1.png  used on input line 402.
+Package pdftex.def Info: figures/experiments/ESTORB1.png  used on input line 400.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/experiments/ESTSIFT10.png, id=3170, 722.7pt x 722.7pt>
+<figures/experiments/ESTSIFT10.png, id=3211, 722.7pt x 722.7pt>
 File: figures/experiments/ESTSIFT10.png Graphic file (type png)
 <use figures/experiments/ESTSIFT10.png>
-Package pdftex.def Info: figures/experiments/ESTSIFT10.png  used on input line 409.
+Package pdftex.def Info: figures/experiments/ESTSIFT10.png  used on input line 407.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/experiments/ESTSURF10.png, id=3171, 722.7pt x 722.7pt>
+<figures/experiments/ESTSURF10.png, id=3212, 722.7pt x 722.7pt>
 File: figures/experiments/ESTSURF10.png Graphic file (type png)
 <use figures/experiments/ESTSURF10.png>
-Package pdftex.def Info: figures/experiments/ESTSURF10.png  used on input line 414.
+Package pdftex.def Info: figures/experiments/ESTSURF10.png  used on input line 412.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
-<figures/experiments/ESTORB10.png, id=3172, 722.7pt x 722.7pt>
+<figures/experiments/ESTORB10.png, id=3213, 722.7pt x 722.7pt>
 File: figures/experiments/ESTORB10.png Graphic file (type png)
 <use figures/experiments/ESTORB10.png>
-Package pdftex.def Info: figures/experiments/ESTORB10.png  used on input line 419.
+Package pdftex.def Info: figures/experiments/ESTORB10.png  used on input line 417.
 (pdftex.def)             Requested size: 136.57462pt x 136.57558pt.
 
 
 [112 <./figures/experiments/ETMeasurementError.pdf>]
 
 [113 <./figures/experiments/ESTSIFT1.png (PNG copy)> <./figures/experiments/ESTSURF1.png (PNG copy)> <./figures/experiments/ESTORB1.png (PNG copy)> <./figures/experiments/ESTSIFT10.png (PNG copy)> <./figures/experiments/ESTSURF10.png (PNG copy)> <./figures/experiments/ESTORB10.png (PNG copy)>]
-<figures/experiments/EILD2.png, id=3208, 722.7pt x 722.7pt>
+<figures/experiments/EILD2.png, id=3249, 722.7pt x 722.7pt>
 File: figures/experiments/EILD2.png Graphic file (type png)
 <use figures/experiments/EILD2.png>
-Package pdftex.def Info: figures/experiments/EILD2.png  used on input line 471.
+Package pdftex.def Info: figures/experiments/EILD2.png  used on input line 469.
 (pdftex.def)             Requested size: 218.51521pt x 218.5099pt.
-<figures/experiments/EILD1.png, id=3209, 722.7pt x 722.7pt>
+<figures/experiments/EILD1.png, id=3250, 722.7pt x 722.7pt>
 File: figures/experiments/EILD1.png Graphic file (type png)
 <use figures/experiments/EILD1.png>
-Package pdftex.def Info: figures/experiments/EILD1.png  used on input line 478.
+Package pdftex.def Info: figures/experiments/EILD1.png  used on input line 476.
 (pdftex.def)             Requested size: 218.51521pt x 218.5099pt.
 
 
 [114]
 
 [115 <./figures/experiments/EILD2.png (PNG copy)> <./figures/experiments/EILD1.png (PNG copy)>]
-<figures/experiments/ETDelay0.pdf, id=3222, 832.10875pt x 358.33875pt>
+<figures/experiments/ETDelay0.pdf, id=3263, 832.10875pt x 358.33875pt>
 File: figures/experiments/ETDelay0.pdf Graphic file (type pdf)
 <use figures/experiments/ETDelay0.pdf>
-Package pdftex.def Info: figures/experiments/ETDelay0.pdf  used on input line 534.
+Package pdftex.def Info: figures/experiments/ETDelay0.pdf  used on input line 532.
 (pdftex.def)             Requested size: 455.24411pt x 196.04803pt.
 
 
 [116]
-<figures/experiments/ETDeley3.pdf, id=3227, 829.0975pt x 360.34625pt>
+<figures/experiments/ETDeley3.pdf, id=3268, 829.0975pt x 360.34625pt>
 File: figures/experiments/ETDeley3.pdf Graphic file (type pdf)
 <use figures/experiments/ETDeley3.pdf>
-Package pdftex.def Info: figures/experiments/ETDeley3.pdf  used on input line 541.
+Package pdftex.def Info: figures/experiments/ETDeley3.pdf  used on input line 539.
 (pdftex.def)             Requested size: 455.24411pt x 197.85564pt.
 
 
@@ -2648,17 +2636,17 @@ Chapter 7.
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 
-Underfull \hbox (badness 3536) in paragraph at lines 70--75
+Underfull \hbox (badness 3536) in paragraph at lines 74--79
 []\T1/lmr/m/n/12 (+20) L. Carozza and A. Bevilac-qua, ``Er-ror anal-y-sis of satel-lite at-ti-tude de-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 \T1/lmr/m/n/12 (+20) ter-mi-na-tion us-ing a vision-based ap-proach,'' \T1/lmr/m/it/12 (+20) IS-PRS Jour-nal of Pho-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 \T1/lmr/m/it/12 (+20) togram-me-try and Re-mote Sens-ing\T1/lmr/m/n/12 (+20) , vol. 83, pp. 19--29, Sep. 2013,
  []
 
@@ -2680,33 +2668,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--75
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 
-Underfull \hbox (badness 1484) in paragraph at lines 101--103
+Underfull \hbox (badness 1484) in paragraph at lines 105--107
 []\T1/lmr/m/n/12 (+20) J. Di-et-rich, 2016, https://adv-geo-research.blogspot.com/2016/08/off-nadir-res-
  []
 
 
-Overfull \hbox (40.06659pt too wide) in paragraph at lines 118--120
+Overfull \hbox (40.06659pt too wide) in paragraph at lines 131--133
 []\T1/lmr/m/n/12 (-20) B. Mel-lish, ``Chro-matic aber-ra-tion,'' 2025, https://en.wikipedia.org/wiki/Chromaticaberration. 
  []
 
 ** WARNING: IEEEtranN.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
-** WARNING: IEEEtranN.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtranN.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
-** the default language instead.
 
 
 [124]
-** WARNING: IEEEtranN.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtranN.bst: No hyphenation pattern has been
-** loaded for the language `en'. Using the pattern for
-** the default language instead.
 ** WARNING: IEEEtranN.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
@@ -2734,21 +2710,36 @@ Overfull \hbox (40.06659pt too wide) in paragraph at lines 118--120
 ** WARNING: IEEEtranN.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
+** WARNING: IEEEtranN.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtranN.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtranN.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtranN.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
 
-Underfull \hbox (badness 1248) in paragraph at lines 270--276
+Underfull \hbox (badness 1248) in paragraph at lines 290--296
 []\T1/lmr/m/n/12 (+20) F. Ca-ballero, L. Merino, J. Fer-ruz, and A. Ollero, ``Vision-Based Odom-e-
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 270--276
+Underfull \hbox (badness 1281) in paragraph at lines 290--296
 \T1/lmr/m/n/12 (+20) try and SLAM for Medium and High Al-ti-tude Fly-ing UAVs,'' \T1/lmr/m/it/12 (+20) Jour-nal of
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 270--276
+Underfull \hbox (badness 1043) in paragraph at lines 290--296
 \T1/lmr/m/it/12 (+20) In-tel-li-gent and Robotic Sys-tems\T1/lmr/m/n/12 (+20) , vol. 54, no. 1-3, pp. 137--161, Mar. 2009,
  []
 
+
+
+[126]
 ** WARNING: IEEEtranN.bst: No hyphenation pattern has been
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
@@ -2756,17 +2747,17 @@ Underfull \hbox (badness 1043) in paragraph at lines 270--276
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 
-Underfull \hbox (badness 2173) in paragraph at lines 278--283
+Underfull \hbox (badness 2173) in paragraph at lines 298--303
 []\T1/lmr/m/n/12 (+20) H. E. So-ken, C. Ha-jiyev, and S.-i. Sakai, ``Ro-bust Kalman fil-ter-ing for
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 278--283
+Underfull \hbox (badness 1783) in paragraph at lines 298--303
 \T1/lmr/m/n/12 (+20) small satel-lite at-ti-tude es-ti-ma-tion in the pres-ence of mea-sure-ment faults,''
  []
 
 
-Underfull \hbox (badness 5504) in paragraph at lines 278--283
+Underfull \hbox (badness 5504) in paragraph at lines 298--303
 \T1/lmr/m/it/12 (+20) Eu-ro-pean Jour-nal of Con-trol\T1/lmr/m/n/12 (+20) , vol. 20, no. 2, pp. 64--72, Mar. 2014,
  []
 
@@ -2777,8 +2768,16 @@ Underfull \hbox (badness 5504) in paragraph at lines 278--283
 ** loaded for the language `en'. Using the pattern for
 ** the default language instead.
 
+Underfull \hbox (badness 10000) in paragraph at lines 338--340
+[]\T1/lmr/m/n/12 (+20) Scratchapixel, ``A min-i-mal ray-tracer: Ray-sphere in-ter-sec-tion,''
+ []
 
-[126])
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--340
+\T1/lmr/m/n/12 (+20) n.d., [][]$https : / / www . scratchapixel . com / lessons / 3d-[]basic-[]rendering /
+ []
+
+)
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
@@ -2795,17 +2794,17 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 9A40F8A4CF8A0946205E2EF2616800D3;18317.
  ) 
 Here is how much of TeX's memory you used:
- 59992 strings out of 473899
- 1299784 string characters out of 5726971
- 1778040 words of memory out of 5000000
- 80819 multiletter control sequences out of 15000+600000
- 778219 words of font info for 440 fonts, out of 8000000 for 9000
+ 60038 strings out of 473899
+ 1300478 string characters out of 5726971
+ 1780589 words of memory out of 5000000
+ 80843 multiletter control sequences out of 15000+600000
+ 778878 words of font info for 448 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,22n,112p,2408b,763s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Niel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (151 pages, 60723095 bytes).
+Output written on thesis.pdf (151 pages, 60784934 bytes).
 PDF statistics:
- 3571 PDF objects out of 3580 (max. 8388607)
- 586 named destinations out of 1000 (max. 500000)
+ 3619 PDF objects out of 4296 (max. 8388607)
+ 592 named destinations out of 1000 (max. 500000)
  105910 words of extra memory for PDF output out of 106986 (max. 10000000)
 

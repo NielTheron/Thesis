@@ -89,7 +89,7 @@ In this context, the EKF is preferred due to its balance between computational e
 
 Kalman filters are well suited for localistation problems since the nature of these systems are normally non-linear. Both the linear and non-linear variants of the Kalman Filter
 are concerned with estimating states using a motion model and is able to perform measurement fusion. The state estimation problem in this work makes use of non-linear system 
-models, and a high-dimensinal state space. The EKF is well suited for this problem, since it accomodates non-linear process and observation models and is capable 
+models, and a high-dimensional state space. The EKF is well suited for this problem, since it accomodates non-linear process and observation models and is capable 
 of dealing with high-dimensional state spaces. The EKF is often use for the Simultaneous Localisation and Mapping (SLAM) problem and is well known in the field of robotics and localisation. The EKF is governed by the following set of equations, as presented in Section \ref{sec:Prediction} - \ref{sec:MSE} and further described in \cite{Alex}.
 \vspace{0.5cm}
 
@@ -262,7 +262,7 @@ In this work, the sequential update EKF is adopted, as it aligns well with the c
 GPS measurements are relatively slow but absolute, while gyroscopes provide high-frequency angular velocity data that drift over time. Star trackers 
 deliver highly accurate orientation information, though at lower update rates. Coarse sun sensors and magnetometers supply additional measurements 
 that are less accurate but robust and continuously available. Processing these measurements sequentially allows the filter to integrate information at 
-the rate each sensor provides it.
+the rate each sensor provides it. Each sensor would have its own Kalman gain value which would be used to calculate the estimated state and the covariance matrix.
 \vspace{0.5cm}
 
 \noindent
@@ -733,7 +733,7 @@ the inclination of the orbit is constraint by $min(\lambda)$ and $max(\lambda + 
 The magnitude of the orbital velocity is computed using the equation:
 
 \begin{equation}
-    \left|| \mathbf{v} \right|| = \sqrt{\frac{\mu}{\left|| \mathbf{r} \right||}}
+    || \mathbf{v} || = \sqrt{\frac{\mu}{|| \mathbf{r} ||}}
 \end{equation}
 
 \noindent
@@ -750,7 +750,7 @@ The inertial velocity vector is then calculated as:
 %=============================================================================================================================================================================
 \mysubsection{Attitude Initialisation}{Attitude Initialisation}
 
-The initial attitude of the satellite is determined by multiplying two DCMs and the converting the DCM to a quaternion $\mathbf{q}_\mathcal{B/O} $.
+The initial attitude of the satellite is determined by multiplying two DCMs and then converting the DCM to a quaternion $\mathbf{q}_\mathcal{B/O} $.
 
 \begin{equation}
     \mathbf{A}_\mathcal{O}^\mathcal{B} = \mathbf{A}_\mathcal{C}^\mathcal{B} \times \mathbf{A}_\mathcal{O}^\mathcal{C} 
